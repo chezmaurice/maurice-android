@@ -38,9 +38,7 @@ import androidx.compose.ui.unit.sp
 import eu.chezmaurice.core.budget.BudgetStore
 import eu.chezmaurice.maurice.chat.legible
 import eu.chezmaurice.maurice.domains.LocalAccent
-import eu.chezmaurice.maurice.settings.IndexRow
 import eu.chezmaurice.maurice.settings.SetCaption
-import eu.chezmaurice.maurice.settings.SetCard
 import eu.chezmaurice.ui.DomainGlyphs
 import eu.chezmaurice.ui.L
 import eu.chezmaurice.ui.LocalMauriceTheme
@@ -124,7 +122,7 @@ fun budgetValue(left: Double?): String =
  * the admin. No way to pay here.
  */
 @Composable
-fun BudgetPane(store: BudgetStore, languageTag: String, openSubscription: (() -> Unit)? = null) {
+fun BudgetPane(store: BudgetStore, languageTag: String) {
     val theme = LocalMauriceTheme.current
     val state by store.state.collectAsState()
     LaunchedEffect(store) { store.refresh() }
@@ -152,10 +150,6 @@ fun BudgetPane(store: BudgetStore, languageTag: String, openSubscription: (() ->
             }
             detail?.let { Text(it, fontSize = 12.5.sp, color = theme.inkSoft) }
         }
-    }
-    // The admin who can top up goes on to Abonnement; a member sees nothing of it.
-    if (budget?.canTopUp == true && openSubscription != null) SetCard {
-        IndexRow("plus.circle", L("store.topup.open"), onClick = openSubscription)
     }
     SetCaption(L("budget.caption"))
 }

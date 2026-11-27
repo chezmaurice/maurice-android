@@ -55,8 +55,6 @@ kotlin {
         }
         jvmTest.dependencies {
             implementation(kotlin("test"))
-            implementation(libs.ktor.client.mock)
-            implementation(libs.ktor.client.content.negotiation)
             implementation(compose.desktop.currentOs)
         }
     }

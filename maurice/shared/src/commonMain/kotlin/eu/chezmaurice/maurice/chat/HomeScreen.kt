@@ -50,12 +50,8 @@ import eu.chezmaurice.maurice.settings.Pane
 import eu.chezmaurice.maurice.settings.appLanguage
 import eu.chezmaurice.maurice.consent.LocalAppLanguage
 import eu.chezmaurice.core.budget.BudgetStore
-import eu.chezmaurice.core.model.Role
 import eu.chezmaurice.core.consent.AiConsentStore
 import eu.chezmaurice.maurice.budget.BudgetToast
-import eu.chezmaurice.maurice.store.LocalBilling
-import eu.chezmaurice.maurice.store.LocalStore
-import eu.chezmaurice.maurice.store.StoreController
 import eu.chezmaurice.maurice.budget.LocalBudget
 import eu.chezmaurice.maurice.budget.LocalOpenBudget
 import eu.chezmaurice.maurice.consent.AiConsentScreen
@@ -122,26 +118,6 @@ fun HomeScreen(session: Session, household: Household, member: Member) {
     }
     LaunchedEffect(budget, state.turnRunning) { if (!state.turnRunning) budget.refresh() }
     val openBudget = { settingsPane = Pane.Budget; showSettings = true }
-
-    // The admin of a hosted household buys here, in the Play build only: the
-    // controller asks the household whether it has a store, then sends on
-    // whatever Play holds that the tower has not counted yet.
-    val billing = LocalBilling.current
-    val store = remember(household.id, member.id, member.role, billing) {
-        if (billing == null || member.role != Role.Admin) null
-        else session.api()?.let { StoreController(it, billing, session.store, it.http, deviceLanguage) }
-    }
-    val storeState = store?.state?.collectAsState()?.value
-    LaunchedEffect(store) {
-        store ?: return@LaunchedEffect
-        store.refresh()
-        store.settleLeftovers()
-    }
-    // The toast: Abonnement for the admin who can top up, Budget for everyone else.
-    val openFromToast = {
-        settingsPane = if (storeState?.hasStore == true && budgetState.budget?.canTopUp == true) Pane.Subscription else Pane.Budget
-        showSettings = true
-    }
 
     // Your notes and the ones shared with others, opened in the browser signed in.
     val platformLinks = androidx.compose.ui.platform.LocalUriHandler.current
@@ -211,7 +187,6 @@ fun HomeScreen(session: Session, household: Household, member: Member) {
         LocalAccent provides hexColor(member.avatarColor),
         LocalAiConsent provides consent,
         LocalBudget provides budget,
-        LocalStore provides store,
         LocalOpenBudget provides openBudget,
         LocalAppLanguage provides appLanguage(session),
         LocalTurnCost provides TurnCostPref.of(session.store),
@@ -231,7 +206,7 @@ fun HomeScreen(session: Session, household: Household, member: Member) {
             // Crossing 20, 10 or 5 % of the household's budget: a toast, over everything.
             val alert = budgetState.alert
             if (alert != null && !consentState.showsQuestion) {
-                BudgetToast(budget, alert, onOpen = openFromToast, modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(top = 8.dp, start = 16.dp, end = 16.dp))
+                BudgetToast(budget, alert, onOpen = openBudget, modifier = Modifier.align(Alignment.TopCenter).statusBarsPadding().padding(top = 8.dp, start = 16.dp, end = 16.dp))
             }
         }
         if (showSettings) SettingsScreen(session, household, member, initialPane = settingsPane) { showSettings = false; settingsPane = null }

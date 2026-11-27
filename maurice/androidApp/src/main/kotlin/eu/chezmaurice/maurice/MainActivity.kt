@@ -53,11 +53,7 @@ class MainActivity : ComponentActivity() {
         // or notification opened. Taking it again would enrol a second time
         // (22 November 2026).
         if (savedInstanceState == null && (intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) takeIntent(intent)
-        // What the household admin may buy here: Google Play in the play build, nothing otherwise.
-        val billing = billingChannel(this)
-        setContent {
-            androidx.compose.runtime.CompositionLocalProvider(eu.chezmaurice.maurice.store.LocalBilling provides billing) { MauriceApp(session) }
-        }
+        setContent { MauriceApp(session) }
     }
 
     override fun onResume() {

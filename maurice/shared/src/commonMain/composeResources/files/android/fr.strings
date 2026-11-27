@@ -27,6 +27,3 @@
 "reports.eject" = "Exclure du salon";
 "reports.dismiss" = "Classer";
 
-"store.via_play" = "Via Google Play";
-"store.plans.caption.play" = "Renouvelé automatiquement jusqu’à résiliation. Vous pouvez résilier à tout moment dans Google Play, sous Paiements et abonnements, avant la fin de la période en cours.";
-"store.error.unverified.play" = "Google Play n’a pas pu confirmer cet achat.";

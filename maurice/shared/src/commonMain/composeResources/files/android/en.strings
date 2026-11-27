@@ -27,6 +27,3 @@
 "reports.eject" = "Eject member";
 "reports.dismiss" = "Dismiss";
 
-"store.via_play" = "Through Google Play";
-"store.plans.caption.play" = "Renews automatically until cancelled. You can cancel any time in Google Play, under Payments & subscriptions, before the end of the current period.";
-"store.error.unverified.play" = "Google Play could not confirm this purchase.";

@@ -38,13 +38,6 @@ the Mac is only a development convenience.
   code in files of its own (`maurice/androidApp/.../Billing.kt`) so the
   merges stay clean. Obtainium releases (`scripts/publish-release.sh`) come
   from `foss` only.
-- **One `versionCode` counter for both lines.** Play and Obtainium builds share
-  the application id and the signing key, so Android sees one app and refuses
-  a lower `versionCode` over a higher one. Each new version, on either line,
-  takes the next number above the highest ever used on *both* branches
-  (check `git show origin/main:` and `origin/foss:` of the two
-  `androidApp/build.gradle.kts`). Highest used since 22 November 2026: Maurice 25
-  (Play 0.5.20), Carnet 21 (Play 0.1.20); never reuse a number.
 - **Multiplatform libraries only in `commonMain`** (Ktor, kotlinx.serialization,
   coroutines, Compose Multiplatform). Platform code behind `expect`/`actual`.
 - **Parity with iOS** is tracked in `parity.md`; `scripts/ios-delta.sh` lists

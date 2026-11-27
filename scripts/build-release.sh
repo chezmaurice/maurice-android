@@ -5,9 +5,9 @@
 #   scripts/build-release.sh carnet     # Carnet
 #
 # What it builds follows the branch: on `main` (the Play Store build, which
-# carries Google Play Billing for Maurice), both apps are bundles for the Play
-# Store (.aab); on `foss` (the Obtainium/GrapheneOS fork, no Google at all),
-# both are the APKs of the releases repos.
+# carries Google Play Billing), Maurice is the bundle for the Play Store (.aab);
+# on `foss` (the Obtainium/GrapheneOS fork, no Google at all), both apps are
+# the APKs of the releases repos. Carnet is an APK either way.
 #
 # The key: ~/.maurice-android/release.jks (outside the repo). Its password:
 # the macOS Keychain item "maurice-android-release". Every version must be
@@ -25,8 +25,8 @@ cd "$here"
 version="$(sed -n 's/.*versionName = "\(.*\)".*/\1/p' "$app/androidApp/build.gradle.kts")"
 mkdir -p dist
 
-# The Play build: from anywhere but the foss branch.
-if [[ "$(git -C "$here" rev-parse --abbrev-ref HEAD)" != "foss" ]]; then
+# The Play build: Maurice from anywhere but the foss branch.
+if [[ "$app" == "maurice" && "$(git -C "$here" rev-parse --abbrev-ref HEAD)" != "foss" ]]; then
   ./gradlew --console=plain -q ":$app:androidApp:bundleRelease"
   out="dist/$app-$version.aab"
   cp "$app/androidApp/build/outputs/bundle/release/androidApp-release.aab" "$out"

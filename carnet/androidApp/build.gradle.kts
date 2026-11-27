@@ -36,8 +36,8 @@ android {
         applicationId = "eu.chezmaurice.carnet"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 21
-        versionName = "0.1.20"
+        versionCode = 20
+        versionName = "0.1.19"
     }
     packaging {
         resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }

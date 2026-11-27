@@ -82,13 +82,9 @@ import eu.chezmaurice.maurice.budget.BudgetPane
 import eu.chezmaurice.maurice.budget.BudgetRing
 import eu.chezmaurice.maurice.budget.LocalBudget
 import eu.chezmaurice.maurice.budget.budgetValue
-import eu.chezmaurice.maurice.store.LocalBilling
-import eu.chezmaurice.maurice.store.LocalStore
-import eu.chezmaurice.maurice.store.SubscriptionPane
-import eu.chezmaurice.maurice.store.subscriptionValue
 
 /** The detail panes, one tap from the index. */
-enum class Pane { Appearance, Language, Household, Devices, Members, AdminPassword, Reports, Garden, Token, Files, Import, Mail, Contacts, Tools, MyData, Budget, Subscription, Safety }
+enum class Pane { Appearance, Language, Household, Devices, Members, AdminPassword, Reports, Garden, Token, Files, Import, Mail, Contacts, Tools, MyData, Budget, Safety }
 
 private val LOCALES = listOf(null to "", "en" to "English", "fr" to "Français", "it" to "Italiano", "de" to "Deutsch", "es" to "Español", "pt" to "Português", "nl" to "Nederlands")
 
@@ -135,16 +131,7 @@ fun SettingsScreen(session: Session, household: Household, member: Member, initi
                             Pane.Contacts -> ContactsPane(session)
                             Pane.Tools -> ToolsPane(session)
                             Pane.MyData -> MyDataPane(session, member, onClose)
-                            Pane.Budget -> LocalBudget.current?.let { budget ->
-                                val store = LocalStore.current
-                                val hasStore = store?.state?.collectAsState()?.value?.hasStore == true
-                                BudgetPane(budget, appLanguage(session), openSubscription = if (hasStore) ({ pane = Pane.Subscription }) else null)
-                            }
-                            Pane.Subscription -> {
-                                val store = LocalStore.current
-                                val billing = LocalBilling.current
-                                if (store != null && billing != null) SubscriptionPane(store, billing, appLanguage(session))
-                            }
+                            Pane.Budget -> LocalBudget.current?.let { BudgetPane(it, appLanguage(session)) }
                         }
                     }
                     Footer(session, household)
@@ -172,7 +159,6 @@ private fun title(p: Pane): String = when (p) {
     Pane.Tools -> L("mytools.title")
     Pane.MyData -> L("mydata.title")
     Pane.Budget -> L("budget.title")
-    Pane.Subscription -> L("store.title")
     Pane.Safety -> "Safety"
 }
 
@@ -311,14 +297,6 @@ private fun Root(session: Session, household: Household, member: Member, onPane:
                 val budget by store.state.collectAsState()
                 if (budget.isLimited) SetGroup(L("budget.group")) {
                     SetCard { IndexRow("dial.medium", L("budget.title"), budgetValue(budget.left), trailing = { BudgetRing(budget.left, size = 18.dp) }) { onPane(Pane.Budget) } }
-                }
-            }
-            // The admin of a hosted household subscribes and tops up here, in the
-            // Play build; the store has no account for anyone else.
-            LocalStore.current?.let { store ->
-                val bought by store.state.collectAsState()
-                if (bought.hasStore) SetGroup(L("store.group")) {
-                    SetCard { IndexRow("creditcard", L("store.title"), subscriptionValue(bought)) { onPane(Pane.Subscription) } }
                 }
             }
             TurnCostGroup(session.store)

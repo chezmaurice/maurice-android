@@ -11,10 +11,6 @@ dependencies {
     implementation(libs.compose.foundation)
     implementation(libs.unifiedpush.connector)
     implementation(libs.ktor.serialization.kotlinx.json)
-    // `main` is the Play Store build: the household admin's purchases go through
-    // Google Play Billing. The Obtainium/GrapheneOS build is the `foss` branch,
-    // which has none of it (Billing.kt is the seam to drop there).
-    implementation(libs.play.billing)
 }
 
 android {
@@ -40,8 +36,8 @@ android {
         applicationId = "eu.chezmaurice.maurice"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 25
-        versionName = "0.5.20"
+        versionCode = 24
+        versionName = "0.5.19"
     }
     packaging {
         resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
