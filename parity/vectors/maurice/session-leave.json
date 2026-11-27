@@ -1,0 +1,22 @@
+{
+  "domain": "session-leave",
+  "about": "Leaving: 'Sign out' (the active member only, the household stays) and 'Forget this household' (every member, the household gone). What the server is told, and what the device still holds. u1 is signed in; `second` adds u2, signed in earlier on this device.",
+  "ios": "Maurice/Services/SessionStore.swift — SessionStore.signOut, SessionStore.unpair",
+  "android": "core/session/Session.kt — Session.signOut, Session.disconnect",
+  "cases": [
+    { "name": "sign out", "input": { "action": "signOut" },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "json": { "ok": true } } ] },
+    { "name": "sign out, server refuses", "input": { "action": "signOut" },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "sign out, session already gone (401)", "input": { "action": "signOut" },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "status": 401, "json": { "error": "unauthorized" } } ] },
+    { "name": "sign out with a second member on the device", "input": { "action": "signOut", "second": true },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "json": { "ok": true } } ] },
+    { "name": "forget the household", "input": { "action": "forget" },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "json": { "ok": true } } ] },
+    { "name": "forget the household with a second member", "input": { "action": "forget", "second": true },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "json": { "ok": true } } ] },
+    { "name": "forget the household, server silent", "input": { "action": "forget" },
+      "routes": [ { "method": "POST", "path": "/api/auth/logout", "status": 503, "json": { "error": "down" } } ] }
+  ]
+}

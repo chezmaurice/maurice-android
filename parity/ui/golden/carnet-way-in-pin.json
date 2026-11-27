@@ -1,0 +1,182 @@
+{
+  "checkpoints": [
+    {
+      "name": "the address asked",
+      "requests": [],
+      "texts": [
+        "0%",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Chez Maurice",
+        "Connect",
+        "Enter a code or an address",
+        "Every household has its own Maurice. Your invitation lets you in.",
+        "Half screen",
+        "Household address",
+        "Scan Qr Code",
+        "Scan an invitation",
+        "Sheet Grabber",
+        "Vertical scroll bar, 1 page",
+        "What you read, watch and note, in one place.",
+        "carnet-emblem",
+        "carnet-tile",
+        "dismiss popup",
+        "myhome.chezmaurice.eu"
+      ]
+    },
+    {
+      "name": "a PIN asked",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "code": "ABCD-EFGH"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/enroll",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "127.0.0.1",
+        "Carnet",
+        "Choose a 4–6 digit PIN to unlock the app on this device.",
+        "Confirm PIN",
+        "Have an invite code?",
+        "Other options",
+        "PIN",
+        "Set PIN",
+        "Set a PIN",
+        "To join this household on this device, enter the invitation code you were given.",
+        "Vertical scroll bar, 1 page",
+        "Who's here?",
+        "carnet-tile"
+      ]
+    },
+    {
+      "name": "the shelf",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "pin": "4826"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/set-pin",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "shelf"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

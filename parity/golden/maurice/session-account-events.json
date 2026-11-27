@@ -1,0 +1,191 @@
+{
+  "domain" : "session-account-events",
+  "results" : {
+    "a device and an export" : {
+      "events" : [
+        {
+          "id" : 7,
+          "kind" : "device_code",
+          "sentence" : "November 2, 2026 at 3:32 PM — a new device came into your account with a code made by the admin.",
+          "unseen" : true
+        },
+        {
+          "id" : 6,
+          "kind" : "household_export",
+          "sentence" : "October 28, 2026 at 10:05 AM — the admin exported the whole Maurice.",
+          "unseen" : false
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "events missing" : {
+      "events" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "id as a string" : {
+      "events" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "ISO date with milliseconds" : {
+      "events" : [
+        {
+          "id" : 3,
+          "kind" : "household_export",
+          "sentence" : "November 2, 2026 at 3:32 PM — the admin exported the whole Maurice.",
+          "unseen" : true
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "ISO date with Z" : {
+      "events" : [
+        {
+          "id" : 2,
+          "kind" : "device_code",
+          "sentence" : "November 2, 2026 at 3:32 PM — a new device came into your account with a code made by the admin.",
+          "unseen" : true
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "midnight on New Year's Eve" : {
+      "events" : [
+        {
+          "id" : 5,
+          "kind" : "device_code",
+          "sentence" : "January 1, 2027 at 12:59 AM — a new device came into your account with a code made by the admin.",
+          "unseen" : true
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "none" : {
+      "events" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "server before the route (404)" : {
+      "events" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "server error" : {
+      "events" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "unknown kind" : {
+      "events" : [
+        {
+          "id" : 1,
+          "kind" : "something_new",
+          "sentence" : "November 2, 2026 at 3:32 PM — a new device came into your account with a code made by the admin.",
+          "unseen" : true
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    },
+    "unreadable date" : {
+      "events" : [
+        {
+          "id" : 4,
+          "kind" : "device_code",
+          "sentence" : "yesterday — a new device came into your account with a code made by the admin.",
+          "unseen" : true
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/events"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

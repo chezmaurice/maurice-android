@@ -1,0 +1,20 @@
+{
+  "checkpoints": [
+    {
+      "name": "empty",
+      "requests": [],
+      "texts": [
+        "0%",
+        "Add",
+        "Carnet",
+        "EVERYTHING · 0",
+        "Menu",
+        "Nothing here yet.",
+        "Search",
+        "Sort",
+        "Vertical scroll bar, 1 page"
+      ]
+    }
+  ],
+  "failures": []
+}

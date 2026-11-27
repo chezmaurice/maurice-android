@@ -1,0 +1,501 @@
+{
+  "checkpoints": [
+    {
+      "name": "refused",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "password": "correct-horse",
+            "username": "alice"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/events",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/budget",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/maurices",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "device_locale": "en"
+          },
+          "contentType": "application/json",
+          "method": "PATCH",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "app": "maurice",
+            "app_version": "0.1 (1)",
+            "install_id": "7188e845-dc9e-4f2d-8cb7-349925eb005a",
+            "model": "iPhone18,1",
+            "os_version": "26.3.1",
+            "platform": "iOS"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/device",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models/everyday",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/tool-families",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/unread",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/gardens",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/web-themes",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/files",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "anthropic"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/contact-accounts",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "rotate": false
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/mcp-token",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "chatgpt"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts/scan",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "address": "alice@gmail.com",
+            "password": "abcd efgh ijkl mnop"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/mail-accounts",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "A",
+        "A, Alice",
+        "ADD A MAILBOX",
+        "Add",
+        "Alice",
+        "App password",
+        "Back",
+        "Chez Maurice",
+        "Close",
+        "Connect",
+        "Domains",
+        "Gmail wants a password made for Maurice, not your own:\n1. In your Google Account, turn on 2-Step Verification (Security).\n2. Open the app passwords page, type “Maurice”, and create it.\n3. Google shows 16 letters, once — copy them and paste them below.",
+        "Mailboxes",
+        "Maurice can search your mail, read a message and the text of its attachments when you ask him. He never sends, moves, deletes or marks anything as read, and never in a conversation with someone else.",
+        "New conversation",
+        "Open Google's app passwords page",
+        "Passwords",
+        "Search",
+        "Settings",
+        "Sign out",
+        "The mail server refused the login",
+        "The password is kept encrypted on your Maurice’s server and never shown again. Don't paste it into a conversation. Revoking it at your provider cuts Maurice off at once.",
+        "Typing Predictions",
+        "Vertical scroll bar, 1 page",
+        "Your mailbox refused this password.",
+        "alice@gmail.com",
+        "arrow.up.forward.square",
+        "gearshape",
+        "http://127.0.0.1:47800",
+        "maurice-logomark"
+      ]
+    },
+    {
+      "name": "connected",
+      "requests": [
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "address": "alice@gmail.com",
+            "password": "abcd efgh ijkl mnop"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/mail-accounts",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts/scan",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "A",
+        "A, Alice",
+        "ADD A MAILBOX",
+        "Add",
+        "Alice",
+        "All your mailboxes together (1)",
+        "Back",
+        "Chez Maurice",
+        "Close",
+        "Connected. Maurice can read it when you ask him; what he reads goes to your Maurice’s AI model.",
+        "Covers all your mailboxes (1); the detail is under each one",
+        "Domains",
+        "Email address",
+        "Forward",
+        "Get Mail",
+        "Inbox",
+        "Let Maurice read",
+        "Mailboxes",
+        "Manage",
+        "Maurice can search your mail, read a message and the text of its attachments when you ask him. He never sends, moves, deletes or marks anything as read, and never in a conversation with someone else.",
+        "Maurice walks the headers of all your mail — who writes, to whom, when — without reading any message. It is free, runs by itself at night, and is what will let him tell you what your mailbox holds.",
+        "New conversation",
+        "Not started yet",
+        "Play",
+        "Read by your Maurice’s AI model: Scaleway Generative APIs (Paris, France).",
+        "Reading is a yes you give, here. You can withdraw it at any time. What Maurice writes from it is in your notes, under “My mail”.",
+        "Reading: not asked yet",
+        "Search",
+        "Selected",
+        "Settings",
+        "Sign out",
+        "Start the walk",
+        "THE HEADER WALK",
+        "THE READING",
+        "The password is kept encrypted on your Maurice’s server and never shown again. Don't paste it into a conversation. Revoking it at your provider cuts Maurice off at once.",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 2 pages",
+        "Working",
+        "YOUR MAILBOXES",
+        "alice@gmail.com",
+        "alice@gmail.com, Working, Manage",
+        "book.closed",
+        "gearshape",
+        "http://127.0.0.1:47800",
+        "maurice-logomark"
+      ]
+    }
+  ],
+  "failures": []
+}

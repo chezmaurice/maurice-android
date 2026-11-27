@@ -1,0 +1,929 @@
+{
+ "domain": "settings-mail",
+ "about": "Settings › Mail and Address books: the help a typed address or username brings (provider, its page, whether it can work), and what the app makes of the server's mailbox, scan and address-book answers.",
+ "ios": "Views/SettingsView.swift — MailProvider.of, ContactProvider.of; MailAccountRow, MailAccountsResponse, MailScanStatus (+ nested), ContactAccountRow, ContactAccountsResponse",
+ "android": "maurice/settings/MailPanes.kt — MailProvider.of, ContactProvider.of (file-private, read by reflection); core/settings/SettingsApi.kt — MailAccount, MailScan, ContactAccount",
+ "cases": [
+  {
+   "name": "mail provider: \"alice@gmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@gmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"Alice@GMAIL.COM\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "Alice@GMAIL.COM"
+   }
+  },
+  {
+   "name": "mail provider: \"a@googlemail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "a@googlemail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@icloud.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@icloud.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@me.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@me.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@mac.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@mac.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@yahoo.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@yahoo.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@yahoo.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@yahoo.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@ymail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@ymail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@fastmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@fastmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@fastmail.fm\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@fastmail.fm"
+   }
+  },
+  {
+   "name": "mail provider: \"x@outlook.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@outlook.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@hotmail.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@hotmail.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@live.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@live.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@msn.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@msn.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@proton.me\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@proton.me"
+   }
+  },
+  {
+   "name": "mail provider: \"x@protonmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@protonmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"x@pm.me\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@pm.me"
+   }
+  },
+  {
+   "name": "mail provider: \"x@orange.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@orange.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@wanadoo.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@wanadoo.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@free.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@free.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@laposte.net\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@laposte.net"
+   }
+  },
+  {
+   "name": "mail provider: \"x@example.org\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@example.org"
+   }
+  },
+  {
+   "name": "mail provider: \"x@sub.gmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@sub.gmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": ""
+   }
+  },
+  {
+   "name": "mail provider: \"alice\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice"
+   }
+  },
+  {
+   "name": "mail provider: \"alice@\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@"
+   }
+  },
+  {
+   "name": "mail provider: \"@gmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "@gmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \"alice@localhost\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@localhost"
+   }
+  },
+  {
+   "name": "mail provider: \"alice@gmail.\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@gmail."
+   }
+  },
+  {
+   "name": "mail provider: \"alice@gmail.com.\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@gmail.com."
+   }
+  },
+  {
+   "name": "mail provider: \"a@b@gmail.com\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "a@b@gmail.com"
+   }
+  },
+  {
+   "name": "mail provider: \" alice@gmail.com \"",
+   "input": {
+    "kind": "mailProvider",
+    "address": " alice@gmail.com "
+   }
+  },
+  {
+   "name": "mail provider: \"alice@gmail.com\\n\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "alice@gmail.com\n"
+   }
+  },
+  {
+   "name": "mail provider: \"élodie@école.fr\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "élodie@école.fr"
+   }
+  },
+  {
+   "name": "mail provider: \"x@ÉCOLE.FR\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@ÉCOLE.FR"
+   }
+  },
+  {
+   "name": "mail provider: \"x@GOOGLEMAIL.COM\"",
+   "input": {
+    "kind": "mailProvider",
+    "address": "x@GOOGLEMAIL.COM"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@icloud.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@icloud.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@ME.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@ME.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@mac.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@mac.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@gmail.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@gmail.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@googlemail.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@googlemail.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@mailfence.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@mailfence.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@fastmail.fm\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@fastmail.fm"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@fastmail.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@fastmail.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"plain-username\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "plain-username"
+   }
+  },
+  {
+   "name": "contacts provider: \"\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": ""
+   }
+  },
+  {
+   "name": "contacts provider: \"x@example.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@example.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"a@b@me.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "a@b@me.com"
+   }
+  },
+  {
+   "name": "contacts provider: \"x@icloud.com \"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "x@icloud.com "
+   }
+  },
+  {
+   "name": "contacts provider: \"@icloud.com\"",
+   "input": {
+    "kind": "contactProvider",
+    "username": "@icloud.com"
+   }
+  },
+  {
+   "name": "scan: full",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "running",
+     "running": true,
+     "messages": 12000,
+     "seen": 8000,
+     "last_error": null,
+     "error": null,
+     "reading": {
+      "state": "approved",
+      "decided_at": "2026-11-01 10:00:00",
+      "years": 2
+     },
+     "mailboxes": [
+      {
+       "address": "alice@gmail.com",
+       "messages": 12000,
+       "untriaged": 300,
+       "reading": {
+        "window": 2,
+        "to_light": 10,
+        "kept": 5,
+        "skipped": 2,
+        "to_read": 40,
+        "read": 7
+       },
+       "estimate": {
+        "to_sort": 300,
+        "to_read": 40,
+        "hours": 1.5,
+        "euros": null,
+        "basis": "measured",
+        "pending": false
+       },
+       "top_senders": [
+        {
+         "sender": "news@shop.fr",
+         "messages": 400,
+         "set_aside": 390,
+         "rule_days": null
+        },
+        {
+         "sender": "maman@free.fr",
+         "messages": 80,
+         "set_aside": 0,
+         "rule_days": 0
+        }
+       ],
+       "approved": true
+      }
+     ],
+     "documents": {
+      "stage": "fiches",
+      "done": 3,
+      "total": 10,
+      "written": 2
+     }
+    }
+   }
+  },
+  {
+   "name": "scan: as an older server (no reading, mailboxes, documents)",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "done",
+     "running": false,
+     "messages": 10,
+     "seen": 10,
+     "last_error": null,
+     "error": null
+    }
+   }
+  },
+  {
+   "name": "scan: only a state",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "none"
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android fills the missing counts with zeros; iOS rejects the scan." }
+  },
+  {
+   "name": "scan: empty object",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {}
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads {} as an idle scan; iOS rejects it." }
+  },
+  {
+   "name": "scan: unknown state",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "hibernating",
+     "running": false,
+     "messages": 0,
+     "seen": 0
+    }
+   }
+  },
+  {
+   "name": "scan: an estimate without basis",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "running",
+     "running": true,
+     "messages": 12000,
+     "seen": 8000,
+     "last_error": null,
+     "error": null,
+     "reading": {
+      "state": "approved",
+      "decided_at": "2026-11-01 10:00:00",
+      "years": 2
+     },
+     "mailboxes": [
+      {
+       "address": "alice@gmail.com",
+       "messages": 12000,
+       "untriaged": 300,
+       "reading": {
+        "window": 2,
+        "to_light": 10,
+        "kept": 5,
+        "skipped": 2,
+        "to_read": 40,
+        "read": 7
+       },
+       "estimate": {
+        "to_sort": 300,
+        "to_read": 40,
+        "hours": 1.5,
+        "euros": null,
+        "pending": false
+       },
+       "top_senders": [
+        {
+         "sender": "news@shop.fr",
+         "messages": 400,
+         "set_aside": 390,
+         "rule_days": null
+        },
+        {
+         "sender": "maman@free.fr",
+         "messages": 80,
+         "set_aside": 0,
+         "rule_days": 0
+        }
+       ],
+       "approved": true
+      }
+     ],
+     "documents": {
+      "stage": "fiches",
+      "done": 3,
+      "total": 10,
+      "written": 2
+     }
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android does not need the estimate's basis; iOS rejects the scan." }
+  },
+  {
+   "name": "scan: an estimate with euros (operator)",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "running",
+     "running": true,
+     "messages": 12000,
+     "seen": 8000,
+     "last_error": null,
+     "error": null,
+     "reading": {
+      "state": "approved",
+      "decided_at": "2026-11-01 10:00:00",
+      "years": 2
+     },
+     "mailboxes": [
+      {
+       "address": "alice@gmail.com",
+       "messages": 12000,
+       "untriaged": 300,
+       "reading": {
+        "window": 2,
+        "to_light": 10,
+        "kept": 5,
+        "skipped": 2,
+        "to_read": 40,
+        "read": 7
+       },
+       "estimate": {
+        "to_sort": 300,
+        "to_read": 40,
+        "hours": 1.5,
+        "euros": 3.2,
+        "basis": "measured",
+        "pending": false
+       },
+       "top_senders": [
+        {
+         "sender": "news@shop.fr",
+         "messages": 400,
+         "set_aside": 390,
+         "rule_days": null
+        },
+        {
+         "sender": "maman@free.fr",
+         "messages": 80,
+         "set_aside": 0,
+         "rule_days": 0
+        }
+       ],
+       "approved": true
+      }
+     ],
+     "documents": {
+      "stage": "fiches",
+      "done": 3,
+      "total": 10,
+      "written": 2
+     }
+    }
+   }
+  },
+  {
+   "name": "scan: a mailbox without reading",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "running",
+     "running": true,
+     "messages": 12000,
+     "seen": 8000,
+     "last_error": null,
+     "error": null,
+     "reading": {
+      "state": "approved",
+      "decided_at": "2026-11-01 10:00:00",
+      "years": 2
+     },
+     "mailboxes": [
+      {
+       "address": "alice@gmail.com",
+       "messages": 12000,
+       "untriaged": 300,
+       "estimate": {
+        "to_sort": 300,
+        "to_read": 40,
+        "hours": 1.5,
+        "euros": null,
+        "basis": "measured",
+        "pending": false
+       },
+       "top_senders": [
+        {
+         "sender": "news@shop.fr",
+         "messages": 400,
+         "set_aside": 390,
+         "rule_days": null
+        },
+        {
+         "sender": "maman@free.fr",
+         "messages": 80,
+         "set_aside": 0,
+         "rule_days": 0
+        }
+       ],
+       "approved": true
+      }
+     ],
+     "documents": {
+      "stage": "fiches",
+      "done": 3,
+      "total": 10,
+      "written": 2
+     }
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads a mailbox without reading as zeros; iOS rejects the scan." }
+  },
+  {
+   "name": "scan: a mailbox without approved nor top_senders",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "running",
+     "running": true,
+     "messages": 12000,
+     "seen": 8000,
+     "last_error": null,
+     "error": null,
+     "reading": {
+      "state": "approved",
+      "decided_at": "2026-11-01 10:00:00",
+      "years": 2
+     },
+     "mailboxes": [
+      {
+       "address": "alice@gmail.com",
+       "messages": 12000,
+       "untriaged": 300,
+       "reading": {
+        "window": 2,
+        "to_light": 10,
+        "kept": 5,
+        "skipped": 2,
+        "to_read": 40,
+        "read": 7
+       },
+       "estimate": {
+        "to_sort": 300,
+        "to_read": 40,
+        "hours": 1.5,
+        "euros": null,
+        "basis": "measured",
+        "pending": false
+       }
+      }
+     ],
+     "documents": {
+      "stage": "fiches",
+      "done": 3,
+      "total": 10,
+      "written": 2
+     }
+    }
+   }
+  },
+  {
+   "name": "scan: failed with the tool's words",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "failed",
+     "running": false,
+     "messages": 0,
+     "seen": 0,
+     "last_error": "IMAP: AUTHENTICATIONFAILED 🔒",
+     "error": "login refused"
+    }
+   }
+  },
+  {
+   "name": "scan: messages as a float",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "done",
+     "running": false,
+     "messages": 10.0,
+     "seen": 3,
+     "last_error": null,
+     "error": null
+    }
+   }
+  },
+  {
+   "name": "scan: running as 0/1",
+   "input": {
+    "kind": "decode",
+    "type": "scan",
+    "json": {
+     "state": "done",
+     "running": 0,
+     "messages": 1,
+     "seen": 1
+    }
+   }
+  },
+  {
+   "name": "mail account: full",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccount",
+    "json": {
+     "id": "m1",
+     "address": "alice@gmail.com",
+     "provider": "gmail",
+     "host": "imap.gmail.com",
+     "state": "ok",
+     "last_error": null
+    }
+   }
+  },
+  {
+   "name": "mail account: minimal",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccount",
+    "json": {
+     "id": "m1",
+     "address": "alice@gmail.com",
+     "state": "unchecked"
+    }
+   }
+  },
+  {
+   "name": "mail account: without state",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccount",
+    "json": {
+     "id": "m1",
+     "address": "alice@gmail.com"
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads a missing state as \"unchecked\"; iOS rejects the row." }
+  },
+  {
+   "name": "mail account: error state with reason",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccount",
+    "json": {
+     "id": "m1",
+     "address": "x@orange.fr",
+     "state": "error",
+     "last_error": "[AUTHENTICATIONFAILED] Authentication failed."
+    }
+   }
+  },
+  {
+   "name": "mail account: unknown state",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccount",
+    "json": {
+     "id": "m1",
+     "address": "x@orange.fr",
+     "state": "paused"
+    }
+   }
+  },
+  {
+   "name": "mail accounts: list",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccounts",
+    "json": {
+     "accounts": [
+      {
+       "id": "m1",
+       "address": "a@gmail.com",
+       "state": "ok"
+      },
+      {
+       "id": "m2",
+       "address": "b@free.fr",
+       "state": "error",
+       "last_error": "nope"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "mail accounts: one row broken",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccounts",
+    "json": {
+     "accounts": [
+      {
+       "id": "m1",
+       "address": "a@gmail.com",
+       "state": "ok"
+      },
+      {
+       "id": "m2",
+       "state": "ok"
+      }
+     ]
+    }
+   }
+  },
+  {
+   "name": "mail accounts: no accounts key",
+   "input": {
+    "kind": "decode",
+    "type": "mailAccounts",
+    "json": {}
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads a missing list as empty; iOS rejects the answer." }
+  },
+  {
+   "name": "contact account: full",
+   "input": {
+    "kind": "decode",
+    "type": "contactAccount",
+    "json": {
+     "id": "k1",
+     "url": "https://contacts.icloud.com",
+     "username": "x@icloud.com",
+     "provider": "icloud",
+     "state": "ok",
+     "last_error": null,
+     "synced_at": "2026-11-10 03:00:00",
+     "cards": 412
+    }
+   }
+  },
+  {
+   "name": "contact account: without cards",
+   "input": {
+    "kind": "decode",
+    "type": "contactAccount",
+    "json": {
+     "id": "k1",
+     "username": "x@icloud.com",
+     "state": "unchecked"
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads missing cards as 0; iOS rejects the row." }
+  },
+  {
+   "name": "contact account: without state",
+   "input": {
+    "kind": "decode",
+    "type": "contactAccount",
+    "json": {
+     "id": "k1",
+     "username": "x@icloud.com",
+     "cards": 0
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads a missing state as \"unchecked\"; iOS rejects the row." }
+  },
+  {
+   "name": "contact accounts: list",
+   "input": {
+    "kind": "decode",
+    "type": "contactAccounts",
+    "json": {
+     "accounts": [
+      {
+       "id": "k1",
+       "username": "x@icloud.com",
+       "state": "ok",
+       "cards": 3
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

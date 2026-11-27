@@ -1,0 +1,163 @@
+{
+  "domain" : "shelf-book-outbox",
+  "results" : {
+    "a book already there" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a book taken" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a book taken, answer unreadable" : {
+      "left" : [
+        "a.epub"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a file refused" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a refusal, then a book taken" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "nothing waiting" : {
+      "left" : [
+
+      ],
+      "requests" : [
+
+      ]
+    },
+    "the library does not answer" : {
+      "left" : [
+        "a.epub"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "the session refused" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "two books, oldest first" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

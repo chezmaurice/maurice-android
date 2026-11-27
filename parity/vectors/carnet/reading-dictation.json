@@ -1,0 +1,38 @@
+{
+  "domain": "reading-dictation",
+  "about": "Carnet's dictation sent to the household (Whisper): the upload (path, the duration as sent, content type, token, the audio as is, no language) and the words handed back — or a failure, which the mic reports (iOS nil, Android an error: both observed as \"failed\"). The recording is audio/mp4 on both (Recorder.android.kt).",
+  "ios": "HouseholdTranscription.transcribe(_:seconds:)",
+  "android": "DictationApi.transcribe(Recording)",
+  "cases": [
+    { "name": "five seconds", "input": { "seconds": 5.0, "audio": "AUDIO-DATA" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "Bonjour Maurice.", "engine": "local", "seconds": 5 } } ] },
+    { "name": "duration 12.34", "input": { "seconds": 12.34, "audio": "AUDIO-DATA" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "x" } } ] },
+    { "name": "duration 0.05", "input": { "seconds": 0.05, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "" } } ] },
+    { "name": "duration 0.25", "input": { "seconds": 0.25, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "" } } ] },
+    { "name": "duration 0.35", "input": { "seconds": 0.35, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "oui" } } ] },
+    { "name": "duration 1.45", "input": { "seconds": 1.45, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "oui" } } ] },
+    { "name": "duration 2.65", "input": { "seconds": 2.65, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "oui" } } ] },
+    { "name": "duration 599.96", "input": { "seconds": 599.96, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "long" } } ] },
+    { "name": "words with spaces and a newline around", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "  Été à Paris.\n" } } ] },
+    { "name": "silence", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "text": "" } } ] },
+    { "name": "reply without text", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "json": { "engine": "local" } } ] },
+    { "name": "reply not JSON", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "text": "Bonjour" } ] },
+    { "name": "consent required", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "status": 403, "json": { "error": "ai_consent_required" } } ] },
+    { "name": "server error", "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "status": 500, "json": { "error": "whisper crashed" } } ] },
+    { "name": "accepted (202) with words", "accepted": {"kind": "lenient", "why": "Android takes the words of any 2xx; iOS only a 200. The server answers 200 (settings-dictation has the same case with 201)."}, "input": { "seconds": 3.0, "audio": "A" }, "routes": [
+      { "method": "POST", "path": "/api/dictation", "status": 202, "json": { "text": "plus tard" } } ] }
+  ]
+}

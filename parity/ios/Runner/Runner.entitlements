@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- What ParityRunner needs that the stock xctest agent lacks: the
+     simulator's keychain answers -34018 to a process with no access group,
+     and SessionStore's TokenVault keeps the apps' tokens there. -->
+<plist version="1.0">
+<dict>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)eu.chezmaurice.parity.runner</string>
+		<!-- Carnet's token vault and push keys name the app group as their access group. -->
+		<string>group.eu.chezmaurice.carnet.app</string>
+		<string>group.eu.chezmaurice.maurice</string>
+	</array>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.eu.chezmaurice.maurice</string>
+		<string>group.eu.chezmaurice.carnet.app</string>
+	</array>
+</dict>
+</plist>

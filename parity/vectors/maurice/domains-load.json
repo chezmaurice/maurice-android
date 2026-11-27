@@ -1,0 +1,5454 @@
+{
+ "domain": "domains-load",
+ "about": "The member's domains and companions, their overview, the model roster, the everyday model and the tool families, as the app loads them on sign-in; and the model each Maurice resolves to (the model pill).",
+ "ios": "Maurice/Services/MauriceStore.swift — MauriceStore.load(), loadOverview(), resolvedModel(for:), Maurice.symbol",
+ "android": "core/domains/DomainStore.kt — DomainStore.load(), DomainsState.resolvedModel; maurice/domains/Domains.kt — Domain.symbol()",
+ "cases": [
+  {
+   "name": "typical",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "everything empty",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": []
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": []
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": null
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": []
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "a row without a name",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "weight and count as floats",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200.0,
+       "count": 1.0,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "weight with a fraction",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200.5,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "temperature as a string",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads \"0.7\" as 0.7; iOS takes only a number and falls back to 0.5. The server writes a number."
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": "0.7",
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "temperature as an integer",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 1,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "unknown kind and missing kind",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "room",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "null users, empty tool families, thinking false",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": null,
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1",
+       "thinking": false
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "context items of every sort",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "a"
+        },
+        {
+         "type": "video",
+         "id": "v"
+        },
+        {
+         "type": "conversation"
+        },
+        {
+         "type": "file",
+         "id": 7
+        },
+        {
+         "type": "fiche",
+         "id": null
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "rows: server error",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "rows: malformed JSON",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "text": "[{\"id\": \"d1\",",
+     "headers": {
+      "content-type": "application/json"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "rows: an object, not a list",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": {
+      "maurices": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "icon": "cross.case",
+        "model": null,
+        "temp": 0.3,
+        "thinking": null,
+        "tagline": "Le corps",
+        "prompt": "Sois bref.",
+        "users": [
+         "u1"
+        ],
+        "context": [
+         {
+          "type": "note",
+          "id": "health",
+          "recurse": true,
+          "snapshot": {
+           "weight": 1200,
+           "count": 4
+          }
+         }
+        ],
+        "weight": 1200,
+        "count": 1,
+        "tool_families": null,
+        "created_by": "u1"
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "icon": "leaf",
+        "model": "m-mistral",
+        "temp": 0.8,
+        "thinking": true,
+        "tagline": "",
+        "prompt": "",
+        "users": [
+         "u1",
+         "u2"
+        ],
+        "context": [],
+        "weight": 0,
+        "count": 0,
+        "tool_families": [
+         "garden-notes"
+        ],
+        "created_by": "u2"
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "created_by": "u1"
+       },
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "icon": "book",
+        "created_by": "u1",
+        "context": [
+         {
+          "type": "book",
+          "id": 42,
+          "scope": {
+           "mode": "progress"
+          },
+          "snapshot": {
+           "progressChapter": 3
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "a model without a provider",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "a model without a name",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "no default model",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": false
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": null
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "everyday model unknown to the roster",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-gone"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "everyday route missing",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "models: server error",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "status": 500,
+     "json": {
+      "error": "down"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "overview: notes without total, brief without date",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "overview: null mine, string book id",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": null,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": "calibre-42"
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "overview: server error",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "overview: a line without id",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       },
+       {
+        "name": "no id"
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "a family without a title",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "family flags as numbers and strings",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads the count \"5\" as 5; iOS takes only a number and falls back to 0. The server writes a number."
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "Santé",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "Le corps",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": 1,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": "5"
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "icons: valid, unknown, other SF Symbols",
+   "accepted": {
+    "kind": "platform",
+    "why": "Android draws domain glyphs from a fixed table (ui/DomainGlyphs.kt: the 54 DomainIcons the night and the editor choose from, and the app's own); an SF Symbol outside it falls back to the closed book. iOS draws any SF Symbol the system has."
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "i0",
+       "name": "Icône ",
+       "kind": "domain",
+       "icon": "",
+       "created_by": "u1"
+      },
+      {
+       "id": "i1",
+       "name": "Icône BOOK.CLOSED",
+       "kind": "domain",
+       "icon": "BOOK.CLOSED",
+       "created_by": "u1"
+      },
+      {
+       "id": "i2",
+       "name": "Icône book.pages",
+       "kind": "domain",
+       "icon": "book.pages",
+       "created_by": "u1"
+      },
+      {
+       "id": "i3",
+       "name": "Icône trash",
+       "kind": "domain",
+       "icon": "trash",
+       "created_by": "u1"
+      },
+      {
+       "id": "i4",
+       "name": "Icône heart.fill",
+       "kind": "domain",
+       "icon": "heart.fill",
+       "created_by": "u1"
+      },
+      {
+       "id": "i5",
+       "name": "Icône figure.run",
+       "kind": "companion",
+       "icon": "figure.run",
+       "created_by": "u1"
+      },
+      {
+       "id": "i6",
+       "name": "Icône newspaper",
+       "kind": "domain",
+       "icon": "newspaper",
+       "created_by": "u1"
+      },
+      {
+       "id": "i7",
+       "name": "Icône not.a.symbol.at.all",
+       "kind": "domain",
+       "icon": "not.a.symbol.at.all",
+       "created_by": "u1"
+      },
+      {
+       "id": "i8",
+       "name": "Icône person.crop.circle",
+       "kind": "domain",
+       "icon": "person.crop.circle",
+       "created_by": "u1"
+      },
+      {
+       "id": "i9",
+       "name": "Icône leaf.fill",
+       "kind": "domain",
+       "icon": "leaf.fill",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "unicode and long names",
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "d1",
+       "name": "🌿 Jardin d’été — « long » xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+       "kind": "domain",
+       "icon": "cross.case",
+       "model": null,
+       "temp": 0.3,
+       "thinking": null,
+       "tagline": "日本語のタグライン",
+       "prompt": "Sois bref.",
+       "users": [
+        "u1"
+       ],
+       "context": [
+        {
+         "type": "note",
+         "id": "health",
+         "recurse": true,
+         "snapshot": {
+          "weight": 1200,
+          "count": 4
+         }
+        }
+       ],
+       "weight": 1200,
+       "count": 1,
+       "tool_families": null,
+       "created_by": "u1"
+      },
+      {
+       "id": "d2",
+       "name": "Jardin",
+       "kind": "domain",
+       "icon": "leaf",
+       "model": "m-mistral",
+       "temp": 0.8,
+       "thinking": true,
+       "tagline": "",
+       "prompt": "",
+       "users": [
+        "u1",
+        "u2"
+       ],
+       "context": [],
+       "weight": 0,
+       "count": 0,
+       "tool_families": [
+        "garden-notes"
+       ],
+       "created_by": "u2"
+      },
+      {
+       "id": "d3",
+       "name": "Voyages",
+       "kind": "domain",
+       "created_by": "u1"
+      },
+      {
+       "id": "c1",
+       "name": "Dune",
+       "kind": "companion",
+       "icon": "book",
+       "created_by": "u1",
+       "context": [
+        {
+         "type": "book",
+         "id": 42,
+         "scope": {
+          "mode": "progress"
+         },
+         "snapshot": {
+          "progressChapter": 3
+         }
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "d1",
+        "name": "Santé",
+        "kind": "domain",
+        "mine": true,
+        "brief": {
+         "updated_at": "2026-11-09 08:00:00",
+         "model": "member"
+        },
+        "notes": {
+         "total": 3,
+         "unreviewed": 1,
+         "web_path": "/g/sante"
+        }
+       },
+       {
+        "id": "d2",
+        "name": "Jardin",
+        "kind": "domain",
+        "mine": false,
+        "brief": {
+         "updated_at": "2026-11-01 02:00:00",
+         "model": "claude-x"
+        }
+       },
+       {
+        "id": "d3",
+        "name": "Voyages",
+        "kind": "domain",
+        "notes": {
+         "total": 0,
+         "unreviewed": 0
+        }
+       }
+      ],
+      "companions": [
+       {
+        "id": "c1",
+        "name": "Dune",
+        "kind": "companion",
+        "conversation_id": "conv9",
+        "book_id": 42
+       }
+      ],
+      "proposals": {
+       "open": 1,
+       "unseen": 1
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/models",
+     "json": [
+      {
+       "id": "m-claude",
+       "name": "Claude",
+       "tier": "cloud",
+       "provider": "anthropic",
+       "sub": "Sonnet",
+       "desc": "d",
+       "note": "n",
+       "available": true,
+       "thinking": "none",
+       "is_default": true
+      },
+      {
+       "id": "m-mistral",
+       "name": "Mistral Large",
+       "tier": "cloud",
+       "provider": "mistral",
+       "thinking": "optional"
+      },
+      {
+       "id": "m-local",
+       "name": "Qwen",
+       "tier": "local",
+       "provider": "ollama",
+       "available": false
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/tool-families",
+     "json": [
+      {
+       "id": "web",
+       "title": "Web",
+       "icon": "globe",
+       "blurb": "b",
+       "group": "core",
+       "alwaysOn": true,
+       "count": 3
+      },
+      {
+       "id": "garden-notes",
+       "title": "Notes",
+       "group": "garden",
+       "count": 5
+      },
+      {
+       "id": "exp",
+       "title": "Expérimental"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  }
+ ]
+}

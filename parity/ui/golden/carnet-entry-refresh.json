@@ -1,0 +1,63 @@
+{
+  "checkpoints": [
+    {
+      "name": "refreshed",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "POST",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/details",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2026-08-20",
+        "Add a note",
+        "Add a note…",
+        "Ask Maurice about this",
+        "Back",
+        "Carnet",
+        "Film · Chris Marker",
+        "Horizontal scroll bar, 1 page",
+        "La mémoire, encore.",
+        "Les images du Japon.",
+        "Lock",
+        "More",
+        "NOTE · 2026-10-18",
+        "NOTE · 2026-10-19",
+        "No picture could be found for this one.",
+        "Nothing to add",
+        "OK",
+        "ONLY YOU · 2 NOTES",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share with someone",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 2 pages",
+        "quote.opening"
+      ]
+    }
+  ],
+  "failures": []
+}

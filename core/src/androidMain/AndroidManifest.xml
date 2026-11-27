@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The households the Maurice app and Carnet share (SharedPairings): each
+     app serves its pairings to the other alone. Signature level: only an app
+     signed with the same key holds the permission (release with release,
+     debug with debug). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <permission
+        android:name="eu.chezmaurice.permission.PAIRINGS"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="eu.chezmaurice.permission.PAIRINGS" />
+
+    <!-- Android 11's package visibility: the other app's provider is reached by name. -->
+    <queries>
+        <package android:name="eu.chezmaurice.maurice" />
+        <package android:name="eu.chezmaurice.maurice.debug" />
+        <package android:name="eu.chezmaurice.carnet" />
+        <package android:name="eu.chezmaurice.carnet.debug" />
+    </queries>
+
+    <application>
+        <provider
+            android:name="eu.chezmaurice.core.session.PairingsProvider"
+            android:authorities="${applicationId}.pairings"
+            android:exported="true"
+            android:readPermission="eu.chezmaurice.permission.PAIRINGS" />
+    </application>
+</manifest>

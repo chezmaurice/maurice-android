@@ -1,0 +1,65 @@
+{
+  "checkpoints": [
+    {
+      "name": "the address asked",
+      "requests": [],
+      "texts": [
+        "0%",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Chez Maurice",
+        "Connect",
+        "Enter a code or an address",
+        "Every household has its own Maurice. Your invitation lets you in.",
+        "Half screen",
+        "Household address",
+        "Scan Qr Code",
+        "Scan an invitation",
+        "Sheet Grabber",
+        "Vertical scroll bar, 1 page",
+        "What you read, watch and note, in one place.",
+        "carnet-emblem",
+        "carnet-tile",
+        "dismiss popup",
+        "myhome.chezmaurice.eu"
+      ]
+    },
+    {
+      "name": "no household",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Chez Maurice",
+        "Connect",
+        "Enter a code or an address",
+        "Every household has its own Maurice. Your invitation lets you in.",
+        "Half screen",
+        "Household address",
+        "Maurice servers use https — try https:// instead of http://.",
+        "Scan Qr Code",
+        "Scan an invitation",
+        "Sheet Grabber",
+        "Vertical scroll bar, 1 page",
+        "What you read, watch and note, in one place.",
+        "carnet-emblem",
+        "carnet-tile",
+        "dismiss popup",
+        "http://127.0.0.1:47800"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,354 @@
+{
+ "domain": "domains-format",
+ "about": "How the domains screens say numbers: a context weight in tokens (the composer's readout, the editor's preview) and a proposal's line of figures in the list.",
+ "ios": "Maurice/Views/ComposerViews.swift — fmtTok; Maurice/Views/DomainsViews.swift — proposalNumbers(_:session:)",
+ "android": "maurice/domains/Domains.kt — fmtTok, proposalNumbers(p, strings)",
+ "cases": [
+  {
+   "name": "tokens 0",
+   "input": {
+    "fmtTok": 0
+   }
+  },
+  {
+   "name": "tokens 1",
+   "input": {
+    "fmtTok": 1
+   }
+  },
+  {
+   "name": "tokens 999",
+   "input": {
+    "fmtTok": 999
+   }
+  },
+  {
+   "name": "tokens 1000",
+   "input": {
+    "fmtTok": 1000
+   }
+  },
+  {
+   "name": "tokens 1049",
+   "input": {
+    "fmtTok": 1049
+   }
+  },
+  {
+   "name": "tokens 1050",
+   "input": {
+    "fmtTok": 1050
+   }
+  },
+  {
+   "name": "tokens 1051",
+   "input": {
+    "fmtTok": 1051
+   }
+  },
+  {
+   "name": "tokens 1234",
+   "input": {
+    "fmtTok": 1234
+   }
+  },
+  {
+   "name": "tokens 9999",
+   "input": {
+    "fmtTok": 9999
+   }
+  },
+  {
+   "name": "tokens 12345",
+   "input": {
+    "fmtTok": 12345
+   }
+  },
+  {
+   "name": "tokens 99949",
+   "input": {
+    "fmtTok": 99949
+   }
+  },
+  {
+   "name": "tokens 99950",
+   "input": {
+    "fmtTok": 99950
+   }
+  },
+  {
+   "name": "tokens 99999",
+   "input": {
+    "fmtTok": 99999
+   }
+  },
+  {
+   "name": "tokens 100000",
+   "input": {
+    "fmtTok": 100000
+   }
+  },
+  {
+   "name": "tokens 100499",
+   "input": {
+    "fmtTok": 100499
+   }
+  },
+  {
+   "name": "tokens 100500",
+   "input": {
+    "fmtTok": 100500
+   }
+  },
+  {
+   "name": "tokens 123456",
+   "input": {
+    "fmtTok": 123456
+   }
+  },
+  {
+   "name": "tokens 1999999",
+   "input": {
+    "fmtTok": 1999999
+   }
+  },
+  {
+   "name": "tokens 200000",
+   "input": {
+    "fmtTok": 200000
+   }
+  },
+  {
+   "name": "tokens 2147483647",
+   "input": {
+    "fmtTok": 2147483647
+   }
+  },
+  {
+   "name": "tokens -5",
+   "input": {
+    "fmtTok": -5
+   }
+  },
+  {
+   "name": "tokens -1500",
+   "input": {
+    "fmtTok": -1500
+   }
+  },
+  {
+   "name": "proposal numbers: conversations only",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: one conversation",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 1,
+     "weight": 3,
+     "share": 5
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: no conversations, no mail",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 0,
+     "weight": 3,
+     "share": 5
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: mail only",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 0,
+     "weight": 3,
+     "share": 5,
+     "mail_threads": 4
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: one mail thread",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 0,
+     "weight": 3,
+     "share": 5,
+     "mail_threads": 1
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: both, and recent",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 3,
+     "weight": 3,
+     "share": 5,
+     "mail_threads": 2,
+     "recent_90_days": 2
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: recent zero",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "recent_90_days": 0
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: lived, quiet since",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "verdict": "lived",
+     "to": "2026-03-14"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: alive with a 'to'",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "verdict": "alive",
+     "to": "2026-03-14"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: lived without a 'to'",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "verdict": "lived"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: with a creation date",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "created_at": "2026-11-10 03:00:00"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: creation date late in the day (UTC)",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "created_at": "2026-11-10 23:30:00"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: creation date unparsable",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 12,
+     "weight": 3,
+     "share": 5,
+     "created_at": "yesterday"
+    }
+   }
+  },
+  {
+   "name": "proposal numbers: everything",
+   "input": {
+    "proposal": {
+     "id": "p",
+     "name": "P",
+     "summary": "s",
+     "state": "proposed",
+     "conversations": 1,
+     "weight": 3,
+     "share": 5,
+     "mail_threads": 1,
+     "recent_90_days": 1,
+     "verdict": "lived",
+     "to": "2025-12-01",
+     "created_at": "2026-01-02 08:00:00"
+    }
+   }
+  }
+ ]
+}

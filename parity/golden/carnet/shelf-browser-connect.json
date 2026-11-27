@@ -1,0 +1,128 @@
+{
+  "domain" : "shelf-browser-connect",
+  "results" : {
+    "a code" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/device-code",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "expiresAt" : "2026-11-11T10:10:00.000Z",
+        "link" : "{base}/join?code=ABCD-2345"
+      }
+    },
+    "a code refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/device-code",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: Guests cannot add a device."
+      }
+    },
+    "a code with its dash, lower case" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/device-code",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "expiresAt" : "2026-11-11T10:10:00Z",
+        "link" : "{base}/join?code=ABCD-2345"
+      }
+    },
+    "the code watched: pending" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/device-code/ABCD2345",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "pending"
+    },
+    "the code watched: unreadable" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/device-code/ABCD2345",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : null
+    },
+    "the code watched: used" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/device-code/ABCD2345",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "used"
+    },
+    "time left: four minutes and a half" : {
+      "left" : "Valid for 4:32"
+    },
+    "time left: more than an hour" : {
+      "left" : null
+    },
+    "time left: over" : {
+      "left" : null
+    },
+    "time left: unreadable" : {
+      "left" : null
+    },
+    "time left: with milliseconds" : {
+      "left" : "Valid for 0:05"
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

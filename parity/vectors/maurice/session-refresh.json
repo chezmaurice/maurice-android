@@ -1,0 +1,61 @@
+{
+  "domain": "session-refresh",
+  "about": "The paired household's name, colour and icon refreshed from /api/health at launch and on coming back, its identity key pinned once, and its unread badge: what the household switcher shows, and the requests behind it. The device is paired with the fake household as 'Parity', member u1 signed in; `before` sets what it already holds.",
+  "ios": "Maurice/Services/SessionStore.swift — SessionStore.refreshFoyers",
+  "android": "core/session/Session.kt — Session.refreshHouseholds",
+  "cases": [
+    { "name": "name, colour, icon and key given", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous", "household_color": "#aa3300", "household_icon": "leaf", "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 3 } } ] },
+    { "name": "key already pinned, another one offered", "input": { "before": { "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo" } },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous", "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "empty household name", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "", "household_color": "#aa3300" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "Unicode household name", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez Zoë 🏡 — 我们的家", "household_icon": "🏡" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 12 } } ] },
+    { "name": "colour and icon removed on the server", "input": { "before": { "color": "#123456", "icon": "star" } },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous", "household_color": null, "household_icon": null } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "colour and icon absent", "input": { "before": { "color": "#123456", "icon": "star" } },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "health status not ok", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "starting", "version": "1.0", "setup_complete": true, "household": "Chez nous", "household_color": "#aa3300", "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 1 } } ] },
+    { "name": "health without version", "input": {},
+      "accepted": { "kind": "lenient", "why": "Android reads an /api/health answer without version (and setup_complete) that iOS's HealthResponse rejects whole; lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "household": "Chez nous", "household_color": "#aa3300" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 1 } } ] },
+    { "name": "health server error", "input": { "before": { "color": "#123456" } },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "status": 500, "json": { "error": "boom" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 2 } } ] },
+    { "name": "health malformed", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "text": "<html>proxy</html>" },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 2 } } ] },
+    { "name": "silent, key pinned, no record of a move", "input": { "before": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } },
+      "routes": [
+        { "method": "GET", "path": "/api/health", "status": 502, "json": { "error": "bad gateway" } },
+        { "method": "GET", "path": "/api/users/me/unread", "status": 502, "json": { "error": "bad gateway" } } ] },
+    { "name": "unread refused (401)", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } },
+        { "method": "GET", "path": "/api/users/me/unread", "status": 401, "json": { "error": "unauthorized" } } ] },
+    { "name": "unread malformed", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } },
+        { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": "three" } } ] }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "domain" : "settings-data",
+  "results" : {
+    "bytes: -1" : "-1 B",
+    "bytes: -2048" : "-2048 B",
+    "bytes: 0" : "0 B",
+    "bytes: 1" : "1 B",
+    "bytes: 999" : "999 B",
+    "bytes: 1023" : "1023 B",
+    "bytes: 1024" : "1.0 KB",
+    "bytes: 1536" : "1.5 KB",
+    "bytes: 1600" : "1.6 KB",
+    "bytes: 10239" : "10.0 KB",
+    "bytes: 102348" : "99.9 KB",
+    "bytes: 102400" : "100 KB",
+    "bytes: 1048575" : "1024 KB",
+    "bytes: 1048576" : "1.0 MB",
+    "bytes: 157286400" : "150 MB",
+    "bytes: 157810688" : "150 MB",
+    "bytes: 5000000000" : "4.7 GB",
+    "bytes: 1099511627776" : "1.0 TB",
+    "bytes: 1125899906842624" : "1024 TB",
+    "events: 404 (older server)" : "unreadable",
+    "events: a device, an export, one seen" : [
+      {
+        "createdAt" : "2026-11-02 14:32:00",
+        "id" : 1,
+        "kind" : "device_by_code",
+        "seenAt" : null
+      },
+      {
+        "createdAt" : "2026-11-03 09:00:00",
+        "id" : 2,
+        "kind" : "household_export",
+        "seenAt" : "2026-11-03 10:00:00"
+      }
+    ],
+    "events: id as a string" : "unreadable",
+    "events: no created_at" : "unreadable",
+    "events: none" : [
+
+    ],
+    "events: unknown kind" : [
+      {
+        "createdAt" : "2026-11-04 08:00:00",
+        "id" : 3,
+        "kind" : "password_reset",
+        "seenAt" : null
+      }
+    ],
+    "imports: a run without range nor status" : {
+      "anthropic" : null,
+      "chatgpt" : {
+        "history" : [
+
+        ],
+        "provider" : "chatgpt",
+        "watermark" : null
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "imports: an answer without history" : {
+      "anthropic" : null,
+      "chatgpt" : {
+        "history" : [
+
+        ],
+        "provider" : "chatgpt",
+        "watermark" : null
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "imports: both fail" : {
+      "anthropic" : null,
+      "chatgpt" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "imports: Claude synced, ChatGPT never" : {
+      "anthropic" : {
+        "history" : [
+          {
+            "conversations" : 812,
+            "id" : "i1",
+            "messages" : 23001,
+            "provider" : "anthropic",
+            "ranAt" : "2026-10-02 08:00:00",
+            "status" : "done"
+          }
+        ],
+        "provider" : "anthropic",
+        "watermark" : "2026-10-01T00:00:00Z"
+      },
+      "chatgpt" : {
+        "history" : [
+
+        ],
+        "provider" : "chatgpt",
+        "watermark" : null
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "imports: first fails, second synced" : {
+      "anthropic" : null,
+      "chatgpt" : {
+        "history" : [
+
+        ],
+        "provider" : "chatgpt",
+        "watermark" : "2026-09-01"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "imports: neither" : {
+      "anthropic" : {
+        "history" : [
+
+        ],
+        "provider" : "anthropic",
+        "watermark" : null
+      },
+      "chatgpt" : {
+        "history" : [
+
+        ],
+        "provider" : "chatgpt",
+        "watermark" : null
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "anthropic"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/import/history",
+          "query" : {
+            "provider" : "chatgpt"
+          }
+        }
+      ]
+    },
+    "library: 500" : "unreadable",
+    "library: a file without kind" : "unreadable",
+    "library: empty" : {
+      "files" : [
+
+      ],
+      "folders" : [
+
+      ],
+      "summary" : {
+        "count" : 0,
+        "quota" : "0 B",
+        "size" : "0 B"
+      }
+    },
+    "library: empty object" : "unreadable",
+    "library: no summary" : "unreadable",
+    "library: two folders, two files" : {
+      "files" : [
+        {
+          "folderId" : "f1",
+          "id" : "x1",
+          "kind" : "pdf",
+          "name" : "edf.pdf",
+          "size" : "178 KB"
+        },
+        {
+          "folderId" : null,
+          "id" : "x2",
+          "kind" : "text",
+          "name" : "notes.md",
+          "size" : "512 B"
+        }
+      ],
+      "folders" : [
+        {
+          "id" : "f1",
+          "name" : "Factures",
+          "parentId" : null
+        },
+        {
+          "id" : "f2",
+          "name" : "2026 — été ☀️",
+          "parentId" : "f1"
+        }
+      ],
+      "summary" : {
+        "count" : 2,
+        "quota" : "1.0 GB",
+        "size" : "179 KB"
+      }
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

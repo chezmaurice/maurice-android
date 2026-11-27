@@ -1,0 +1,207 @@
+{
+ "domain": "shelf-note-edit",
+ "about": "Rewriting or taking off a note of the member's side (896f705): the request sent, the entry read again (also when the note changed in the meantime), and what the member is told; what a note says of itself (editable, deletable, edited).",
+ "ios": "CarnetApp/Views/Shelf/NoteEditing.swift — NoteEdits; CarnetApp/Services/GardenAPI.swift — editNote, deleteNote; Models/Shelf.swift — MineItem",
+ "android": "carnet/entry/NoteEditing.kt — NoteEdits; core/carnet/GardenApi.kt — editNote, deleteNote; core/carnet/Garden.kt — MineItem",
+ "cases": [
+  {
+   "name": "a note rewritten",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "mine": {"notes": 1, "opened": true}, "translations": []},
+    "item": {"kind": "note", "id": "n1", "date": "2026-11-01", "text": "Une note.", "editable": true, "deletable": true},
+    "text": "Une note, finie."
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "json": {"note": {"id": "n1", "text": "Une note, finie."}}}
+   ]
+  },
+  {
+   "name": "a note rewritten with its passage and page",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "quote", "id": "q1", "date": "2026-11-01", "quote": "Le monde.", "text": "Oui.", "where": {"page": "12"}, "editable": true, "deletable": true},
+    "text": "Oui, vraiment.", "quote": "Le monde est là.", "page": "13"
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "json": {"note": {"id": "q1"}}}
+   ]
+  },
+  {
+   "name": "a note rewritten, empty passage and page left out",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true},
+    "text": "Autre chose.", "quote": "", "page": ""
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 204}
+   ]
+  },
+  {
+   "name": "a note rewritten on another member's entry",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "movies/fr/sans-soleil", "kind": "movies", "collection": "movies", "locale": "fr", "slug": "sans-soleil", "title": "Sans soleil", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": [], "owner": {"id": "u2", "username": "bob", "display_name": "Bob", "avatar_color": "#335577"}},
+    "item": {"kind": "note", "id": "n7", "text": "Ma note.", "editable": true, "deletable": true},
+    "text": "Ma note, revue."
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "json": {"note": {"id": "n7"}}}
+   ]
+  },
+  {
+   "name": "a note whose id needs encoding",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/l-ete", "kind": "books", "collection": "books", "locale": "fr", "slug": "l-été à deux", "title": "L'été", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "2026-11-01 10:00/a b", "text": "x", "editable": true},
+    "text": "y"
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+", "json": {"note": {}}}
+   ]
+  },
+  {
+   "name": "a note that changed in the meantime",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true},
+    "text": "Une note, finie."
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 404, "json": {"error": "changed"}}
+   ]
+  },
+  {
+   "name": "a note that is not the member's",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true},
+    "text": "Une note, finie."
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 403, "json": {"error": "forbidden"}}
+   ]
+  },
+  {
+   "name": "a note rewritten, server error",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true},
+    "text": "Une note, finie."
+   },
+   "routes": [
+    {"method": "PATCH", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 500, "json": {"error": "The garden could not be written."}}
+   ]
+  },
+  {
+   "name": "a note with no id",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "text": "Une note.", "editable": true},
+    "text": "Une note, finie."
+   },
+   "routes": []
+  },
+  {
+   "name": "a note on a library row",
+   "input": {
+    "call": "edit",
+    "entry": {"id": "calibre/12", "kind": "books", "title": "Un livre", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": [], "source": {"type": "book", "book_id": 12}},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true},
+    "text": "Une note, finie."
+   },
+   "routes": []
+  },
+  {
+   "name": "a note taken off",
+   "input": {
+    "call": "delete",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "editable": true, "deletable": true}
+   },
+   "routes": [
+    {"method": "DELETE", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 204}
+   ]
+  },
+  {
+   "name": "a note taken off another member's entry",
+   "input": {
+    "call": "delete",
+    "entry": {"id": "movies/fr/sans-soleil", "kind": "movies", "collection": "movies", "locale": "fr", "slug": "sans-soleil", "title": "Sans soleil", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": [], "owner": {"id": "u2", "username": "bob", "display_name": "Bob", "avatar_color": "#335577"}},
+    "item": {"kind": "note", "id": "n7", "text": "Ma note.", "deletable": true}
+   },
+   "routes": [
+    {"method": "DELETE", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "json": {"ok": true}}
+   ]
+  },
+  {
+   "name": "a note taken off, already gone",
+   "input": {
+    "call": "delete",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "deletable": true}
+   },
+   "routes": [
+    {"method": "DELETE", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 404, "json": {"error": "note_not_found"}}
+   ]
+  },
+  {
+   "name": "a note taken off, refused",
+   "input": {
+    "call": "delete",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "deletable": true}
+   },
+   "routes": [
+    {"method": "DELETE", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 403, "text": "no"}
+   ]
+  },
+  {
+   "name": "a note taken off, server error as text",
+   "input": {
+    "call": "delete",
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []},
+    "item": {"kind": "note", "id": "n1", "text": "Une note.", "deletable": true}
+   },
+   "routes": [
+    {"method": "DELETE", "path": "re:^/api/v1/garden/entries/.+/notes/.+", "status": 502, "text": "Bad gateway"}
+   ]
+  },
+  {
+   "name": "what a note says: both offered, edited",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "date": "2026-11-01", "text": "x", "editable": true, "deletable": true, "edited": "2026-11-03"}}
+  },
+  {
+   "name": "what a note says: only taken off",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "text": "x", "author": {"id": "u2", "username": "bob", "display_name": "Bob", "avatar_color": "#335577"}, "editable": false, "deletable": true}}
+  },
+  {
+   "name": "what a note says: an old server",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "text": "x"}}
+  },
+  {
+   "name": "what a note says: editable but no id",
+   "input": {"call": "read", "item": {"kind": "note", "text": "x", "editable": true, "deletable": true}}
+  },
+  {
+   "name": "what a note says: edited with a time",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "text": "x", "editable": true, "edited": "2026-01-09T08:30:00Z"}}
+  },
+  {
+   "name": "what a note says: edited, unreadable",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "text": "x", "editable": true, "edited": "yesterday"}}
+  },
+  {
+   "name": "what a note says: edited empty",
+   "input": {"call": "read", "item": {"kind": "note", "id": "n1", "text": "x", "editable": "yes", "edited": ""}}
+  }
+ ]
+}

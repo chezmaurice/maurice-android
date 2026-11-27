@@ -1,0 +1,79 @@
+{
+  "domain" : "conversation-list",
+  "results" : {
+    "empty" : {
+      "conversations" : [
+
+      ],
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/conversations",
+          "query" : {
+            "limit" : "40"
+          }
+        }
+      ],
+      "unread" : [
+
+      ]
+    },
+    "server error" : {
+      "conversations" : [
+
+      ],
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/conversations",
+          "query" : {
+            "limit" : "40"
+          }
+        }
+      ],
+      "unread" : [
+
+      ]
+    },
+    "two conversations" : {
+      "conversations" : [
+        {
+          "id" : "c2",
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c1",
+          "title" : null
+        }
+      ],
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/conversations",
+          "query" : {
+            "limit" : "40"
+          }
+        }
+      ],
+      "unread" : [
+        "c2"
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

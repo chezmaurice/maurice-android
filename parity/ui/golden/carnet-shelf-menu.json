@@ -1,0 +1,144 @@
+{
+  "checkpoints": [
+    {
+      "name": "the menu",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "3",
+        "5 MIN",
+        "A",
+        "A, Alice, LES TILLEULS",
+        "Add",
+        "Alice",
+        "Archive",
+        "Archived",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "Comment Left",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Entries",
+        "Entries, 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "LES TILLEULS",
+        "La Sagesse",
+        "La lenteur",
+        "Maurice",
+        "Menu",
+        "Notes",
+        "PUBLISHED",
+        "Plain Text Document",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Up And Down Chevrons",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    },
+    {
+      "name": "archived",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "archived": "1",
+            "view": "shelf"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "ARCHIVED · 1",
+        "Add",
+        "BACK TO THE LIST",
+        "Carnet",
+        "DRAFT",
+        "Menu",
+        "Search",
+        "Series",
+        "Series · David Lynch",
+        "Series, 1",
+        "Sort",
+        "T",
+        "Twin Peaks",
+        "Vertical scroll bar, 1 page"
+      ]
+    },
+    {
+      "name": "entries again",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "shelf"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,185 @@
+{
+ "domain": "shelf-move-record",
+ "about": "The `_maurice.<host>` TXT record a moved household leaves: its rdata read, and the new address it names (https only).",
+ "ios": "CarnetApp/Services/HouseholdMove.swift — decodeTXT, parse",
+ "android": "core/session/HouseholdMove.kt — decodeTxt, parse",
+ "cases": [
+  {
+   "name": "record v=maurice1; moved=https://new.chezmaurice.eu",
+   "input": {
+    "record": "v=maurice1; moved=https://new.chezmaurice.eu"
+   }
+  },
+  {
+   "name": "record v=maurice1;moved=https://new.chezmaurice.eu/",
+   "input": {
+    "record": "v=maurice1;moved=https://new.chezmaurice.eu/"
+   }
+  },
+  {
+   "name": "record moved=https://new.chezmaurice.eu; v=maurice1",
+   "input": {
+    "record": "moved=https://new.chezmaurice.eu; v=maurice1"
+   }
+  },
+  {
+   "name": "record V=maurice1; MOVED=https://new.chezmaurice.eu",
+   "input": {
+    "record": "V=maurice1; MOVED=https://new.chezmaurice.eu"
+   }
+  },
+  {
+   "name": "record v=maurice2; moved=https://new.chezmaurice.eu",
+   "input": {
+    "record": "v=maurice2; moved=https://new.chezmaurice.eu"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=http://new.chezmaurice.eu",
+   "input": {
+    "record": "v=maurice1; moved=http://new.chezmaurice.eu"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=HTTPS://new.chezmaurice.eu",
+   "input": {
+    "record": "v=maurice1; moved=HTTPS://new.chezmaurice.eu"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=https://",
+   "input": {
+    "record": "v=maurice1; moved=https://"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=https://new.chezmaurice.eu/path",
+   "input": {
+    "record": "v=maurice1; moved=https://new.chezmaurice.eu/path"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=https://new.chezmaurice.eu:8443",
+   "input": {
+    "record": "v=maurice1; moved=https://new.chezmaurice.eu:8443"
+   }
+  },
+  {
+   "name": "record v=maurice1",
+   "input": {
+    "record": "v=maurice1"
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=",
+   "input": {
+    "record": "v=maurice1; moved="
+   }
+  },
+  {
+   "name": "record v=maurice1; moved=https://new.chezmaurice.eu; moved=https://other.eu",
+   "input": {
+    "record": "v=maurice1; moved=https://new.chezmaurice.eu; moved=https://other.eu"
+   }
+  },
+  {
+   "name": "record v = maurice1 ; moved = https://new.chezmaurice.eu ",
+   "input": {
+    "record": "v = maurice1 ; moved = https://new.chezmaurice.eu "
+   }
+  },
+  {
+   "name": "record (empty)",
+   "input": {
+    "record": ""
+   }
+  },
+  {
+   "name": "record garbage",
+   "input": {
+    "record": "garbage"
+   }
+  },
+  {
+   "name": "rdata one string",
+   "input": {
+    "rdata": [
+     5,
+     104,
+     101,
+     108,
+     108,
+     111
+    ]
+   }
+  },
+  {
+   "name": "rdata two strings joined",
+   "input": {
+    "rdata": [
+     3,
+     118,
+     61,
+     109,
+     6,
+     97,
+     117,
+     114,
+     105,
+     99,
+     101
+    ]
+   }
+  },
+  {
+   "name": "rdata length past the end",
+   "input": {
+    "rdata": [
+     10,
+     97,
+     98,
+     99
+    ]
+   }
+  },
+  {
+   "name": "rdata empty",
+   "input": {
+    "rdata": []
+   }
+  },
+  {
+   "name": "rdata a zero-length string",
+   "input": {
+    "rdata": [
+     0,
+     2,
+     111,
+     107
+    ]
+   }
+  },
+  {
+   "name": "rdata utf-8",
+   "input": {
+    "rdata": [
+     4,
+     195,
+     169,
+     226,
+     130
+    ]
+   }
+  },
+  {
+   "name": "rdata invalid utf-8",
+   "input": {
+    "rdata": [
+     2,
+     255,
+     254
+    ]
+   }
+  }
+ ]
+}

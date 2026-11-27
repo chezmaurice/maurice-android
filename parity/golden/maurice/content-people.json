@@ -1,0 +1,150 @@
+{
+  "domain" : "content-people",
+  "results" : {
+    "model: a proposal without text" : "undecodable",
+    "model: an identity without source" : "undecodable",
+    "model: bare relation, nothing else" : {
+      "basename" : "nadia-rossi-fiche",
+      "byMaurice" : true,
+      "exchanges" : null,
+      "fragments" : [
+
+      ],
+      "identities" : [
+
+      ],
+      "locale" : "fr",
+      "pending" : 0,
+      "relation" : {
+        "edited" : null,
+        "proposed" : null,
+        "since" : null,
+        "status" : null,
+        "text" : null,
+        "until" : null
+      },
+      "status" : "pending",
+      "title" : "Nadia Rossi"
+    },
+    "model: whole" : {
+      "basename" : "nadia-rossi-fiche",
+      "byMaurice" : true,
+      "exchanges" : "- 3 mars : Projet",
+      "fragments" : [
+        {
+          "address" : "nadia@example.org",
+          "body" : "Elle mène le projet.",
+          "edited" : false,
+          "id" : "001",
+          "mailbox" : "pro",
+          "origin" : "mail",
+          "status" : "confirmed",
+          "summary" : "Le projet"
+        }
+      ],
+      "identities" : [
+        {
+          "address" : "nadia@example.org",
+          "conflict" : "in 2 cards of the address book",
+          "mailboxes" : [
+            "pro",
+            "perso"
+          ],
+          "source" : "mail",
+          "status" : "pending"
+        }
+      ],
+      "locale" : "fr",
+      "pending" : 3,
+      "relation" : {
+        "edited" : false,
+        "proposed" : {
+          "since" : "2025",
+          "text" : "Une amie",
+          "until" : null
+        },
+        "since" : "2024",
+        "status" : "pending",
+        "text" : "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)",
+        "until" : null
+      },
+      "status" : "pending",
+      "title" : "Nadia Rossi"
+    },
+    "model: without pending" : "undecodable",
+    "ref: /g/alice/en/fiches/people/bob#fragment-003" : {
+      "anchor" : "fragment-003",
+      "basename" : "bob-fiche",
+      "id" : "en/bob-fiche",
+      "locale" : "en"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/books/the-gene" : null,
+    "ref: https://parity.example/g/alice/fr/fiches/people" : null,
+    "ref: https://parity.example/g/alice/fr/fiches/people/jos%C3%A9-fiche#identity-2" : {
+      "anchor" : "identity-2",
+      "basename" : "josé-fiche",
+      "id" : "fr/josé-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/people/nadia-rossi" : {
+      "anchor" : null,
+      "basename" : "nadia-rossi-fiche",
+      "id" : "fr/nadia-rossi-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/people/nadia-rossi-fiche#relation" : {
+      "anchor" : "relation",
+      "basename" : "nadia-rossi-fiche",
+      "id" : "fr/nadia-rossi-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/people/nadia?x=1#review" : {
+      "anchor" : "review",
+      "basename" : "nadia-fiche",
+      "id" : "fr/nadia-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/people/nadia/extra" : {
+      "anchor" : null,
+      "basename" : "nadia-fiche",
+      "id" : "fr/nadia-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/fiches/people/nadia#" : {
+      "anchor" : "",
+      "basename" : "nadia-fiche",
+      "id" : "fr/nadia-fiche",
+      "locale" : "fr"
+    },
+    "ref: https://parity.example/g/alice/fr/notes/people/nadia" : null,
+    "ref: https://parity.example/x/alice/fr/fiches/people/nadia" : null,
+    "sources: ''" : {
+      "text" : ""
+    },
+    "sources: 'Crochets — [a \\\\] b](maurice-mail:z)'" : {
+      "text" : "Crochets"
+    },
+    "sources: 'Espace insécable\\xa0—\\xa0[x](maurice-mail:1)'" : {
+      "text" : "Espace insécable"
+    },
+    "sources: 'Ligne une — [x](maurice-mail:1)\\nLigne deux — [y](m'" : {
+      "text" : "Ligne une\nLigne deux et la suite"
+    },
+    "sources: 'Sans tiret [x](maurice-mail:1)'" : {
+      "text" : "Sans tiret [x](maurice-mail:1)"
+    },
+    "sources: 'Un lien — [site](https://example.org) reste'" : {
+      "text" : "Un lien — [site](https://example.org) reste"
+    },
+    "sources: 'Une collègue — [3 mars, Nadia, « Projet » · pro](m'" : {
+      "text" : "Une collègue"
+    },
+    "sources: 'Une collègue — [3 mars](maurice-mail:a) ; [5 mars]'" : {
+      "text" : "Une collègue"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

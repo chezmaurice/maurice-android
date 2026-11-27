@@ -1,0 +1,137 @@
+{
+  "domain" : "session-leave",
+  "results" : {
+    "forget the household" : {
+      "activeMember" : null,
+      "households" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    },
+    "forget the household with a second member" : {
+      "activeMember" : null,
+      "households" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        },
+        {
+          "auth" : "Bearer tok-u2",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    },
+    "forget the household, server silent" : {
+      "activeMember" : null,
+      "households" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    },
+    "sign out" : {
+      "activeMember" : null,
+      "households" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    },
+    "sign out with a second member on the device" : {
+      "activeMember" : null,
+      "households" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : true
+    },
+    "sign out, server refuses" : {
+      "activeMember" : null,
+      "households" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    },
+    "sign out, session already gone (401)" : {
+      "activeMember" : null,
+      "households" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/auth/logout"
+        }
+      ],
+      "u1TokenKept" : false,
+      "u2TokenKept" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

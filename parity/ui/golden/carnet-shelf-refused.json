@@ -1,0 +1,21 @@
+{
+  "checkpoints": [
+    {
+      "name": "refused",
+      "requests": [],
+      "texts": [
+        "0%",
+        "Add",
+        "Carnet",
+        "Couldn't load your entries.\n{\"error\":\"garden unavailable\"}",
+        "EVERYTHING · 0",
+        "Menu",
+        "Search",
+        "Sort",
+        "Vertical scroll bar, 1 page",
+        "Warning"
+      ]
+    }
+  ],
+  "failures": []
+}

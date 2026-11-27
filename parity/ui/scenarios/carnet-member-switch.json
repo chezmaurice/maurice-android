@@ -1,0 +1,94 @@
+{
+  "name": "carnet-member-switch",
+  "app": "carnet",
+  "about": "The identity menu: switching to Bruno, who has a PIN — a wrong one refused (401), the right one let in.",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "status": 401,
+      "json": {
+        "error": "Invalid credentials"
+      },
+      "times": 1
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/login",
+      "json": {
+        "user_id": "u2",
+        "token": "tok-bruno"
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": {
+        "ios": "A, Alice, LES TILLEULS",
+        "android": "Alice"
+      }
+    },
+    {
+      "checkpoint": "the sheet"
+    },
+    {
+      "tap": {
+        "ios": "Bruno",
+        "android": "B"
+      },
+      "expect": "PIN"
+    },
+    {
+      "tap": "PIN"
+    },
+    {
+      "type": "1111"
+    },
+    {
+      "tap": "Enter",
+      "pause": 2
+    },
+    {
+      "see": "Invalid PIN"
+    },
+    {
+      "checkpoint": "wrong PIN",
+      "accepted": {
+        "kind": "wire",
+        "why": "Android signs in with no Authorization header (ApiClient: the server refuses a stale token even on its open routes) where iOS sends the current member's, and reads the members again (GET /api/users) on opening the picker. The server answers both alike."
+      }
+    },
+    {
+      "tap": "PIN"
+    },
+    {
+      "type": "4826"
+    },
+    {
+      "tap": "Enter",
+      "pause": 3
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "checkpoint": "Bruno's shelf",
+      "accepted": {
+        "kind": "wire",
+        "why": "Android signs in with no Authorization header (ApiClient: the server refuses a stale token even on its open routes) where iOS sends the current member's, and reads the members again (GET /api/users) on opening the picker. The server answers both alike."
+      }
+    }
+  ]
+}

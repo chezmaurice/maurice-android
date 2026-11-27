@@ -1,0 +1,32 @@
+/* Chaînes propres à Android : ce que l'app iOS écrit sans clé, ou ce que
+   seul Android montre. Chargées par-dessus Localizable.strings. */
+"report.title" = "Signaler";
+"report.message" = "Signaler le message";
+"report.block" = "Bloquer %@";
+"report.reason" = "Motif";
+"report.note" = "Note (facultatif)";
+"report.note_placeholder" = "Ajouter du contexte";
+"report.submit" = "Envoyer";
+"report.sent" = "Merci — votre signalement a été transmis à la personne qui gère ce serveur.";
+"report.authority_title" = "Le signaler aussi à une autorité";
+"report.authority_body" = "S'il s'agit de l'exploitation d'un mineur, signalez-le aussi à l'autorité compétente : elle peut agir là où la personne qui gère le serveur ne le peut pas.";
+"report.authority_ncmec" = "NCMEC CyberTipline (États-Unis)";
+"report.authority_elsewhere" = "Hors des États-Unis, contactez l'équivalent de votre pays (en France : Pharos, internet-signalement.gouv.fr).";
+"details.open" = "Détails de la conversation";
+"details.everyday" = "Maurice";
+"details.add_member" = "Ajouter au salon";
+"blocked" = "%@ est bloqué·e : vous ne verrez plus ses messages.";
+
+/* The admin's queue of reports (ReportsPane); iOS writes these in English, unkeyed. */
+"reports.none" = "Aucun signalement en attente.";
+"reports.priority" = "PRIORITAIRE";
+"reports.room" = "Salon";
+"reports.member" = "Membre : %@";
+"reports.by" = "signalé par %@";
+"reports.remove_message" = "Retirer le message";
+"reports.eject" = "Exclure du salon";
+"reports.dismiss" = "Classer";
+
+"store.via_play" = "Via Google Play";
+"store.plans.caption.play" = "Renouvelé automatiquement jusqu’à résiliation. Vous pouvez résilier à tout moment dans Google Play, sous Paiements et abonnements, avant la fin de la période en cours.";
+"store.error.unverified.play" = "Google Play n’a pas pu confirmer cet achat.";

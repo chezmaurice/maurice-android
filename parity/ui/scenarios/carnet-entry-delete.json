@@ -1,0 +1,35 @@
+{
+  "name": "carnet-entry-delete",
+  "app": "carnet",
+  "about": "A row slid left asks first, with its warning (a published page leaves the site), then the entry is deleted.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "swipe": "Sans soleil",
+      "to": "left",
+      "pause": 2
+    },
+    {
+      "see": "Delete “Sans soleil”?"
+    },
+    {
+      "checkpoint": "the warning"
+    },
+    {
+      "tap": "Delete",
+      "last": true,
+      "pause": 2
+    },
+    {
+      "checkpoint": "deleted"
+    }
+  ]
+}

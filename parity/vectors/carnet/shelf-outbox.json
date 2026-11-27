@@ -1,0 +1,464 @@
+{
+ "domain": "shelf-outbox",
+ "about": "Captures kept on the device while the household could not take them, sent again: in what order, as whom, with what, and which stay (refused, failed, another member's).",
+ "ios": "Shared/OfflineQueue.swift, CarnetApp/Services/SyncService.swift — syncNow",
+ "android": "core/carnet/Outbox.kt — flush, as carnet/shared/share/ShareHost.kt calls it",
+ "cases": [
+  {
+   "name": "nothing waiting",
+   "input": {
+    "items": []
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "one capture, sent",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1",
+      "comment": "Pourquoi pas",
+      "title": "Un"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "one capture without note nor title",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "one capture with an empty note",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1",
+      "comment": "",
+      "title": ""
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "three, sent oldest first",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/new",
+      "at": 300
+     },
+     {
+      "url": "https://a.test/old",
+      "at": 100
+     },
+     {
+      "url": "https://a.test/mid",
+      "at": 200
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "household offline: everything stays",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     },
+     {
+      "url": "https://a.test/2",
+      "at": 10
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 503,
+     "json": {
+      "error": "down"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the first fails, the second goes",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     },
+     {
+      "url": "https://a.test/2",
+      "at": 10
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 500,
+     "json": {
+      "error": "no"
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "refused for good (400)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "not a url"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 400,
+     "json": {
+      "error": "invalid url"
+     }
+    }
+   ]
+  },
+  {
+   "name": "refused (422)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 422,
+     "json": {
+      "error": "cannot read"
+     }
+    }
+   ]
+  },
+  {
+   "name": "not found (404)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 404,
+     "json": {
+      "error": "no route"
+     }
+    }
+   ]
+  },
+  {
+   "name": "forbidden (403)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 403,
+     "json": {
+      "error": "forbidden"
+     }
+    }
+   ]
+  },
+  {
+   "name": "rate limited (429)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 429,
+     "json": {
+      "error": "slow down"
+     }
+    }
+   ]
+  },
+  {
+   "name": "timeout from the server (408)",
+   "accepted": {"kind": "platform", "why": "OkHttp (Android's HTTP engine) repeats a request once by itself when the server answers 408, as RFC 9110 allows; URLSession does not. Turning it off (retryOnConnectionFailure) would also stop OkHttp retrying a stale pooled connection. The item stays on both sides. (Locale \"fr\" on iOS: the ios-bug of the other cases.)"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 408,
+     "json": {
+      "error": "timeout"
+     }
+    }
+   ]
+  },
+  {
+   "name": "session refused (401)",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     },
+     {
+      "url": "https://a.test/2",
+      "at": 5
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "status": 401,
+     "json": {
+      "error": "session revoked"
+     }
+    }
+   ]
+  },
+  {
+   "name": "saved, the answer without a title",
+   "accepted": {"kind": "ios-bug", "why": "The household saved the article (200), but CarnetAPI.saveArticle then fails to decode the answer: SyncService keeps the item and sends it again at every sync — a capture saved over and over. Android counts a 2xx as sent. (Locale \"fr\" as in the other cases.)", "issue": "https://github.com/chezmaurice/carnet/issues/2"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "locale": "fr"
+     }
+    }
+   ]
+  },
+  {
+   "name": "answer not JSON but 200",
+   "accepted": {"kind": "ios-bug", "why": "The household saved the article (200), but CarnetAPI.saveArticle then fails to decode the answer: SyncService keeps the item and sends it again at every sync — a capture saved over and over. Android counts a 2xx as sent. (Locale \"fr\" as in the other cases.)", "issue": "https://github.com/chezmaurice/carnet/issues/2"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "text": "ok"
+    }
+   ]
+  },
+  {
+   "name": "another member's capture, signed out",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/mine"
+     },
+     {
+      "url": "https://a.test/theirs",
+      "member": "u2",
+      "at": 5
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "another member's capture, still signed in on the device",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/mine"
+     },
+     {
+      "url": "https://a.test/theirs",
+      "member": "u2",
+      "at": 5
+     }
+    ],
+    "otherSignedIn": true
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "unicode note and title",
+   "accepted": {"kind": "ios-bug", "why": "SyncService.flush calls CarnetAPI.saveArticle without a locale, whose default is \"fr\": every capture sent again is filed as French, whatever the member's language. Android sends the language the capture was made in (fr or en).", "issue": "https://github.com/chezmaurice/carnet/issues/1"},
+   "input": {
+    "items": [
+     {
+      "url": "https://a.test/é?q=œ&x=1#frag",
+      "comment": "« Très » 👩‍👩‍👧",
+      "title": "L'été"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/garden/articles",
+     "json": {
+      "slug": "x",
+      "title": "X",
+      "locale": "fr",
+      "duplicate": false
+     }
+    }
+   ]
+  }
+ ]
+}

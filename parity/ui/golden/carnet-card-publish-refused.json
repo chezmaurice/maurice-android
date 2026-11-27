@@ -1,0 +1,69 @@
+{
+  "checkpoints": [
+    {
+      "name": "refused",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "POST",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/shared/publish",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Draft",
+        "Edit",
+        "Forward",
+        "Globe",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Publish",
+        "Read",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "no site",
+        "· NOT ON YOUR SITE"
+      ]
+    }
+  ],
+  "failures": []
+}

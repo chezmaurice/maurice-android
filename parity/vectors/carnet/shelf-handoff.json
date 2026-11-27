@@ -1,0 +1,146 @@
+{
+ "domain": "shelf-handoff",
+ "about": "A conversation with Maurice opened from an entry (POST /api/conversations {entry}): the request, the conversation the Maurice app is then opened on, or what the member is told.",
+ "ios": "CarnetApp/Services/MauriceAPI.swift — open(from:) (MauriceHandoff.startNew)",
+ "android": "core/carnet/GardenApi.kt — startConversation (entry/Handoff.kt rememberAsk)",
+ "cases": [
+  {
+   "name": "a new conversation",
+   "input": {
+    "entry": "books/fr/la-sagesse"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "json": {
+      "id": "c42",
+      "title": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "a library book's row",
+   "input": {
+    "entry": "calibre/12"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "json": {
+      "id": "c43"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a unicode entry",
+   "input": {
+    "entry": "books/fr/l-œuvre-é"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "json": {
+      "id": "c44"
+     }
+    }
+   ]
+  },
+  {
+   "name": "an id that is a number",
+   "accepted": {"kind": "lenient", "why": "The conversation id as a number: iOS's Created { id: String } refuses it, Android reads the JSON primitive's content and opens conversation 44."},
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "json": {
+      "id": 44
+     }
+    }
+   ]
+  },
+  {
+   "name": "no id in the answer",
+   "accepted": {"kind": "platform", "why": "Both refuse an answer without an id; the member is told so in each platform's words: iOS shows Foundation's own DecodingError text (error.localizedDescription), Android, with no such system text, says 'No conversation.'."},
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "refused, with a message",
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "status": 403,
+     "json": {
+      "error": "ai_consent_required"
+     }
+    }
+   ]
+  },
+  {
+   "name": "server error, no message",
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "status": 500,
+     "json": {}
+    }
+   ]
+  },
+  {
+   "name": "server error, body not JSON",
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "status": 502,
+     "text": "Bad gateway"
+    }
+   ]
+  },
+  {
+   "name": "rate limited",
+   "input": {
+    "entry": "books/fr/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations",
+     "status": 429,
+     "json": {
+      "error": "budget exhausted"
+     }
+    }
+   ]
+  }
+ ]
+}

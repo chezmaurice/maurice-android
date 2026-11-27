@@ -1,0 +1,33 @@
+{
+  "domain" : "session-move-record",
+  "results" : {
+    "= in the value" : "https://new.example/?a=b",
+    "canonical" : "https://new.example",
+    "empty" : null,
+    "empty moved" : null,
+    "empty parts" : "https://new.example",
+    "fields reversed" : "https://new.example",
+    "http target" : null,
+    "https without host" : null,
+    "IDN target" : "https://münchen.example",
+    "moved twice" : "https://other.example",
+    "no moved" : null,
+    "no spaces, trailing slash" : "https://new.example",
+    "other version" : null,
+    "part without =" : "https://new.example",
+    "port and path" : "https://new.example:8443/path",
+    "quoted as dig prints it" : null,
+    "relative moved" : null,
+    "space in the host" : null,
+    "spaces around =" : "https://new.example",
+    "tab separators" : "https://new.example",
+    "two trailing slashes" : "https://new.example/",
+    "uppercase https" : null,
+    "uppercase keys" : "https://new.example",
+    "version capitalised" : null
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

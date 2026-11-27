@@ -1,0 +1,209 @@
+{
+  "domain": "accounts-guest-invite",
+  "about": "A friend from another household invited as a guest (specs/cross-household-share.md, A): the code asked for, the invitation the dialog shows (the server's link, else one built from the household's address), and the row hidden for this member once the server says no (403, 404).",
+  "ios": "GuestInvite.create, GuestInvite.Code.invitation(server:), GuestInvite.isRefused",
+  "android": "GuestInvite.create, GuestInvite.Code.invitation, GuestInvite.isRefused",
+  "cases": [
+    {
+      "name": "issued, with the server's link",
+      "input": {
+        "member": "g1"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "GQ7K2M4P",
+            "link": "https://martin.chezmaurice.eu/join?code=GQ7K2M4P",
+            "expires_at": "2026-11-18T10:00:00.000Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "issued, no link: built from the household's address",
+      "input": {
+        "member": "g2"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "AB12CD34",
+            "expires_at": "2026-11-18T10:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "issued, a link that is not an invitation",
+      "input": {
+        "member": "g3"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "AB12CD34",
+            "link": "https://martin.chezmaurice.eu/welcome",
+            "expires_at": "2026-11-18T10:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "issued, a null link",
+      "input": {
+        "member": "g4"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "AB12CD34",
+            "link": null,
+            "expires_at": "2026-11-18T10:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "issued, a maurice:// link to another address",
+      "input": {
+        "member": "g5"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "ZZ99YY88",
+            "link": "maurice://join?server=chez-nous.example&code=ZZ99YY88",
+            "expires_at": "2026-11-18T10:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "403: a child not allowed, the row goes",
+      "input": {
+        "member": "g6"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "status": 403,
+          "json": {
+            "error": "Not allowed"
+          }
+        }
+      ]
+    },
+    {
+      "name": "404: a server without the route, the row goes",
+      "input": {
+        "member": "g7"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "status": 404,
+          "json": {
+            "error": "Not found"
+          }
+        }
+      ]
+    },
+    {
+      "name": "another member of the same household is not hidden by a refusal",
+      "input": {
+        "member": "g8",
+        "also": "g6"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "AB12CD34",
+            "expires_at": "2026-11-18T10:00:00Z"
+          }
+        }
+      ]
+    },
+    {
+      "name": "500 with the server's words: failed, the row stays",
+      "input": {
+        "member": "g9"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "status": 500,
+          "json": {
+            "error": "Database is locked"
+          }
+        }
+      ]
+    },
+    {
+      "name": "429: failed, the row stays",
+      "input": {
+        "member": "g10"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "status": 429,
+          "json": {
+            "error": "Too many invitations"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an answer without expires_at",
+      "input": {
+        "member": "g11"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "json": {
+            "code": "AB12CD34"
+          }
+        }
+      ],
+      "accepted": {
+        "kind": "platform",
+        "why": "An unreadable answer: iOS shows Foundation's decoding sentence, Android the serialization library's; both keep the row and show no code."
+      }
+    },
+    {
+      "name": "an answer that is not JSON",
+      "input": {
+        "member": "g12"
+      },
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/me/guest-invite",
+          "text": "<html>oops</html>"
+        }
+      ],
+      "accepted": {
+        "kind": "platform",
+        "why": "An unreadable answer: iOS shows Foundation's decoding sentence, Android the serialization library's; both keep the row and show no code."
+      }
+    }
+  ]
+}

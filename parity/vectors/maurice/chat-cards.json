@@ -1,0 +1,666 @@
+{
+ "domain": "chat-cards",
+ "about": "What a reply's tools are summed up as (the tally under the reply and its words), the sources grouped by place and deduplicated, the review footer taken off the prose, and the server's dates.",
+ "ios": "Maurice/Views/SourcesCard.swift — TurnTally, TurnSources; PersonReviewView.swift — withoutReviewFooter; APIClient.swift — parseServerDate",
+ "android": "core/chat/Cards.kt — TurnTally.of, TurnSources, withoutReviewFooter; maurice/chat/Cards.kt — Strings.tally; core/model/ServerDates.kt — parseServerDate",
+ "cases": [
+  {
+   "name": "tally: steps web and memory",
+   "input": {
+    "op": "tally",
+    "steps": [
+     {
+      "tool": "web_search",
+      "count": 2,
+      "running": false
+     },
+     {
+      "tool": "corpus__search",
+      "count": 1,
+      "running": false
+     }
+    ],
+    "blocks": []
+   }
+  },
+  {
+   "name": "tally: read_web_page step",
+   "input": {
+    "op": "tally",
+    "steps": [
+     {
+      "tool": "read_web_page",
+      "count": 1,
+      "running": false
+     }
+    ],
+    "blocks": []
+   }
+  },
+  {
+   "name": "tally: running step, done only",
+   "input": {
+    "op": "tally",
+    "doneOnly": true,
+    "steps": [
+     {
+      "tool": "garden__read_note",
+      "count": 3,
+      "running": true
+     },
+     {
+      "tool": "web_search",
+      "count": 1,
+      "running": true
+     }
+    ],
+    "blocks": []
+   }
+  },
+  {
+   "name": "tally: running step, all",
+   "input": {
+    "op": "tally",
+    "doneOnly": false,
+    "steps": [
+     {
+      "tool": "garden__read_note",
+      "count": 3,
+      "running": true
+     }
+    ],
+    "blocks": []
+   }
+  },
+  {
+   "name": "tally: steps win over blocks",
+   "input": {
+    "op": "tally",
+    "steps": [
+     {
+      "tool": "music__list",
+      "count": 1,
+      "running": false
+     }
+    ],
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "tally: nothing",
+   "input": {
+    "op": "tally",
+    "steps": [],
+    "blocks": []
+   }
+  },
+  {
+   "name": "tally: blocks sources web + corpus",
+   "input": {
+    "op": "tally",
+    "steps": [],
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": [
+        {
+         "title": "T",
+         "url": "https://a.com",
+         "subtitle": "s"
+        }
+       ]
+      }
+     },
+     {
+      "tool": "corpus__search",
+      "data": {
+       "card": "sources",
+       "origin": "corpus",
+       "query": "q",
+       "results": [
+        {
+         "title": "n",
+         "subtitle": ""
+        }
+       ]
+      }
+     },
+     {
+      "tool": "corpus__search",
+      "data": {
+       "card": "sources",
+       "origin": "garden",
+       "query": "q",
+       "results": [
+        {
+         "title": "m",
+         "subtitle": ""
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "tally: bare blocks by tool",
+   "input": {
+    "op": "tally",
+    "steps": [],
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": []
+     },
+     {
+      "tool": "corpus__search",
+      "data": {
+       "results": []
+      }
+     },
+     {
+      "tool": "read_web_page",
+      "data": {
+       "text": "x"
+      }
+     },
+     {
+      "tool": "music__list",
+      "data": [
+       {
+        "a": 1
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "tally: answer cards not counted",
+   "input": {
+    "op": "tally",
+    "steps": [],
+    "blocks": [
+     {
+      "tool": "media__lookup",
+      "data": {
+       "card": "media",
+       "title": "X"
+      }
+     },
+     {
+      "tool": "life__remember",
+      "data": {
+       "card": "fact",
+       "id": "f1",
+       "text": "t"
+      }
+     },
+     {
+      "tool": "x__y",
+      "data": {
+       "card": "unknown-kind"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "tally: card kind not a string",
+   "input": {
+    "op": "tally",
+    "steps": [],
+    "blocks": [
+     {
+      "tool": "x__y",
+      "data": {
+       "card": 3
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "tally: many of each",
+   "input": {
+    "op": "tally",
+    "steps": [
+     {
+      "tool": "web_search",
+      "count": 12,
+      "running": false
+     },
+     {
+      "tool": "corpus__search",
+      "count": 2,
+      "running": false
+     },
+     {
+      "tool": "a__b",
+      "count": 1,
+      "running": false
+     }
+    ],
+    "blocks": []
+   }
+  },
+  {
+   "name": "sources: web dedupe by url",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": [
+        {
+         "title": "T",
+         "url": "https://www.Example.com/a/",
+         "subtitle": "s"
+        },
+        {
+         "title": "T",
+         "url": "http://example.com/a",
+         "subtitle": "s"
+        },
+        {
+         "title": "T",
+         "url": "https://example.com/b",
+         "subtitle": "s"
+        }
+       ]
+      }
+     },
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q2",
+       "results": [
+        {
+         "title": "T",
+         "url": "https://example.com/b/",
+         "subtitle": "s"
+        },
+        {
+         "title": "T",
+         "url": "https://c.org",
+         "subtitle": "s"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: corpus dedupe by title|subtitle",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "corpus__search",
+      "data": {
+       "card": "sources",
+       "origin": "corpus",
+       "query": "q",
+       "results": [
+        {
+         "title": "A",
+         "subtitle": "x"
+        },
+        {
+         "title": "A",
+         "subtitle": "y"
+        },
+        {
+         "title": "A",
+         "subtitle": "x"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: order of places",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "corpus__search",
+      "data": {
+       "card": "sources",
+       "origin": "corpus",
+       "query": "q",
+       "results": [
+        {
+         "title": "A",
+         "subtitle": ""
+        }
+       ]
+      }
+     },
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": [
+        {
+         "title": "T",
+         "url": "https://w.com",
+         "subtitle": "s"
+        }
+       ]
+      }
+     },
+     {
+      "tool": "corpus__search",
+      "data": {
+       "card": "sources",
+       "origin": "corpus",
+       "query": "q",
+       "results": [
+        {
+         "title": "B",
+         "subtitle": ""
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: web result without url",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": [
+        {
+         "title": "No url",
+         "subtitle": "s"
+        },
+        {
+         "title": "No url",
+         "subtitle": "s"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: www in the middle of a url",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "web_search",
+      "data": {
+       "card": "sources",
+       "origin": "web",
+       "query": "q",
+       "results": [
+        {
+         "title": "T",
+         "url": "https://example.com/www.page",
+         "subtitle": "s"
+        },
+        {
+         "title": "T",
+         "url": "https://example.com/page",
+         "subtitle": "s"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: missing origin",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "x",
+      "data": {
+       "card": "sources",
+       "results": [
+        {
+         "title": "A",
+         "subtitle": ""
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "sources: none",
+   "input": {
+    "op": "sources",
+    "blocks": [
+     {
+      "tool": "x",
+      "data": [
+       1,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: removed",
+   "input": {
+    "op": "footer",
+    "content": "Réponse.\n\n**À vérifier** : Paul.",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "**À vérifier** : Paul.",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: no review block",
+   "input": {
+    "op": "footer",
+    "content": "Réponse.\n\nX",
+    "blocks": []
+   }
+  },
+  {
+   "name": "footer: empty footer",
+   "input": {
+    "op": "footer",
+    "content": "Réponse.",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: appears twice",
+   "input": {
+    "op": "footer",
+    "content": "F\n\nmilieu\n\nF",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "F",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: not found",
+   "input": {
+    "op": "footer",
+    "content": "Réponse.",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "absent",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: footer with spaces around",
+   "input": {
+    "op": "footer",
+    "content": "Réponse.\n\nÀ vérifier",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "  À vérifier \n",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "footer: leading whitespace kept?",
+   "input": {
+    "op": "footer",
+    "content": "\n\n  Réponse.\n\nF",
+    "blocks": [
+     {
+      "tool": "people__review",
+      "data": {
+       "card": "review",
+       "footer": "F",
+       "results": []
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "date: '2026-05-29 15:39:43'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29 15:39:43"
+   }
+  },
+  {
+   "name": "date: '2026-05-29T15:39:43Z'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29T15:39:43Z"
+   }
+  },
+  {
+   "name": "date: '2026-05-29T15:39:43.123Z'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29T15:39:43.123Z"
+   }
+  },
+  {
+   "name": "date: '2026-05-29T15:39:43'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29T15:39:43"
+   }
+  },
+  {
+   "name": "date: '2026-05-29'",
+   "accepted": {"kind": "lenient", "why": "Android reads a bare date (midnight UTC), iOS does not"},
+   "input": {
+    "op": "date",
+    "text": "2026-05-29"
+   }
+  },
+  {
+   "name": "date: '2026-05-29T15:39:43+02:00'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29T15:39:43+02:00"
+   }
+  },
+  {
+   "name": "date: '2026-05-29T15:39:43.123456+00:00'",
+   "input": {
+    "op": "date",
+    "text": "2026-05-29T15:39:43.123456+00:00"
+   }
+  },
+  {
+   "name": "date: ''",
+   "input": {
+    "op": "date",
+    "text": ""
+   }
+  },
+  {
+   "name": "date: 'garbage'",
+   "input": {
+    "op": "date",
+    "text": "garbage"
+   }
+  },
+  {
+   "name": "date: ' 2026-05-29 15:39:43 '",
+   "input": {
+    "op": "date",
+    "text": " 2026-05-29 15:39:43 "
+   }
+  }
+ ]
+}

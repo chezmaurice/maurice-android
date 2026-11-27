@@ -1,0 +1,493 @@
+{
+  "domain" : "reading-positions",
+  "results" : {
+    "another member does not see the first's place" : {
+      "otherHousehold" : null,
+      "u1" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 42,
+        "lastView" : "full",
+        "summaryPara" : 1,
+        "updatedAt" : 1794301200
+      },
+      "u1Again" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 42,
+        "lastView" : "full",
+        "summaryPara" : 1,
+        "updatedAt" : 1794301200
+      },
+      "u2" : null
+    },
+    "article place beside the books" : {
+      "article" : {
+        "chapterIndex" : 0,
+        "chapterSlug" : "la-lenteur",
+        "fullChar" : 1200,
+        "lastView" : "summary",
+        "summaryPara" : 88,
+        "updatedAt" : 1794301200
+      },
+      "book0" : null
+    },
+    "clear forgets one book only" : {
+      "cleared" : null,
+      "other" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 42,
+        "lastView" : "summary",
+        "summaryPara" : 1,
+        "updatedAt" : 1794301200
+      }
+    },
+    "enabled null counts as on" : {
+      "restored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 10,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 10,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "negative position -2.5" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : -3,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : -3,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "newer server, other chapter: other view reset" : {
+      "restored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 2,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 2,
+        "updatedAt" : 1794301200
+      }
+    },
+    "newer server, same chapter: other view's place kept" : {
+      "restored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 900,
+        "lastView" : "full",
+        "summaryPara" : 6,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 900,
+        "lastView" : "full",
+        "summaryPara" : 6,
+        "updatedAt" : 1794301200
+      }
+    },
+    "no chapter index: nothing" : {
+      "restored" : null,
+      "stored" : null
+    },
+    "no local, server full position" : {
+      "restored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 1234,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 1234,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "no local, server summary paragraph 3.6 rounds to 4" : {
+      "restored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 4,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 3,
+        "chapterSlug" : "c3",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 4,
+        "updatedAt" : 1794301200
+      }
+    },
+    "no slug: local kept" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 11,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793523600
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 11,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793523600
+      }
+    },
+    "paused per book and per member" : {
+      "back" : true,
+      "initially" : false,
+      "otherBook" : false,
+      "otherMember" : false,
+      "paused" : true,
+      "resumed" : false
+    },
+    "position 2.5 rounds half up" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 3,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 3,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "position beyond 32 bits" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 5000000000,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 5000000000,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "position null is 0" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 0,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 0,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "server answers 500, local kept" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793527200
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793527200
+      }
+    },
+    "server answers an empty body" : {
+      "restored" : null,
+      "stored" : null
+    },
+    "server chapter index as a quoted number" : {
+      "restored" : null,
+      "stored" : null
+    },
+    "server date in ISO form, local a day older" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794214800
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794214800
+      }
+    },
+    "server date in ISO form, no local" : {
+      "restored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : "now"
+      },
+      "stored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : "now"
+      }
+    },
+    "server date only, local older" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793523600
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793523600
+      }
+    },
+    "server date with fractional seconds, local older" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794214800
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794214800
+      }
+    },
+    "server newer by 60 s: within the margin" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301140
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301140
+      }
+    },
+    "server newer by 91 s" : {
+      "restored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    },
+    "server null, local kept" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 4,
+        "updatedAt" : 1793523600
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 0,
+        "lastView" : "summary",
+        "summaryPara" : 4,
+        "updatedAt" : 1793523600
+      }
+    },
+    "server null, no local" : {
+      "restored" : null,
+      "stored" : null
+    },
+    "server older: local kept" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794304800
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794304800
+      }
+    },
+    "server paused: nothing adopted" : {
+      "restored" : null,
+      "stored" : null
+    },
+    "server without a date, local kept" : {
+      "restored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793527200
+      },
+      "stored" : {
+        "chapterIndex" : 2,
+        "chapterSlug" : "c2",
+        "fullChar" : 500,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1793527200
+      }
+    },
+    "server without a date, no local: stamped now" : {
+      "restored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : "now"
+      },
+      "stored" : {
+        "chapterIndex" : 4,
+        "chapterSlug" : "c4",
+        "fullChar" : 2,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : "now"
+      }
+    },
+    "unknown view kept as is" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 11,
+        "lastView" : "pages",
+        "summaryPara" : 2,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 11,
+        "lastView" : "pages",
+        "summaryPara" : 2,
+        "updatedAt" : 1794301200
+      }
+    },
+    "view null is full" : {
+      "restored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 40,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      },
+      "stored" : {
+        "chapterIndex" : 1,
+        "chapterSlug" : "c1",
+        "fullChar" : 40,
+        "lastView" : "full",
+        "summaryPara" : 0,
+        "updatedAt" : 1794301200
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

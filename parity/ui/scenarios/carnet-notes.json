@@ -1,0 +1,37 @@
+{
+  "name": "carnet-notes",
+  "app": "carnet",
+  "about": "Menu → Notes: every note, by month; one opens its entry.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": "Notes"
+    },
+    {
+      "see": "Les images du Japon."
+    },
+    {
+      "checkpoint": "the notes"
+    },
+    {
+      "tap": "Les images du Japon."
+    },
+    {
+      "see": "Turn over"
+    },
+    {
+      "checkpoint": "its entry"
+    }
+  ]
+}

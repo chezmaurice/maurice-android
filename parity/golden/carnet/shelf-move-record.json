@@ -1,0 +1,78 @@
+{
+  "domain" : "shelf-move-record",
+  "results" : {
+    "rdata a zero-length string" : {
+      "txt" : "ok"
+    },
+    "rdata empty" : {
+      "txt" : ""
+    },
+    "rdata invalid utf-8" : {
+      "txt" : "��"
+    },
+    "rdata length past the end" : {
+      "txt" : "abc"
+    },
+    "rdata one string" : {
+      "txt" : "hello"
+    },
+    "rdata two strings joined" : {
+      "txt" : "v=maurice"
+    },
+    "rdata utf-8" : {
+      "txt" : "é�"
+    },
+    "record (empty)" : {
+      "moved" : null
+    },
+    "record garbage" : {
+      "moved" : null
+    },
+    "record moved=https://new.chezmaurice.eu; v=maurice1" : {
+      "moved" : "https://new.chezmaurice.eu"
+    },
+    "record v = maurice1 ; moved = https://new.chezmaurice.eu " : {
+      "moved" : "https://new.chezmaurice.eu"
+    },
+    "record v=maurice1" : {
+      "moved" : null
+    },
+    "record v=maurice1; moved=" : {
+      "moved" : null
+    },
+    "record v=maurice1; moved=http://new.chezmaurice.eu" : {
+      "moved" : null
+    },
+    "record v=maurice1; moved=https://" : {
+      "moved" : null
+    },
+    "record v=maurice1; moved=https://new.chezmaurice.eu" : {
+      "moved" : "https://new.chezmaurice.eu"
+    },
+    "record v=maurice1; moved=HTTPS://new.chezmaurice.eu" : {
+      "moved" : null
+    },
+    "record V=maurice1; MOVED=https://new.chezmaurice.eu" : {
+      "moved" : "https://new.chezmaurice.eu"
+    },
+    "record v=maurice1; moved=https://new.chezmaurice.eu; moved=https://other.eu" : {
+      "moved" : "https://other.eu"
+    },
+    "record v=maurice1; moved=https://new.chezmaurice.eu:8443" : {
+      "moved" : "https://new.chezmaurice.eu:8443"
+    },
+    "record v=maurice1; moved=https://new.chezmaurice.eu/path" : {
+      "moved" : "https://new.chezmaurice.eu/path"
+    },
+    "record v=maurice1;moved=https://new.chezmaurice.eu/" : {
+      "moved" : "https://new.chezmaurice.eu"
+    },
+    "record v=maurice2; moved=https://new.chezmaurice.eu" : {
+      "moved" : null
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

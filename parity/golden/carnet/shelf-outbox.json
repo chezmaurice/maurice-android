@@ -1,0 +1,448 @@
+{
+  "domain" : "shelf-outbox",
+  "results" : {
+    "another member's capture, signed out" : {
+      "left" : [
+        "https://a.test/theirs"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/mine"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "another member's capture, still signed in on the device" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/mine"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u2",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/theirs"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "answer not JSON but 200" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "forbidden (403)" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "household offline: everything stays" : {
+      "left" : [
+        "https://a.test/1",
+        "https://a.test/2"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/2"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "not found (404)" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "nothing waiting" : {
+      "left" : [
+
+      ],
+      "requests" : [
+
+      ]
+    },
+    "one capture with an empty note" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "one capture without note nor title" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "one capture, sent" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "Pourquoi pas",
+            "locale" : "fr",
+            "title" : "Un",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rate limited (429)" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "refused (422)" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "refused for good (400)" : {
+      "left" : [
+        "not a url"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "not a url"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "saved, the answer without a title" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "session refused (401)" : {
+      "left" : [
+        "https://a.test/1",
+        "https://a.test/2"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "the first fails, the second goes" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/2"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "three, sent oldest first" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/old"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/mid"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/new"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "timeout from the server (408)" : {
+      "left" : [
+        "https://a.test/1"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "url" : "https://a.test/1"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "unicode note and title" : {
+      "left" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "« Très » 👩‍👩‍👧",
+            "locale" : "fr",
+            "title" : "L'été",
+            "url" : "https://a.test/é?q=œ&x=1#frag"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles",
+          "query" : {
+
+          }
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

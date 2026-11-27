@@ -1,0 +1,575 @@
+{
+  "checkpoints": [
+    {
+      "name": "refused",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "password": "correct-horse",
+            "username": "alice"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/events",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/budget",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/maurices",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "device_locale": "en"
+          },
+          "contentType": "application/json",
+          "method": "PATCH",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "app": "maurice",
+            "app_version": "0.1 (1)",
+            "install_id": "6abfc820-5817-4ba0-bbde-1db3fe203afb",
+            "model": "iPhone18,1",
+            "os_version": "26.3.1",
+            "platform": "iOS"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/device",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models/everyday",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/tool-families",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/unread",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/gardens",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/web-themes",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "anthropic"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/files",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/contact-accounts",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "chatgpt"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "rotate": false
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/mcp-token",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/events",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "confirm": "alice",
+            "password": "wrong-one",
+            "pin": "wrong-one",
+            "scope": "data"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/me/erase",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "100%",
+        "A",
+        "A, Alice",
+        "AI providers",
+        "Accepted on October 29, 2026",
+        "Add",
+        "Alice",
+        "Attachements",
+        "Back",
+        "Block",
+        "Bring back an archive exported from here or from another Maurice. It is added to your account; nothing already there is replaced.",
+        "Cancel",
+        "Chez Maurice",
+        "Choose the archive…",
+        "Clear Night",
+        "Clone my notes",
+        "Close",
+        "Comment Lines",
+        "Conversations, notes, files, mail, facts and everything Maurice drew from them are erased from the server. Your account stays, empty. This cannot be undone: export first if you want to keep a copy.",
+        "Delete my account",
+        "Delete my account…",
+        "Domains",
+        "Download",
+        "Erase my data",
+        "Erase my data…",
+        "Everything is erased, then the account itself. The rooms you shared stay with the others, without your messages. This cannot be undone.",
+        "Everything this Maurice keeps of you is about to be erased, for good. Your account stays.",
+        "Everything this Maurice’s server keeps of you is yours: you can take it away, bring it back, erase it, or leave.",
+        "Export my data",
+        "Export…",
+        "Get Mail",
+        "Half screen",
+        "Import an archive",
+        "Microphone",
+        "My data",
+        "New conversation",
+        "Next Page",
+        "Nothing in the last 90 days.",
+        "One file with your conversations, your notes and their history, your files, your images, the mail that was read and the rest, in a readable format. It holds no password and none of other people’s messages.",
+        "Paris, France",
+        "Passwords",
+        "Privacy Policy",
+        "Scaleway Generative APIs",
+        "Search",
+        "Settings",
+        "Share",
+        "Sheet Grabber",
+        "Show the address",
+        "Sign out",
+        "The ChatGPT or Claude conversations you import",
+        "The mail you let Maurice read",
+        "The night’s local backups are rewritten without you when you erase. If this Maurice is hosted, the host’s off-site backups expire on their own, on the host’s schedule.",
+        "The notes, books and files you load into a conversation",
+        "The photos, files and pages you attach",
+        "The work done at night from the same data: summaries, domains, facts Maurice keeps",
+        "To confirm, type your username: alice",
+        "Typing Predictions",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 3 pages",
+        "WHAT IS SENT",
+        "WHERE YOUR DATA GOES",
+        "What the admin did in your account",
+        "What you give Maurice is sent to these services so they can answer. You decide whether it may be. Maurice is an AI; his answers can be inaccurate.",
+        "Withdraw my consent",
+        "Withdrawing stops everything from being sent: Maurice no longer answers you and the night’s work stops for you. What was already sent is not recalled.",
+        "Wrong password.",
+        "Your Maurice’s admin manages the accounts. A code the admin makes can bring a device into yours, and the admin can export the whole Maurice, your notes and conversations included. Each time, it is written here.",
+        "Your dictations, only if you choose to have them transcribed by the server",
+        "Your messages to Maurice",
+        "Your notes have a git address: clone them into Obsidian, Working Copy or a terminal, and keep an up-to-date copy. Read-only for now: what you change there does not come back here.",
+        "alice",
+        "books.vertical",
+        "dismiss popup",
+        "eraser",
+        "gearshape",
+        "hand.raised.square",
+        "http://127.0.0.1:47800",
+        "maurice-logomark",
+        "person.crop.circle.badge.xmark",
+        "server.rack",
+        "•••••••••"
+      ]
+    },
+    {
+      "name": "erased",
+      "requests": [
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "confirm": "alice",
+            "password": "correct-horse",
+            "pin": "correct-horse",
+            "scope": "data"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/me/erase",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "98%",
+        "A",
+        "A, Alice",
+        "AI providers",
+        "Accepted on October 29, 2026",
+        "Add",
+        "Alice",
+        "Attachements",
+        "Back",
+        "Block",
+        "Bring back an archive exported from here or from another Maurice. It is added to your account; nothing already there is replaced.",
+        "Chez Maurice",
+        "Choose the archive…",
+        "Clear Night",
+        "Clone my notes",
+        "Close",
+        "Comment Lines",
+        "Conversations, notes, files, mail, facts and everything Maurice drew from them are erased from the server. Your account stays, empty. This cannot be undone: export first if you want to keep a copy.",
+        "Delete my account",
+        "Delete my account…",
+        "Domains",
+        "Download",
+        "Erase my data",
+        "Erase my data…",
+        "Everything is erased, then the account itself. The rooms you shared stay with the others, without your messages. This cannot be undone.",
+        "Everything this Maurice’s server keeps of you is yours: you can take it away, bring it back, erase it, or leave.",
+        "Export my data",
+        "Export…",
+        "Get Mail",
+        "Import an archive",
+        "Microphone",
+        "My data",
+        "New conversation",
+        "Next Page",
+        "Nothing in the last 90 days.",
+        "One file with your conversations, your notes and their history, your files, your images, the mail that was read and the rest, in a readable format. It holds no password and none of other people’s messages.",
+        "Paris, France",
+        "Privacy Policy",
+        "Scaleway Generative APIs",
+        "Search",
+        "Settings",
+        "Share",
+        "Show the address",
+        "Sign out",
+        "The ChatGPT or Claude conversations you import",
+        "The mail you let Maurice read",
+        "The night’s local backups are rewritten without you when you erase. If this Maurice is hosted, the host’s off-site backups expire on their own, on the host’s schedule.",
+        "The notes, books and files you load into a conversation",
+        "The photos, files and pages you attach",
+        "The work done at night from the same data: summaries, domains, facts Maurice keeps",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 3 pages",
+        "WHAT IS SENT",
+        "WHERE YOUR DATA GOES",
+        "What the admin did in your account",
+        "What you give Maurice is sent to these services so they can answer. You decide whether it may be. Maurice is an AI; his answers can be inaccurate.",
+        "Withdraw my consent",
+        "Withdrawing stops everything from being sent: Maurice no longer answers you and the night’s work stops for you. What was already sent is not recalled.",
+        "Your Maurice’s admin manages the accounts. A code the admin makes can bring a device into yours, and the admin can export the whole Maurice, your notes and conversations included. Each time, it is written here.",
+        "Your data is erased.",
+        "Your dictations, only if you choose to have them transcribed by the server",
+        "Your messages to Maurice",
+        "Your notes have a git address: clone them into Obsidian, Working Copy or a terminal, and keep an up-to-date copy. Read-only for now: what you change there does not come back here.",
+        "books.vertical",
+        "eraser",
+        "gearshape",
+        "hand.raised.square",
+        "http://127.0.0.1:47800",
+        "maurice-logomark",
+        "person.crop.circle.badge.xmark",
+        "server.rack"
+      ]
+    }
+  ],
+  "failures": []
+}

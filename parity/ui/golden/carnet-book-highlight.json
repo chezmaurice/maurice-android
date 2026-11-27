@@ -1,0 +1,198 @@
+{
+  "checkpoints": [
+    {
+      "name": "selected",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/chapters",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/reading-progress",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/chapters/by-slug/c1",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/highlights",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/bookmarks",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "chapter_index": 1,
+            "chapter_slug": "c1",
+            "position": 0,
+            "view": "full"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/calibre/books/7/reading-progress",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 / 3 · LE COMMENCEMENT",
+        "1 MIN",
+        "33 %",
+        "Back",
+        "Bookmark this chapter",
+        "Carnet",
+        "Copy",
+        "Edit",
+        "Forward",
+        "Highlight",
+        "Horizontal scroll bar, 1 page",
+        "LA SAGESSE · GASPARD KŒNIG",
+        "La sagesse commence par l'étonnement.",
+        "La sagesse commence par l'étonnement.\n\nOn ne sait rien, et c'est déjà beaucoup savoir.\n\nLe chemin est long, mais il est à nous.",
+        "Le chemin est long, mais il est à nous.",
+        "Le commencement",
+        "Look Up",
+        "Next chapter",
+        "Note",
+        "On ne sait rien, et c'est déjà beaucoup savoir.",
+        "Previous chapter",
+        "Summary",
+        "Text",
+        "Text size",
+        "Vertical scroll bar, 1 page"
+      ]
+    },
+    {
+      "name": "the highlight sheet",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1 / 3 · LE COMMENCEMENT",
+        "1 MIN",
+        "33 %",
+        "Back",
+        "Bookmark this chapter",
+        "Cancel",
+        "Carnet",
+        "Edit",
+        "Forward",
+        "HIGHLIGHT",
+        "Half screen",
+        "Horizontal scroll bar, 1 page",
+        "LA SAGESSE · GASPARD KŒNIG",
+        "La sagesse commence par l'étonnement.",
+        "La sagesse commence par l'étonnement.\n\nOn ne sait rien, et c'est déjà beaucoup savoir.\n\nLe chemin est long, mais il est à nous.",
+        "Le chemin est long, mais il est à nous.",
+        "Le commencement",
+        "Link to…",
+        "NOTE · OPTIONAL",
+        "Next chapter",
+        "Note",
+        "On ne sait rien, et c'est déjà beaucoup savoir.",
+        "Previous chapter",
+        "Save",
+        "Sheet Grabber",
+        "Summary",
+        "Text",
+        "Text size",
+        "Vertical scroll bar, 1 page",
+        "commence",
+        "dismiss popup",
+        "leaf"
+      ]
+    },
+    {
+      "name": "highlighted",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "chapter_slug": "c1",
+            "color": "yellow",
+            "end_offset": 19,
+            "quote": "commence",
+            "start_offset": 11,
+            "view": "full"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/calibre/books/7/highlights",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 / 3 · LE COMMENCEMENT",
+        "1 MIN · 1 HIGHLIGHT",
+        "33 %",
+        "Back",
+        "Bookmark this chapter",
+        "Carnet",
+        "Edit",
+        "Horizontal scroll bar, 1 page",
+        "LA SAGESSE · GASPARD KŒNIG",
+        "La sagesse commence par l'étonnement.",
+        "La sagesse commence par l'étonnement.\n\nOn ne sait rien, et c'est déjà beaucoup savoir.\n\nLe chemin est long, mais il est à nous.",
+        "Le chemin est long, mais il est à nous.",
+        "Le commencement",
+        "Next chapter",
+        "Note",
+        "On ne sait rien, et c'est déjà beaucoup savoir.",
+        "Previous chapter",
+        "Summary",
+        "Text",
+        "Text size",
+        "Vertical scroll bar, 1 page"
+      ]
+    }
+  ],
+  "failures": []
+}

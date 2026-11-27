@@ -1,0 +1,508 @@
+{
+  "domain" : "shelf-add-entry",
+  "results" : {
+    "a book a hosted library already holds" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "alreadyThere" : true,
+        "open" : "calibre/12"
+      }
+    },
+    "a book added to the library" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "alreadyThere" : false,
+        "open" : "calibre/57"
+      }
+    },
+    "a book added, answer unreadable" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "a book added, no id yet" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "alreadyThere" : false,
+        "open" : null
+      }
+    },
+    "a book the home library already holds" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "alreadyThere" : true,
+        "open" : null
+      }
+    },
+    "a file the library refuses" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: Not a book."
+      }
+    },
+    "a PDF added to the library, name in capitals" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "alreadyThere" : false,
+        "open" : "calibre/58"
+      }
+    },
+    "a row kept with its pick" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "candidate" : "wd:Q60025"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/p1/keep",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "open" : "people/fr/hannah-arendt"
+      }
+    },
+    "a row kept, no entry in the answer" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/s3/keep",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "open" : null
+      }
+    },
+    "a row kept, refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/s4/keep",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: Pick one first."
+      }
+    },
+    "a row kept: its entry opens" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/s1/keep",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "open" : "books/fr/aneantir"
+      }
+    },
+    "the library does not answer" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "unavailable: The library is not reachable."
+      }
+    },
+    "the library does not answer, empty body" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "multipart/form-data",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/add",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "unavailable: HTTP 503"
+      }
+    },
+    "the list read again" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/suggestions",
+          "query" : {
+            "batch" : "b-42"
+          }
+        }
+      ],
+      "result" : {
+        "batch" : "b-42",
+        "kept" : 1,
+        "pending" : 1,
+        "rows" : [
+          {
+            "candidates" : [
+
+            ],
+            "entry" : "books/fr/aneantir",
+            "existing" : false,
+            "id" : "s1",
+            "image" : null,
+            "isKept" : true,
+            "kind" : "books",
+            "note" : "",
+            "searchable" : null,
+            "state" : "kept",
+            "subtitle" : null,
+            "title" : "Anéantir",
+            "year" : null
+          },
+          {
+            "candidates" : [
+
+            ],
+            "entry" : "books/fr/serotonine",
+            "existing" : true,
+            "id" : "s2",
+            "image" : null,
+            "isKept" : false,
+            "kind" : "books",
+            "note" : "",
+            "searchable" : null,
+            "state" : "pending",
+            "subtitle" : null,
+            "title" : "Sérotonine",
+            "year" : null
+          }
+        ]
+      }
+    },
+    "words looked up" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "text" : "le dernier Houellebecq"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "batch" : "b-42",
+        "kept" : 0,
+        "pending" : 2,
+        "rows" : [
+          {
+            "candidates" : [
+
+            ],
+            "entry" : null,
+            "existing" : false,
+            "id" : "s1",
+            "image" : "/api/garden-images/x.jpg",
+            "isKept" : false,
+            "kind" : "books",
+            "note" : "",
+            "searchable" : true,
+            "state" : "pending",
+            "subtitle" : "Michel Houellebecq",
+            "title" : "Anéantir",
+            "year" : 2022
+          },
+          {
+            "candidates" : [
+
+            ],
+            "entry" : "books/fr/serotonine",
+            "existing" : true,
+            "id" : "s2",
+            "image" : null,
+            "isKept" : false,
+            "kind" : "books",
+            "note" : "",
+            "searchable" : true,
+            "state" : "pending",
+            "subtitle" : "Michel Houellebecq",
+            "title" : "Sérotonine",
+            "year" : 2019
+          }
+        ]
+      }
+    },
+    "words looked up, answer not a list" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "en",
+            "text" : "Dune"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "words looked up, no language" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Hannah Arendt"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "batch" : "b-1",
+        "kept" : 0,
+        "pending" : 1,
+        "rows" : [
+          {
+            "candidates" : [
+              {
+                "id" : "wd:Q60025",
+                "subtitle" : "philosopher",
+                "title" : "Hannah Arendt",
+                "year" : 1906
+              },
+              {
+                "id" : "wd:Q1",
+                "subtitle" : null,
+                "title" : "Hannah Arendt (film)",
+                "year" : 2012
+              }
+            ],
+            "entry" : null,
+            "existing" : false,
+            "id" : "p1",
+            "image" : null,
+            "isKept" : false,
+            "kind" : "people",
+            "note" : "",
+            "searchable" : true,
+            "state" : "pending",
+            "subtitle" : null,
+            "title" : "Hannah Arendt",
+            "year" : null
+          }
+        ]
+      }
+    },
+    "words looked up, nothing found" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "en",
+            "text" : "zzz"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "batch" : "b-2",
+        "kept" : 0,
+        "pending" : 0,
+        "rows" : [
+
+        ]
+      }
+    },
+    "words looked up, refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "en",
+            "text" : "Dune"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: ai_consent_required"
+      }
+    },
+    "words looked up, server error without words" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "en",
+            "text" : "Dune"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: HTTP 500"
+      }
+    },
+    "words looked up, Unicode and new lines" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "text" : "« L'Étranger »\nde Camus 🇫🇷"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/suggestions/from-text",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "batch" : null,
+        "kept" : 0,
+        "pending" : 0,
+        "rows" : [
+
+        ]
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

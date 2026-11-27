@@ -1,0 +1,57 @@
+{
+  "name": "carnet-way-in-unreachable",
+  "app": "carnet",
+  "about": "An address where no household answers (health 500): the code is never sent.",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "status": 500,
+      "json": {
+        "error": "Internal error"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "see": "Enter a code or an address"
+    },
+    {
+      "tap": "Enter a code or an address"
+    },
+    {
+      "tap": "XXXX-XXXX or myhome.chezmaurice.eu"
+    },
+    {
+      "type": "ABCD-EFGH"
+    },
+    {
+      "tap": "Connect"
+    },
+    {
+      "see": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "checkpoint": "the address asked"
+    },
+    {
+      "tap": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "type": "{base}"
+    },
+    {
+      "tap": "Connect",
+      "pause": 3
+    },
+    {
+      "checkpoint": "no household"
+    }
+  ]
+}

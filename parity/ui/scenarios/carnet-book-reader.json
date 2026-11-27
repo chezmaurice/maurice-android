@@ -1,0 +1,52 @@
+{
+  "name": "carnet-book-reader",
+  "app": "carnet",
+  "about": "A book opened from its entry: the reader at the position kept, a bookmark (its note sheet saved empty: neither app focuses the field), the next chapter (the position saved).",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Read",
+      "pause": 3
+    },
+    {
+      "see": "Le commencement"
+    },
+    {
+      "checkpoint": "the reader"
+    },
+    {
+      "tap": "Bookmark this chapter"
+    },
+    {
+      "see": "NOTE · LE COMMENCEMENT"
+    },
+    {
+      "checkpoint": "bookmarked"
+    },
+    {
+      "tap": "Save",
+      "pause": 2
+    },
+    {
+      "checkpoint": "the bookmark's note"
+    },
+    {
+      "tap": "Next chapter",
+      "pause": 2
+    },
+    {
+      "see": "Le milieu"
+    },
+    {
+      "checkpoint": "the next chapter"
+    }
+  ]
+}

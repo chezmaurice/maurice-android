@@ -1,0 +1,53 @@
+{
+  "checkpoints": [
+    {
+      "name": "asked",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "Chez Maurice",
+        "Forget",
+        "Forget Les Tilleuls on this device?",
+        "Go Down",
+        "Have an invite code?",
+        "Horizontal scroll bar, 1 page",
+        "Les Tilleuls",
+        "MauriceTile",
+        "Members signed in here are signed out, and what this device keeps for them is erased.",
+        "Other options",
+        "To join this Maurice on this device, enter the invitation code you were given.",
+        "Vertical scroll bar, 1 page",
+        "Who's here?",
+        "dismiss popup",
+        "leaf"
+      ]
+    },
+    {
+      "name": "forgotten",
+      "requests": [],
+      "texts": [
+        "0%",
+        "An assistant who knows you, and shows you what he knows.",
+        "Chez Maurice",
+        "Create my Maurice",
+        "Each Maurice is a place of its own. Your invitation lets you in.",
+        "Enter a code or an address",
+        "Maurice",
+        "MauriceTile",
+        "Paste",
+        "Paste the invitation link",
+        "Vertical scroll bar, 1 page"
+      ]
+    }
+  ],
+  "failures": []
+}

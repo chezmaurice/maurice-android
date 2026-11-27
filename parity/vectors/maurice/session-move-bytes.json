@@ -1,0 +1,33 @@
+{
+  "domain": "session-move-bytes",
+  "about": "The bytes a household move is read from: a TXT record's rdata (length-prefixed strings, joined), and the base64url the identity key and its proof are written in.",
+  "ios": "Maurice/Services/HouseholdMove.swift — HouseholdMove.decodeTXT, Data(base64URL:)",
+  "android": "core/session/HouseholdMove.kt — HouseholdMove.decodeTxt, HouseholdMove.base64Url",
+  "cases": [
+    { "name": "txt: one string", "input": { "txt": "0568656c6c6f" } },
+    { "name": "txt: two strings joined", "input": { "txt": "0568656c6c6f0620776f726c64" } },
+    { "name": "txt: a record split in two", "input": { "txt": "0b763d6d617572696365313b1a206d6f7665643d68747470733a2f2f6e65772e6578616d706c65" } },
+    { "name": "txt: nothing", "input": { "txt": "" } },
+    { "name": "txt: one empty string", "input": { "txt": "00" } },
+    { "name": "txt: length beyond the data", "input": { "txt": "0a6869" } },
+    { "name": "txt: a lone length byte", "input": { "txt": "05" } },
+    { "name": "txt: invalid UTF-8", "input": { "txt": "02c328" } },
+    { "name": "txt: UTF-8 split across strings", "input": { "txt": "01c301a9" } },
+    { "name": "txt: 255-byte string", "input": { "txt": "ff616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161" } },
+    { "name": "b64u: empty", "input": { "base64url": "" } },
+    { "name": "b64u: one char", "input": { "base64url": "A" } },
+    { "name": "b64u: two chars", "input": { "base64url": "AQ" } },
+    { "name": "b64u: three chars", "input": { "base64url": "AQI" } },
+    { "name": "b64u: four chars", "input": { "base64url": "AQID" } },
+    { "name": "b64u: url alphabet", "input": { "base64url": "-_-_" } },
+    { "name": "b64u: standard alphabet", "input": { "base64url": "+/+/" } },
+    { "name": "b64u: padded", "input": { "base64url": "AQ==" } },
+    { "name": "b64u: half padded", "input": { "base64url": "AQ=" } },
+    { "name": "b64u: non-zero trailing bits", "input": { "base64url": "AB" } },
+    { "name": "b64u: leading space", "input": { "base64url": " AQID" } },
+    { "name": "b64u: trailing newline", "input": { "base64url": "AQID\n" } },
+    { "name": "b64u: invalid char", "input": { "base64url": "AQ!D" } },
+    { "name": "b64u: identity key", "input": { "base64url": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } },
+    { "name": "b64u: proof signature", "input": { "base64url": "JrYGGEXWjQcyZ_1pIxTeY8c_w9ywbZpYJsZsGC6EPqxxucsif1NSika95grWYWGZ_hFxRvhfNeId1sCGJZq1DA" } }
+  ]
+}

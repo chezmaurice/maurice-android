@@ -1,0 +1,1336 @@
+{
+  "domain": "accounts-received",
+  "about": "A conversation received read-only from another household (specs/cross-household-share.md, E): which household the band names, from the list's row or the detail; and 'New conversation from this one', held from the same entry.",
+  "ios": "ChatService.activeReceivedFrom, startFromReceived",
+  "android": "ChatState.activeReceivedFrom, ChatController.startFromReceived",
+  "cases": [
+    {
+      "name": "received, named household: no composer, its band",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin",
+              "entry_ref": "books/fr/dune"
+            },
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Les Martin",
+            "entry": {
+              "ref": "books/fr/dune",
+              "collection": "books",
+              "title": "Dune"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "received, the household unnamed",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "received, imported_from null",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": null
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "the row says received, the detail says nothing",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "the row says received, the detail says not",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "the detail says received, the row says nothing",
+      "input": {
+        "open": "c1"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Chez Paul"
+          }
+        }
+      ]
+    },
+    {
+      "name": "an ordinary conversation",
+      "input": {
+        "open": "c2"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            },
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c2",
+          "json": {
+            "id": "c2",
+            "title": "T c2",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "an older server: neither field",
+      "input": {
+        "open": "c2"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c2",
+          "json": {
+            "id": "c2",
+            "title": "T c2",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "read_only false with a household named",
+      "input": {
+        "open": "c2"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": false,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c2",
+          "json": {
+            "id": "c2",
+            "title": "T c2",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": false,
+            "imported_from": "Les Martin"
+          }
+        }
+      ]
+    },
+    {
+      "name": "nothing open",
+      "input": {},
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        }
+      ]
+    },
+    {
+      "name": "go on: a new conversation held from the same entry",
+      "input": {
+        "open": "c1",
+        "action": "continue",
+        "after": [
+          {
+            "method": "GET",
+            "path": "/api/suggestions",
+            "json": {
+              "pending": 0,
+              "kept": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "re:^/api/conversations/[^/]+/read$",
+            "json": {
+              "ok": true
+            }
+          },
+          {
+            "method": "GET",
+            "path": "re:^/api/conversations/[^/]+/turn$",
+            "status": 204
+          },
+          {
+            "method": "POST",
+            "path": "/api/conversations",
+            "json": {
+              "id": "c9",
+              "title": null,
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "entry_ref": "books/fr/dune"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/api/conversations/c9",
+            "json": {
+              "id": "c9",
+              "title": "T c9",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "messages": [],
+              "participants": [
+                {
+                  "member_id": "u1",
+                  "role": "owner",
+                  "display_name": "Alice",
+                  "avatar_color": "#aa0000"
+                }
+              ],
+              "entry": {
+                "ref": "books/fr/dune",
+                "collection": "books",
+                "title": "Dune"
+              }
+            }
+          }
+        ]
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin",
+              "entry_ref": "books/fr/dune"
+            },
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Les Martin",
+            "entry": {
+              "ref": "books/fr/dune",
+              "collection": "books",
+              "title": "Dune"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "go on: the server answers a conversation already listed",
+      "input": {
+        "open": "c1",
+        "action": "continue",
+        "after": [
+          {
+            "method": "GET",
+            "path": "/api/suggestions",
+            "json": {
+              "pending": 0,
+              "kept": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "re:^/api/conversations/[^/]+/read$",
+            "json": {
+              "ok": true
+            }
+          },
+          {
+            "method": "GET",
+            "path": "re:^/api/conversations/[^/]+/turn$",
+            "status": 204
+          },
+          {
+            "method": "POST",
+            "path": "/api/conversations",
+            "json": {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "entry_ref": "books/fr/dune"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/api/conversations/c2",
+            "json": {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "messages": [
+                {
+                  "id": "m1",
+                  "role": "user",
+                  "content": "Tu as lu Dune ?",
+                  "author_id": "u9",
+                  "created_at": "2026-11-10 18:00:00"
+                },
+                {
+                  "id": "m2",
+                  "role": "assistant",
+                  "content": "Oui.",
+                  "created_at": "2026-11-10 18:00:05"
+                }
+              ],
+              "participants": [
+                {
+                  "member_id": "u1",
+                  "role": "owner",
+                  "display_name": "Alice",
+                  "avatar_color": "#aa0000"
+                }
+              ],
+              "entry": {
+                "ref": "books/fr/dune",
+                "collection": "books",
+                "title": "Dune"
+              }
+            }
+          }
+        ]
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            },
+            {
+              "id": "c2",
+              "title": "T c2",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Les Martin",
+            "entry": {
+              "ref": "books/fr/dune",
+              "collection": "books",
+              "title": "Dune"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "go on: refused by the server",
+      "input": {
+        "open": "c1",
+        "action": "continue",
+        "after": [
+          {
+            "method": "GET",
+            "path": "/api/suggestions",
+            "json": {
+              "pending": 0,
+              "kept": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "re:^/api/conversations/[^/]+/read$",
+            "json": {
+              "ok": true
+            }
+          },
+          {
+            "method": "GET",
+            "path": "re:^/api/conversations/[^/]+/turn$",
+            "status": 204
+          },
+          {
+            "method": "POST",
+            "path": "/api/conversations",
+            "status": 403,
+            "json": {
+              "error": "This entry is not yours"
+            }
+          }
+        ]
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Les Martin",
+            "entry": {
+              "ref": "books/fr/dune",
+              "collection": "books",
+              "title": "Dune"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "go on: no entry given here, a new conversation",
+      "input": {
+        "open": "c1",
+        "action": "continue",
+        "after": [
+          {
+            "method": "GET",
+            "path": "/api/suggestions",
+            "json": {
+              "pending": 0,
+              "kept": 0
+            }
+          },
+          {
+            "method": "POST",
+            "path": "re:^/api/conversations/[^/]+/read$",
+            "json": {
+              "ok": true
+            }
+          },
+          {
+            "method": "GET",
+            "path": "re:^/api/conversations/[^/]+/turn$",
+            "status": 204
+          },
+          {
+            "method": "POST",
+            "path": "/api/conversations",
+            "json": {
+              "id": "c9",
+              "title": null,
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00"
+            }
+          },
+          {
+            "method": "GET",
+            "path": "/api/conversations/c9",
+            "json": {
+              "id": "c9",
+              "title": "T c9",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "messages": [],
+              "participants": [
+                {
+                  "member_id": "u1",
+                  "role": "owner",
+                  "display_name": "Alice",
+                  "avatar_color": "#aa0000"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "accepted": {
+        "kind": "platform",
+        "why": "Android opens a blank page and creates the conversation on its first send (ChatController.startNew), as everywhere; iOS creates it at once (createConversation(force:))"
+      },
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/conversations",
+          "json": [
+            {
+              "id": "c1",
+              "title": "T c1",
+              "maurice_id": null,
+              "created_at": "2026-10-01 09:00:00",
+              "updated_at": "2026-11-10 18:30:00",
+              "read_only": true,
+              "imported_from": "Les Martin"
+            }
+          ]
+        },
+        {
+          "method": "GET",
+          "path": "/api/suggestions",
+          "json": {
+            "pending": 0,
+            "kept": 0
+          }
+        },
+        {
+          "method": "POST",
+          "path": "re:^/api/conversations/[^/]+/read$",
+          "json": {
+            "ok": true
+          }
+        },
+        {
+          "method": "GET",
+          "path": "re:^/api/conversations/[^/]+/turn$",
+          "status": 204
+        },
+        {
+          "method": "GET",
+          "path": "/api/conversations/c1",
+          "json": {
+            "id": "c1",
+            "title": "T c1",
+            "maurice_id": null,
+            "created_at": "2026-10-01 09:00:00",
+            "updated_at": "2026-11-10 18:30:00",
+            "messages": [
+              {
+                "id": "m1",
+                "role": "user",
+                "content": "Tu as lu Dune ?",
+                "author_id": "u9",
+                "created_at": "2026-11-10 18:00:00"
+              },
+              {
+                "id": "m2",
+                "role": "assistant",
+                "content": "Oui.",
+                "created_at": "2026-11-10 18:00:05"
+              }
+            ],
+            "participants": [
+              {
+                "member_id": "u1",
+                "role": "owner",
+                "display_name": "Alice",
+                "avatar_color": "#aa0000"
+              }
+            ],
+            "read_only": true,
+            "imported_from": "Les Martin"
+          }
+        }
+      ]
+    }
+  ]
+}

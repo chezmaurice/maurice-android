@@ -1,0 +1,155 @@
+{
+  "domain" : "session-shared-pairings",
+  "results" : {
+    "a key on one side only: by address" : {
+      "current" : null,
+      "households" : [
+        {
+          "active" : "u9",
+          "key" : "K",
+          "members" : [
+
+          ],
+          "name" : "A",
+          "server" : "https://a.test",
+          "tokens" : {
+
+          }
+        }
+      ]
+    },
+    "different keys at one address: two households" : {
+      "current" : null,
+      "households" : [
+        {
+          "active" : null,
+          "key" : "K1",
+          "members" : [
+
+          ],
+          "name" : "A",
+          "server" : "https://a.test",
+          "tokens" : {
+
+          }
+        },
+        {
+          "active" : null,
+          "key" : "K2",
+          "members" : [
+
+          ],
+          "name" : "B",
+          "server" : "https://a.test",
+          "tokens" : {
+
+          }
+        }
+      ]
+    },
+    "no current here, theirs taken" : {
+      "current" : "https://b.test",
+      "households" : [
+        {
+          "active" : null,
+          "key" : null,
+          "members" : [
+
+          ],
+          "name" : "A",
+          "server" : "https://a.test",
+          "tokens" : {
+
+          }
+        },
+        {
+          "active" : null,
+          "key" : null,
+          "members" : [
+
+          ],
+          "name" : "B",
+          "server" : "https://b.test",
+          "tokens" : {
+
+          }
+        }
+      ]
+    },
+    "nothing on either side" : {
+      "current" : null,
+      "households" : [
+
+      ]
+    },
+    "only the other knows a household" : {
+      "current" : "https://a.test",
+      "households" : [
+        {
+          "active" : "u1",
+          "key" : "K",
+          "members" : [
+            {
+              "id" : "u1",
+              "name" : "Alice"
+            }
+          ],
+          "name" : "A",
+          "server" : "https://a.test",
+          "tokens" : {
+            "u1" : "t1"
+          }
+        }
+      ]
+    },
+    "same address: members and tokens joined, mine win" : {
+      "current" : "https://a.test",
+      "households" : [
+        {
+          "active" : "u1",
+          "key" : "K",
+          "members" : [
+            {
+              "id" : "u1",
+              "name" : "Alice"
+            },
+            {
+              "id" : "u2",
+              "name" : "Bruno"
+            }
+          ],
+          "name" : "A",
+          "server" : "https://a.test",
+          "tokens" : {
+            "u1" : "mine",
+            "u2" : "t2"
+          }
+        }
+      ]
+    },
+    "same key, moved address" : {
+      "current" : "https://old.test",
+      "households" : [
+        {
+          "active" : "u1",
+          "key" : "K",
+          "members" : [
+            {
+              "id" : "u1",
+              "name" : "Alice"
+            }
+          ],
+          "name" : "A",
+          "server" : "https://old.test",
+          "tokens" : {
+            "u1" : "t1"
+          }
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

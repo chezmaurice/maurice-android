@@ -1,0 +1,42 @@
+{
+  "domain" : "session-address",
+  "results" : {
+    "bare host" : "https://maison.example",
+    "emoji host" : "https://🏠.example",
+    "empty" : null,
+    "fragment" : "https://maison.example#top",
+    "ftp scheme" : "https://ftp://maison.example",
+    "http scheme only" : null,
+    "http with port" : "http://192.168.1.10:3000",
+    "https" : "https://maison.example",
+    "https IPv6" : "https://[::1]:3000",
+    "https with path and slash" : "https://maison.example/garden",
+    "IDN" : "https://münchen.example",
+    "IPv4" : "https://192.168.1.10",
+    "IPv6 with port" : "https://[::1]:3000",
+    "letters as port" : null,
+    "localhost" : "https://localhost",
+    "localhost with port" : "https://localhost:3000",
+    "mixed-case http scheme" : "Http://maison.example",
+    "newline only" : null,
+    "pasted app link" : "https://maurice://join?server=maison.example&code=ABCD1234",
+    "pasted QR link" : "https://maison.example/join?code=ABCD1234",
+    "port alone" : null,
+    "port out of range" : "https://maison.example:99999",
+    "query" : "https://maison.example?x=1",
+    "scheme only" : null,
+    "several trailing slashes" : "https://maison.example",
+    "slash" : null,
+    "space inside" : null,
+    "spaces and trailing slash" : "https://maison.example",
+    "spaces only" : null,
+    "tab inside" : null,
+    "uppercase scheme" : "HTTPS://Maison.Example",
+    "user in front" : "https://alice@maison.example",
+    "with a path" : "https://maison.example/garden"
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

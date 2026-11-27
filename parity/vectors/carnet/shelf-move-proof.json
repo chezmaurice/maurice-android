@@ -1,0 +1,125 @@
+{
+ "domain": "shelf-move-proof",
+ "about": "Whether a new address proves it is the household whose key was pinned: no signature, a wrong key, a failure — never followed.",
+ "ios": "CarnetApp/Services/HouseholdMove.swift — proves",
+ "android": "core/session/HouseholdMove.kt — proves",
+ "cases": [
+  {
+   "name": "another key",
+   "input": {
+    "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "proof": "AAAA"
+     }
+    }
+   ]
+  },
+  {
+   "name": "same key, no proof",
+   "input": {
+    "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+     }
+    }
+   ]
+  },
+  {
+   "name": "same key, a forged proof",
+   "input": {
+    "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "proof": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+     }
+    }
+   ]
+  },
+  {
+   "name": "same key, proof not base64",
+   "input": {
+    "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "proof": "%%%"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the address answers 500",
+   "input": {
+    "key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the key pinned is not a key",
+   "input": {
+    "key": "not-a-key"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "not-a-key",
+      "proof": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the key pinned is empty",
+   "input": {
+    "key": ""
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "",
+      "proof": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+     }
+    }
+   ]
+  }
+ ]
+}

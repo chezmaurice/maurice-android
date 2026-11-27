@@ -1,0 +1,373 @@
+{
+  "checkpoints": [
+    {
+      "name": "signed out",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "password": "correct-horse",
+            "username": "alice"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/events",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/budget",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/maurices",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "device_locale": "en"
+          },
+          "contentType": "application/json",
+          "method": "PATCH",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models/everyday",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/tool-families",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "app": "maurice",
+            "app_version": "0.1 (1)",
+            "install_id": "014d956c-ff59-462d-87aa-8cf03a7b5018",
+            "model": "iPhone18,1",
+            "os_version": "26.3.1",
+            "platform": "iOS"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/device",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/unread",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/gardens",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/web-themes",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/files",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/mail-accounts",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "anthropic"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/contact-accounts",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "rotate": false
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/mcp-token",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/import/history",
+          "query": {
+            "provider": "chatgpt"
+          },
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {},
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/logout",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "Chez Maurice",
+        "Go Down",
+        "Have an invite code?",
+        "Les Tilleuls",
+        "MauriceTile",
+        "Other options",
+        "To join this Maurice on this device, enter the invitation code you were given.",
+        "Vertical scroll bar, 1 page",
+        "Who's here?",
+        "leaf"
+      ]
+    }
+  ],
+  "failures": []
+}

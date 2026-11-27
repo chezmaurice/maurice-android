@@ -1,0 +1,232 @@
+{
+  "domain" : "content-chat",
+  "results" : {
+    "remove: Bob, added by mistake" : {
+      "banner" : null,
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1/participants/u2"
+        }
+      ]
+    },
+    "remove: refused by the server" : {
+      "banner" : "[403] Forbidden",
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1/participants/u2"
+        }
+      ]
+    },
+    "remove: someone not in the room" : {
+      "banner" : null,
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1/participants/u9"
+        }
+      ]
+    },
+    "suggestion: a library book" : {
+      "rows" : [
+        {
+          "existing" : false,
+          "id" : "s1",
+          "inLibrary" : true
+        }
+      ]
+    },
+    "suggestion: a server before 8 November (no in_library)" : {
+      "rows" : [
+        {
+          "existing" : false,
+          "id" : "s1",
+          "inLibrary" : null
+        }
+      ]
+    },
+    "suggestion: existing and in_library" : {
+      "rows" : [
+        {
+          "existing" : true,
+          "id" : "s1",
+          "inLibrary" : true
+        }
+      ]
+    },
+    "suggestion: in_library false" : {
+      "rows" : [
+        {
+          "existing" : false,
+          "id" : "s1",
+          "inLibrary" : false
+        }
+      ]
+    },
+    "suggestion: in_library null" : {
+      "rows" : [
+        {
+          "existing" : false,
+          "id" : "s1",
+          "inLibrary" : null
+        }
+      ]
+    },
+    "tool: '' running=False ×1" : {
+      "label" : "Used ",
+      "name" : "Used "
+    },
+    "tool: '' running=False ×3" : {
+      "label" : "Used ",
+      "name" : "Used  ×3"
+    },
+    "tool: '' running=True ×1" : {
+      "label" : "Using ",
+      "name" : "Using "
+    },
+    "tool: '' running=True ×3" : {
+      "label" : "Using ",
+      "name" : "Using  ×3"
+    },
+    "tool: 'corpus__search' running=False ×1" : {
+      "label" : "Used corpus",
+      "name" : "Used corpus"
+    },
+    "tool: 'corpus__search' running=False ×3" : {
+      "label" : "Used corpus",
+      "name" : "Used corpus ×3"
+    },
+    "tool: 'corpus__search' running=True ×1" : {
+      "label" : "Using corpus",
+      "name" : "Using corpus"
+    },
+    "tool: 'corpus__search' running=True ×3" : {
+      "label" : "Using corpus",
+      "name" : "Using corpus ×3"
+    },
+    "tool: 'garden__read_note' running=False ×1" : {
+      "label" : "Used garden",
+      "name" : "Used garden"
+    },
+    "tool: 'garden__read_note' running=False ×3" : {
+      "label" : "Used garden",
+      "name" : "Used garden ×3"
+    },
+    "tool: 'garden__read_note' running=True ×1" : {
+      "label" : "Using garden",
+      "name" : "Using garden"
+    },
+    "tool: 'garden__read_note' running=True ×3" : {
+      "label" : "Using garden",
+      "name" : "Using garden ×3"
+    },
+    "tool: 'plain_tool' running=False ×1" : {
+      "label" : "Used plain_tool",
+      "name" : "Used plain_tool"
+    },
+    "tool: 'plain_tool' running=False ×3" : {
+      "label" : "Used plain_tool",
+      "name" : "Used plain_tool ×3"
+    },
+    "tool: 'plain_tool' running=True ×1" : {
+      "label" : "Using plain_tool",
+      "name" : "Using plain_tool"
+    },
+    "tool: 'plain_tool' running=True ×3" : {
+      "label" : "Using plain_tool",
+      "name" : "Using plain_tool ×3"
+    },
+    "tool: 'read_web_page' running=False ×1" : {
+      "label" : "Page read",
+      "name" : "Page read"
+    },
+    "tool: 'read_web_page' running=False ×3" : {
+      "label" : "Page read",
+      "name" : "Page read ×3"
+    },
+    "tool: 'read_web_page' running=True ×1" : {
+      "label" : "Reading a page",
+      "name" : "Reading a page"
+    },
+    "tool: 'read_web_page' running=True ×3" : {
+      "label" : "Reading a page",
+      "name" : "Reading a page ×3"
+    },
+    "tool: 'music__add' running=False ×1" : {
+      "label" : "Used music",
+      "name" : "Used music"
+    },
+    "tool: 'music__add' running=False ×3" : {
+      "label" : "Used music",
+      "name" : "Used music ×3"
+    },
+    "tool: 'music__add' running=True ×1" : {
+      "label" : "Using music",
+      "name" : "Using music"
+    },
+    "tool: 'music__add' running=True ×3" : {
+      "label" : "Using music",
+      "name" : "Using music ×3"
+    },
+    "tool: 'web_search' running=False ×1" : {
+      "label" : "Searched the web",
+      "name" : "Searched the web"
+    },
+    "tool: 'web_search' running=False ×3" : {
+      "label" : "Searched the web",
+      "name" : "Searched the web ×3"
+    },
+    "tool: 'web_search' running=True ×1" : {
+      "label" : "Searching the web",
+      "name" : "Searching the web"
+    },
+    "tool: 'web_search' running=True ×3" : {
+      "label" : "Searching the web",
+      "name" : "Searching the web ×3"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

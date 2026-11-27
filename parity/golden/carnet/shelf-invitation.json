@@ -1,0 +1,106 @@
+{
+  "domain" : "shelf-invitation",
+  "results" : {
+    "  https://monfoyer.chezmaurice.eu/join?code=ABCD-1234  \n" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "(empty)" : null,
+    "ABCD-1234" : null,
+    "carnet://join?code=ABCD-1234" : null,
+    "carnet://join?server=http://192.168.1.20:3000&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "http://192.168.1.20:3000"
+    },
+    "carnet://join?server=https://monfoyer.chezmaurice.eu/path/&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "carnet://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "CARNET://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "carnet://join?server=https://MonFoyer.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.eu"
+    },
+    "carnet://join?server=https%3A%2F%2Fmonfoyer.chezmaurice.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "carnet://join?server=localhost:3000&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://localhost:3000"
+    },
+    "carnet://join?server=monfoyer.chezmaurice.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "carnet://join?server=nodot&code=ABCD-1234" : null,
+    "carnet://other?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234" : null,
+    "ftp://monfoyer.chezmaurice.eu/join?code=ABCD-1234" : null,
+    "http://192.168.1.20:80/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "http://192.168.1.20:80"
+    },
+    "http://192.168.1.20:3000/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "http://192.168.1.20:3000"
+    },
+    "https://monfoyer.chezmaurice.eu:443/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu:443"
+    },
+    "https://monfoyer.chezmaurice.eu:8443/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu:8443"
+    },
+    "https://monfoyer.chezmaurice.eu/join" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=AB-CD-12-34" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=ABC-1234" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=ABCD 1234" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "https://MonFoyer.ChezMaurice.eu/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://MonFoyer.ChezMaurice.eu"
+    },
+    "HTTPS://monfoyer.chezmaurice.eu/join?code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "https://monfoyer.chezmaurice.eu/join?code=ABCD%201234" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=abcd1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "https://monfoyer.chezmaurice.eu/join?code=ABCD12345" : null,
+    "https://monfoyer.chezmaurice.eu/join?code=ÉBCD1234" : {
+      "code" : "ÉBCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "https://monfoyer.chezmaurice.eu/join?foo=1&code=ABCD-1234&code=WXYZ-0000" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "https://monfoyer.chezmaurice.eu/join/?code=ABCD-1234" : null,
+    "https://monfoyer.chezmaurice.eu/other?code=ABCD-1234" : null,
+    "maurice://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234" : {
+      "code" : "ABCD-1234",
+      "server" : "https://monfoyer.chezmaurice.eu"
+    },
+    "monfoyer.chezmaurice.eu/join?code=ABCD-1234" : null,
+    "not a link at all" : null
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

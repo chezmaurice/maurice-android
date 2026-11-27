@@ -1,0 +1,2313 @@
+{
+  "domain" : "shelf-reads",
+  "results" : {
+    "a book only in the library has no page" : {
+      "requests" : [
+
+      ],
+      "result" : null
+    },
+    "an entry by its name" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la%20sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry with a slash and reserved signs in its slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/posts/fr/a/b%20c%3Fd%23e",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "posts",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "posts/fr/a/b",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "posts",
+          "kindLabel" : "Posts",
+          "kindLine" : "Post · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "a/b c?d#e",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry with a unicode slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/l-%C5%93uvre-%C3%A9",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/l-œuvre-é",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "l-œuvre-é",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "L'œuvre",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page without deploy" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : null,
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page, deploy failed" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : "git push refused",
+          "failed" : true,
+          "inProgress" : false,
+          "status" : "failed"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page, deploy malformed" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : null,
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page, item of an unknown kind" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "f.md",
+            "items" : [
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "drawing||||?",
+                "kind" : "drawing",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "?",
+                "view" : null
+              }
+            ],
+            "notes" : 1,
+            "opened" : true,
+            "prose" : "",
+            "webPath" : null
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 1,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page, item without kind" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "an entry's page, mine without items" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "an entry's page, no faces" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : null,
+          "shared" : null
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "an entry's page, not found" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: entry not found"
+      }
+    },
+    "an entry's page, row missing its title" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "an entry's page, shared state unknown" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "an entry's page, shared without links" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "another member's entry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query" : {
+            "owner" : "bob"
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Chris Marker",
+          "collection" : "movies",
+          "coverLetter" : "S",
+          "date" : "2026-10-01",
+          "id" : "movies/fr/sans-soleil",
+          "image" : null,
+          "isForeign" : true,
+          "isLibraryOnly" : false,
+          "isShared" : true,
+          "isUntouched" : false,
+          "kind" : "movies",
+          "kindLabel" : "Films",
+          "kindLine" : "Film · Chris Marker",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : {
+            "displayName" : "Bob",
+            "id" : "u2",
+            "username" : "bob"
+          },
+          "people" : [
+            {
+              "displayName" : "Bob",
+              "id" : "u2",
+              "username" : "bob"
+            }
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "sans-soleil",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Sans soleil",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "another member's entry, odd username and slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/movies/fr/l'%C3%A9t%C3%A9%20%C3%A0%20paris",
+          "query" : {
+            "co" : "",
+            "owner" : "bob smith"
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : {
+          "error" : null,
+          "failed" : false,
+          "inProgress" : false,
+          "status" : "idle"
+        },
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/la-sagesse.md",
+            "items" : [
+              {
+                "author" : {
+                  "displayName" : "Alice",
+                  "id" : "u1",
+                  "username" : "alice"
+                },
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-11-01",
+                "from" : null,
+                "id" : "n1",
+                "kind" : "note",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Une note *en italique*.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : "2026-10-30",
+                "from" : null,
+                "id" : "quote|2026-10-30||Le monde est là.|Oui.",
+                "kind" : "quote",
+                "page" : "12",
+                "quote" : "Le monde est là.",
+                "summary" : null,
+                "text" : "Oui.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : "Un",
+                "conversation" : null,
+                "date" : null,
+                "from" : null,
+                "id" : "highlight|||passage|",
+                "kind" : "highlight",
+                "page" : null,
+                "quote" : "passage",
+                "summary" : null,
+                "text" : null,
+                "view" : "summary"
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : null,
+                "date" : null,
+                "from" : {
+                  "entryId" : "movies/fr/sans-soleil",
+                  "label" : "Sans soleil",
+                  "publishedUrl" : null
+                },
+                "id" : "resonance||||Lien.",
+                "kind" : "resonance",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "Lien.",
+                "view" : null
+              },
+              {
+                "author" : null,
+                "chapterTitle" : null,
+                "conversation" : {
+                  "id" : "c9",
+                  "initiator" : "u1"
+                },
+                "date" : null,
+                "from" : null,
+                "id" : "fragment||||De Maurice.",
+                "kind" : "fragment",
+                "page" : null,
+                "quote" : null,
+                "summary" : null,
+                "text" : "De Maurice.",
+                "view" : null
+              }
+            ],
+            "notes" : 2,
+            "opened" : true,
+            "prose" : "Mes notes.",
+            "webPath" : "/g/alice/books/la-sagesse"
+          },
+          "shared" : {
+            "body" : "# La Sagesse\n\nUn livre sur [[sans-soleil|Sans soleil]].",
+            "file" : "books/fr/la-sagesse.shared.md",
+            "links" : [
+              {
+                "basename" : "sans-soleil",
+                "entryId" : "movies/fr/sans-soleil",
+                "label" : "Sans soleil",
+                "publishedUrl" : "https://alice.example/sans-soleil"
+              }
+            ],
+            "publicUrl" : null,
+            "state" : "draft",
+            "title" : "La Sagesse",
+            "webPath" : null
+          }
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "movies",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "movies/fr/l'été",
+          "image" : null,
+          "isForeign" : true,
+          "isLibraryOnly" : false,
+          "isShared" : true,
+          "isUntouched" : false,
+          "kind" : "movies",
+          "kindLabel" : "Films",
+          "kindLine" : "Film · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : {
+            "displayName" : "Bob",
+            "id" : "u2",
+            "username" : "bob smith&co"
+          },
+          "people" : [
+            {
+              "displayName" : "Bob",
+              "id" : "u2",
+              "username" : "bob smith&co"
+            }
+          ],
+          "rating" : null,
+          "shared" : "draft",
+          "slug" : "l'été à paris",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "L'été",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "conversations about a library book: none asked" : {
+      "requests" : [
+
+      ],
+      "result" : [
+
+      ]
+    },
+    "conversations about an entry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "displayTitle" : "Sur la sagesse",
+          "id" : "c2",
+          "maurice" : "Maurice",
+          "messageCount" : 4,
+          "summary" : {
+            "id" : "s1",
+            "stale" : true,
+            "text" : "Ce qui en ressort.",
+            "writtenAt" : "2025-03-02 11:00:00"
+          },
+          "via" : "entry",
+          "when" : "Mar 2, 2025"
+        },
+        {
+          "displayTitle" : "Untitled conversation",
+          "id" : "c1",
+          "maurice" : null,
+          "messageCount" : 1,
+          "summary" : null,
+          "via" : "linked",
+          "when" : "Dec 24, 2024"
+        },
+        {
+          "displayTitle" : "Untitled conversation",
+          "id" : "c0",
+          "maurice" : null,
+          "messageCount" : 0,
+          "summary" : null,
+          "via" : "entry",
+          "when" : ""
+        }
+      ]
+    },
+    "conversations about another member's entry: none asked" : {
+      "requests" : [
+
+      ],
+      "result" : [
+
+      ]
+    },
+    "conversations, one without via" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "conversations, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: boom"
+      }
+    },
+    "every note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "entries" : [
+          "books/fr/la-sagesse"
+        ],
+        "notes" : [
+          {
+            "entryId" : "books/fr/la-sagesse",
+            "id" : "books/fr/la-sagesse|n1",
+            "item" : {
+              "author" : null,
+              "chapterTitle" : null,
+              "conversation" : null,
+              "date" : "2026-11-01",
+              "from" : null,
+              "id" : "n1",
+              "kind" : "note",
+              "page" : null,
+              "quote" : null,
+              "summary" : null,
+              "text" : "Première.",
+              "view" : null
+            }
+          },
+          {
+            "entryId" : "books/fr/la-sagesse",
+            "id" : "books/fr/la-sagesse|quote|2026-10-01||Citation|Avec",
+            "item" : {
+              "author" : null,
+              "chapterTitle" : null,
+              "conversation" : null,
+              "date" : "2026-10-01",
+              "from" : null,
+              "id" : "quote|2026-10-01||Citation|Avec",
+              "kind" : "quote",
+              "page" : "3",
+              "quote" : "Citation",
+              "summary" : null,
+              "text" : "Avec",
+              "view" : null
+            }
+          },
+          {
+            "entryId" : "movies/fr/sans-soleil",
+            "id" : "movies/fr/sans-soleil|resonance|2026-09-01|||Vers",
+            "item" : {
+              "author" : null,
+              "chapterTitle" : null,
+              "conversation" : null,
+              "date" : "2026-09-01",
+              "from" : {
+                "entryId" : "books/fr/la-sagesse",
+                "label" : "La Sagesse",
+                "publishedUrl" : null
+              },
+              "id" : "resonance|2026-09-01|||Vers",
+              "kind" : "resonance",
+              "page" : null,
+              "quote" : null,
+              "summary" : null,
+              "text" : "Vers",
+              "view" : null
+            }
+          }
+        ]
+      }
+    },
+    "every note, no notes key" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "every note, none" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "entries" : [
+
+        ],
+        "notes" : [
+
+        ]
+      }
+    },
+    "every note, one without entry_id" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "every note, one without kind" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "every note, same words same day by two members" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "entries" : [
+
+        ],
+        "notes" : [
+          {
+            "entryId" : "books/fr/la-sagesse",
+            "id" : "books/fr/la-sagesse|note|2026-11-01|u1||Oui.",
+            "item" : {
+              "author" : {
+                "displayName" : "Alice",
+                "id" : "u1",
+                "username" : "alice"
+              },
+              "chapterTitle" : null,
+              "conversation" : null,
+              "date" : "2026-11-01",
+              "from" : null,
+              "id" : "note|2026-11-01|u1||Oui.",
+              "kind" : "note",
+              "page" : null,
+              "quote" : null,
+              "summary" : null,
+              "text" : "Oui.",
+              "view" : null
+            }
+          },
+          {
+            "entryId" : "books/fr/la-sagesse",
+            "id" : "books/fr/la-sagesse|note|2026-11-01|u2||Oui.",
+            "item" : {
+              "author" : {
+                "displayName" : "Bob",
+                "id" : "u2",
+                "username" : "bob"
+              },
+              "chapterTitle" : null,
+              "conversation" : null,
+              "date" : "2026-11-01",
+              "from" : null,
+              "id" : "note|2026-11-01|u2||Oui.",
+              "kind" : "note",
+              "page" : null,
+              "quote" : null,
+              "summary" : null,
+              "text" : "Oui.",
+              "view" : null
+            }
+          }
+        ]
+      }
+    },
+    "every note, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "notes"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: boom"
+      }
+    },
+    "the archived half" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "archived" : "1",
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "entries" : [
+          "books/fr/la-sagesse"
+        ],
+        "kinds" : [
+          "books=1"
+        ],
+        "site" : null,
+        "username" : "alice"
+      }
+    },
+    "the list" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "entries" : [
+          "books/fr/la-sagesse"
+        ],
+        "kinds" : [
+          "books=1"
+        ],
+        "site" : null,
+        "username" : "alice"
+      }
+    },
+    "the list, answer 204" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "the list, error body not JSON" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: Bad gateway"
+      }
+    },
+    "the list, forbidden" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: no garden"
+      }
+    },
+    "the list, malformed answer" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "the list, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries",
+          "query" : {
+            "view" : "shelf"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: garden unavailable"
+      }
+    },
+    "the site's deploy" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/site/deploy",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "error" : null,
+        "failed" : false,
+        "inProgress" : true,
+        "status" : "running"
+      }
+    },
+    "the site's deploy, empty answer" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/site/deploy",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "the site's deploy, unknown status" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/site/deploy",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "error" : null,
+        "failed" : false,
+        "inProgress" : false,
+        "status" : "paused"
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

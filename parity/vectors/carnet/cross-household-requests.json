@@ -1,0 +1,109 @@
+{
+  "domain": "cross-household-requests",
+  "about": "Between households: the friend's guest invitation and its watch, the other household's people, the entry read whole (export) and a conversation whole, and the copy written over there (import) — the requests each household receives, what the sheet reads of the answer, and every refusal as the sheet tells it apart (its kind) and says it (the message naming the person and the household).",
+  "ios": "CrossHouseholdAPI (guestInvite, guestInviteState, roster, export, conversation, importEntry), ImportPayload.json, GiveMessages.describe",
+  "android": "CrossHouseholdApi, ImportPayload.json, GiveMessages.describe",
+  "cases": [
+    { "name": "guest invite: code, link, expiry", "input": { "op": "guestInvite" }, "routes": [
+      { "method": "POST", "path": "/api/me/guest-invite", "json": { "code": "ABCD2345", "link": "https://martin.example/join?code=ABCD-2345", "expires_at": "2026-11-18T10:00:00.000Z" } } ] },
+    { "name": "guest invite: no link", "input": { "op": "guestInvite" }, "routes": [
+      { "method": "POST", "path": "/api/me/guest-invite", "json": { "code": "ABCD2345", "expires_at": "2026-11-18T10:00:00Z" } } ] },
+    { "name": "guest invite: a guest may not (403 not_allowed)", "input": { "op": "guestInvite" }, "routes": [
+      { "method": "POST", "path": "/api/me/guest-invite", "status": 403, "json": { "error": "not_allowed" } } ] },
+    { "name": "guest invite: old server (404, no error)", "input": { "op": "guestInvite" }, "routes": [
+      { "method": "POST", "path": "/api/me/guest-invite", "status": 404, "json": {} } ] },
+    { "name": "guest invite: server down (503)", "input": { "op": "guestInvite" }, "routes": [
+      { "method": "POST", "path": "/api/me/guest-invite", "status": 503, "text": "" } ] },
+    { "name": "guest invite state: used", "input": { "op": "guestInviteState", "code": "ABCD2345" }, "routes": [
+      { "method": "GET", "path": "/api/me/guest-invites/ABCD2345", "json": { "state": "used" } } ] },
+    { "name": "guest invite state: unknown code", "input": { "op": "guestInviteState", "code": "ZZZZ9999" }, "routes": [
+      { "method": "GET", "path": "/api/me/guest-invites/ZZZZ9999", "status": 404, "json": { "error": "Unknown code" } } ] },
+
+    { "name": "roster of the other household", "input": { "op": "roster" }, "routes": [
+      { "method": "GET", "path": "/api/users", "json": [
+        { "id": "u1", "display_name": "Me there", "avatar_color": "#111111", "has_pin": false, "role": "standard", "username": "me" },
+        { "id": "u9", "display_name": "Bea", "avatar_color": "#6b6460", "has_pin": true, "role": "guest", "username": "bea", "avatar_url": "/api/avatars/bea.jpg" } ] } ] },
+    { "name": "roster: session refused (401)", "input": { "op": "roster" }, "routes": [
+      { "method": "GET", "path": "/api/users", "status": 401, "json": { "error": "Unauthorized" } } ] },
+
+    { "name": "export: a book, whole", "input": { "op": "export", "collection": "books", "locale": "fr", "slug": "le-petit-prince" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/entries/books/fr/le-petit-prince/export", "json": {
+        "entry": { "collection": "books", "locale": "fr", "slug": "le-petit-prince", "title": "Le Petit Prince", "kind": "book", "author": ["Antoine de Saint-Exupéry", "Ill. A. S.-E."], "isbn": "9782070612758" },
+        "source": { "kind": "book", "calibre": { "title": "Le Petit Prince", "authors": ["Antoine de Saint-Exupéry"] } },
+        "fiche": { "prose": "Relu en 2026.", "notes": [
+          { "id": "n1", "date": "2025-03-12", "author": "me", "text": "Le renard.\nApprivoiser.", "page": 32 },
+          { "id": "n2", "date": "2024-12-01 10:00:00", "text": "Préface", "quote": "« À Léon Werth »", "page": "xii" },
+          { "id": "n3", "text": "" } ] },
+        "highlights": [ { "id": 7, "text": "On ne voit bien qu'avec le cœur.", "chapter": "XXI", "note": "La phrase" }, { "id": "h8", "text": "Les grandes personnes" } ],
+        "card": { "body": "# Le Petit Prince\n\nUn conte.", "status": "published", "url": "https://me.example/books/le-petit-prince" },
+        "conversations": [
+          { "id": "c1", "title": "Le renard", "date": "2025-04-02", "message_count": 6, "summary": "Sur l'amitié.", "shareable": true },
+          { "id": "c2", "title": "Avec Bea", "date": "2025-05-01", "shareable": false, "reason": "others_took_part" },
+          { "id": "c3", "shareable": true } ] } } ] },
+    { "name": "export: an article, no fiche, draft card", "input": { "op": "export", "collection": "articles", "locale": "en", "slug": "été à paris" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/entries/articles/en/%C3%A9t%C3%A9%20%C3%A0%20paris/export", "json": {
+        "entry": { "collection": "articles", "locale": "en", "slug": "été à paris", "title": "Summer", "kind": "article", "author": "J. Doe" },
+        "source": { "kind": "article", "text": "One.\n\nTwo.", "styles": [] },
+        "card": { "body": "Draft words", "status": "draft" } } } ] },
+    { "name": "export: a bare entry", "input": { "op": "export", "collection": "movies", "locale": "en", "slug": "m" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/entries/movies/en/m/export", "json": { "entry": { "title": "M" } } } ] },
+    { "name": "export: unreachable household (502)", "input": { "op": "export", "collection": "books", "locale": "fr", "slug": "x" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/entries/books/fr/x/export", "status": 502, "text": "Bad gateway" } ] },
+
+    { "name": "conversation, whole", "input": { "op": "conversation", "id": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/conversations/c1/export", "json": { "title": "Le renard", "date": "2025-04-02", "messages": [
+        { "role": "user", "author": "Me", "text": "Qui est le renard ?" },
+        { "role": "assistant", "text": "**Un ami.**", "data": { "cards": [] } } ] } } ] },
+    { "name": "conversation: others took part (403)", "input": { "op": "conversation", "id": "c2" }, "routes": [
+      { "method": "GET", "path": "/api/conversations/c2/export", "status": 403, "json": { "error": "others_took_part" } } ] },
+
+    { "name": "import: everything ticked, to Bea", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea",
+      "export": {
+        "entry": { "collection": "books", "locale": "fr", "slug": "le-petit-prince", "title": "Le Petit Prince", "kind": "book" },
+        "source": { "kind": "book", "calibre": { "title": "Le Petit Prince" } },
+        "fiche": { "prose": "  Relu.  ", "notes": [ { "id": "n1", "date": "2025-03-12", "text": "Le renard", "page": 32, "extra": { "x": 1 } }, { "id": "n2", "text": "Non" } ] },
+        "highlights": [ { "id": 7, "text": "Le cœur", "chapter": "XXI" }, { "id": "h8", "text": "Non" } ],
+        "card": { "body": "Un conte.", "status": "published", "url": "https://me.example/b" },
+        "conversations": [ { "id": "c1", "title": "Le renard", "date": "2025-04-02", "summary": "Sur l'amitié.", "shareable": true }, { "id": "c3", "shareable": true } ] },
+      "pick": { "source": true, "prose": true, "notes": ["n1"], "highlights": ["7"], "card": true, "conversations": [
+        { "id": "c1" },
+        { "id": "c3", "whole": { "title": "Sans titre", "date": "2025-06-01", "messages": [ { "role": "user", "text": "?" }, { "role": "assistant", "text": "!" } ] } } ] } },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "json": { "collection": "books", "locale": "fr", "slug": "le-petit-prince-2" } } ] },
+    { "name": "import: only the source, to oneself", "input": { "op": "import", "self": true, "from": "Chez nous",
+      "export": { "entry": { "title": "Summer", "kind": "article" }, "source": { "kind": "article", "text": "One." }, "card": { "body": "Draft", "status": "draft" } },
+      "pick": { "source": true } },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "json": { "collection": "articles", "locale": "en", "slug": "summer" } } ] },
+    { "name": "import: nothing ticked, a draft card", "input": { "op": "import", "from": "Chez nous", "shareWith": "u9",
+      "export": { "entry": { "title": "M" }, "card": { "body": "Draft", "status": "draft" } },
+      "pick": { "source": false, "card": true } },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "json": { "collection": "movies", "locale": "en", "slug": "m" } } ] },
+    { "name": "import: already there (409 with where)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 409, "json": { "error": "exists", "collection": "movies", "locale": "en", "slug": "m" } } ] },
+    { "name": "import: already in one's own notes (409, self)", "input": { "op": "import", "self": true, "from": "Chez nous", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 409, "json": { "error": "exists", "collection": "movies", "locale": "en", "slug": "m" } } ] },
+    { "name": "import: 409 exists without where", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 409, "json": { "error": "exists" } } ] },
+    { "name": "import: 409 another conflict", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 409, "json": { "error": "busy" } } ] },
+    { "name": "import: unknown member (404)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 404, "json": { "error": "Unknown member" } } ] },
+    { "name": "import: old server (404, no error)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 404, "text": "Not Found" } ] },
+    { "name": "import: too large (413)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 413, "json": { "error": "too_large" } } ] },
+    { "name": "import: not a contact (403)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 403, "json": { "error": "not_a_contact" } } ] },
+    { "name": "import: 403 without a code", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 403, "text": "" } ] },
+    { "name": "import: 400 unreachable code", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 400, "json": { "error": "member_not_reachable_here" } } ] },
+    { "name": "import: 400 another code", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 400, "json": { "error": "bad_entry" } } ] },
+    { "name": "import: 500 plain text", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 500, "text": "boom" } ] },
+    { "name": "import: 504", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 504, "json": {} } ] },
+    { "name": "import: session refused (401)", "input": { "op": "import", "from": "Chez nous", "shareWith": "bea", "export": { "entry": { "title": "M" } }, "pick": {} },
+      "routes": [ { "method": "POST", "path": "/api/v1/garden/entries/import", "status": 401, "json": { "error": "Unauthorized" } } ] }
+  ]
+}

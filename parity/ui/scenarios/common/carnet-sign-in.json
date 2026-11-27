@@ -1,0 +1,16 @@
+{
+  "about": "A blank device: a code, then the household's address; the household makes the member at once (carnet-household), the notification prompt is declined, the shelf comes. What the way in sends is compared in carnet-way-in-*, not after it.",
+  "steps": [
+    { "tap": "Enter a code or an address" },
+    { "tap": "XXXX-XXXX or myhome.chezmaurice.eu" },
+    { "type": "ABCD-EFGH" },
+    { "tap": "Connect" },
+    { "tap": { "ios": "myhome.chezmaurice.eu", "android": "myhome.chezmaurice.eu" } },
+    { "type": "{base}" },
+    { "tap": "Connect", "pause": 3 },
+    { "tap": { "ios": "Don’t Allow", "android": "Don’t allow" }, "optional": true },
+    { "tap": "I understand — Connect", "pause": 2 },
+    { "see": "Sort" },
+    { "forget": true, "settle": 3 }
+  ]
+}

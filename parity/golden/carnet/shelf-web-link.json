@@ -1,0 +1,139 @@
+{
+  "domain" : "shelf-web-link",
+  "results" : {
+    "a page, signed in" : {
+      "opened" : [
+        "{base}/login?token=maur_abc&to=%2Fg%2Falice%2Fbooks%2Fla-sagesse"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a path with spaces, accents and a query" : {
+      "opened" : [
+        "{base}/login?token=maur_abc&to=%2Fg%2Falice%2Fl%27%C3%A9t%C3%A9%20%C3%A0%20paris%3Fx%3D1%26y%3D2%23top"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "a relative path" : {
+      "opened" : [
+        null
+      ],
+      "requests" : [
+
+      ]
+    },
+    "a token with reserved characters" : {
+      "opened" : [
+        "{base}/login?token=maur_a%2Bb%2Fc%3Dd%26e&to=%2Fg%2Fa"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "an answer without a token" : {
+      "opened" : [
+        "{base}/g/alice/x"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "an empty path" : {
+      "opened" : [
+        null
+      ],
+      "requests" : [
+
+      ]
+    },
+    "the token refused (403)" : {
+      "opened" : [
+        "{base}/g/alice/x"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "the token refused (500): the bare page" : {
+      "opened" : [
+        "{base}/g/alice/x"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "rotate" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/users/me/mcp-token",
+          "query" : {
+
+          }
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

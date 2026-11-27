@@ -1,0 +1,251 @@
+{
+  "domain" : "session-budget",
+  "results" : {
+    "4 % twice: told once" : [
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0.040000000000000001
+      },
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0.040000000000000001
+      }
+    ],
+    "15 %, a top-up, 15 % again" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.14999999999999999
+      },
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.90000000000000002
+      },
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.14999999999999999
+      }
+    ],
+    "15, 9, 4: each threshold once" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.14999999999999999
+      },
+      {
+        "alert" : 10,
+        "isLimited" : true,
+        "left" : 0.089999999999999997
+      },
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0.040000000000000001
+      }
+    ],
+    "25 % then 8 %: told about 10 only" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.25
+      },
+      {
+        "alert" : 10,
+        "isLimited" : true,
+        "left" : 0.080000000000000002
+      }
+    ],
+    "an admin's answer" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.12
+      }
+    ],
+    "back above a threshold, down again" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.17999999999999999
+      },
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.29999999999999999
+      },
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.19
+      }
+    ],
+    "empty" : [
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0
+      }
+    ],
+    "exactly 5 %" : [
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0.050000000000000003
+      }
+    ],
+    "exactly 10 %" : [
+      {
+        "alert" : 10,
+        "isLimited" : true,
+        "left" : 0.10000000000000001
+      }
+    ],
+    "exactly 20 %" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.20000000000000001
+      }
+    ],
+    "half left" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.5
+      }
+    ],
+    "half, then a server error" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.5
+      },
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.5
+      }
+    ],
+    "half, then malformed" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.5
+      },
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.5
+      }
+    ],
+    "just above 20 %" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.20000009999999999
+      }
+    ],
+    "left as a string" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "limited as a string" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "limited missing" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "limited, left unknown" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : null
+      }
+    ],
+    "limited, then unlimited" : [
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : 0.040000000000000001
+      },
+      {
+        "alert" : 5,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "more than full" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 1.3999999999999999
+      }
+    ],
+    "no period, no reset date: no toast" : [
+      {
+        "alert" : null,
+        "isLimited" : true,
+        "left" : 0.029999999999999999
+      }
+    ],
+    "no period: resets_at stands in" : [
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.14999999999999999
+      },
+      {
+        "alert" : 20,
+        "isLimited" : true,
+        "left" : 0.14999999999999999
+      }
+    ],
+    "not limited, yet a low fraction" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "overdrawn" : [
+      {
+        "alert" : 5,
+        "isLimited" : true,
+        "left" : -0.12
+      }
+    ],
+    "server before the budget (404)" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ],
+    "unlimited" : [
+      {
+        "alert" : null,
+        "isLimited" : false,
+        "left" : null
+      }
+    ]
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

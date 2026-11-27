@@ -1,0 +1,45 @@
+{
+  "domain": "session-account-events",
+  "about": "What the admin did in the member's account (GET /api/me/events): the list Settings → My data shows, each event's sentence as the member reads it (English), and which ones the alert at launch tells (unseen). null: nothing could be read, the list is not shown.",
+  "ios": "Maurice/Views/MyDataView.swift — AccountEvent (decoded as the view's private AccountEventsAnswer does), AccountEvent.sentence",
+  "android": "core/settings/SettingsApi.kt — SettingsApi.accountEvents; maurice/settings/AccountEvents.kt — accountEventSentence",
+  "cases": [
+    { "name": "a device and an export", "input": {},
+      "accepted": { "kind": "platform", "why": "The date is written by the system's own formatter, long date and short time in the device's locale, as iOS's formatted(date: .long, time: .shortened) does; the JDK joins the two with a comma ('November 2, 2026, 3:32 PM') where Foundation writes 'at'. Same date, time, zone and language." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 7, "kind": "device_code", "created_at": "2026-11-02 14:32:00", "seen_at": null },
+        { "id": 6, "kind": "household_export", "created_at": "2026-10-28 09:05:41", "seen_at": "2026-10-28 10:00:00" } ] } } ] },
+    { "name": "none", "input": {},
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [] } } ] },
+    { "name": "unknown kind", "input": {},
+      "accepted": { "kind": "platform", "why": "The date is written by the system's own formatter, long date and short time in the device's locale, as iOS's formatted(date: .long, time: .shortened) does; the JDK joins the two with a comma ('November 2, 2026, 3:32 PM') where Foundation writes 'at'. Same date, time, zone and language." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 1, "kind": "something_new", "created_at": "2026-11-02 14:32:00" } ] } } ] },
+    { "name": "ISO date with Z", "input": {},
+      "accepted": { "kind": "platform", "why": "The date is written by the system's own formatter, long date and short time in the device's locale, as iOS's formatted(date: .long, time: .shortened) does; the JDK joins the two with a comma ('November 2, 2026, 3:32 PM') where Foundation writes 'at'. Same date, time, zone and language." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 2, "kind": "device_code", "created_at": "2026-11-02T14:32:00Z", "seen_at": null } ] } } ] },
+    { "name": "ISO date with milliseconds", "input": {},
+      "accepted": {"kind": "platform", "why": "Both now read the milliseconds; the sentence differs only in the system's date style ('November 2, 2026 at 3:32 PM' on iOS, 'November 2, 2026, 3:32 PM' on Android)."},
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 3, "kind": "household_export", "created_at": "2026-11-02T14:32:00.123Z", "seen_at": null } ] } } ] },
+    { "name": "unreadable date", "input": {},
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 4, "kind": "device_code", "created_at": "yesterday", "seen_at": null } ] } } ] },
+    { "name": "midnight on New Year's Eve", "input": {},
+      "accepted": { "kind": "platform", "why": "The date is written by the system's own formatter, long date and short time in the device's locale, as iOS's formatted(date: .long, time: .shortened) does; the JDK joins the two with a comma ('November 2, 2026, 3:32 PM') where Foundation writes 'at'. Same date, time, zone and language." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": 5, "kind": "device_code", "created_at": "2026-12-31 23:59:59", "seen_at": null } ] } } ] },
+    { "name": "events missing", "input": {},
+      "accepted": { "kind": "lenient", "why": "Android reads a malformed answer (no events list, an id as a string) that iOS rejects whole; lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": {} } ] },
+    { "name": "id as a string", "input": {},
+      "accepted": { "kind": "lenient", "why": "Android reads a malformed answer (no events list, an id as a string) that iOS rejects whole; lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [ { "method": "GET", "path": "/api/me/events", "json": { "events": [
+        { "id": "7", "kind": "device_code", "created_at": "2026-11-02 14:32:00", "seen_at": null } ] } } ] },
+    { "name": "server error", "input": {},
+      "routes": [ { "method": "GET", "path": "/api/me/events", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "server before the route (404)", "input": {},
+      "routes": [ { "method": "GET", "path": "/api/me/events", "status": 404, "json": { "error": "not found" } } ] }
+  ]
+}

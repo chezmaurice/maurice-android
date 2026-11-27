@@ -1,0 +1,611 @@
+{
+  "domain" : "settings-mail",
+  "results" : {
+    "contact account: full" : {
+      "cards" : 412,
+      "id" : "k1",
+      "lastError" : null,
+      "provider" : "icloud",
+      "state" : "ok",
+      "syncedAt" : "2026-11-10 03:00:00",
+      "url" : "https://contacts.icloud.com",
+      "username" : "x@icloud.com"
+    },
+    "contact account: without cards" : "undecodable",
+    "contact account: without state" : "undecodable",
+    "contact accounts: list" : [
+      {
+        "cards" : 3,
+        "id" : "k1",
+        "lastError" : null,
+        "provider" : null,
+        "state" : "ok",
+        "syncedAt" : null,
+        "url" : null,
+        "username" : "x@icloud.com"
+      }
+    ],
+    "contacts provider: \"\"" : {
+      "help" : "contacts.help.other",
+      "needsServer" : true,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"@icloud.com\"" : {
+      "help" : "contacts.help.icloud",
+      "needsServer" : false,
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true
+    },
+    "contacts provider: \"a@b@me.com\"" : {
+      "help" : "contacts.help.icloud",
+      "needsServer" : false,
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true
+    },
+    "contacts provider: \"plain-username\"" : {
+      "help" : "contacts.help.other",
+      "needsServer" : true,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@example.com\"" : {
+      "help" : "contacts.help.other",
+      "needsServer" : true,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@fastmail.com\"" : {
+      "help" : "contacts.help.fastmail",
+      "needsServer" : false,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@fastmail.fm\"" : {
+      "help" : "contacts.help.fastmail",
+      "needsServer" : false,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@gmail.com\"" : {
+      "help" : "contacts.help.google",
+      "needsServer" : false,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false
+    },
+    "contacts provider: \"x@googlemail.com\"" : {
+      "help" : "contacts.help.google",
+      "needsServer" : false,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false
+    },
+    "contacts provider: \"x@icloud.com \"" : {
+      "help" : "contacts.help.other",
+      "needsServer" : true,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@icloud.com\"" : {
+      "help" : "contacts.help.icloud",
+      "needsServer" : false,
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true
+    },
+    "contacts provider: \"x@mac.com\"" : {
+      "help" : "contacts.help.icloud",
+      "needsServer" : false,
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true
+    },
+    "contacts provider: \"x@mailfence.com\"" : {
+      "help" : "contacts.help.mailfence",
+      "needsServer" : false,
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true
+    },
+    "contacts provider: \"x@ME.com\"" : {
+      "help" : "contacts.help.icloud",
+      "needsServer" : false,
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true
+    },
+    "mail account: error state with reason" : {
+      "address" : "x@orange.fr",
+      "host" : null,
+      "id" : "m1",
+      "lastError" : "[AUTHENTICATIONFAILED] Authentication failed.",
+      "provider" : null,
+      "state" : "error"
+    },
+    "mail account: full" : {
+      "address" : "alice@gmail.com",
+      "host" : "imap.gmail.com",
+      "id" : "m1",
+      "lastError" : null,
+      "provider" : "gmail",
+      "state" : "ok"
+    },
+    "mail account: minimal" : {
+      "address" : "alice@gmail.com",
+      "host" : null,
+      "id" : "m1",
+      "lastError" : null,
+      "provider" : null,
+      "state" : "unchecked"
+    },
+    "mail account: unknown state" : {
+      "address" : "x@orange.fr",
+      "host" : null,
+      "id" : "m1",
+      "lastError" : null,
+      "provider" : null,
+      "state" : "paused"
+    },
+    "mail account: without state" : "undecodable",
+    "mail accounts: list" : [
+      {
+        "address" : "a@gmail.com",
+        "host" : null,
+        "id" : "m1",
+        "lastError" : null,
+        "provider" : null,
+        "state" : "ok"
+      },
+      {
+        "address" : "b@free.fr",
+        "host" : null,
+        "id" : "m2",
+        "lastError" : "nope",
+        "provider" : null,
+        "state" : "error"
+      }
+    ],
+    "mail accounts: no accounts key" : "undecodable",
+    "mail accounts: one row broken" : "undecodable",
+    "mail provider: \" alice@gmail.com \"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"\"" : null,
+    "mail provider: \"@gmail.com\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"a@b@gmail.com\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"a@googlemail.com\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"alice\"" : null,
+    "mail provider: \"alice@\"" : null,
+    "mail provider: \"alice@gmail.\"" : null,
+    "mail provider: \"alice@gmail.com.\"" : null,
+    "mail provider: \"alice@gmail.com\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"Alice@GMAIL.COM\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"alice@gmail.com\\n\"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"alice@localhost\"" : null,
+    "mail provider: \"élodie@école.fr\"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@ÉCOLE.FR\"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@example.org\"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@fastmail.com\"" : {
+      "help" : "mail.help.fastmail",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@fastmail.fm\"" : {
+      "help" : "mail.help.fastmail",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@free.fr\"" : {
+      "help" : "mail.help.isp",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@GOOGLEMAIL.COM\"" : {
+      "help" : "mail.help.gmail",
+      "pageKey" : "mail.help.gmail.open",
+      "pageURL" : "https://myaccount.google.com/apppasswords",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@hotmail.fr\"" : {
+      "help" : "mail.help.outlook",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@icloud.com\"" : {
+      "help" : "mail.help.icloud",
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@laposte.net\"" : {
+      "help" : "mail.help.isp",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@live.com\"" : {
+      "help" : "mail.help.outlook",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@mac.com\"" : {
+      "help" : "mail.help.icloud",
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@me.com\"" : {
+      "help" : "mail.help.icloud",
+      "pageKey" : "mail.help.icloud.open",
+      "pageURL" : "https://account.apple.com",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@msn.com\"" : {
+      "help" : "mail.help.outlook",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@orange.fr\"" : {
+      "help" : "mail.help.isp",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@outlook.com\"" : {
+      "help" : "mail.help.outlook",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : false,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@pm.me\"" : {
+      "help" : "mail.help.proton",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@proton.me\"" : {
+      "help" : "mail.help.proton",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@protonmail.com\"" : {
+      "help" : "mail.help.proton",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@sub.gmail.com\"" : {
+      "help" : "mail.help.unknown",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@wanadoo.fr\"" : {
+      "help" : "mail.help.isp",
+      "pageKey" : null,
+      "pageURL" : null,
+      "possible" : true,
+      "wantsAppPassword" : false
+    },
+    "mail provider: \"x@yahoo.com\"" : {
+      "help" : "mail.help.yahoo",
+      "pageKey" : "mail.help.yahoo.open",
+      "pageURL" : "https://login.yahoo.com/account/security",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@yahoo.fr\"" : {
+      "help" : "mail.help.yahoo",
+      "pageKey" : "mail.help.yahoo.open",
+      "pageURL" : "https://login.yahoo.com/account/security",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "mail provider: \"x@ymail.com\"" : {
+      "help" : "mail.help.yahoo",
+      "pageKey" : "mail.help.yahoo.open",
+      "pageURL" : "https://login.yahoo.com/account/security",
+      "possible" : true,
+      "wantsAppPassword" : true
+    },
+    "scan: a mailbox without approved nor top_senders" : {
+      "documents" : {
+        "done" : 3,
+        "stage" : "fiches",
+        "total" : 10,
+        "written" : 2
+      },
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : [
+        {
+          "address" : "alice@gmail.com",
+          "approved" : null,
+          "estimate" : {
+            "euros" : null,
+            "hours" : 1.5,
+            "pending" : false,
+            "toRead" : 40,
+            "toSort" : 300
+          },
+          "messages" : 12000,
+          "reading" : {
+            "kept" : 5,
+            "read" : 7,
+            "skipped" : 2,
+            "toLight" : 10,
+            "toRead" : 40,
+            "window" : 2
+          },
+          "senders" : null,
+          "untriaged" : 300
+        }
+      ],
+      "messages" : 12000,
+      "reading" : {
+        "decidedAt" : "2026-11-01 10:00:00",
+        "state" : "approved",
+        "years" : 2
+      },
+      "running" : true,
+      "seen" : 8000,
+      "state" : "running"
+    },
+    "scan: a mailbox without reading" : "undecodable",
+    "scan: an estimate with euros (operator)" : {
+      "documents" : {
+        "done" : 3,
+        "stage" : "fiches",
+        "total" : 10,
+        "written" : 2
+      },
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : [
+        {
+          "address" : "alice@gmail.com",
+          "approved" : true,
+          "estimate" : {
+            "euros" : 3.2000000000000002,
+            "hours" : 1.5,
+            "pending" : false,
+            "toRead" : 40,
+            "toSort" : 300
+          },
+          "messages" : 12000,
+          "reading" : {
+            "kept" : 5,
+            "read" : 7,
+            "skipped" : 2,
+            "toLight" : 10,
+            "toRead" : 40,
+            "window" : 2
+          },
+          "senders" : [
+            {
+              "messages" : 400,
+              "ruleDays" : null,
+              "sender" : "news@shop.fr",
+              "setAside" : 390
+            },
+            {
+              "messages" : 80,
+              "ruleDays" : 0,
+              "sender" : "maman@free.fr",
+              "setAside" : 0
+            }
+          ],
+          "untriaged" : 300
+        }
+      ],
+      "messages" : 12000,
+      "reading" : {
+        "decidedAt" : "2026-11-01 10:00:00",
+        "state" : "approved",
+        "years" : 2
+      },
+      "running" : true,
+      "seen" : 8000,
+      "state" : "running"
+    },
+    "scan: an estimate without basis" : "undecodable",
+    "scan: as an older server (no reading, mailboxes, documents)" : {
+      "documents" : null,
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : null,
+      "messages" : 10,
+      "reading" : null,
+      "running" : false,
+      "seen" : 10,
+      "state" : "done"
+    },
+    "scan: empty object" : "undecodable",
+    "scan: failed with the tool's words" : {
+      "documents" : null,
+      "error" : "login refused",
+      "lastError" : "IMAP: AUTHENTICATIONFAILED 🔒",
+      "mailboxes" : null,
+      "messages" : 0,
+      "reading" : null,
+      "running" : false,
+      "seen" : 0,
+      "state" : "failed"
+    },
+    "scan: full" : {
+      "documents" : {
+        "done" : 3,
+        "stage" : "fiches",
+        "total" : 10,
+        "written" : 2
+      },
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : [
+        {
+          "address" : "alice@gmail.com",
+          "approved" : true,
+          "estimate" : {
+            "euros" : null,
+            "hours" : 1.5,
+            "pending" : false,
+            "toRead" : 40,
+            "toSort" : 300
+          },
+          "messages" : 12000,
+          "reading" : {
+            "kept" : 5,
+            "read" : 7,
+            "skipped" : 2,
+            "toLight" : 10,
+            "toRead" : 40,
+            "window" : 2
+          },
+          "senders" : [
+            {
+              "messages" : 400,
+              "ruleDays" : null,
+              "sender" : "news@shop.fr",
+              "setAside" : 390
+            },
+            {
+              "messages" : 80,
+              "ruleDays" : 0,
+              "sender" : "maman@free.fr",
+              "setAside" : 0
+            }
+          ],
+          "untriaged" : 300
+        }
+      ],
+      "messages" : 12000,
+      "reading" : {
+        "decidedAt" : "2026-11-01 10:00:00",
+        "state" : "approved",
+        "years" : 2
+      },
+      "running" : true,
+      "seen" : 8000,
+      "state" : "running"
+    },
+    "scan: messages as a float" : {
+      "documents" : null,
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : null,
+      "messages" : 10,
+      "reading" : null,
+      "running" : false,
+      "seen" : 3,
+      "state" : "done"
+    },
+    "scan: only a state" : "undecodable",
+    "scan: running as 0/1" : "undecodable",
+    "scan: unknown state" : {
+      "documents" : null,
+      "error" : null,
+      "lastError" : null,
+      "mailboxes" : null,
+      "messages" : 0,
+      "reading" : null,
+      "running" : false,
+      "seen" : 0,
+      "state" : "hibernating"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

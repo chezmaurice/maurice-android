@@ -1,0 +1,20 @@
+{
+  "name": "maurice-pair-by-address",
+  "app": "maurice",
+  "about": "A blank device pairs a household by typing its address, and lands on « Who's here? » with its members.",
+  "routes": [
+    { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0.0", "setup_complete": true, "household": "Les Tilleuls", "household_color": "#4a7c59", "household_icon": "leaf" } },
+    { "method": "GET", "path": "/api/users", "json": [
+      { "id": "u1", "display_name": "Alice", "avatar_color": "#c0392b", "has_pin": true, "role": "admin" },
+      { "id": "u2", "display_name": "Bruno", "avatar_color": "#2980b9", "has_pin": false, "role": "standard" }
+    ] }
+  ],
+  "steps": [
+    { "see": "Enter a code or an address" },
+    { "tap": "Enter a code or an address" },
+    { "tap": "XXXX-XXXX or martin.chezmaurice.eu" },
+    { "type": "{base}" },
+    { "tap": "Connect", "pause": 3 },
+    { "checkpoint": "connected" }
+  ]
+}

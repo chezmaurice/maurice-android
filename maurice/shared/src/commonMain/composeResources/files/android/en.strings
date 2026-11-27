@@ -1,0 +1,32 @@
+/* Android-only strings: what the iOS app spells without a key, or what only
+   Android shows. Loaded over Localizable.strings; same format. */
+"report.title" = "Report";
+"report.message" = "Report message";
+"report.block" = "Block %@";
+"report.reason" = "Reason";
+"report.note" = "Note (optional)";
+"report.note_placeholder" = "Add context";
+"report.submit" = "Submit";
+"report.sent" = "Thanks — your report was sent to this server's operator to review.";
+"report.authority_title" = "Also report to an authority";
+"report.authority_body" = "If this involves the exploitation of a minor, please also report it to the appropriate authority — they can act in ways the operator can't.";
+"report.authority_ncmec" = "NCMEC CyberTipline (US)";
+"report.authority_elsewhere" = "Outside the US, contact your local equivalent.";
+"details.open" = "Conversation details";
+"details.everyday" = "Maurice";
+"details.add_member" = "Add to the room";
+"blocked" = "%@ is blocked: you will no longer see their messages.";
+
+/* The admin's queue of reports (ReportsPane); iOS writes these in English, unkeyed. */
+"reports.none" = "No open reports.";
+"reports.priority" = "PRIORITY";
+"reports.room" = "Room";
+"reports.member" = "Member: %@";
+"reports.by" = "reported by %@";
+"reports.remove_message" = "Remove message";
+"reports.eject" = "Eject member";
+"reports.dismiss" = "Dismiss";
+
+"store.via_play" = "Through Google Play";
+"store.plans.caption.play" = "Renews automatically until cancelled. You can cancel any time in Google Play, under Payments & subscriptions, before the end of the current period.";
+"store.error.unverified.play" = "Google Play could not confirm this purchase.";

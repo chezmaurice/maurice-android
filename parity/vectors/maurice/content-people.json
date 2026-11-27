@@ -1,0 +1,358 @@
+{
+ "domain": "content-people",
+ "about": "A person fiche reviewed in the app: the garden link it is opened from, a line without its mail sources, the fiche as the server describes it.",
+ "ios": "Maurice/Views/PersonReviewView.swift — PersonRef(gardenURL:), withoutSources, PersonReviewModel",
+ "android": "core/chat/PersonReview.kt — PersonRef.fromGardenUrl, withoutSources, PersonReviewModel",
+ "cases": [
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/nadia-rossi",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/nadia-rossi"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/nadia-rossi-fiche#relation",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/nadia-rossi-fiche#relation"
+   }
+  },
+  {
+   "name": "ref: /g/alice/en/fiches/people/bob#fragment-003",
+   "input": {
+    "op": "ref",
+    "url": "/g/alice/en/fiches/people/bob#fragment-003"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/jos%C3%A9-fiche#identity-2",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/jos%C3%A9-fiche#identity-2"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/nadia?x=1#review",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/nadia?x=1#review"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/books/the-gene",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/books/the-gene"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/notes/people/nadia",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/notes/people/nadia"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/x/alice/fr/fiches/people/nadia",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/x/alice/fr/fiches/people/nadia"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/nadia/extra",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/nadia/extra"
+   }
+  },
+  {
+   "name": "ref: https://parity.example/g/alice/fr/fiches/people/nadia#",
+   "input": {
+    "op": "ref",
+    "url": "https://parity.example/g/alice/fr/fiches/people/nadia#"
+   }
+  },
+  {
+   "name": "sources: 'Une collègue — [3 mars, Nadia, « Projet » · pro](m'",
+   "input": {
+    "op": "sources",
+    "text": "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)"
+   }
+  },
+  {
+   "name": "sources: 'Une collègue — [3 mars](maurice-mail:a) ; [5 mars]'",
+   "input": {
+    "op": "sources",
+    "text": "Une collègue — [3 mars](maurice-mail:a) ; [5 mars](maurice-mail:b)"
+   }
+  },
+  {
+   "name": "sources: 'Ligne une — [x](maurice-mail:1)\\nLigne deux — [y](m'",
+   "input": {
+    "op": "sources",
+    "text": "Ligne une — [x](maurice-mail:1)\nLigne deux — [y](maurice-mail:2) et la suite"
+   }
+  },
+  {
+   "name": "sources: 'Un lien — [site](https://example.org) reste'",
+   "input": {
+    "op": "sources",
+    "text": "Un lien — [site](https://example.org) reste"
+   }
+  },
+  {
+   "name": "sources: 'Crochets — [a \\\\] b](maurice-mail:z)'",
+   "input": {
+    "op": "sources",
+    "text": "Crochets — [a \\] b](maurice-mail:z)"
+   }
+  },
+  {
+   "name": "sources: 'Sans tiret [x](maurice-mail:1)'",
+   "input": {
+    "op": "sources",
+    "text": "Sans tiret [x](maurice-mail:1)"
+   }
+  },
+  {
+   "name": "sources: 'Espace insécable\\xa0—\\xa0[x](maurice-mail:1)'",
+   "input": {
+    "op": "sources",
+    "text": "Espace insécable — [x](maurice-mail:1)"
+   }
+  },
+  {
+   "name": "sources: ''",
+   "input": {
+    "op": "sources",
+    "text": ""
+   }
+  },
+  {
+   "name": "model: whole",
+   "input": {
+    "op": "model",
+    "json": {
+     "title": "Nadia Rossi",
+     "locale": "fr",
+     "basename": "nadia-rossi-fiche",
+     "status": "pending",
+     "byMaurice": true,
+     "relation": {
+      "text": "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)",
+      "status": "pending",
+      "since": "2024",
+      "until": null,
+      "edited": false,
+      "proposed": {
+       "text": "Une amie",
+       "since": "2025",
+       "until": null
+      }
+     },
+     "identities": [
+      {
+       "address": "nadia@example.org",
+       "mailboxes": [
+        "pro",
+        "perso"
+       ],
+       "status": "pending",
+       "source": "mail",
+       "conflict": "in 2 cards of the address book"
+      }
+     ],
+     "fragments": [
+      {
+       "id": "001",
+       "summary": "Le projet",
+       "status": "confirmed",
+       "origin": "mail",
+       "address": "nadia@example.org",
+       "mailbox": "pro",
+       "body": "Elle mène le projet.",
+       "edited": false
+      }
+     ],
+     "exchanges": "- 3 mars : Projet",
+     "pending": 3
+    }
+   }
+  },
+  {
+   "name": "model: bare relation, nothing else",
+   "input": {
+    "op": "model",
+    "json": {
+     "title": "Nadia Rossi",
+     "locale": "fr",
+     "basename": "nadia-rossi-fiche",
+     "status": "pending",
+     "byMaurice": true,
+     "relation": {},
+     "identities": [],
+     "fragments": [],
+     "pending": 0
+    }
+   }
+  },
+  {
+   "name": "model: without pending",
+   "input": {
+    "op": "model",
+    "json": {
+     "title": "Nadia Rossi",
+     "locale": "fr",
+     "basename": "nadia-rossi-fiche",
+     "status": "pending",
+     "byMaurice": true,
+     "relation": {
+      "text": "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)",
+      "status": "pending",
+      "since": "2024",
+      "until": null,
+      "edited": false,
+      "proposed": {
+       "text": "Une amie",
+       "since": "2025",
+       "until": null
+      }
+     },
+     "identities": [
+      {
+       "address": "nadia@example.org",
+       "mailboxes": [
+        "pro",
+        "perso"
+       ],
+       "status": "pending",
+       "source": "mail",
+       "conflict": "in 2 cards of the address book"
+      }
+     ],
+     "fragments": [
+      {
+       "id": "001",
+       "summary": "Le projet",
+       "status": "confirmed",
+       "origin": "mail",
+       "address": "nadia@example.org",
+       "mailbox": "pro",
+       "body": "Elle mène le projet.",
+       "edited": false
+      }
+     ],
+     "exchanges": "- 3 mars : Projet"
+    }
+   }
+  },
+  {
+   "name": "model: an identity without source",
+   "input": {
+    "op": "model",
+    "json": {
+     "title": "Nadia Rossi",
+     "locale": "fr",
+     "basename": "nadia-rossi-fiche",
+     "status": "pending",
+     "byMaurice": true,
+     "relation": {
+      "text": "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)",
+      "status": "pending",
+      "since": "2024",
+      "until": null,
+      "edited": false,
+      "proposed": {
+       "text": "Une amie",
+       "since": "2025",
+       "until": null
+      }
+     },
+     "identities": [
+      {
+       "address": "nadia@example.org",
+       "mailboxes": [
+        "pro",
+        "perso"
+       ],
+       "status": "pending",
+       "conflict": "in 2 cards of the address book"
+      }
+     ],
+     "fragments": [
+      {
+       "id": "001",
+       "summary": "Le projet",
+       "status": "confirmed",
+       "origin": "mail",
+       "address": "nadia@example.org",
+       "mailbox": "pro",
+       "body": "Elle mène le projet.",
+       "edited": false
+      }
+     ],
+     "exchanges": "- 3 mars : Projet",
+     "pending": 3
+    }
+   }
+  },
+  {
+   "name": "model: a proposal without text",
+   "input": {
+    "op": "model",
+    "json": {
+     "title": "Nadia Rossi",
+     "locale": "fr",
+     "basename": "nadia-rossi-fiche",
+     "status": "pending",
+     "byMaurice": true,
+     "relation": {
+      "text": "Une collègue — [3 mars, Nadia, « Projet » · pro](maurice-mail:abc)",
+      "status": "pending",
+      "since": "2024",
+      "until": null,
+      "edited": false,
+      "proposed": {
+       "since": "2025"
+      }
+     },
+     "identities": [
+      {
+       "address": "nadia@example.org",
+       "mailboxes": [
+        "pro",
+        "perso"
+       ],
+       "status": "pending",
+       "source": "mail",
+       "conflict": "in 2 cards of the address book"
+      }
+     ],
+     "fragments": [
+      {
+       "id": "001",
+       "summary": "Le projet",
+       "status": "confirmed",
+       "origin": "mail",
+       "address": "nadia@example.org",
+       "mailbox": "pro",
+       "body": "Elle mène le projet.",
+       "edited": false
+      }
+     ],
+     "exchanges": "- 3 mars : Projet",
+     "pending": 3
+    }
+   }
+  }
+ ]
+}

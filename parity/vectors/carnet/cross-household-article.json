@@ -1,0 +1,29 @@
+{
+  "domain": "cross-household-article",
+  "about": "An article given from another household and shared live with the member (@owner/articles/… on the shelf): the article the reader is opened on, made from the shelf row (its identity apart from the member's own at the same slug), and its text read in the owner's notes with ?owner=.",
+  "ios": "Article.shared(_:) / GardenAPI.articleText(slug:locale:owner:)",
+  "android": "Article.shared / CalibreApi.articleText(owner)",
+  "cases": [
+    { "name": "shared row, captured, with summaries", "input": { "op": "shared", "entry": {
+      "id": "@ana/articles/fr/la-lenteur", "kind": "articles", "collection": "articles", "locale": "fr", "slug": "la-lenteur",
+      "title": "La lenteur", "byline": "M. K.", "date": "2026-11-01", "updated_at": "2026-11-02", "tags": [], "translations": [],
+      "source": { "type": "article", "url": "https://example.org/lenteur", "captured": true, "word_count": 2300, "summary": { "text": "Un paragraphe.", "long": "Le long résumé.", "current": true } },
+      "owner": { "id": "u7", "username": "ana", "display_name": "Ana", "avatar_color": "#123456" } } } },
+    { "name": "shared row, never captured", "input": { "op": "shared", "entry": {
+      "id": "@ana/articles/en/a", "kind": "articles", "collection": "articles", "locale": "en", "slug": "a", "title": "A", "date": "", "updated_at": "", "tags": [], "translations": [],
+      "source": { "type": "article", "captured": false },
+      "owner": { "id": "u7", "username": "ana", "display_name": "Ana", "avatar_color": "#123456" } } } },
+    { "name": "shared row, no source", "input": { "op": "shared", "entry": {
+      "id": "@ana/articles/en/b", "kind": "articles", "collection": "articles", "locale": "en", "slug": "b", "title": "B", "date": "", "updated_at": "", "tags": [], "translations": [],
+      "owner": { "id": "u7", "username": "ana", "display_name": "Ana", "avatar_color": "#123456" } } } },
+    { "name": "the member's own row", "input": { "op": "shared", "entry": {
+      "id": "articles/en/c", "kind": "articles", "collection": "articles", "locale": "en", "slug": "c", "title": "C", "date": "", "updated_at": "", "tags": [], "translations": [],
+      "source": { "type": "article", "captured": true } } } },
+    { "name": "text, in the owner's notes", "input": { "op": "text", "slug": "la-lenteur", "locale": "fr", "owner": "ana" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": { "slug": "la-lenteur", "locale": "fr", "text": "Lent.", "styles": [] } } ] },
+    { "name": "text, owner with a hyphen and a dot", "input": { "op": "text", "slug": "s", "locale": "en", "owner": "anne-marie.d" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/s/text", "json": { "slug": "s", "locale": "en", "text": "S", "styles": [] } } ] },
+    { "name": "text, the member's own", "input": { "op": "text", "slug": "s", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/s/text", "json": { "slug": "s", "locale": "en", "text": "S", "styles": [] } } ] }
+  ]
+}

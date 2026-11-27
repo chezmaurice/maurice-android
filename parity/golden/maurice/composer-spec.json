@@ -1,0 +1,1071 @@
+{
+  "domain" : "composer-spec",
+  "results" : {
+    "book, chosen chapters" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "full",
+          "scope" : {
+            "mode" : "chapters",
+            "refs" : [
+              "ch1",
+              "ch3"
+            ]
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "full",
+        "scopeMode" : "chapters",
+        "selectedRefs" : [
+          "ch1",
+          "ch3"
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 2,
+        "visibleChapters" : 0
+      }
+    },
+    "book, id as a string" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-42",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 42,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "42",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "42",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, id not a number" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-calibre-42",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 0,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "calibre-42",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "calibre-42",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, id with a fraction" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-42.5",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 0,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "42.5",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "42.5",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, no scope" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, numeric id, all" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-42",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 42,
+          "representation" : "full",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "42",
+        "recurse" : false,
+        "representation" : "full",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "42",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, progress forces summaries" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "progress"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : 4,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "full",
+        "scopeMode" : "progress",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, progress, no snapshot" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "progress"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "progress",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "book, scope without mode" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "mode" : "all"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 3,
+        "visibleChapters" : 0
+      }
+    },
+    "book, up to chapter 6" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "chapter" : 6,
+            "mode" : "up_to"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "up_to",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 6,
+        "visibleChapters" : 0
+      }
+    },
+    "book, up to, chapter as a string" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "book-7",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : 7,
+          "representation" : "summary",
+          "scope" : {
+            "chapter" : 0,
+            "mode" : "up_to"
+          },
+          "type" : "book"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "7",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "up_to",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "7",
+        "type" : "book",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "conversation, full transcript" : {
+      "item" : {
+        "conversationFull" : true,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 40000,
+        "id" : "conversation-c-9",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : "c-9",
+          "representation" : "full",
+          "type" : "conversation"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "c-9",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "pending",
+        "title" : "c-9",
+        "type" : "conversation",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "conversation, summary" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "conversation-c-9",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : "c-9",
+          "type" : "conversation"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "c-9",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "ready",
+        "title" : "c-9",
+        "type" : "conversation",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "fiche, bare" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "fiche-movies/en/dune",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : "movies/en/dune",
+          "include_fragments" : true,
+          "type" : "fiche"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "movies/en/dune",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "movies/en/dune",
+        "type" : "fiche",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "fiche, fragments off" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 5,
+        "fullWeight" : 0,
+        "id" : "fiche-people/fr/marie-curie",
+        "includeArchived" : false,
+        "includeFragments" : false,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : "people/fr/marie-curie",
+          "include_fragments" : false,
+          "type" : "fiche"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "people/fr/marie-curie",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "people/fr/marie-curie",
+        "type" : "fiche",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "file, an image" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "file-f1",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "img",
+        "moc" : false,
+        "na" : true,
+        "payload" : {
+          "id" : "f1",
+          "type" : "file"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "f1",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "f1",
+        "type" : "file",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "file, no snapshot" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "file-f2",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "id" : "f2",
+          "type" : "file"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "f2",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "f2",
+        "type" : "file",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "folder, recurse off" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "folder-dir1",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "dir1",
+          "recurse" : false,
+          "type" : "folder"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "dir1",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "dir1",
+        "type" : "folder",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "folder, recurse unset" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+          "x"
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "folder-dir1",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+            "x"
+          ],
+          "id" : "dir1",
+          "recurse" : true,
+          "type" : "folder"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "dir1",
+        "recurse" : true,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "dir1",
+        "type" : "folder",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "no type" : {
+      "item" : null
+    },
+    "note, bare" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-santé-été",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "santé-été",
+          "include_archived" : false,
+          "recurse" : false,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "santé-été",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "santé-été",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "note, boolean id" : {
+      "item" : null
+    },
+    "note, empty id" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "",
+          "include_archived" : false,
+          "recurse" : false,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "note, exclude with a number" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-n",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "n",
+          "include_archived" : false,
+          "recurse" : false,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "n",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "n",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "note, full options" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : true,
+        "exclude" : [
+          "a",
+          "b"
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-jardin/potager",
+        "includeArchived" : true,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+            "a",
+            "b"
+          ],
+          "id" : "jardin/potager",
+          "include_archived" : true,
+          "recurse" : true,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "jardin/potager",
+        "recurse" : true,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "jardin/potager",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "note, no id" : {
+      "item" : null
+    },
+    "note, null id" : {
+      "item" : null
+    },
+    "note, numeric id" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-12",
+        "includeArchived" : false,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "12",
+          "include_archived" : false,
+          "recurse" : false,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "12",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "12",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "note, recurse as a string" : {
+      "item" : {
+        "conversationFull" : false,
+        "encrypted" : false,
+        "exclude" : [
+
+        ],
+        "fragmentCount" : 0,
+        "fullWeight" : 0,
+        "id" : "note-n",
+        "includeArchived" : true,
+        "includeFragments" : true,
+        "kind" : "",
+        "moc" : false,
+        "na" : false,
+        "payload" : {
+          "exclude" : [
+
+          ],
+          "id" : "n",
+          "include_archived" : true,
+          "recurse" : false,
+          "type" : "note"
+        },
+        "progressChapter" : -1,
+        "progressPaused" : false,
+        "rawId" : "n",
+        "recurse" : false,
+        "representation" : "summary",
+        "scopeMode" : "all",
+        "selectedRefs" : [
+
+        ],
+        "sub" : "",
+        "summarisable" : false,
+        "summaryStatus" : "none",
+        "title" : "n",
+        "type" : "note",
+        "uncovered" : 0,
+        "uptoChapter" : 0,
+        "visibleChapters" : 0
+      }
+    },
+    "type in capitals" : {
+      "item" : null
+    },
+    "unknown type" : {
+      "item" : null
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "checkpoints": [
+    {
+      "name": "kept",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "Delete",
+        "Delete “Sans soleil”?",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "Horizontal scroll bar, 1 page",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "Your notes on it, and what you wrote, are removed. Its page is taken off your site.",
+        "dismiss popup",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

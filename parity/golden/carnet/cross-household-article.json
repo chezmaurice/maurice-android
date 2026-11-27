@@ -1,0 +1,126 @@
+{
+  "domain" : "cross-household-article",
+  "results" : {
+    "shared row, captured, with summaries" : {
+      "author" : "M. K.",
+      "bylineShort" : "",
+      "hasSummary" : true,
+      "hasText" : true,
+      "id" : "@ana/fr/la-lenteur",
+      "locale" : "fr",
+      "owner" : "ana",
+      "readableSummary" : "Le long résumé.",
+      "readingMinutes" : 1,
+      "slug" : "la-lenteur",
+      "summary" : "Un paragraphe.",
+      "textRev" : null,
+      "title" : "La lenteur",
+      "url" : "https://example.org/lenteur"
+    },
+    "shared row, never captured" : {
+      "author" : null,
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : false,
+      "id" : "@ana/en/a",
+      "locale" : "en",
+      "owner" : "ana",
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "a",
+      "summary" : null,
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "shared row, no source" : {
+      "author" : null,
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : true,
+      "id" : "@ana/en/b",
+      "locale" : "en",
+      "owner" : "ana",
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "b",
+      "summary" : null,
+      "textRev" : null,
+      "title" : "B",
+      "url" : null
+    },
+    "text, in the owner's notes" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr",
+            "owner" : "ana"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Lent."
+      }
+    },
+    "text, owner with a hyphen and a dot" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/s/text",
+          "query" : {
+            "locale" : "en",
+            "owner" : "anne-marie.d"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "S"
+      }
+    },
+    "text, the member's own" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/s/text",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "S"
+      }
+    },
+    "the member's own row" : {
+      "author" : null,
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : true,
+      "id" : "en/c",
+      "locale" : "en",
+      "owner" : null,
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "c",
+      "summary" : null,
+      "textRev" : null,
+      "title" : "C",
+      "url" : null
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

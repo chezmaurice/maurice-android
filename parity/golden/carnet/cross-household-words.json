@@ -1,0 +1,61 @@
+{
+  "domain" : "cross-household-words",
+  "results" : {
+    "dates" : [
+      "January 5, 2025",
+      "February 29, 2024",
+      "July 14, 2023",
+      "2025-10",
+      "yesterday",
+      null,
+      null
+    ],
+    "notes and conversations" : {
+      "conversations" : [
+        "April 2, 2025 · Le renard",
+        "Sans date",
+        "January 31, 2023",
+        ""
+      ],
+      "notes" : [
+        {
+          "heading" : "March 12, 2025",
+          "line" : "March 12, 2025 — « Relire le passage »"
+        },
+        {
+          "heading" : "March 12, 2025 · p. 32",
+          "line" : "March 12, 2025 — p. 32: « Page »"
+        },
+        {
+          "heading" : "December 1, 2024 · p. xii",
+          "line" : "December 1, 2024 — p. xii: « Roman »"
+        },
+        {
+          "heading" : "",
+          "line" : "« Sans date »"
+        },
+        {
+          "heading" : "not a date · p. 4",
+          "line" : "not a date — p. 4: « Bizarre »"
+        },
+        {
+          "heading" : "",
+          "line" : "«  »"
+        }
+      ]
+    },
+    "plain text: blank runs collapse" : "Title\n\na\n\nb\n\n c",
+    "plain text: empty" : "",
+    "plain text: paragraphs, breaks, entities" : "One & two\n\nThree\nfour\n\n« Cinq » ’s \"q\" 's' <tag>",
+    "source labels" : [
+      "The article",
+      "The book",
+      "The source",
+      "The source"
+    ]
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

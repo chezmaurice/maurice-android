@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <!-- The system camera writes the photo to send here (platform/Camera.android.kt). -->
+        <provider
+            android:name="eu.chezmaurice.maurice.platform.CameraFileProvider"
+            android:authorities="${applicationId}.camera"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/maurice_camera_paths" />
+        </provider>
+    </application>
+</manifest>

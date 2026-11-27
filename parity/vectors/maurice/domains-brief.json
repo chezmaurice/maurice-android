@@ -1,0 +1,905 @@
+{
+ "domain": "domains-brief",
+ "about": "A domain's brief page: reading it (and the notes seeded in the garden), the member's correction, erasing it, and 'rewrite now' — what is sent, and what the page is told. Only the brief's own routes are compared (Android also re-reads /api/domains afterwards).",
+ "ios": "Maurice/Services/MauriceStore.swift — loadBrief, saveBrief, deleteBrief, refreshBrief (as DomainBriefView.swift calls them)",
+ "android": "core/domains/DomainStore.kt — brief, saveBrief, deleteBrief, refreshBrief (as maurice/domains/BriefSheet.kt calls them: runCatching)",
+ "cases": [
+  {
+   "name": "load: brief and notes",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      },
+      "notes": {
+       "total": 4,
+       "unreviewed": 2,
+       "web_path": "/g/x"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: written by the member",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "member"
+      },
+      "notes": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: no brief yet",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: empty object",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {}
+    }
+   ]
+  },
+  {
+   "name": "load: notes with total 0",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      },
+      "notes": {
+       "total": 0,
+       "unreviewed": 0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: notes without total",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      },
+      "notes": {
+       "unreviewed": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: brief without its date",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "x"
+      },
+      "notes": {
+       "total": 1,
+       "unreviewed": 0
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: brief without sources",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "x",
+       "updated_at": "2026-11-10 03:00:00"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: not the member's (404)",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "status": 404,
+     "json": {
+      "error": "not found"
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: server error",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: malformed JSON",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/d1/brief",
+     "text": "{\"brief\":",
+     "headers": {
+      "content-type": "application/json"
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: kept",
+   "input": {
+    "op": "save",
+    "text": "Nouveau texte"
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "Nouveau texte",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "member"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: empty text erases",
+   "input": {
+    "op": "save",
+    "text": ""
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": null
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: unicode and newlines",
+   "input": {
+    "op": "save",
+    "text": "Ligne 1\n« guillemets » — 🌿\n\tindent"
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "brief": {
+       "text": "x",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "member"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: 200 without a brief key",
+   "input": {
+    "op": "save",
+    "text": "t"
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: server error",
+   "input": {
+    "op": "save",
+    "text": "t"
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "save: 201",
+   "accepted": {
+    "kind": "lenient",
+    "why": "The server answers 200; iOS takes only 200 (saveBrief), Android any 2xx."
+   },
+   "input": {
+    "op": "save",
+    "text": "t"
+   },
+   "routes": [
+    {
+     "method": "PUT",
+     "path": "/api/domains/d1/brief",
+     "status": 201,
+     "json": {
+      "brief": {
+       "text": "t",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "member"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: erased",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "erased": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: nothing to erase",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "json": {
+      "erased": false
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: empty answer",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "json": {}
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: 204",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: 404",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "status": 404,
+     "json": {
+      "error": "not found"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "erase: server error",
+   "input": {
+    "op": "erase"
+   },
+   "routes": [
+    {
+     "method": "DELETE",
+     "path": "/api/domains/d1/brief",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: written from 3",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "written",
+      "sources": 3,
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: written from 1",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "written",
+      "sources": 1,
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: written, no count",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "written"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: unchanged",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "unchanged",
+      "brief": {
+       "text": "Il court le mardi.\nPréfère le matin.",
+       "updated_at": "2026-11-10 03:00:00",
+       "sources": [
+        "c1",
+        "c2",
+        "mail:inbox/42"
+       ],
+       "model": "claude-x"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: the night's allowance is spent (429)",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 429,
+     "json": {
+      "error": "cap reached"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: model failed (502 with a reason)",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 502,
+     "json": {
+      "outcome": "failed",
+      "error": "model timed out"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: 502 without a reason",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 502,
+     "json": {}
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: server error with a message",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: server error without a body",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 500,
+     "text": ""
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: 404",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "status": 404,
+     "json": {
+      "error": "not found"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: unknown outcome",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "queued"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "rewrite: 200 failed with a reason",
+   "accepted": {
+    "kind": "wire",
+    "why": "Android posts {} where iOS posts no body; the route reads none."
+   },
+   "input": {
+    "op": "refresh"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/domains/d1/brief/refresh",
+     "json": {
+      "outcome": "failed",
+      "error": "no conversations"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    }
+   ]
+  }
+ ]
+}

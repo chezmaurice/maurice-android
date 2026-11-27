@@ -1,0 +1,27 @@
+{
+  "domain": "cross-household-words",
+  "about": "What the giving sheet writes: the source's label, each note's line in the form and its heading in the preview (date, page, text), each conversation's line, a date as the sheet writes it, and a captured page as plain paragraphs for the preview. Dates are of past years only: the current year is written without it.",
+  "ios": "GiveMessages (sourceLabel, noteLine, noteHeading, conversationLine, dateLabel, plainText), EntryExport decoding",
+  "android": "GiveMessages, EntryExport.of",
+  "cases": [
+    { "name": "source labels", "input": { "op": "sources", "kinds": ["article", "book", "podcast", null] } },
+    { "name": "notes and conversations", "input": { "op": "lines", "export": {
+      "entry": { "title": "T" },
+      "fiche": { "notes": [
+        { "id": "a", "date": "2025-03-12", "text": "Relire\nle passage" },
+        { "id": "b", "date": "2025-03-12T23:30:00Z", "text": "Page", "page": 32 },
+        { "id": "c", "date": "2024-12-01 10:00:00", "text": "Roman", "page": "xii" },
+        { "id": "d", "text": "Sans date" },
+        { "id": "e", "date": "not a date", "text": "Bizarre", "page": 4.7 },
+        { "id": "f", "date": "", "text": "", "page": true } ] },
+      "conversations": [
+        { "id": "c1", "title": "Le renard", "date": "2025-04-02", "shareable": true },
+        { "id": "c2", "title": "Sans date", "shareable": false },
+        { "id": "c3", "date": "2023-01-31", "shareable": true },
+        { "id": "c4", "shareable": true } ] } } },
+    { "name": "dates", "input": { "op": "dates", "dates": ["2025-01-05", "2024-02-29T12:00:00.000Z", "2023-07-14 08:00:00", "2025-10", "yesterday", "", null] } },
+    { "name": "plain text: paragraphs, breaks, entities", "input": { "op": "plain", "html": "<p>One &amp; <b>two</b></p><p>Three<br/>four</p><script>x()</script><style>p{}</style><div>&laquo;&nbsp;Cinq&nbsp;&raquo; &rsquo;s &quot;q&quot; &#39;s&#39; &lt;tag&gt;</div>" } },
+    { "name": "plain text: blank runs collapse", "input": { "op": "plain", "html": "  <h1>Title</h1>\n\n\n\n<li>a</li><li>b</li>   \t <blockquote>c</blockquote>  " } },
+    { "name": "plain text: empty", "input": { "op": "plain", "html": "" } }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "domain": "session-budget",
+  "about": "The household budget ring and its toasts: after each refresh (GET /api/me/budget), what the ring draws (fraction left, or no ring) and the toast raised — 20, 10, then 5 %, the deepest threshold crossed, each once per member and period. Each step answers the next refresh; `{\"status\": n}` is a failing answer, `{\"text\": …}` a raw body.",
+  "ios": "Maurice/Services/BudgetStore.swift — BudgetStore.refresh (raiseAlertIfDue)",
+  "android": "core/budget/Budget.kt — BudgetStore.refresh",
+  "cases": [
+    { "name": "unlimited", "input": { "steps": [ { "limited": false, "kind": null, "left": null, "resets_at": null, "period": null, "left_eur": null } ] } },
+    { "name": "half left", "input": { "steps": [ { "limited": true, "kind": "monthly", "left": 0.5, "resets_at": "2026-12-01T00:00:00Z", "period": "2026-11" } ] } },
+    { "name": "exactly 20 %", "input": { "steps": [ { "limited": true, "kind": "monthly", "left": 0.2, "period": "2026-11" } ] } },
+    { "name": "just above 20 %", "input": { "steps": [ { "limited": true, "kind": "monthly", "left": 0.2000001, "period": "2026-11" } ] } },
+    { "name": "exactly 10 %", "input": { "steps": [ { "limited": true, "kind": "monthly", "left": 0.1, "period": "2026-11" } ] } },
+    { "name": "exactly 5 %", "input": { "steps": [ { "limited": true, "kind": "monthly", "left": 0.05, "period": "2026-11" } ] } },
+    { "name": "empty", "input": { "steps": [ { "limited": true, "kind": "balance", "left": 0, "period": "p1" } ] } },
+    { "name": "overdrawn", "input": { "steps": [ { "limited": true, "kind": "balance", "left": -0.12, "period": "p1" } ] } },
+    { "name": "more than full", "input": { "steps": [ { "limited": true, "kind": "balance", "left": 1.4, "period": "p1" } ] } },
+    { "name": "25 % then 8 %: told about 10 only", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.25, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.08, "period": "2026-11" } ] } },
+    { "name": "15, 9, 4: each threshold once", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.15, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.09, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.04, "period": "2026-11" } ] } },
+    { "name": "4 % twice: told once", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.04, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.04, "period": "2026-11" } ] } },
+    { "name": "15 %, a top-up, 15 % again", "input": { "steps": [
+      { "limited": true, "kind": "balance", "left": 0.15, "period": "topup-1" },
+      { "limited": true, "kind": "balance", "left": 0.9, "period": "topup-2" },
+      { "limited": true, "kind": "balance", "left": 0.15, "period": "topup-2" } ] } },
+    { "name": "back above a threshold, down again", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.18, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.3, "period": "2026-11" },
+      { "limited": true, "kind": "monthly", "left": 0.19, "period": "2026-11" } ] } },
+    { "name": "no period: resets_at stands in", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.15, "resets_at": "2026-12-01T00:00:00Z" },
+      { "limited": true, "kind": "monthly", "left": 0.15, "resets_at": "2027-01-01T00:00:00Z" } ] } },
+    { "name": "no period, no reset date: no toast", "input": { "steps": [ { "limited": true, "kind": "balance", "left": 0.03 } ] } },
+    { "name": "limited, left unknown", "input": { "steps": [ { "limited": true, "kind": "balance", "left": null, "period": "p1" } ] } },
+    { "name": "not limited, yet a low fraction", "input": { "steps": [ { "limited": false, "left": 0.03, "period": "p1" } ] } },
+    { "name": "limited missing", "input": { "steps": [ { "left": 0.1, "period": "p1" } ] } },
+    { "name": "limited as a string", "input": { "steps": [ { "limited": "yes", "left": 0.1, "period": "p1" } ] } },
+    { "name": "left as a string", "input": { "steps": [ { "limited": true, "left": "0.1", "period": "p1" } ] }, "accepted": { "kind": "lenient", "why": "Android reads a number sent as a string (\"0.1\") where iOS rejects the answer; lenient decoding kept on purpose (11 November 2026)." } },
+    { "name": "an admin's answer", "input": { "steps": [ { "limited": true, "kind": "balance", "left": 0.12, "period": "p1", "left_eur": 2.4, "can_top_up": true } ] } },
+    { "name": "half, then a server error", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.5, "period": "2026-11" },
+      { "status": 500 } ] } },
+    { "name": "half, then malformed", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.5, "period": "2026-11" },
+      { "text": "{\"limited\": tr" } ] } },
+    { "name": "server before the budget (404)", "input": { "steps": [ { "status": 404 } ] } },
+    { "name": "limited, then unlimited", "input": { "steps": [
+      { "limited": true, "kind": "monthly", "left": 0.04, "period": "2026-11" },
+      { "limited": false } ] } }
+  ]
+}

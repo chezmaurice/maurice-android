@@ -1,0 +1,517 @@
+{
+ "domain": "settings-dictation",
+ "about": "Dictation through the household server: whether it transcribes, and the upload of a recording (path, duration, body, type) and what comes back.",
+ "ios": "Services/Dictation.swift — HouseholdTranscription.capability(), transcribe(_:seconds:)",
+ "android": "core/dictation/DictationApi.kt — capability(), transcribe(Recording) (Recording as Recorder.android makes it: audio/mp4)",
+ "cases": [
+  {
+   "name": "capability: available, local",
+   "input": {
+    "kind": "capability",
+    "slug": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d1/api/dictation",
+     "json": {
+      "available": true,
+      "engine": "local",
+      "max_seconds": 600
+     }
+    }
+   ]
+  },
+  {
+   "name": "capability: available through the provider",
+   "input": {
+    "kind": "capability",
+    "slug": "d2"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d2/api/dictation",
+     "json": {
+      "available": true,
+      "engine": "scaleway",
+      "max_seconds": 600
+     }
+    }
+   ]
+  },
+  {
+   "name": "capability: not available",
+   "input": {
+    "kind": "capability",
+    "slug": "d3"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d3/api/dictation",
+     "json": {
+      "available": false,
+      "engine": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "capability: available, no engine",
+   "input": {
+    "kind": "capability",
+    "slug": "d4"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d4/api/dictation",
+     "json": {
+      "available": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "capability: no 'available' field",
+   "input": {
+    "kind": "capability",
+    "slug": "d5"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d5/api/dictation",
+     "json": {
+      "engine": "local"
+     }
+    }
+   ],
+   "accepted": { "kind": "lenient", "why": "Android reads a missing `available` as false; iOS rejects the answer (\"couldn't ask\")." }
+  },
+  {
+   "name": "capability: 404 (server too old)",
+   "input": {
+    "kind": "capability",
+    "slug": "d6"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d6/api/dictation",
+     "json": {
+      "error": "Not found"
+     },
+     "status": 404
+    }
+   ]
+  },
+  {
+   "name": "capability: 401",
+   "input": {
+    "kind": "capability",
+    "slug": "d7"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d7/api/dictation",
+     "json": {
+      "error": "Unauthorized"
+     },
+     "status": 401
+    }
+   ],
+   "accepted": { "kind": "platform", "why": "parity.md 40859643: iOS's \"couldn't ask\" lets the device's own recogniser try; Android has none, so a server that could not be asked is a server that does not transcribe (no mic)." }
+  },
+  {
+   "name": "capability: 500",
+   "input": {
+    "kind": "capability",
+    "slug": "d8"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d8/api/dictation",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ],
+   "accepted": { "kind": "platform", "why": "parity.md 40859643: iOS's \"couldn't ask\" lets the device's own recogniser try; Android has none, so a server that could not be asked is a server that does not transcribe (no mic)." }
+  },
+  {
+   "name": "capability: 503",
+   "input": {
+    "kind": "capability",
+    "slug": "d9"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d9/api/dictation",
+     "json": {
+      "error": "whisper down"
+     },
+     "status": 503
+    }
+   ],
+   "accepted": { "kind": "platform", "why": "parity.md 40859643: iOS's \"couldn't ask\" lets the device's own recogniser try; Android has none, so a server that could not be asked is a server that does not transcribe (no mic)." }
+  },
+  {
+   "name": "capability: malformed JSON",
+   "input": {
+    "kind": "capability",
+    "slug": "d10"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/d10/api/dictation",
+     "text": "{\"available\": tr",
+     "headers": {
+      "content-type": "application/json"
+     }
+    }
+   ],
+   "accepted": { "kind": "platform", "why": "parity.md 40859643: iOS's \"couldn't ask\" lets the device's own recogniser try; Android has none, so a server that could not be asked is a server that does not transcribe (no mic)." }
+  },
+  {
+   "name": "transcribe: words",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d11",
+    "seconds": 3.24
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d11/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 0.35 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d12",
+    "seconds": 0.35
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d12/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 0.25 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d13",
+    "seconds": 0.25
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d13/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 2.25 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d14",
+    "seconds": 2.25
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d14/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 2.35 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d15",
+    "seconds": 2.35
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d15/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 59.95 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d16",
+    "seconds": 59.95
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d16/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 600 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d17",
+    "seconds": 600
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d17/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: duration 1234.56 s",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d18",
+    "seconds": 1234.56
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d18/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: silence (empty text)",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d19",
+    "seconds": 4.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d19/api/dictation",
+     "json": {
+      "text": "",
+      "engine": "local",
+      "seconds": 4.0
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: Unicode",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d20",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d20/api/dictation",
+     "json": {
+      "text": "Ça va ? 你好 👋 — «oui»"
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: no text field",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d21",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d21/api/dictation",
+     "json": {
+      "engine": "local"
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: text null",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d22",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d22/api/dictation",
+     "json": {
+      "text": null
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: 403 consent required",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d23",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d23/api/dictation",
+     "json": {
+      "error": "ai_consent_required"
+     },
+     "status": 403
+    }
+   ]
+  },
+  {
+   "name": "transcribe: 413 too long",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d24",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d24/api/dictation",
+     "json": {
+      "error": "Recording too long"
+     },
+     "status": 413
+    }
+   ]
+  },
+  {
+   "name": "transcribe: 500",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d25",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d25/api/dictation",
+     "json": {
+      "error": "Whisper crashed"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "transcribe: 502 no body",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d26",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d26/api/dictation",
+     "text": "",
+     "headers": {
+      "content-type": "application/json"
+     },
+     "status": 502
+    }
+   ]
+  },
+  {
+   "name": "transcribe: malformed JSON",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d27",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d27/api/dictation",
+     "text": "{\"text\": \"Bonj",
+     "headers": {
+      "content-type": "application/json"
+     }
+    }
+   ]
+  },
+  {
+   "name": "transcribe: 201 created",
+   "input": {
+    "kind": "transcribe",
+    "slug": "d28",
+    "seconds": 5.0
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/d28/api/dictation",
+     "json": {
+      "text": "Bonjour Maurice",
+      "engine": "local",
+      "seconds": 3.2
+     },
+     "status": 201
+    }
+   ],
+   "accepted": { "kind": "latent", "why": "The household's POST /api/dictation answers 200 on success, never 201 (server/src/routes/dictation.ts)." }
+  }
+ ]
+}

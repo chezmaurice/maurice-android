@@ -1,0 +1,60 @@
+{
+  "domain": "reading-models",
+  "about": "What the reading screens derive from what the server sends, without the network: a chapter's and an article's minutes (~230 wpm, rounded), which summary an article reads, its byline, a book's summarize status, a highlight's view; where an entry's cover art is fetched; the highlight washes (light and dark); the three reading sizes and their cycle; the offline size line.",
+  "ios": "Chapter / Article / SummaryStatus / Highlight (Reading.swift, Articles.swift); gardenImageURL; HighlightPalette.uiColor; ReaderFontSize; BookCache.formatSize",
+  "android": "Chapter / Article / SummaryStatus / Highlight (Reading.kt); gardenImageUrl; highlightColor; READER_SIZES / ReaderSize; formatSize",
+  "cases": [
+    { "name": "chapter minutes, summary length preferred", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "wordCount": 3200, "summaryWordCount": 420, "hasSummary": true } } },
+    { "name": "chapter minutes, 114 words", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "wordCount": 114, "hasSummary": false } } },
+    { "name": "chapter minutes, 115 words is half a minute", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "wordCount": 115, "hasSummary": false } } },
+    { "name": "chapter minutes, 575 words is 2.5", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "wordCount": 575, "hasSummary": false } } },
+    { "name": "chapter minutes, no counts", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "hasSummary": false } } },
+    { "name": "chapter minutes, summary of 0 words", "input": { "kind": "chapter", "json": { "index": 1, "slug": "c", "title": "T", "wordCount": 9000, "summaryWordCount": 0, "hasSummary": true } } },
+    { "name": "chapter without index", "accepted": {"kind": "lenient", "why": "Android reads a chapter without index as 0; iOS's Chapter requires it."}, "input": { "kind": "chapter", "json": { "slug": "c", "title": "T", "hasSummary": false } } },
+
+    { "name": "article, long summary read", "input": { "kind": "article", "json": { "slug": "a", "locale": "fr", "title": "A", "summary": "court", "summary_long": "  long  ", "word_count": 2300, "publication": "Le Monde", "published_at": "2026-10-30", "saved_at": "2026-11-01" } } },
+    { "name": "article, blank long summary", "input": { "kind": "article", "json": { "slug": "a", "locale": "fr", "title": "A", "summary": "court", "summary_long": " \n " } } },
+    { "name": "article, empty summaries", "input": { "kind": "article", "json": { "slug": "a", "locale": "fr", "title": "A", "summary": "", "summary_long": "" } } },
+    { "name": "article, saved date only", "input": { "kind": "article", "json": { "slug": "a", "locale": "fr", "title": "A", "saved_at": "2026-11-01", "word_count": 1150 } } },
+    { "name": "article, nothing for the byline", "input": { "kind": "article", "json": { "slug": "a", "locale": "fr", "title": "A", "word_count": 0 } } },
+    { "name": "article, Unicode title and slug", "input": { "kind": "article", "json": { "slug": "l-été", "locale": "fr", "title": "  Été à Paris" } } },
+
+    { "name": "status complete", "input": { "kind": "status", "json": { "chapters": 4, "summarized": 4, "indexed": 4 } } },
+    { "name": "status partly", "input": { "kind": "status", "json": { "chapters": 4, "summarized": 3 } } },
+    { "name": "status more summarized than chapters", "input": { "kind": "status", "json": { "chapters": 4, "summarized": 5 } } },
+    { "name": "status no chapters", "input": { "kind": "status", "json": { "chapters": 0, "summarized": 0 } } },
+    { "name": "status empty", "input": { "kind": "status", "json": {} } },
+
+    { "name": "highlight in the summary", "input": { "kind": "highlight", "json": { "id": 1, "chapter_slug": "c", "quote": "q", "color": "green", "start_offset": 1, "end_offset": 4, "view": "summary" } } },
+    { "name": "highlight from before the view column", "input": { "kind": "highlight", "json": { "id": 1, "chapter_slug": "c", "quote": "q", "color": "yellow", "start_offset": 1, "end_offset": 4 } } },
+    { "name": "highlight with an unknown view", "input": { "kind": "highlight", "json": { "id": 1, "chapter_slug": "c", "quote": "q", "color": "yellow", "view": "pages" } } },
+
+    { "name": "cover art of a member's resource", "input": { "kind": "gardenImage", "image": "/images/camille/resources/articles/lenteur.jpg" } },
+    { "name": "cover art, nested folders", "input": { "kind": "gardenImage", "image": "/images/u2/resources/books/2026/cover.webp" } },
+    { "name": "cover art of a private note: none", "input": { "kind": "gardenImage", "image": "/images/camille/notes/secret.png" } },
+    { "name": "cover art, not under /images/", "input": { "kind": "gardenImage", "image": "https://example.org/x.jpg" } },
+    { "name": "cover art, no image", "input": { "kind": "gardenImage", "image": null } },
+    { "name": "cover art, empty member", "input": { "kind": "gardenImage", "image": "/images//resources/x.jpg" } },
+    { "name": "cover art, resources folder itself", "input": { "kind": "gardenImage", "image": "/images/camille/resources/" } },
+    { "name": "cover art, a space and accents", "input": { "kind": "gardenImage", "image": "/images/camille/resources/articles/été à paris.jpg" } },
+    { "name": "cover art, a query in the path", "input": { "kind": "gardenImage", "image": "/images/camille/resources/a.jpg?v=2" } },
+
+    { "name": "wash: yellow, the ink", "input": { "kind": "palette", "key": "yellow" } },
+    { "name": "wash: green", "input": { "kind": "palette", "key": "green" } },
+    { "name": "wash: pink", "input": { "kind": "palette", "key": "pink" } },
+    { "name": "wash: blue", "input": { "kind": "palette", "key": "blue" } },
+    { "name": "wash: unknown key", "input": { "kind": "palette", "key": "purple" } },
+
+    { "name": "reading sizes", "input": { "kind": "fontSizes" } },
+
+    { "name": "size 0", "input": { "kind": "formatSize", "bytes": 0 } },
+    { "name": "size 1 byte", "input": { "kind": "formatSize", "bytes": 1 } },
+    { "name": "size 999 bytes", "input": { "kind": "formatSize", "bytes": 999 } },
+    { "name": "size 1000 bytes", "input": { "kind": "formatSize", "bytes": 1000 } },
+    { "name": "size 1500 bytes", "input": { "kind": "formatSize", "bytes": 1500 } },
+    { "name": "size 999999 bytes", "input": { "kind": "formatSize", "bytes": 999999 } },
+    { "name": "size 1 MB", "input": { "kind": "formatSize", "bytes": 1000000 } },
+    { "name": "size 12.3 MB", "input": { "kind": "formatSize", "bytes": 12345678 } },
+    { "name": "size 1.5 GB", "input": { "kind": "formatSize", "bytes": 1500000000 } }
+  ]
+}

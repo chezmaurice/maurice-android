@@ -1,0 +1,24 @@
+{
+  "name": "carnet-entry-archive",
+  "app": "carnet",
+  "about": "A row slid right on the shelf is put away.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "La lenteur"
+    },
+    {
+      "swipe": "La lenteur",
+      "to": "right",
+      "pause": 2
+    },
+    {
+      "checkpoint": "archived"
+    }
+  ]
+}

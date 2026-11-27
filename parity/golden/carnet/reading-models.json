@@ -1,0 +1,290 @@
+{
+  "domain" : "reading-models",
+  "results" : {
+    "article, blank long summary" : {
+      "bylineShort" : "",
+      "hasSummary" : true,
+      "hasText" : null,
+      "id" : "fr/a",
+      "locale" : "fr",
+      "readableSummary" : "court",
+      "readingMinutes" : 1,
+      "slug" : "a",
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "article, empty summaries" : {
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : null,
+      "id" : "fr/a",
+      "locale" : "fr",
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "a",
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "article, long summary read" : {
+      "bylineShort" : "Le Monde · 2026-10-30",
+      "hasSummary" : true,
+      "hasText" : null,
+      "id" : "fr/a",
+      "locale" : "fr",
+      "readableSummary" : "long",
+      "readingMinutes" : 10,
+      "slug" : "a",
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "article, nothing for the byline" : {
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : null,
+      "id" : "fr/a",
+      "locale" : "fr",
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "a",
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "article, saved date only" : {
+      "bylineShort" : "2026-11-01",
+      "hasSummary" : false,
+      "hasText" : null,
+      "id" : "fr/a",
+      "locale" : "fr",
+      "readableSummary" : "",
+      "readingMinutes" : 5,
+      "slug" : "a",
+      "textRev" : null,
+      "title" : "A",
+      "url" : null
+    },
+    "article, Unicode title and slug" : {
+      "bylineShort" : "",
+      "hasSummary" : false,
+      "hasText" : null,
+      "id" : "fr/l-été",
+      "locale" : "fr",
+      "readableSummary" : "",
+      "readingMinutes" : 1,
+      "slug" : "l-été",
+      "textRev" : null,
+      "title" : "  Été à Paris",
+      "url" : null
+    },
+    "chapter minutes, 114 words" : {
+      "hasSummary" : false,
+      "index" : 1,
+      "readingMinutes" : 1,
+      "slug" : "c",
+      "summaryWordCount" : null,
+      "title" : "T",
+      "wordCount" : 114
+    },
+    "chapter minutes, 115 words is half a minute" : {
+      "hasSummary" : false,
+      "index" : 1,
+      "readingMinutes" : 1,
+      "slug" : "c",
+      "summaryWordCount" : null,
+      "title" : "T",
+      "wordCount" : 115
+    },
+    "chapter minutes, 575 words is 2.5" : {
+      "hasSummary" : false,
+      "index" : 1,
+      "readingMinutes" : 3,
+      "slug" : "c",
+      "summaryWordCount" : null,
+      "title" : "T",
+      "wordCount" : 575
+    },
+    "chapter minutes, no counts" : {
+      "hasSummary" : false,
+      "index" : 1,
+      "readingMinutes" : 1,
+      "slug" : "c",
+      "summaryWordCount" : null,
+      "title" : "T",
+      "wordCount" : null
+    },
+    "chapter minutes, summary length preferred" : {
+      "hasSummary" : true,
+      "index" : 1,
+      "readingMinutes" : 2,
+      "slug" : "c",
+      "summaryWordCount" : 420,
+      "title" : "T",
+      "wordCount" : 3200
+    },
+    "chapter minutes, summary of 0 words" : {
+      "hasSummary" : true,
+      "index" : 1,
+      "readingMinutes" : 1,
+      "slug" : "c",
+      "summaryWordCount" : 0,
+      "title" : "T",
+      "wordCount" : 9000
+    },
+    "chapter without index" : {
+      "thrown" : true
+    },
+    "cover art of a member's resource" : "/api/garden-images/camille/articles/lenteur.jpg",
+    "cover art of a private note: none" : null,
+    "cover art, a query in the path" : "/api/garden-images/camille/a.jpg?v=2",
+    "cover art, a space and accents" : "/api/garden-images/camille/articles/%C3%A9t%C3%A9%20%C3%A0%20paris.jpg",
+    "cover art, empty member" : null,
+    "cover art, nested folders" : "/api/garden-images/u2/books/2026/cover.webp",
+    "cover art, no image" : null,
+    "cover art, not under /images/" : null,
+    "cover art, resources folder itself" : "/api/garden-images/camille/",
+    "highlight from before the view column" : {
+      "chapterSlug" : "c",
+      "color" : "yellow",
+      "end" : 4,
+      "id" : 1,
+      "note" : null,
+      "quote" : "q",
+      "readerView" : "full",
+      "start" : 1
+    },
+    "highlight in the summary" : {
+      "chapterSlug" : "c",
+      "color" : "green",
+      "end" : 4,
+      "id" : 1,
+      "note" : null,
+      "quote" : "q",
+      "readerView" : "summary",
+      "start" : 1
+    },
+    "highlight with an unknown view" : {
+      "chapterSlug" : "c",
+      "color" : "yellow",
+      "end" : null,
+      "id" : 1,
+      "note" : null,
+      "quote" : "q",
+      "readerView" : "pages",
+      "start" : null
+    },
+    "reading sizes" : {
+      "cycle" : [
+        2,
+        0,
+        1
+      ],
+      "default" : 1,
+      "sizes" : [
+        15,
+        17,
+        19.5
+      ]
+    },
+    "size 0" : "Zero KB",
+    "size 1 byte" : "1 byte",
+    "size 1 MB" : "1 MB",
+    "size 1.5 GB" : "1.5 GB",
+    "size 12.3 MB" : "12.3 MB",
+    "size 999 bytes" : "999 bytes",
+    "size 1000 bytes" : "1 KB",
+    "size 1500 bytes" : "2 KB",
+    "size 999999 bytes" : "1 MB",
+    "status complete" : {
+      "isComplete" : true
+    },
+    "status empty" : {
+      "isComplete" : false
+    },
+    "status more summarized than chapters" : {
+      "isComplete" : true
+    },
+    "status no chapters" : {
+      "isComplete" : false
+    },
+    "status partly" : {
+      "isComplete" : false
+    },
+    "wash: blue" : {
+      "dark" : {
+        "a" : 92,
+        "b" : 230,
+        "g" : 173,
+        "r" : 140
+      },
+      "light" : {
+        "a" : 92,
+        "b" : 230,
+        "g" : 173,
+        "r" : 140
+      }
+    },
+    "wash: green" : {
+      "dark" : {
+        "a" : 102,
+        "b" : 133,
+        "g" : 204,
+        "r" : 153
+      },
+      "light" : {
+        "a" : 102,
+        "b" : 133,
+        "g" : 204,
+        "r" : 153
+      }
+    },
+    "wash: pink" : {
+      "dark" : {
+        "a" : 97,
+        "b" : 179,
+        "g" : 153,
+        "r" : 237
+      },
+      "light" : {
+        "a" : 97,
+        "b" : 179,
+        "g" : 153,
+        "r" : 237
+      }
+    },
+    "wash: unknown key" : {
+      "dark" : {
+        "a" : 41,
+        "b" : 226,
+        "g" : 235,
+        "r" : 240
+      },
+      "light" : {
+        "a" : 28,
+        "b" : 32,
+        "g" : 35,
+        "r" : 38
+      }
+    },
+    "wash: yellow, the ink" : {
+      "dark" : {
+        "a" : 41,
+        "b" : 226,
+        "g" : 235,
+        "r" : 240
+      },
+      "light" : {
+        "a" : 28,
+        "b" : 32,
+        "g" : 35,
+        "r" : 38
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

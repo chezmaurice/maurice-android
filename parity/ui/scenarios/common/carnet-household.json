@@ -1,0 +1,1412 @@
+{
+ "about": "Alice's household for Carnet's UI scenarios: a code makes her a member at once (no PIN to set); her shelf holds a book (Calibre book 7), an article, a published film, and an archived series.",
+ "ignore": [
+  "re:^/api/v1/calibre/books/[0-9]+/cover$"
+ ],
+ "routes": [
+  {
+   "method": "GET",
+   "path": "/api/health",
+   "json": {
+    "status": "ok",
+    "version": "1.0.0",
+    "setup_complete": true,
+    "household": "Les Tilleuls",
+    "household_color": "#4a7c59",
+    "household_icon": "leaf"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/auth/enroll",
+   "json": {
+    "user_id": "u1",
+    "token": "tok-alice",
+    "role": "standard",
+    "needs_pin": false
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/users/me/preferences",
+   "json": {}
+  },
+  {
+   "method": "GET",
+   "path": "/api/users/me",
+   "json": {
+    "id": "u1",
+    "username": "alice",
+    "display_name": "Alice",
+    "role": "standard",
+    "avatar_color": "#c0392b",
+    "avatar_url": null,
+    "profile_text": null,
+    "has_pin": false,
+    "is_child": false,
+    "created_at": "2026-01-01 00:00:00",
+    "last_active_at": null
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/users",
+   "json": [
+    {
+     "id": "u1",
+     "display_name": "Alice",
+     "avatar_color": "#c0392b",
+     "avatar_url": null,
+     "has_pin": false,
+     "role": "standard"
+    },
+    {
+     "id": "u2",
+     "display_name": "Bruno",
+     "avatar_color": "#2980b9",
+     "avatar_url": null,
+     "has_pin": true,
+     "role": "standard"
+    }
+   ]
+  },
+  {
+   "method": "POST",
+   "path": "/api/users/me/device-token",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/dictation",
+   "json": {
+    "available": true,
+    "engine": "local",
+    "max_seconds": 600
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/entries",
+   "query": {
+    "view": "shelf",
+    "archived": "1"
+   },
+   "json": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "series",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "series/fr/twin-peaks",
+      "kind": "series",
+      "collection": "series",
+      "locale": "fr",
+      "slug": "twin-peaks",
+      "title": "Twin Peaks",
+      "byline": "David Lynch",
+      "date": "2026-06-01",
+      "updated_at": "2026-07-01 09:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 0,
+       "opened": true
+      },
+      "shared": {
+       "state": "draft"
+      },
+      "translations": [],
+      "archived": true
+     }
+    ]
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/entries",
+   "query": {
+    "view": "shelf"
+   },
+   "json": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     },
+     {
+      "kind": "articles",
+      "count": 1
+     },
+     {
+      "kind": "movies",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-03 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 7,
+       "chapters": 3,
+       "progress": null
+      },
+      "mine": {
+       "notes": 1,
+       "opened": true
+      },
+      "shared": {
+       "state": "draft"
+      },
+      "translations": []
+     },
+     {
+      "id": "articles/fr/la-lenteur",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "la-lenteur",
+      "title": "La lenteur",
+      "byline": "Milan Kundera",
+      "date": "2026-09-12",
+      "updated_at": "2026-11-02 09:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/la-lenteur",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 5
+      },
+      "mine": {
+       "notes": 0,
+       "opened": true
+      },
+      "shared": {
+       "state": "draft"
+      },
+      "translations": []
+     },
+     {
+      "id": "movies/fr/sans-soleil",
+      "kind": "movies",
+      "collection": "movies",
+      "locale": "fr",
+      "slug": "sans-soleil",
+      "title": "Sans soleil",
+      "byline": "Chris Marker",
+      "date": "2026-08-20",
+      "updated_at": "2026-10-20 09:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": {
+       "state": "published"
+      },
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/entries",
+   "query": {
+    "view": "notes"
+   },
+   "json": {
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-03 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 7,
+       "chapters": 3,
+       "progress": null
+      },
+      "mine": {
+       "notes": 1,
+       "opened": true
+      },
+      "shared": {
+       "state": "draft"
+      },
+      "translations": []
+     },
+     {
+      "id": "movies/fr/sans-soleil",
+      "kind": "movies",
+      "collection": "movies",
+      "locale": "fr",
+      "slug": "sans-soleil",
+      "title": "Sans soleil",
+      "byline": "Chris Marker",
+      "date": "2026-08-20",
+      "updated_at": "2026-10-20 09:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": {
+       "state": "published"
+      },
+      "translations": []
+     }
+    ],
+    "notes": [
+     {
+      "entry_id": "books/fr/la-sagesse",
+      "kind": "note",
+      "id": "n1",
+      "date": "2026-11-01",
+      "text": "Une note sur la sagesse."
+     },
+     {
+      "entry_id": "movies/fr/sans-soleil",
+      "kind": "note",
+      "id": "n2",
+      "date": "2026-10-19",
+      "text": "Les images du Japon."
+     },
+     {
+      "entry_id": "movies/fr/sans-soleil",
+      "kind": "note",
+      "id": "n3",
+      "date": "2026-10-18",
+      "text": "La mémoire, encore."
+     }
+    ]
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/site/deploy",
+   "json": {
+    "status": "idle"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/domains",
+   "json": {
+    "domains": [
+     {
+      "id": "d1",
+      "name": "Le cinéma",
+      "tagline": "Ce que tu regardes",
+      "kind": "domain",
+      "mine": true,
+      "count": 4,
+      "brief": {
+       "updated_at": "2026-11-01 08:00:00",
+       "model": "claude",
+       "sources": 3
+      }
+     }
+    ],
+    "companions": []
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/maurices",
+   "json": [
+    {
+     "id": "d1",
+     "name": "Le cinéma",
+     "kind": "domain",
+     "tagline": "Ce que tu regardes",
+     "created_by": "u1",
+     "count": 4
+    }
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/api/domains/proposals",
+   "json": {
+    "proposals": []
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/models/everyday",
+   "json": {
+    "id": null
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/models",
+   "json": []
+  },
+  {
+   "method": "GET",
+   "path": "/api/tool-families",
+   "json": []
+  },
+  {
+   "method": "GET",
+   "path": "/api/conversations",
+   "json": [
+    {
+     "id": "c7",
+     "title": "Ce que Maurice a remarqué",
+     "opened_by": "maurice",
+     "unread": true,
+     "created_at": "2026-11-05 08:00:00",
+     "updated_at": "2026-11-05 08:00:00",
+     "last_message_at": "2026-11-05 08:00:00",
+     "message_count": 1
+    }
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse/conversations$",
+   "json": {
+    "conversations": []
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/articles/fr/la-lenteur/conversations$",
+   "json": {
+    "conversations": []
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil/conversations$",
+   "json": {
+    "conversations": []
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/garden/entries/archive",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/chapters",
+   "json": [
+    {
+     "index": 1,
+     "slug": "c1",
+     "title": "Le commencement",
+     "wordCount": 60,
+     "summaryWordCount": 12,
+     "hasSummary": true
+    },
+    {
+     "index": 2,
+     "slug": "c2",
+     "title": "Le milieu",
+     "wordCount": 40,
+     "summaryWordCount": null,
+     "hasSummary": false
+    },
+    {
+     "index": 3,
+     "slug": "c3",
+     "title": "La fin",
+     "wordCount": 30,
+     "summaryWordCount": null,
+     "hasSummary": false
+    }
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary",
+   "json": {
+    "exists": true,
+    "title": "Le commencement",
+    "summary": "En bref : tout commence."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/c[23]/summary$",
+   "json": {
+    "exists": false
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/chapters/by-slug/c1",
+   "json": {
+    "title": "Le commencement",
+    "text": "La sagesse commence par l'étonnement.\n\nOn ne sait rien, et c'est déjà beaucoup savoir.\n\nLe chemin est long, mais il est à nous.",
+    "wordCount": 30
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/chapters/by-slug/c2",
+   "json": {
+    "title": "Le milieu",
+    "text": "Au milieu du chemin, on s'arrête.\n\nOn regarde.",
+    "wordCount": 12
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/chapters/by-slug/c3",
+   "json": {
+    "title": "La fin",
+    "text": "Tout finit par un livre.",
+    "wordCount": 6
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/reading-progress",
+   "json": {
+    "book_id": 7,
+    "chapter_index": 1,
+    "chapter_slug": "c1",
+    "view": "full",
+    "enabled": 1,
+    "position": 0,
+    "updated_at": "2026-11-10 09:00:00"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/calibre/books/7/reading-progress",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/calibre/books/7/reading-progress/tracking",
+   "json": {
+    "enabled": 0
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/bookmarks",
+   "json": []
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/calibre/books/7/bookmarks",
+   "json": {
+    "bookmarked": true,
+    "bookmark": {
+     "id": 9,
+     "chapter_slug": "c1",
+     "view": "full",
+     "note": null
+    }
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "re:^/api/v1/calibre/books/7/bookmarks/\\d+$",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/highlights",
+   "json": []
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/calibre/books/7/highlights",
+   "json": {
+    "id": 10,
+    "book_id": 7,
+    "chapter_slug": "c1",
+    "quote": "sagesse",
+    "note": null,
+    "color": "yellow",
+    "start_offset": 3,
+    "end_offset": 10,
+    "view": "full"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/status",
+   "json": {
+    "chapters": 3,
+    "summarized": 1,
+    "indexed": 3,
+    "job": null
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/calibre/books/7/cover",
+   "status": 404,
+   "json": {
+    "error": "no cover"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/articles/la-lenteur",
+   "json": {
+    "slug": "la-lenteur",
+    "locale": "fr",
+    "title": "La lenteur",
+    "url": "https://example.org/la-lenteur",
+    "saved_at": "2026-09-12",
+    "author": "Milan Kundera",
+    "publication": "Le Monde",
+    "published_at": "2026-09-10",
+    "image": null,
+    "summary": "Un éloge de la lenteur.",
+    "summary_long": "Un éloge de la lenteur.\n\nEt de la mémoire.",
+    "word_count": 1200,
+    "has_text": true,
+    "text_rev": "r1",
+    "tags": [],
+    "opened": true,
+    "body": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/articles/la-lenteur/text",
+   "json": {
+    "slug": "la-lenteur",
+    "locale": "fr",
+    "title": "La lenteur",
+    "text": "Pourquoi le plaisir de la lenteur a-t-il disparu ?\n\nLe degré de la lenteur est proportionnel à l'intensité de la mémoire.",
+    "styles": []
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/articles/la-lenteur/highlights",
+   "json": []
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/garden/articles/la-lenteur/highlights",
+   "json": {
+    "id": 5,
+    "slug": "la-lenteur",
+    "quote": "lenteur",
+    "note": null,
+    "color": "yellow",
+    "start_offset": 21,
+    "end_offset": 28,
+    "view": "full"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/garden/articles/la-lenteur/summary",
+   "json": {
+    "summary": "Un éloge de la lenteur.",
+    "summary_long": "Un éloge de la lenteur."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/api/v1/garden/links/targets",
+   "json": {
+    "targets": [
+     {
+      "collection": "movies",
+      "locale": "fr",
+      "slug": "sans-soleil",
+      "title": "Sans soleil",
+      "date": "2026-08-20",
+      "link_basename": "sans-soleil",
+      "has_fiche": true
+     },
+     {
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "date": "2026-10-01",
+      "link_basename": "la-sagesse",
+      "has_fiche": true
+     }
+    ]
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/v1/garden/links",
+   "json": {
+    "ok": true
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/api/conversations",
+   "json": {
+    "id": "c42",
+    "title": null
+   }
+  },
+  {
+   "method": "POST",
+   "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse(/.*)?$",
+   "json": {
+    "id": "books/fr/la-sagesse",
+    "kind": "books",
+    "collection": "books",
+    "locale": "fr",
+    "slug": "la-sagesse",
+    "title": "La Sagesse",
+    "byline": "Gaspard Kœnig",
+    "date": "2026-10-01",
+    "updated_at": "2026-11-03 10:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "book",
+     "book_id": 7,
+     "chapters": 3,
+     "progress": null
+    },
+    "mine": {
+     "notes": 1,
+     "opened": true,
+     "web_path": null,
+     "file": "books/fr/la-sagesse.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n1",
+       "date": "2026-11-01",
+       "text": "Une note sur la sagesse.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "books/fr/la-sagesse.shared.md",
+     "public_url": null,
+     "title": "La Sagesse",
+     "body": "",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "POST",
+   "path": "re:^/api/v1/garden/entries/articles/fr/la-lenteur(/.*)?$",
+   "json": {
+    "id": "articles/fr/la-lenteur",
+    "kind": "articles",
+    "collection": "articles",
+    "locale": "fr",
+    "slug": "la-lenteur",
+    "title": "La lenteur",
+    "byline": "Milan Kundera",
+    "date": "2026-09-12",
+    "updated_at": "2026-11-02 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "article",
+     "url": "https://example.org/la-lenteur",
+     "captured": true,
+     "word_count": 1200,
+     "reading_minutes": 5
+    },
+    "mine": {
+     "notes": 0,
+     "opened": true,
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.md",
+     "prose": "",
+     "items": []
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.shared.md",
+     "public_url": null,
+     "title": "La lenteur",
+     "body": "Une lecture lente, pour la mémoire.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "POST",
+   "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil(/.*)?$",
+   "json": {
+    "id": "movies/fr/sans-soleil",
+    "kind": "movies",
+    "collection": "movies",
+    "locale": "fr",
+    "slug": "sans-soleil",
+    "title": "Sans soleil",
+    "byline": "Chris Marker",
+    "date": "2026-08-20",
+    "updated_at": "2026-10-20 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": null,
+    "mine": {
+     "notes": 2,
+     "opened": true,
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n2",
+       "date": "2026-10-19",
+       "text": "Les images du Japon.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      },
+      {
+       "kind": "note",
+       "id": "n3",
+       "date": "2026-10-18",
+       "text": "La mémoire, encore.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "published",
+     "web_path": "/g/alice/movies/sans-soleil",
+     "file": "movies/fr/sans-soleil.shared.md",
+     "public_url": "https://alice.example/sans-soleil",
+     "title": "Sans soleil",
+     "body": "Un film qui se souvient.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse(/.*)?$",
+   "json": {
+    "id": "books/fr/la-sagesse",
+    "kind": "books",
+    "collection": "books",
+    "locale": "fr",
+    "slug": "la-sagesse",
+    "title": "La Sagesse",
+    "byline": "Gaspard Kœnig",
+    "date": "2026-10-01",
+    "updated_at": "2026-11-03 10:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "book",
+     "book_id": 7,
+     "chapters": 3,
+     "progress": null
+    },
+    "mine": {
+     "notes": 1,
+     "opened": true,
+     "web_path": null,
+     "file": "books/fr/la-sagesse.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n1",
+       "date": "2026-11-01",
+       "text": "Une note sur la sagesse.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "books/fr/la-sagesse.shared.md",
+     "public_url": null,
+     "title": "La Sagesse",
+     "body": "",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "re:^/api/v1/garden/entries/articles/fr/la-lenteur(/.*)?$",
+   "json": {
+    "id": "articles/fr/la-lenteur",
+    "kind": "articles",
+    "collection": "articles",
+    "locale": "fr",
+    "slug": "la-lenteur",
+    "title": "La lenteur",
+    "byline": "Milan Kundera",
+    "date": "2026-09-12",
+    "updated_at": "2026-11-02 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "article",
+     "url": "https://example.org/la-lenteur",
+     "captured": true,
+     "word_count": 1200,
+     "reading_minutes": 5
+    },
+    "mine": {
+     "notes": 0,
+     "opened": true,
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.md",
+     "prose": "",
+     "items": []
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.shared.md",
+     "public_url": null,
+     "title": "La lenteur",
+     "body": "Une lecture lente, pour la mémoire.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil(/.*)?$",
+   "json": {
+    "id": "movies/fr/sans-soleil",
+    "kind": "movies",
+    "collection": "movies",
+    "locale": "fr",
+    "slug": "sans-soleil",
+    "title": "Sans soleil",
+    "byline": "Chris Marker",
+    "date": "2026-08-20",
+    "updated_at": "2026-10-20 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": null,
+    "mine": {
+     "notes": 2,
+     "opened": true,
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n2",
+       "date": "2026-10-19",
+       "text": "Les images du Japon.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      },
+      {
+       "kind": "note",
+       "id": "n3",
+       "date": "2026-10-18",
+       "text": "La mémoire, encore.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "published",
+     "web_path": "/g/alice/movies/sans-soleil",
+     "file": "movies/fr/sans-soleil.shared.md",
+     "public_url": "https://alice.example/sans-soleil",
+     "title": "Sans soleil",
+     "body": "Un film qui se souvient.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "DELETE",
+   "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse(/.*)?$",
+   "json": {
+    "id": "books/fr/la-sagesse",
+    "kind": "books",
+    "collection": "books",
+    "locale": "fr",
+    "slug": "la-sagesse",
+    "title": "La Sagesse",
+    "byline": "Gaspard Kœnig",
+    "date": "2026-10-01",
+    "updated_at": "2026-11-03 10:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "book",
+     "book_id": 7,
+     "chapters": 3,
+     "progress": null
+    },
+    "mine": {
+     "notes": 1,
+     "opened": true,
+     "web_path": null,
+     "file": "books/fr/la-sagesse.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n1",
+       "date": "2026-11-01",
+       "text": "Une note sur la sagesse.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "books/fr/la-sagesse.shared.md",
+     "public_url": null,
+     "title": "La Sagesse",
+     "body": "",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "DELETE",
+   "path": "re:^/api/v1/garden/entries/articles/fr/la-lenteur(/.*)?$",
+   "json": {
+    "id": "articles/fr/la-lenteur",
+    "kind": "articles",
+    "collection": "articles",
+    "locale": "fr",
+    "slug": "la-lenteur",
+    "title": "La lenteur",
+    "byline": "Milan Kundera",
+    "date": "2026-09-12",
+    "updated_at": "2026-11-02 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "article",
+     "url": "https://example.org/la-lenteur",
+     "captured": true,
+     "word_count": 1200,
+     "reading_minutes": 5
+    },
+    "mine": {
+     "notes": 0,
+     "opened": true,
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.md",
+     "prose": "",
+     "items": []
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.shared.md",
+     "public_url": null,
+     "title": "La lenteur",
+     "body": "Une lecture lente, pour la mémoire.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "DELETE",
+   "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil(/.*)?$",
+   "json": {
+    "id": "movies/fr/sans-soleil",
+    "kind": "movies",
+    "collection": "movies",
+    "locale": "fr",
+    "slug": "sans-soleil",
+    "title": "Sans soleil",
+    "byline": "Chris Marker",
+    "date": "2026-08-20",
+    "updated_at": "2026-10-20 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": null,
+    "mine": {
+     "notes": 2,
+     "opened": true,
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n2",
+       "date": "2026-10-19",
+       "text": "Les images du Japon.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      },
+      {
+       "kind": "note",
+       "id": "n3",
+       "date": "2026-10-18",
+       "text": "La mémoire, encore.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "published",
+     "web_path": "/g/alice/movies/sans-soleil",
+     "file": "movies/fr/sans-soleil.shared.md",
+     "public_url": "https://alice.example/sans-soleil",
+     "title": "Sans soleil",
+     "body": "Un film qui se souvient.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse$",
+   "json": {
+    "id": "books/fr/la-sagesse",
+    "kind": "books",
+    "collection": "books",
+    "locale": "fr",
+    "slug": "la-sagesse",
+    "title": "La Sagesse",
+    "byline": "Gaspard Kœnig",
+    "date": "2026-10-01",
+    "updated_at": "2026-11-03 10:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "book",
+     "book_id": 7,
+     "chapters": 3,
+     "progress": null
+    },
+    "mine": {
+     "notes": 1,
+     "opened": true,
+     "web_path": null,
+     "file": "books/fr/la-sagesse.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n1",
+       "date": "2026-11-01",
+       "text": "Une note sur la sagesse.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "books/fr/la-sagesse.shared.md",
+     "public_url": null,
+     "title": "La Sagesse",
+     "body": "",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/articles/fr/la-lenteur$",
+   "json": {
+    "id": "articles/fr/la-lenteur",
+    "kind": "articles",
+    "collection": "articles",
+    "locale": "fr",
+    "slug": "la-lenteur",
+    "title": "La lenteur",
+    "byline": "Milan Kundera",
+    "date": "2026-09-12",
+    "updated_at": "2026-11-02 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": {
+     "type": "article",
+     "url": "https://example.org/la-lenteur",
+     "captured": true,
+     "word_count": 1200,
+     "reading_minutes": 5
+    },
+    "mine": {
+     "notes": 0,
+     "opened": true,
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.md",
+     "prose": "",
+     "items": []
+    },
+    "shared": {
+     "state": "draft",
+     "web_path": null,
+     "file": "articles/fr/la-lenteur.shared.md",
+     "public_url": null,
+     "title": "La lenteur",
+     "body": "Une lecture lente, pour la mémoire.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  },
+  {
+   "method": "GET",
+   "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil$",
+   "json": {
+    "id": "movies/fr/sans-soleil",
+    "kind": "movies",
+    "collection": "movies",
+    "locale": "fr",
+    "slug": "sans-soleil",
+    "title": "Sans soleil",
+    "byline": "Chris Marker",
+    "date": "2026-08-20",
+    "updated_at": "2026-10-20 09:00:00",
+    "image": null,
+    "tags": [],
+    "rating": null,
+    "status": null,
+    "source": null,
+    "mine": {
+     "notes": 2,
+     "opened": true,
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "prose": "",
+     "items": [
+      {
+       "kind": "note",
+       "id": "n2",
+       "date": "2026-10-19",
+       "text": "Les images du Japon.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      },
+      {
+       "kind": "note",
+       "id": "n3",
+       "date": "2026-10-18",
+       "text": "La mémoire, encore.",
+       "author": {
+        "id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#c0392b"
+       }
+      }
+     ]
+    },
+    "shared": {
+     "state": "published",
+     "web_path": "/g/alice/movies/sans-soleil",
+     "file": "movies/fr/sans-soleil.shared.md",
+     "public_url": "https://alice.example/sans-soleil",
+     "title": "Sans soleil",
+     "body": "Un film qui se souvient.",
+     "links": []
+    },
+    "translations": [],
+    "deploy": {
+     "status": "idle",
+     "error": null
+    }
+   }
+  }
+ ]
+}

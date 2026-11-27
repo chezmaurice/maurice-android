@@ -1,0 +1,501 @@
+{
+  "domain" : "settings-dictation",
+  "results" : {
+    "capability: 401" : {
+      "available" : "unknown",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d7/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: 404 (server too old)" : {
+      "available" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d6/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: 500" : {
+      "available" : "unknown",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d8/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: 503" : {
+      "available" : "unknown",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d9/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: available through the provider" : {
+      "available" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d2/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: available, local" : {
+      "available" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d1/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: available, no engine" : {
+      "available" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d4/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: malformed JSON" : {
+      "available" : "unknown",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d10/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: no 'available' field" : {
+      "available" : "unknown",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d5/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "capability: not available" : {
+      "available" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/d3/api/dictation",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "transcribe: 201 created" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d28/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: 403 consent required" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d23/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: 413 too long" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d24/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: 500" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d25/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: 502 no body" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d26/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: duration 0.25 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d13/api/dictation",
+          "query" : {
+            "duration" : "0.2"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 0.35 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d12/api/dictation",
+          "query" : {
+            "duration" : "0.3"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 2.25 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d14/api/dictation",
+          "query" : {
+            "duration" : "2.2"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 2.35 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d15/api/dictation",
+          "query" : {
+            "duration" : "2.4"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 59.95 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d16/api/dictation",
+          "query" : {
+            "duration" : "60.0"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 600 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d17/api/dictation",
+          "query" : {
+            "duration" : "600.0"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: duration 1234.56 s" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d18/api/dictation",
+          "query" : {
+            "duration" : "1234.6"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    },
+    "transcribe: malformed JSON" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d27/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: no text field" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d21/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: silence (empty text)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d19/api/dictation",
+          "query" : {
+            "duration" : "4.0"
+          }
+        }
+      ],
+      "result" : {
+        "text" : ""
+      }
+    },
+    "transcribe: text null" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d22/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "failed" : true
+      }
+    },
+    "transcribe: Unicode" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d20/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Ça va ? 你好 👋 — «oui»"
+      }
+    },
+    "transcribe: words" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/d11/api/dictation",
+          "query" : {
+            "duration" : "3.2"
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Bonjour Maurice"
+      }
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

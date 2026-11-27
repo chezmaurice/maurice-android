@@ -1,0 +1,107 @@
+{
+  "checkpoints": [
+    {
+      "name": "invalid address",
+      "requests": [],
+      "texts": [
+        "0%",
+        "An assistant who knows you, and shows you what he knows.",
+        "Cancel",
+        "Chez Maurice",
+        "Connect",
+        "Create my Maurice",
+        "Each Maurice is a place of its own. Your invitation lets you in.",
+        "Enter a code or an address",
+        "Maurice",
+        "MauriceTile",
+        "Paste",
+        "Paste the invitation link",
+        "That doesn't look like a valid address. Example: https://martin.chezmaurice.eu",
+        "Vertical scroll bar, 1 page",
+        "http://:1"
+      ]
+    },
+    {
+      "name": "unreachable",
+      "requests": [],
+      "texts": [
+        "0%",
+        "An assistant who knows you, and shows you what he knows.",
+        "Cancel",
+        "Chez Maurice",
+        "Connect",
+        "Could not connect: Could not connect to the server.\nMaurice servers use https — try https:// instead of http://.",
+        "Create my Maurice",
+        "Each Maurice is a place of its own. Your invitation lets you in.",
+        "Enter a code or an address",
+        "Maurice",
+        "MauriceTile",
+        "Paste",
+        "Paste the invitation link",
+        "Vertical scroll bar, 1 page",
+        "http://127.0.0.1:1"
+      ]
+    },
+    {
+      "name": "not a Maurice",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "An assistant who knows you, and shows you what he knows.",
+        "Cancel",
+        "Chez Maurice",
+        "Connect",
+        "Could not connect: [404] Request failed\nMaurice servers use https — try https:// instead of http://.",
+        "Create my Maurice",
+        "Each Maurice is a place of its own. Your invitation lets you in.",
+        "Enter a code or an address",
+        "Maurice",
+        "MauriceTile",
+        "Paste",
+        "Paste the invitation link",
+        "Vertical scroll bar, 1 page",
+        "http://127.0.0.1:47800"
+      ]
+    },
+    {
+      "name": "not ready",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "An assistant who knows you, and shows you what he knows.",
+        "Cancel",
+        "Chez Maurice",
+        "Connect",
+        "Create my Maurice",
+        "Each Maurice is a place of its own. Your invitation lets you in.",
+        "Enter a code or an address",
+        "Maurice",
+        "MauriceTile",
+        "Paste",
+        "Paste the invitation link",
+        "Server returned unexpected status",
+        "Vertical scroll bar, 1 page",
+        "http://127.0.0.1:47800/"
+      ]
+    }
+  ],
+  "failures": []
+}

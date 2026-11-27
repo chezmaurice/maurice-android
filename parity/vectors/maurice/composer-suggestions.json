@@ -1,0 +1,1475 @@
+{
+ "domain": "composer-suggestions",
+ "about": "What a conversation is worth keeping in the member's garden (Carnet suggestions): the drawer's rows as decoded (kinds, candidates, kept/pending, what keeping needs), a podcast's episodes, and the count the header's mark shows when a conversation is opened. The drawer's own requests (list, keep, search, dismiss, episodes) are private to the SwiftUI view on iOS and not reachable (see the report).",
+ "ios": "Maurice/Views/CarnetSuggestions.swift — EntrySuggestion, EpisodeList (JSONDecoder, as APIClient decodes); Maurice/Services/ChatService.swift — selectConversation → refreshSuggestionCount, suggestionCount(for:)",
+ "android": "core/carnet/Suggestions.kt — EntrySuggestion, EpisodeList (MauriceJson); core/chat/ChatController.kt — open(id), the row's suggestions / suggestions_kept (SuggestionsMark)",
+ "cases": [
+  {
+   "name": "rows: every kind",
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: empty",
+   "input": {
+    "op": "decode",
+    "rows": []
+   }
+  },
+  {
+   "name": "rows: one without a note",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one row without `note`; Android reads it with an empty note."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: one without existing",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one row without `existing`; Android reads it as false."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: one without candidates",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one row without `candidates`; Android reads none."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: one without a state",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one row without `state`; Android reads it as pending."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: a year as a string",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for a year written \"2021\"; Android reads it as 2021."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": "2021",
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: a year as a float",
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021.0,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: unknown kind, null searchable",
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "recipes",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": "Dune Messiah",
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": null
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: a candidate without a title",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one candidate without a title; Android leaves out only the row that carries it."
+   },
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "movies",
+      "title": "Dune",
+      "year": 2021,
+      "subtitle": "Denis Villeneuve",
+      "image": "/img/dune.jpg",
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s2",
+      "kind": "books",
+      "title": "Dune",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [
+       {
+        "id": "k1",
+        "title": "Dune",
+        "year": 1965,
+        "subtitle": "Frank Herbert",
+        "image": null
+       },
+       {
+        "id": "k2",
+        "title": null,
+        "year": 1969
+       }
+      ],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s3",
+      "kind": "people",
+      "title": "Marie",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "Ce qui a été dit.",
+      "state": "kept",
+      "existing": true,
+      "in_library": null,
+      "candidates": [],
+      "entry": "people/fr/marie",
+      "web_path": "/people/marie",
+      "query": null,
+      "searchable": false
+     },
+     {
+      "id": "s4",
+      "kind": "podcasts",
+      "title": "La Méthode scientifique",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     },
+     {
+      "id": "s5",
+      "kind": "articles",
+      "title": "Un article",
+      "year": null,
+      "subtitle": null,
+      "image": null,
+      "note": "",
+      "state": "dismissed",
+      "existing": false,
+      "in_library": null,
+      "candidates": [],
+      "entry": null,
+      "web_path": null,
+      "query": null,
+      "searchable": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "rows: the minimum iOS asks for",
+   "input": {
+    "op": "decode",
+    "rows": [
+     {
+      "id": "s9",
+      "kind": "music",
+      "title": "Kind of Blue",
+      "note": "",
+      "state": "pending",
+      "existing": false,
+      "candidates": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "episodes: two, one suggested",
+   "input": {
+    "op": "episodes",
+    "body": {
+     "feed": "https://radio.example/feed.xml",
+     "episodes": [
+      {
+       "id": "e1",
+       "title": "Les trous noirs",
+       "date": "2026-11-03T06:00:00Z",
+       "description": "…",
+       "image": "https://x/1.jpg",
+       "duration": 3420
+      },
+      {
+       "id": "e2",
+       "title": "Les volcans",
+       "date": null,
+       "description": "",
+       "image": "",
+       "duration": null
+      }
+     ],
+     "suggested": "e1"
+    }
+   }
+  },
+  {
+   "name": "episodes: none suggested",
+   "input": {
+    "op": "episodes",
+    "body": {
+     "feed": "https://radio.example/feed.xml",
+     "episodes": [
+      {
+       "id": "e1",
+       "title": "Les trous noirs",
+       "date": "2026-11-03T06:00:00Z",
+       "description": "…",
+       "image": "https://x/1.jpg",
+       "duration": 3420
+      },
+      {
+       "id": "e2",
+       "title": "Les volcans",
+       "date": null,
+       "description": "",
+       "image": "",
+       "duration": null
+      }
+     ],
+     "suggested": null
+    }
+   }
+  },
+  {
+   "name": "episodes: one without description and image",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the list for one episode without description or image; Android reads them empty."
+   },
+   "input": {
+    "op": "episodes",
+    "body": {
+     "feed": "https://radio.example/feed.xml",
+     "episodes": [
+      {
+       "id": "e1",
+       "title": "Les trous noirs",
+       "date": "2026-11-03T06:00:00Z",
+       "description": "…",
+       "image": "https://x/1.jpg",
+       "duration": 3420
+      },
+      {
+       "id": "e2",
+       "title": "Les volcans",
+       "date": null,
+       "duration": null
+      }
+     ],
+     "suggested": "e1"
+    }
+   }
+  },
+  {
+   "name": "episodes: a duration with a fraction",
+   "input": {
+    "op": "episodes",
+    "body": {
+     "feed": "https://radio.example/feed.xml",
+     "episodes": [
+      {
+       "id": "e1",
+       "title": "Les trous noirs",
+       "date": "2026-11-03T06:00:00Z",
+       "description": "…",
+       "image": "https://x/1.jpg",
+       "duration": 3420.7
+      },
+      {
+       "id": "e2",
+       "title": "Les volcans",
+       "date": null,
+       "description": "",
+       "image": "",
+       "duration": null
+      }
+     ],
+     "suggested": "e1"
+    }
+   }
+  },
+  {
+   "name": "episodes: no feed",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the list without `feed`; Android reads it empty."
+   },
+   "input": {
+    "op": "episodes",
+    "body": {
+     "episodes": [
+      {
+       "id": "e1",
+       "title": "Les trous noirs",
+       "date": "2026-11-03T06:00:00Z",
+       "description": "…",
+       "image": "https://x/1.jpg",
+       "duration": 3420
+      },
+      {
+       "id": "e2",
+       "title": "Les volcans",
+       "date": null,
+       "description": "",
+       "image": "",
+       "duration": null
+      }
+     ],
+     "suggested": "e1"
+    }
+   }
+  },
+  {
+   "name": "episodes: empty list",
+   "input": {
+    "op": "episodes",
+    "body": {
+     "feed": "f",
+     "episodes": []
+    }
+   }
+  },
+  {
+   "name": "open: the server has more waiting than the list said",
+   "input": {
+    "op": "open",
+    "conversation": "c1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Films",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "suggestions": 2,
+       "suggestions_kept": 0
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "suggestions": [],
+      "pending": 3,
+      "kept": 1
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c1",
+     "json": {
+      "messages": [],
+      "participants": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "open: the list's count is current",
+   "input": {
+    "op": "open",
+    "conversation": "c1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Films",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "suggestions": 2,
+       "suggestions_kept": 0
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "suggestions": [],
+      "pending": 2,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c1",
+     "json": {
+      "messages": [],
+      "participants": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "open: a conversation the list says nothing for",
+   "input": {
+    "op": "open",
+    "conversation": "c2"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Films",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "suggestions": 2,
+       "suggestions_kept": 0
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "suggestions": [],
+      "pending": 1,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c2/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c2",
+     "json": {
+      "messages": [],
+      "participants": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "open: the count cannot be read",
+   "input": {
+    "op": "open",
+    "conversation": "c1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Films",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "suggestions": 2,
+       "suggestions_kept": 0
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c1",
+     "json": {
+      "messages": [],
+      "participants": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "open: everything was decided elsewhere",
+   "input": {
+    "op": "open",
+    "conversation": "c1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Films",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "suggestions": 2,
+       "suggestions_kept": 0
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "suggestions": [],
+      "pending": 0,
+      "kept": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c1",
+     "json": {
+      "messages": [],
+      "participants": []
+     }
+    }
+   ]
+  }
+ ]
+}

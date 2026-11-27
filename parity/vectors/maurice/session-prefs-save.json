@@ -1,0 +1,16 @@
+{
+  "domain": "session-prefs-save",
+  "about": "The member changes their palette or language in Settings: what the server is told (PATCH /api/users/me/preferences), and what the device keeps.",
+  "ios": "Maurice/Services/SessionStore.swift — SessionStore.palette / localeIdentifier, then savePreferences",
+  "android": "core/session/Session.kt — Session.setPrefs",
+  "cases": [
+    { "name": "palette and language", "input": { "palette": "cream", "locale": "fr" },
+      "routes": [ { "method": "PATCH", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr" } } ] },
+    { "name": "back to the device's language", "input": { "palette": "auto", "locale": null },
+      "routes": [ { "method": "PATCH", "path": "/api/users/me/preferences", "json": { "palette": "auto", "locale": null } } ] },
+    { "name": "regional language", "input": { "palette": "studio", "locale": "pt-BR" },
+      "routes": [ { "method": "PATCH", "path": "/api/users/me/preferences", "json": { "palette": "studio", "locale": "pt-BR" } } ] },
+    { "name": "server refuses", "input": { "palette": "cream", "locale": "it" },
+      "routes": [ { "method": "PATCH", "path": "/api/users/me/preferences", "status": 500, "json": { "error": "boom" } } ] }
+  ]
+}

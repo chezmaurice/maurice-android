@@ -1,0 +1,84 @@
+{
+  "domain" : "session-move-bytes",
+  "results" : {
+    "b64u: empty" : {
+      "bytes" : ""
+    },
+    "b64u: four chars" : {
+      "bytes" : "010203"
+    },
+    "b64u: half padded" : {
+      "bytes" : "01"
+    },
+    "b64u: identity key" : {
+      "bytes" : "8a88e3dd7409f195fd52db2d3cba5d72ca6709bf1d94121bf3748801b40f6f5c"
+    },
+    "b64u: invalid char" : {
+      "bytes" : null
+    },
+    "b64u: leading space" : {
+      "bytes" : null
+    },
+    "b64u: non-zero trailing bits" : {
+      "bytes" : "00"
+    },
+    "b64u: one char" : {
+      "bytes" : null
+    },
+    "b64u: padded" : {
+      "bytes" : "01"
+    },
+    "b64u: proof signature" : {
+      "bytes" : "26b6061845d68d073267fd692314de63c73fc3dcb06d9a5826c66c182e843eac71b9cb227f53528a46bde60ad6616199fe117146f85f35e21dd6c086259ab50c"
+    },
+    "b64u: standard alphabet" : {
+      "bytes" : "fbffbf"
+    },
+    "b64u: three chars" : {
+      "bytes" : "0102"
+    },
+    "b64u: trailing newline" : {
+      "bytes" : null
+    },
+    "b64u: two chars" : {
+      "bytes" : "01"
+    },
+    "b64u: url alphabet" : {
+      "bytes" : "fbffbf"
+    },
+    "txt: 255-byte string" : {
+      "txt" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "txt: a lone length byte" : {
+      "txt" : ""
+    },
+    "txt: a record split in two" : {
+      "txt" : "v=maurice1; moved=https://new.example"
+    },
+    "txt: invalid UTF-8" : {
+      "txt" : "�("
+    },
+    "txt: length beyond the data" : {
+      "txt" : "hi"
+    },
+    "txt: nothing" : {
+      "txt" : ""
+    },
+    "txt: one empty string" : {
+      "txt" : ""
+    },
+    "txt: one string" : {
+      "txt" : "hello"
+    },
+    "txt: two strings joined" : {
+      "txt" : "hello world"
+    },
+    "txt: UTF-8 split across strings" : {
+      "txt" : "��"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

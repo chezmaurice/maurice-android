@@ -1,0 +1,130 @@
+{
+ "domain": "shelf-web-link",
+ "about": "An entry's web page opened signed in: /login?token=<maur_>&to=<path>, the member's maur_ token asked for once; without one, the bare page.",
+ "ios": "CarnetApp/Services/GardenLinks.swift — webURL",
+ "android": "core/session/Session.kt — signedInUrl (EntryScreen MoreMenu)",
+ "cases": [
+  {
+   "name": "a page, signed in",
+   "input": {
+    "path": "/g/alice/books/la-sagesse"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "rawToken": "maur_abc"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a path with spaces, accents and a query",
+   "input": {
+    "path": "/g/alice/l'été à paris?x=1&y=2#top"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "rawToken": "maur_abc"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a token with reserved characters",
+   "input": {
+    "path": "/g/a"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "rawToken": "maur_a+b/c=d&e"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a relative path",
+   "input": {
+    "path": "g/alice/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "rawToken": "maur_abc"
+     }
+    }
+   ]
+  },
+  {
+   "name": "an empty path",
+   "input": {
+    "path": ""
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "rawToken": "maur_abc"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the token refused (500): the bare page",
+   "input": {
+    "path": "/g/alice/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the token refused (403)",
+   "input": {
+    "path": "/g/alice/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "status": 403,
+     "json": {
+      "error": "guests have no token"
+     }
+    }
+   ]
+  },
+  {
+   "name": "an answer without a token",
+   "input": {
+    "path": "/g/alice/x"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/users/me/mcp-token",
+     "json": {
+      "token": "x"
+     }
+    }
+   ]
+  }
+ ]
+}

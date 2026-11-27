@@ -1,0 +1,154 @@
+{
+  "domain" : "session-receive",
+  "results" : {
+    "already paired and signed in" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : "#aa3300",
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : true
+    },
+    "already paired, address spelt with a trailing slash" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : true
+    },
+    "already paired, another spelling of the address" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{localhost}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 2,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "u1TokenKept" : true
+    },
+    "app link on a blank device" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    },
+    "blank device, empty household name" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "127.0.0.1",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    },
+    "blank device, health without version" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "127.0.0.1",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    },
+    "blank device, household answers" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : "#aa3300",
+        "icon" : "leaf",
+        "key" : "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w",
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    },
+    "blank device, household silent" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "127.0.0.1",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    },
+    "blank device, household starting" : {
+      "activeMember" : null,
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -"
+      ],
+      "u1TokenKept" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

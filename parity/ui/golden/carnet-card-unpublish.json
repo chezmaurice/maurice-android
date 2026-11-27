@@ -1,0 +1,85 @@
+{
+  "checkpoints": [
+    {
+      "name": "the confirmation",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/conversations",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2 NOTES",
+        "2026-08-20",
+        "Back",
+        "Carnet",
+        "Edit",
+        "Film · Chris Marker",
+        "Horizontal scroll bar, 1 page",
+        "It stays here, as a draft, and leaves the site in a few seconds.",
+        "More",
+        "Open",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share the card",
+        "Share with someone",
+        "Take this off your site?",
+        "Turn over",
+        "Un film qui se souvient.",
+        "Unpublish",
+        "Vertical scroll bar, 1 page",
+        "alice.example/sans-soleil",
+        "arrow.up.right",
+        "dismiss popup"
+      ]
+    },
+    {
+      "name": "unpublished",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "DELETE",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/shared/publish",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2 NOTES",
+        "2026-08-20",
+        "Back",
+        "Carnet",
+        "Edit",
+        "Film · Chris Marker",
+        "More",
+        "Offline",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Selected",
+        "Share the card",
+        "Share with someone",
+        "Turn over",
+        "Un film qui se souvient.",
+        "Vertical scroll bar, 1 page"
+      ]
+    }
+  ],
+  "failures": []
+}

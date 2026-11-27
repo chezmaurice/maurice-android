@@ -1,0 +1,32 @@
+{
+  "name": "carnet-maurice",
+  "app": "carnet",
+  "about": "Menu → Maurice: what he keeps on the member (domains) and the conversations he opened.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": "Maurice"
+    },
+    {
+      "see": "Le cinéma"
+    },
+    {
+      "checkpoint": "Maurice",
+      "accepted": {
+        "kind": "platform",
+        "why": "Carnet Android's Maurice page is the Maurice app's own screen (parity.md, 65ec6d4), which reads the Maurice app's routes (/api/maurices, proposals, models); iOS's AskMauriceView reads /api/domains."
+      }
+    }
+  ]
+}

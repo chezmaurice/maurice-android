@@ -1,0 +1,69 @@
+{
+  "checkpoints": [
+    {
+      "name": "the list",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    },
+    {
+      "name": "searched",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "5 MIN",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 1",
+        "Films",
+        "Films, 1",
+        "L",
+        "La lenteur",
+        "Menu",
+        "Search",
+        "Sort",
+        "Typing Predictions",
+        "Vertical scroll bar, 1 page",
+        "lent",
+        "‘lent’"
+      ]
+    }
+  ],
+  "failures": []
+}

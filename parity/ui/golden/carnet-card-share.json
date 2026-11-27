@@ -1,0 +1,49 @@
+{
+  "checkpoints": [
+    {
+      "name": "the share sheet",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/conversations",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2 NOTES",
+        "2026-08-20",
+        "Back",
+        "Carnet",
+        "Edit",
+        "Film · Chris Marker",
+        "More",
+        "Open",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share the card",
+        "Share with someone",
+        "Turn over",
+        "Un film qui se souvient.",
+        "Unpublish",
+        "Vertical scroll bar, 1 page",
+        "alice.example/sans-soleil",
+        "arrow.up.right",
+        "dismiss popup"
+      ]
+    }
+  ],
+  "failures": []
+}

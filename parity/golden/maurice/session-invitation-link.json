@@ -1,0 +1,18 @@
+{
+  "domain" : "session-invitation-link",
+  "results" : {
+    "accented code" : "https://maison.example/join?code=caf%C3%A9",
+    "code with & and +" : "https://maison.example/join?code=A%26B+C",
+    "code with # and ?" : "https://maison.example/join?code=A%23B?C",
+    "code with a space" : "https://maison.example/join?code=AB%20CD",
+    "dashed code" : "https://maison.example/join?code=ABCD-EFGH",
+    "empty code" : "https://maison.example/join?code=",
+    "http with port" : "http://192.168.1.10:3000/join?code=ABCD1234",
+    "plain code" : "https://maison.example/join?code=ABCD1234",
+    "server with trailing slash" : "https://maison.example//join?code=ABCD1234"
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

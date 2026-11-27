@@ -1,0 +1,78 @@
+{
+  "checkpoints": [
+    {
+      "name": "the address asked",
+      "requests": [],
+      "texts": [
+        "0%",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Chez Maurice",
+        "Connect",
+        "Enter a code or an address",
+        "Every household has its own Maurice. Your invitation lets you in.",
+        "Half screen",
+        "Household address",
+        "Scan Qr Code",
+        "Scan an invitation",
+        "Sheet Grabber",
+        "Vertical scroll bar, 1 page",
+        "What you read, watch and note, in one place.",
+        "carnet-emblem",
+        "carnet-tile",
+        "dismiss popup",
+        "myhome.chezmaurice.eu"
+      ]
+    },
+    {
+      "name": "refused",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "code": "ABCD-EFGH"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/enroll",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "127.0.0.1",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Continue",
+        "Enter your invite code",
+        "Have an invite code?",
+        "Invalid or expired code",
+        "Other options",
+        "To join this household on this device, enter the invitation code you were given.",
+        "Vertical scroll bar, 1 page",
+        "Who's here?",
+        "Your invite code sets up the app on this device.",
+        "carnet-tile"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,78 @@
+name: build
+
+on:
+  push:
+  workflow_dispatch:
+
+# A new push makes the run of the previous one moot: the private repo's
+# Actions minutes are counted (Windows double).
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Desktop means Windows and Linux; the Mac is not a target.
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Tests (core, screens)
+        run: ./gradlew --console=plain :core:jvmTest :maurice:shared:jvmTest
+
+      - name: Installer
+        run: ./gradlew --console=plain :maurice:desktopApp:packageDistributionForCurrentOS
+
+      - name: Launch (Linux, virtual display)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get install -y xvfb > /dev/null
+          MAURICE_SMOKE=1 xvfb-run -a ./gradlew --console=plain :maurice:desktopApp:run | tee run.log
+          grep -q "smoke: window up" run.log
+
+      - name: Launch (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          MAURICE_SMOKE=1 ./gradlew --console=plain :maurice:desktopApp:run | tee run.log
+          grep -q "smoke: window up" run.log
+
+      # The account has 0.5 GB of Actions storage. Screenshots are small and
+      # kept on every run; an installer is ~140 MB, so it is kept only when
+      # the run failed, for a tag, or when the run was started by hand.
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          retention-days: 3
+          name: screenshots-${{ matrix.os }}
+          path: maurice/shared/build/screenshots/
+          if-no-files-found: ignore
+
+      - uses: actions/upload-artifact@v4
+        if: failure() || startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        with:
+          retention-days: 3
+          name: desktop-${{ matrix.os }}
+          path: maurice/desktopApp/build/compose/binaries/main/*/*
+          if-no-files-found: ignore
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Debug APKs and Android unit tests
+        run: ./gradlew --console=plain :maurice:androidApp:assembleDebug :carnet:androidApp:assembleDebug

@@ -1,0 +1,1077 @@
+{
+ "domain": "domains-pastilles",
+ "about": "The round marks beside a conversation's title: the member's own domains it has to do with — the one it is bound to (by the member or by the night), each whose brief Maurice read, the one last recognised — in the order they came, each once.",
+ "ios": "Maurice/Views/DomainsViews.swift — DomainPastilles.mobilised(chat:store:session:) (over the loaded messages; streaming data empty)",
+ "android": "maurice/domains/Domains.kt — pastilles(domains, memberId, boundId, boundByNight, blocks), as ChatScreen.kt calls it (blocks = the messages' data)",
+ "cases": [
+  {
+   "name": "nothing bound, nothing read",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": []
+   }
+  },
+  {
+   "name": "bound by the member",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "d1",
+     "maurice_bound_by": "member"
+    },
+    "messages": []
+   }
+  },
+  {
+   "name": "bound by the night",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "d1",
+     "maurice_bound_by": "auto"
+    },
+    "messages": []
+   }
+  },
+  {
+   "name": "bound, then two briefs read, then recognised",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "d1",
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d2",
+         "domain": "Jardin"
+        }
+       }
+      ]
+     },
+     {
+      "id": "m2",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d3",
+         "domain": "Voyages"
+        }
+       },
+       {
+        "tool": "domain_recognised",
+        "data": {
+         "domain_id": "d1",
+         "domain": "Santé"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "recognised twice: only the last",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_recognised",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     },
+     {
+      "id": "m2",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_recognised",
+        "data": {
+         "domain_id": "d3"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "the same brief read twice",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     },
+     {
+      "id": "m2",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "recognised is the bound one",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "d2",
+     "maurice_bound_by": "auto"
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_recognised",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "an older reply with the name only",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain": "Voyages"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "an id unknown, a name known",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "gone",
+         "domain": "Jardin"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "bound to someone else's domain",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "x1",
+     "maurice_bound_by": "member"
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "x1"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "bound to a companion",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "c1",
+     "maurice_bound_by": "member"
+    },
+    "messages": []
+   }
+  },
+  {
+   "name": "no domains of the member's",
+   "input": {
+    "rows": [
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": "x1",
+     "maurice_bound_by": null
+    },
+    "messages": []
+   }
+  },
+  {
+   "name": "a block whose data is not an object",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": "d2"
+       },
+       {
+        "tool": "domain_brief",
+        "data": [
+         "d3"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "other tools are ignored",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "web_search",
+        "data": {
+         "domain_id": "d2"
+        }
+       },
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d3"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "a human message without data",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m0",
+      "role": "user",
+      "content": "hi",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00"
+     },
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "recognised before a brief, by order",
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_recognised",
+        "data": {
+         "domain_id": "d3"
+        }
+       }
+      ]
+     },
+     {
+      "id": "m2",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": "d2"
+        }
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "a domain id given as a number",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads a numeric id as its string; iOS drops the pastille. The server sends string ids."
+   },
+   "input": {
+    "rows": [
+     {
+      "id": "d1",
+      "name": "Santé",
+      "kind": "domain",
+      "created_by": "u1",
+      "icon": "cross.case"
+     },
+     {
+      "id": "d2",
+      "name": "Jardin",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "d3",
+      "name": "Voyages",
+      "kind": "domain",
+      "created_by": "u1"
+     },
+     {
+      "id": "x1",
+      "name": "Cuisine",
+      "kind": "domain",
+      "created_by": "u2"
+     },
+     {
+      "id": "c1",
+      "name": "Dune",
+      "kind": "companion",
+      "created_by": "u1"
+     },
+     {
+      "id": "12",
+      "name": "Douze",
+      "kind": "domain",
+      "created_by": "u1"
+     }
+    ],
+    "conversation": {
+     "id": "cv",
+     "title": "t",
+     "created_at": "2026-11-10 09:00:00",
+     "updated_at": "2026-11-10 09:00:00",
+     "maurice_id": null,
+     "maurice_bound_by": null
+    },
+    "messages": [
+     {
+      "id": "m1",
+      "role": "assistant",
+      "content": "…",
+      "model": null,
+      "created_at": "2026-11-10 09:00:00",
+      "data": [
+       {
+        "tool": "domain_brief",
+        "data": {
+         "domain_id": 12
+        }
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

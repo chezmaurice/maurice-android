@@ -1,0 +1,372 @@
+{
+  "domain" : "reading-resonances",
+  "results" : {
+    "a highlight in a book, no note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "quote" : "one of the most important",
+            "source_book_title" : "80,000 Hours",
+            "to" : {
+              "collection" : "notes",
+              "locale" : "en",
+              "slug" : "slow"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "a highlight in an article linked to a book" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "Même lenteur.",
+            "quote" : "la lenteur",
+            "source" : {
+              "basename" : "la-lenteur-fiche",
+              "label" : "La lenteur"
+            },
+            "to" : {
+              "collection" : "books",
+              "locale" : "fr",
+              "slug" : "l-etranger"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "a source with a label alone" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "x",
+            "source" : {
+              "label" : "Une conversation"
+            },
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "a source with both a basename and a book title" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "x",
+            "source_book_title" : "L'Étranger",
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "a thought from a book's page" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "Pareil.",
+            "source_book_title" : "L'Étranger",
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "a thought from an article's page" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "Ça résonne — 夏.",
+            "source" : {
+              "basename" : "la-lenteur-fiche",
+              "label" : "La lenteur"
+            },
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "empty quote is not sent" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "Seul.",
+            "source" : {
+              "basename" : "la-lenteur-fiche",
+              "label" : "La lenteur"
+            },
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "résonance answered with plain text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "x",
+            "source" : {
+              "basename" : "la-lenteur-fiche",
+              "label" : "La lenteur"
+            },
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "résonance refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "comment" : "x",
+            "source" : {
+              "basename" : "la-lenteur-fiche",
+              "label" : "La lenteur"
+            },
+            "to" : {
+              "collection" : "movies",
+              "locale" : "fr",
+              "slug" : "m"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/links",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "targets, a row without date" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "x"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "targets, a row without has_fiche" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "x"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "targets, accented query" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "été à Paris"
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "targets, bare array" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "x"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "targets, empty query" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : ""
+          }
+        }
+      ],
+      "result" : [
+        {
+          "collection" : "books",
+          "date" : "2026-10-01",
+          "hasFiche" : true,
+          "linkBasename" : "l-etranger-fiche",
+          "locale" : "fr",
+          "slug" : "l-etranger",
+          "title" : "L'Étranger"
+        },
+        {
+          "collection" : "notes",
+          "date" : "2026-09-01",
+          "hasFiche" : false,
+          "linkBasename" : "slow",
+          "locale" : "en",
+          "slug" : "slow",
+          "title" : "Slowness"
+        }
+      ]
+    },
+    "targets, query with & = + #" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "a&b=c d #e"
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "targets, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/links/targets",
+          "query" : {
+            "q" : "x"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

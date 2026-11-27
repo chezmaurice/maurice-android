@@ -1,0 +1,65 @@
+{
+  "domain" : "session-rejected",
+  "results" : {
+    "AI consent 401" : {
+      "activeMember" : null,
+      "households" : 1,
+      "sessionEnded" : true,
+      "signedIn" : false,
+      "u1TokenKept" : false
+    },
+    "AI consent 419" : {
+      "activeMember" : "u1",
+      "households" : 1,
+      "sessionEnded" : false,
+      "signedIn" : true,
+      "u1TokenKept" : true
+    },
+    "budget 401" : {
+      "activeMember" : null,
+      "households" : 1,
+      "sessionEnded" : true,
+      "signedIn" : false,
+      "u1TokenKept" : false
+    },
+    "budget 404" : {
+      "activeMember" : "u1",
+      "households" : 1,
+      "sessionEnded" : false,
+      "signedIn" : true,
+      "u1TokenKept" : true
+    },
+    "preferences 401" : {
+      "activeMember" : null,
+      "households" : 1,
+      "sessionEnded" : true,
+      "signedIn" : false,
+      "u1TokenKept" : false
+    },
+    "preferences 401 without a body" : {
+      "activeMember" : null,
+      "households" : 1,
+      "sessionEnded" : true,
+      "signedIn" : false,
+      "u1TokenKept" : false
+    },
+    "preferences 403" : {
+      "activeMember" : "u1",
+      "households" : 1,
+      "sessionEnded" : false,
+      "signedIn" : true,
+      "u1TokenKept" : true
+    },
+    "preferences 500" : {
+      "activeMember" : "u1",
+      "households" : 1,
+      "sessionEnded" : false,
+      "signedIn" : true,
+      "u1TokenKept" : true
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

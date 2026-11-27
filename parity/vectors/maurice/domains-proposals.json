@@ -1,0 +1,6009 @@
+{
+ "domain": "domains-proposals",
+ "about": "What the night proposes: the list and its badge, the member's word (adopt, dismiss, rename), coming back on one put away, merging, cutting a part out, a proposal's page. Only the proposals' own routes are compared: what each app re-reads after an adoption differs by design (iOS the conversations, Android the domains; see the report).",
+ "ios": "Maurice/Services/ChatService.swift — loadProposals, markProposalsSeen, applyProposals, restoreProposal, mergeProposals, splitProposal, proposalDetail",
+ "android": "core/domains/DomainStore.kt — loadProposals, markProposalsSeen, apply, restore, merge, split, proposal",
+ "cases": [
+  {
+   "name": "load: open and settled",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: empty",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: no settled, no unseen keys",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: no total_conversations",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list without total_conversations; Android reads the proposals with a default."
+   },
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: a proposal without summary",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one proposal without summary; Android reads it with an empty one."
+   },
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: a proposal with a null weight",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects the whole list for one null weight; Android reads it as 0."
+   },
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": null,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: is_new as a number",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": 1,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: server error",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "seen: badge goes",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS posts {\"\": \"\"}, Android {}; the route reads no body."
+   },
+   "input": {
+    "op": "seen"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/seen",
+     "json": {
+      "open": 2,
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "seen: answer missing open",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS rejects counts without `open` and keeps the badge; Android reads `unseen` and clears it. Also the body (wire)."
+   },
+   "input": {
+    "op": "seen"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/seen",
+     "json": {
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "seen: server error",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS posts {\"\": \"\"}, Android {}; the route reads no body."
+   },
+   "input": {
+    "op": "seen"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/seen",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "seen: nothing unseen sends nothing",
+   "input": {
+    "op": "seen"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/seen",
+     "json": {
+      "open": 2,
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "apply: adopt with notes, renamed",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS reads the proposals a second time: applyProposals reloads them, then loadConversations (after an adoption) reloads them again. Same GET, same answer."
+   },
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p1",
+      "action": "adopt",
+      "name": "Course",
+      "summary": null,
+      "seed": true
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "json": {
+      "adopted": [
+       {
+        "id": "p1",
+        "name": "Course",
+        "domain_id": "d10",
+        "conversations_bound": 12,
+        "seeding": true
+       }
+      ],
+      "dismissed": [],
+      "renamed": [],
+      "errors": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": []
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": []
+    }
+   ]
+  },
+  {
+   "name": "apply: dismiss",
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p2",
+      "action": "dismiss",
+      "name": null,
+      "summary": null,
+      "seed": false
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "json": {
+      "adopted": [],
+      "dismissed": [
+       {
+        "id": "p2",
+        "name": "Potager"
+       }
+      ],
+      "renamed": [],
+      "errors": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "apply: keep with a new name and summary",
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p2",
+      "action": "keep",
+      "name": "Le potager",
+      "summary": "Tout sur le jardin. « ok »",
+      "seed": false
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "json": {
+      "adopted": [],
+      "dismissed": [],
+      "renamed": [
+       {
+        "id": "p2",
+        "name": "Le potager"
+       }
+      ],
+      "errors": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "apply: an error for one item",
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p1",
+      "action": "adopt",
+      "name": null,
+      "summary": null,
+      "seed": false
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "json": {
+      "adopted": [],
+      "dismissed": [],
+      "renamed": [],
+      "errors": [
+       {
+        "id": "p1",
+        "error": "already settled"
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "apply: answer with adopted only",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects an answer without dismissed/renamed/errors (and reports an error); Android reads the adoption."
+   },
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p1",
+      "action": "adopt",
+      "name": null,
+      "summary": null,
+      "seed": false
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "json": {
+      "adopted": [
+       {
+        "id": "p1",
+        "name": "Course",
+        "domain_id": "d10"
+       }
+      ],
+      "errors": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": []
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [],
+      "companions": []
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": []
+    }
+   ]
+  },
+  {
+   "name": "apply: server error",
+   "input": {
+    "op": "apply",
+    "items": [
+     {
+      "id": "p1",
+      "action": "adopt",
+      "name": null,
+      "summary": null,
+      "seed": false
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/apply",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "restore: answered with the proposal",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS posts {\"\": \"\"}, Android {}; the route reads no body."
+   },
+   "input": {
+    "op": "restore",
+    "id": "p3"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p3/restore",
+     "json": {
+      "proposal": {
+       "id": "p3",
+       "name": "Vieux projet",
+       "summary": "s",
+       "state": "proposed"
+      }
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "restore: answered ok only",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS wants the proposal back in the answer; Android takes any 2xx as restored. Also the body (wire)."
+   },
+   "input": {
+    "op": "restore",
+    "id": "p3"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p3/restore",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "restore: 409",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS posts {\"\": \"\"}, Android {}; the route reads no body."
+   },
+   "input": {
+    "op": "restore",
+    "id": "p3"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p3/restore",
+     "status": 409,
+     "json": {
+      "error": "not put away"
+     }
+    }
+   ]
+  },
+  {
+   "name": "merge: two into one, named",
+   "input": {
+    "op": "merge",
+    "ids": [
+     "p1",
+     "p2"
+    ],
+    "name": "Plein air"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/merge",
+     "json": {
+      "id": "p6",
+      "from": [
+       "p1",
+       "p2"
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "merge: without a name",
+   "input": {
+    "op": "merge",
+    "ids": [
+     "p1",
+     "p2"
+    ],
+    "name": null
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/merge",
+     "json": {
+      "id": "p6",
+      "from": [
+       "p1",
+       "p2"
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "merge: answer without from",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS wants `from` in the answer; Android takes any 2xx as merged."
+   },
+   "input": {
+    "op": "merge",
+    "ids": [
+     "p1",
+     "p2"
+    ],
+    "name": "X"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/merge",
+     "json": {
+      "id": "p6"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "merge: server error",
+   "input": {
+    "op": "merge",
+    "ids": [
+     "p1",
+     "p2"
+    ],
+    "name": "X"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/merge",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "split: a part cut out",
+   "input": {
+    "op": "split",
+    "id": "p1",
+    "name": "Trail",
+    "conversations": [
+     "c1",
+     "c2"
+    ],
+    "mail": [
+     "inbox/7"
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p1/split",
+     "json": {
+      "left": 10,
+      "made": [
+       "p7"
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "split: conversations only",
+   "input": {
+    "op": "split",
+    "id": "p1",
+    "name": "Trail",
+    "conversations": [
+     "c1"
+    ],
+    "mail": []
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p1/split",
+     "json": {
+      "left": 11
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "split: answer without left",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS wants `left` in the answer; Android takes any 2xx as cut."
+   },
+   "input": {
+    "op": "split",
+    "id": "p1",
+    "name": "Trail",
+    "conversations": [
+     "c1"
+    ],
+    "mail": []
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     },
+     "times": 1
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p1/split",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "split: 400",
+   "input": {
+    "op": "split",
+    "id": "p1",
+    "name": "",
+    "conversations": [],
+    "mail": []
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/domains/proposals/p1/split",
+     "status": 400,
+     "json": {
+      "error": "empty part"
+     }
+    }
+   ]
+  },
+  {
+   "name": "detail: conversations and mail",
+   "input": {
+    "op": "detail",
+    "id": "p1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals/p1",
+     "json": {
+      "proposal": {
+       "id": "p1",
+       "name": "Course à pied",
+       "summary": "s",
+       "state": "proposed",
+       "conversations_list": [
+        {
+         "id": "c1",
+         "date": "2026-10-01",
+         "title": "Fractionné"
+        },
+        {
+         "id": "c2",
+         "title": null
+        }
+       ],
+       "mail_list": [
+        {
+         "path": "inbox/7",
+         "from": "club@x.fr",
+         "to": "me",
+         "title": "Licence"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "detail: without lists",
+   "input": {
+    "op": "detail",
+    "id": "p1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals/p1",
+     "json": {
+      "proposal": {
+       "id": "p1",
+       "name": "Course à pied",
+       "summary": "s",
+       "state": "proposed"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "detail: without summary",
+   "accepted": {
+    "kind": "lenient",
+    "why": "iOS's Decodable rejects a proposal without summary; Android reads it with an empty one."
+   },
+   "input": {
+    "op": "detail",
+    "id": "p1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals/p1",
+     "json": {
+      "proposal": {
+       "id": "p1",
+       "name": "Course à pied",
+       "state": "proposed",
+       "conversations_list": [
+        {
+         "id": "c1",
+         "date": "2026-10-01",
+         "title": "Fractionné"
+        },
+        {
+         "id": "c2",
+         "title": null
+        }
+       ],
+       "mail_list": [
+        {
+         "path": "inbox/7",
+         "from": "club@x.fr",
+         "to": "me",
+         "title": "Licence"
+        }
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "detail: 404",
+   "input": {
+    "op": "detail",
+    "id": "p1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 120,
+      "proposals": [
+       {
+        "id": "p1",
+        "name": "Course à pied",
+        "summary": "Ce que Course à pied recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p2",
+        "name": "Potager",
+        "summary": "Ce que Potager recouvre.",
+        "one_line": "Une ligne.",
+        "state": "proposed",
+        "verdict": "lived",
+        "conversations": 12,
+        "mail_threads": null,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": false,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "settled": [
+       {
+        "id": "p3",
+        "name": "Vieux projet",
+        "summary": "Ce que Vieux projet recouvre.",
+        "one_line": "Une ligne.",
+        "state": "dismissed",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p4",
+        "name": "Expiré",
+        "summary": "Ce que Expiré recouvre.",
+        "one_line": "Une ligne.",
+        "state": "expired",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": null,
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       },
+       {
+        "id": "p5",
+        "name": "Adopté",
+        "summary": "Ce que Adopté recouvre.",
+        "one_line": "Une ligne.",
+        "state": "adopted",
+        "verdict": null,
+        "conversations": 12,
+        "mail_threads": 3,
+        "weight": 4,
+        "share": 7,
+        "recent_90_days": 2,
+        "split_hint": null,
+        "from": "2025-01-02",
+        "to": "2026-10-30",
+        "domain_id": "d9",
+        "is_new": true,
+        "created_at": "2026-11-10 03:00:00",
+        "updated_at": "2026-11-10 03:00:00",
+        "sample": [
+         "2026-10-01 Course"
+        ]
+       }
+      ],
+      "unseen": 2
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals/p1",
+     "status": 404,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  }
+ ]
+}

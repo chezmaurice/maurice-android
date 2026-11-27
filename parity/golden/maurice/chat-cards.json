@@ -1,0 +1,235 @@
+{
+  "domain" : "chat-cards",
+  "results" : {
+    "date: ' 2026-05-29 15:39:43 '" : {
+      "date" : "2026-05-29T15:39:43.000Z"
+    },
+    "date: ''" : {
+      "date" : null
+    },
+    "date: '2026-05-29 15:39:43'" : {
+      "date" : "2026-05-29T15:39:43.000Z"
+    },
+    "date: '2026-05-29'" : {
+      "date" : null
+    },
+    "date: '2026-05-29T15:39:43.123Z'" : {
+      "date" : "2026-05-29T15:39:43.123Z"
+    },
+    "date: '2026-05-29T15:39:43.123456+00:00'" : {
+      "date" : "2026-05-29T15:39:43.123Z"
+    },
+    "date: '2026-05-29T15:39:43'" : {
+      "date" : "2026-05-29T15:39:43.000Z"
+    },
+    "date: '2026-05-29T15:39:43+02:00'" : {
+      "date" : "2026-05-29T13:39:43.000Z"
+    },
+    "date: '2026-05-29T15:39:43Z'" : {
+      "date" : "2026-05-29T15:39:43.000Z"
+    },
+    "date: 'garbage'" : {
+      "date" : null
+    },
+    "footer: appears twice" : {
+      "shown" : "F\n\nmilieu"
+    },
+    "footer: empty footer" : {
+      "shown" : "Réponse."
+    },
+    "footer: footer with spaces around" : {
+      "shown" : "Réponse.\n\nÀ vérifier"
+    },
+    "footer: leading whitespace kept?" : {
+      "shown" : "Réponse."
+    },
+    "footer: no review block" : {
+      "shown" : "Réponse.\n\nX"
+    },
+    "footer: not found" : {
+      "shown" : "Réponse."
+    },
+    "footer: removed" : {
+      "shown" : "Réponse."
+    },
+    "sources: corpus dedupe by title|subtitle" : [
+      {
+        "origin" : "corpus",
+        "results" : [
+          {
+            "title" : "A",
+            "url" : ""
+          },
+          {
+            "title" : "A",
+            "url" : ""
+          }
+        ]
+      }
+    ],
+    "sources: missing origin" : [
+      {
+        "origin" : "",
+        "results" : [
+          {
+            "title" : "A",
+            "url" : ""
+          }
+        ]
+      }
+    ],
+    "sources: none" : [
+
+    ],
+    "sources: order of places" : [
+      {
+        "origin" : "corpus",
+        "results" : [
+          {
+            "title" : "A",
+            "url" : ""
+          },
+          {
+            "title" : "B",
+            "url" : ""
+          }
+        ]
+      },
+      {
+        "origin" : "web",
+        "results" : [
+          {
+            "title" : "T",
+            "url" : "https://w.com"
+          }
+        ]
+      }
+    ],
+    "sources: web dedupe by url" : [
+      {
+        "origin" : "web",
+        "results" : [
+          {
+            "title" : "T",
+            "url" : "https://www.Example.com/a/"
+          },
+          {
+            "title" : "T",
+            "url" : "https://example.com/b"
+          },
+          {
+            "title" : "T",
+            "url" : "https://c.org"
+          }
+        ]
+      }
+    ],
+    "sources: web result without url" : [
+      {
+        "origin" : "web",
+        "results" : [
+          {
+            "title" : "No url",
+            "url" : ""
+          }
+        ]
+      }
+    ],
+    "sources: www in the middle of a url" : [
+      {
+        "origin" : "web",
+        "results" : [
+          {
+            "title" : "T",
+            "url" : "https://example.com/www.page"
+          },
+          {
+            "title" : "T",
+            "url" : "https://example.com/page"
+          }
+        ]
+      }
+    ],
+    "tally: answer cards not counted" : {
+      "empty" : true,
+      "memory" : 0,
+      "text" : "",
+      "tools" : 0,
+      "web" : 0
+    },
+    "tally: bare blocks by tool" : {
+      "empty" : false,
+      "memory" : 1,
+      "text" : "2 web searches, 1 search in your memory, 1 tool call",
+      "tools" : 1,
+      "web" : 2
+    },
+    "tally: blocks sources web + corpus" : {
+      "empty" : false,
+      "memory" : 2,
+      "text" : "1 web search, 2 searches in your memory",
+      "tools" : 0,
+      "web" : 1
+    },
+    "tally: card kind not a string" : {
+      "empty" : false,
+      "memory" : 0,
+      "text" : "1 tool call",
+      "tools" : 1,
+      "web" : 0
+    },
+    "tally: many of each" : {
+      "empty" : false,
+      "memory" : 2,
+      "text" : "12 web searches, 2 searches in your memory, 1 tool call",
+      "tools" : 1,
+      "web" : 12
+    },
+    "tally: nothing" : {
+      "empty" : true,
+      "memory" : 0,
+      "text" : "",
+      "tools" : 0,
+      "web" : 0
+    },
+    "tally: read_web_page step" : {
+      "empty" : false,
+      "memory" : 0,
+      "text" : "1 web search",
+      "tools" : 0,
+      "web" : 1
+    },
+    "tally: running step, all" : {
+      "empty" : false,
+      "memory" : 0,
+      "text" : "3 tool calls",
+      "tools" : 3,
+      "web" : 0
+    },
+    "tally: running step, done only" : {
+      "empty" : false,
+      "memory" : 0,
+      "text" : "2 tool calls",
+      "tools" : 2,
+      "web" : 0
+    },
+    "tally: steps web and memory" : {
+      "empty" : false,
+      "memory" : 1,
+      "text" : "2 web searches, 1 search in your memory",
+      "tools" : 0,
+      "web" : 2
+    },
+    "tally: steps win over blocks" : {
+      "empty" : false,
+      "memory" : 0,
+      "text" : "1 tool call",
+      "tools" : 1,
+      "web" : 0
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

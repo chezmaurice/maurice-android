@@ -1,0 +1,30 @@
+{
+  "checkpoints": [
+    {
+      "name": "no notes",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "notes"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "Back",
+        "Carnet",
+        "Notes",
+        "Nothing here yet. A note you write on an entry is kept here too.",
+        "Search",
+        "Vertical scroll bar, 1 page",
+        "WHAT YOU WROTE · 0"
+      ]
+    }
+  ],
+  "failures": []
+}

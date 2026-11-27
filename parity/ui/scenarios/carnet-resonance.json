@@ -1,0 +1,66 @@
+{
+  "name": "carnet-resonance",
+  "app": "carnet",
+  "about": "A passage highlighted in the reader and linked to another entry: « Link to… », the target picker, a target chosen, kept.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Read",
+      "pause": 3
+    },
+    {
+      "see": "Le commencement"
+    },
+    {
+      "tap": {
+        "ios": "La sagesse commence par l'étonnement.",
+        "android": "La sagesse commence par l'étonnement.\n\nOn ne sait rien, et c'est déjà beaucoup savoir.\n\nLe chemin est long, mais il est à nous."
+      },
+      "hold": true,
+      "nudge": { "android": [-148, -140] }
+    },
+    {
+      "tap": "Highlight",
+      "only": "ios",
+      "pause": 2
+    },
+    {
+      "about": "Compose draws the text's context menu (Copy, Select all, Highlight) in a popup uiautomator does not see: tapped where it shows, the same text on the same screen each run.",
+      "tapxy": { "android": [515, 536] },
+      "only": "android",
+      "pause": 2
+    },
+    {
+      "tap": "Link to…",
+      "pause": 2
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "checkpoint": "the target picker"
+    },
+    {
+      "tap": "Sans soleil",
+      "pause": 2
+    },
+    {
+      "checkpoint": "a target chosen"
+    },
+    {
+      "tap": "Save",
+      "pause": 2
+    },
+    {
+      "checkpoint": "kept"
+    }
+  ]
+}

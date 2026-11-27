@@ -1,0 +1,50 @@
+{
+  "checkpoints": [
+    {
+      "name": "Maurice",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "100"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "6D",
+        "A brief is what Maurice keeps on a domain and reads in every conversation you have alone with him. Correct it, and that is what he reads from the next turn on. A reading companion follows one book at your reading position; its conversation lives in the Maurice app.",
+        "Back",
+        "Carnet",
+        "Ce que Maurice a remarqué",
+        "Ce que Maurice a remarqué, OPENED BY MAURICE, 6D, UNREAD",
+        "Ce que tu regardes",
+        "Comment Left",
+        "DOMAINS",
+        "Forward",
+        "Le cinéma",
+        "Le cinéma, Ce que tu regardes, WRITTEN BY MAURICE · 10D",
+        "Maurice",
+        "OPENED BY MAURICE",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "WHAT MAURICE KEEPS ON YOU",
+        "WRITTEN BY MAURICE · 10D",
+        "book.closed"
+      ]
+    }
+  ],
+  "failures": []
+}

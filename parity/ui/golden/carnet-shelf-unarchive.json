@@ -1,0 +1,61 @@
+{
+  "checkpoints": [
+    {
+      "name": "unarchived",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "archived": "1",
+            "view": "shelf"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "archived": false,
+            "id": "series/fr/twin-peaks"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/garden/entries/archive",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "archived": "1",
+            "view": "shelf"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "ARCHIVED · 1",
+        "Add",
+        "BACK TO THE LIST",
+        "Carnet",
+        "DRAFT",
+        "Menu",
+        "Search",
+        "Series",
+        "Series · David Lynch",
+        "Series, 1",
+        "Sort",
+        "T",
+        "Twin Peaks",
+        "Vertical scroll bar, 1 page"
+      ]
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,69 @@
+{
+  "domain" : "session-ed25519",
+  "results" : {
+    "1000-byte message" : {
+      "valid" : true
+    },
+    "a household proof" : {
+      "valid" : true
+    },
+    "a proof for another nonce" : {
+      "valid" : false
+    },
+    "a proof without its context line" : {
+      "valid" : false
+    },
+    "all-ones signature" : {
+      "valid" : false
+    },
+    "all-zero signature" : {
+      "valid" : false
+    },
+    "another key" : {
+      "valid" : false
+    },
+    "identity key, identity R, zero S" : {
+      "valid" : true
+    },
+    "identity key, identity R, zero S, other message" : {
+      "valid" : true
+    },
+    "key not on the curve" : {
+      "valid" : false
+    },
+    "message altered" : {
+      "valid" : false
+    },
+    "non-canonical key encoding (y = p)" : {
+      "valid" : false
+    },
+    "order-4 key, zero signature" : {
+      "valid" : false
+    },
+    "R altered" : {
+      "valid" : false
+    },
+    "RFC 8032 test 1 (empty message)" : {
+      "valid" : true
+    },
+    "RFC 8032 test 2 (one byte)" : {
+      "valid" : true
+    },
+    "RFC 8032 test 3 (two bytes)" : {
+      "valid" : true
+    },
+    "S + L (non-canonical S)" : {
+      "valid" : false
+    },
+    "S altered" : {
+      "valid" : false
+    },
+    "S with its top bits set" : {
+      "valid" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

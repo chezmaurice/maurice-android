@@ -1,0 +1,37 @@
+{
+  "domain" : "shelf-move-proof",
+  "results" : {
+    "another key" : {
+      "asked" : 1,
+      "proves" : false
+    },
+    "same key, a forged proof" : {
+      "asked" : 1,
+      "proves" : false
+    },
+    "same key, no proof" : {
+      "asked" : 1,
+      "proves" : false
+    },
+    "same key, proof not base64" : {
+      "asked" : 1,
+      "proves" : false
+    },
+    "the address answers 500" : {
+      "asked" : 1,
+      "proves" : false
+    },
+    "the key pinned is empty" : {
+      "asked" : 0,
+      "proves" : false
+    },
+    "the key pinned is not a key" : {
+      "asked" : 0,
+      "proves" : false
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

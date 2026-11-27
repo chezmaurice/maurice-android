@@ -1,0 +1,33 @@
+{
+  "name": "carnet-shelf-unarchive",
+  "app": "carnet",
+  "about": "Among the archived, a row slid right comes back to the list.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": "Archived"
+    },
+    {
+      "see": "Twin Peaks"
+    },
+    {
+      "swipe": "Twin Peaks",
+      "to": "right",
+      "pause": 2
+    },
+    {
+      "checkpoint": "unarchived"
+    }
+  ]
+}

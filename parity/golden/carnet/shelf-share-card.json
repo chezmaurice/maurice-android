@@ -1,0 +1,194 @@
+{
+  "domain" : "shelf-share-card",
+  "results" : {
+    "a blank body without title" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n   \n  "
+    },
+    "a body with --- rules" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nUn.\n\n---\n\nDeux."
+    },
+    "a body with a title line but no card title" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n# Sans soleil\n\nBeau."
+    },
+    "a body with only its title" : {
+      "hasText" : false,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n"
+    },
+    "a body with several title lines" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "T — Chris Marker\n\nUn.\n\n## Sous-titre\n\nTrois."
+    },
+    "a body with surrounding blank lines" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n\n\n  Beau.  \n\n"
+    },
+    "a body with surrounding blank lines and a title" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "T — Chris Marker\n\nBeau."
+    },
+    "a citation never closed" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nVoir [[la-jetee|La Jetée et la suite."
+    },
+    "a draft with a public url: not the garden's" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nCalme."
+    },
+    "a draft, title and byline" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nUn film qui pense à voix haute, comme La Jetée ou Tokyo.\nVoir la critique et le reste."
+    },
+    "a link with an empty label" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nVoir  ici."
+    },
+    "a link with an empty url" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nVoir ceci ici."
+    },
+    "a long body" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nUne phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir."
+    },
+    "a quote and a list" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n> Une citation\n> sur deux lignes\n\n- un\n- deux"
+    },
+    "an article draft: the original's link" : {
+      "hasText" : true,
+      "link" : "https://example.org/quiet-web",
+      "text" : "The quiet web\n\nCalme."
+    },
+    "an article published: the public page" : {
+      "hasText" : true,
+      "link" : "https://alice.chezmaurice.eu/fr/films/sans-soleil",
+      "text" : "The quiet web\n\nCalme."
+    },
+    "an article whose original has a scheme starting with http" : {
+      "hasText" : true,
+      "link" : "httpx://example.org/x",
+      "text" : "Sans soleil — Chris Marker\n\nCalme."
+    },
+    "an article whose original is http" : {
+      "hasText" : true,
+      "link" : "http://example.org/x",
+      "text" : "Sans soleil — Chris Marker\n\nCalme."
+    },
+    "an article whose original is not a url" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nCalme."
+    },
+    "an article whose original is not http" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nCalme."
+    },
+    "an empty body" : {
+      "hasText" : false,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n"
+    },
+    "an odd number of bold marks" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\ngras sans fin"
+    },
+    "blank byline" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil —   \n\nBeau."
+    },
+    "bold and underscores" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\ngras souligné *italique* _penché_ snake_case_word"
+    },
+    "citations: label, bare, empty label" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nAlpha, b,  et d."
+    },
+    "empty byline" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — \n\nBeau."
+    },
+    "nested brackets" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\n[b] et [x [y]](https://z.test)."
+    },
+    "no byline" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil\n\nBeau."
+    },
+    "published public url not http" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nBeau."
+    },
+    "published without a public url" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nBeau."
+    },
+    "published, public url empty" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nBeau."
+    },
+    "published: its public page" : {
+      "hasText" : true,
+      "link" : "https://alice.chezmaurice.eu/fr/films/sans-soleil",
+      "text" : "Sans soleil — Chris Marker\n\nBeau."
+    },
+    "the card's own title wins" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil (1983) — Chris Marker\n\nBeau."
+    },
+    "the card's title blank" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "   — Chris Marker\n\nBeau."
+    },
+    "the card's title empty: the entry's" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nBeau."
+    },
+    "unicode and emoji" : {
+      "hasText" : true,
+      "link" : null,
+      "text" : "Sans soleil — Chris Marker\n\nŒuvre — « vraiment » 👩‍👩‍👧 belle."
+    },
+    "windows line endings" : {
+      "hasText" : false,
+      "link" : null,
+      "text" : "T — Chris Marker\n\n"
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

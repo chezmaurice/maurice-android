@@ -1,0 +1,64 @@
+{
+  "domain": "reading-resonances",
+  "about": "Résonances: the garden searched as one types (the query sent, the targets offered with the [[link]] they would write) and what filing a passage or a thought on another entry sends — the target, the comment, the quote, the source a [[link]] goes back to (an article's fiche by basename, a book by title). The source is the reader's (ResonanceSource: label, basename, bookTitle); on iOS it is turned into createResonance's arguments as HighlightEditorSheet.sendResonanceIfLinked and ResonanceSheet.send do (private): sourceLabel only when there is no bookTitle.",
+  "ios": "GardenAPI.linkTargets(query:) / GardenAPI.createResonance(to:comment:quote:sourceLabel:sourceBasename:sourceBookTitle:)",
+  "android": "ResonancesApi.targets(query) / ResonancesApi.create(to, comment, quote, source)",
+  "cases": [
+    { "name": "targets, empty query", "input": { "op": "targets", "q": "" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": { "targets": [
+        { "collection": "books", "locale": "fr", "slug": "l-etranger", "title": "L'Étranger", "date": "2026-10-01", "link_basename": "l-etranger-fiche", "has_fiche": true },
+        { "collection": "notes", "locale": "en", "slug": "slow", "title": "Slowness", "date": "2026-09-01", "link_basename": "slow", "has_fiche": false } ] } } ] },
+    { "name": "targets, accented query", "input": { "op": "targets", "q": "été à Paris" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": { "targets": [] } } ] },
+    { "name": "targets, query with & = + #", "accepted": {"kind": "ios-bug", "why": "iOS's URLQueryItem leaves \"+\" as is and the server reads it as a space: a search for \"c+d\" looks for \"c d\". Android encodes it (%2B).", "issue": "https://github.com/chezmaurice/carnet/issues/6"}, "input": { "op": "targets", "q": "a&b=c+d #e" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": { "targets": [] } } ] },
+    { "name": "targets, a row without has_fiche", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "targets", "q": "x" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": { "targets": [
+        { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m" } ] } } ] },
+    { "name": "targets, a row without date", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "targets", "q": "x" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": { "targets": [
+        { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "link_basename": "m", "has_fiche": true } ] } } ] },
+    { "name": "targets, bare array", "input": { "op": "targets", "q": "x" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "json": [
+        { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m", "has_fiche": true } ] } ] },
+    { "name": "targets, server error", "input": { "op": "targets", "q": "x" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/links/targets", "status": 500, "json": { "error": "boom" } } ] },
+
+    { "name": "a highlight in an article linked to a book", "input": { "op": "create",
+      "to": { "collection": "books", "locale": "fr", "slug": "l-etranger", "title": "L'Étranger", "date": "2026-10-01", "link_basename": "l-etranger-fiche", "has_fiche": true },
+      "comment": "Même lenteur.", "quote": "la lenteur", "source": { "label": "La lenteur", "basename": "la-lenteur-fiche" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "a highlight in a book, no note", "input": { "op": "create",
+      "to": { "collection": "notes", "locale": "en", "slug": "slow", "title": "Slowness", "date": "2026-09-01", "link_basename": "slow", "has_fiche": false },
+      "comment": "", "quote": "one of the most important", "source": { "label": "80,000 Hours", "bookTitle": "80,000 Hours" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "a thought from an article's page", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "Ça résonne — 夏.", "quote": null, "source": { "label": "La lenteur", "basename": "la-lenteur-fiche" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "a thought from a book's page", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "Pareil.", "quote": null, "source": { "label": "L'Étranger", "bookTitle": "L'Étranger" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "empty quote is not sent", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "Seul.", "quote": "", "source": { "label": "La lenteur", "basename": "la-lenteur-fiche" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "a source with a label alone", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "x", "quote": null, "source": { "label": "Une conversation" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "a source with both a basename and a book title", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "x", "quote": null, "source": { "label": "L'Étranger", "basename": "l-etranger-fiche", "bookTitle": "L'Étranger" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "json": { "ok": true } } ] },
+    { "name": "résonance refused", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "x", "quote": null, "source": { "label": "La lenteur", "basename": "la-lenteur-fiche" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "status": 400, "json": { "error": "comment or quote required" } } ] },
+    { "name": "résonance answered with plain text", "input": { "op": "create",
+      "to": { "collection": "movies", "locale": "fr", "slug": "m", "title": "M", "date": "2026-01-01", "link_basename": "m-fiche", "has_fiche": true },
+      "comment": "x", "quote": null, "source": { "label": "La lenteur", "basename": "la-lenteur-fiche" } }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/links", "text": "OK" } ] }
+  ]
+}

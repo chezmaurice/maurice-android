@@ -1,0 +1,32 @@
+{
+  "domain": "session-move-record",
+  "about": "The TXT record a moved household leaves under its old name: the new address it names, or nothing.",
+  "ios": "Maurice/Services/HouseholdMove.swift — HouseholdMove.parse",
+  "android": "core/session/HouseholdMove.kt — HouseholdMove.parse",
+  "cases": [
+    { "name": "canonical", "input": "v=maurice1; moved=https://new.example" },
+    { "name": "no spaces, trailing slash", "input": "v=maurice1;moved=https://new.example/" },
+    { "name": "fields reversed", "input": "moved=https://new.example; v=maurice1" },
+    { "name": "uppercase keys", "input": "V=maurice1; MOVED=https://new.example" },
+    { "name": "version capitalised", "input": "v=Maurice1; moved=https://new.example" },
+    { "name": "other version", "input": "v=maurice2; moved=https://new.example" },
+    { "name": "http target", "input": "v=maurice1; moved=http://new.example" },
+    { "name": "uppercase https", "input": "v=maurice1; moved=HTTPS://new.example" },
+    { "name": "https without host", "input": "v=maurice1; moved=https://" },
+    { "name": "port and path", "input": "v=maurice1; moved=https://new.example:8443/path/" },
+    { "name": "two trailing slashes", "input": "v=maurice1; moved=https://new.example//" },
+    { "name": "no moved", "input": "v=maurice1" },
+    { "name": "empty", "input": "" },
+    { "name": "moved twice", "input": "v=maurice1; moved=https://new.example; moved=https://other.example" },
+    { "name": "empty parts", "input": "v=maurice1;; ;moved=https://new.example;" },
+    { "name": "spaces around =", "input": " v = maurice1 ; moved = https://new.example " },
+    { "name": "space in the host", "input": "v=maurice1; moved=https://new example" },
+    { "name": "= in the value", "input": "v=maurice1; moved=https://new.example/?a=b" },
+    { "name": "quoted as dig prints it", "input": "\"v=maurice1; moved=https://new.example\"" },
+    { "name": "IDN target", "input": "v=maurice1; moved=https://münchen.example" },
+    { "name": "part without =", "input": "v=maurice1;moved=https://new.example;extra" },
+    { "name": "empty moved", "input": "v=maurice1; moved=" },
+    { "name": "relative moved", "input": "v=maurice1; moved=new.example" },
+    { "name": "tab separators", "input": "v=maurice1;\tmoved=https://new.example" }
+  ]
+}

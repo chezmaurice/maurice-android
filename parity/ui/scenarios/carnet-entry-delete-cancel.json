@@ -1,0 +1,33 @@
+{
+  "name": "carnet-entry-delete-cancel",
+  "app": "carnet",
+  "about": "The delete warning, cancelled: nothing is sent.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "swipe": "Sans soleil",
+      "to": "left",
+      "pause": 2
+    },
+    {
+      "see": "Delete “Sans soleil”?"
+    },
+    {
+      "tap": {
+        "ios": "dismiss popup",
+        "android": "Cancel"
+      }
+    },
+    {
+      "checkpoint": "kept"
+    }
+  ]
+}

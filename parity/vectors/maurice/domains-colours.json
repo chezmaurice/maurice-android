@@ -1,0 +1,250 @@
+{
+ "domain": "domains-colours",
+ "about": "A member's colour from its hex (what a domain's mark and the avatars wear), and the named palettes' colours (bg, surface, ink…), the unknown name falling back to cream.",
+ "ios": "Maurice/Services/SessionStore.swift — Color(hex:); Maurice/Models/MauriceTheme.swift — MauriceTheme.palette(_:)",
+ "android": "ui/Brand.kt — hexColor(hex); ui/MauriceTheme.kt — Palettes.named(id)",
+ "cases": [
+  {
+   "name": "hex \"#2c5aa0\"",
+   "input": {
+    "hex": "#2c5aa0"
+   }
+  },
+  {
+   "name": "hex \"2c5aa0\"",
+   "input": {
+    "hex": "2c5aa0"
+   }
+  },
+  {
+   "name": "hex \"#FFFFFF\"",
+   "input": {
+    "hex": "#FFFFFF"
+   }
+  },
+  {
+   "name": "hex \"#000000\"",
+   "input": {
+    "hex": "#000000"
+   }
+  },
+  {
+   "name": "hex \"#6b6460\"",
+   "input": {
+    "hex": "#6b6460"
+   }
+  },
+  {
+   "name": "hex \"#abc\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#abc"
+   }
+  },
+  {
+   "name": "hex \"#80ff0000\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#80ff0000"
+   }
+  },
+  {
+   "name": "hex \"#ff0000ff\"",
+   "input": {
+    "hex": "#ff0000ff"
+   }
+  },
+  {
+   "name": "hex \"\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": ""
+   }
+  },
+  {
+   "name": "hex \"#\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#"
+   }
+  },
+  {
+   "name": "hex \"zz\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "zz"
+   }
+  },
+  {
+   "name": "hex \"#12345\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#12345"
+   }
+  },
+  {
+   "name": "hex \"#1234567\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#1234567"
+   }
+  },
+  {
+   "name": "hex \" #2c5aa0\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": " #2c5aa0"
+   }
+  },
+  {
+   "name": "hex \"#2C5AA0 \"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#2C5AA0 "
+   }
+  },
+  {
+   "name": "hex \"##2c5aa0\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "##2c5aa0"
+   }
+  },
+  {
+   "name": "hex \"#gg5aa0\"",
+   "accepted": {
+    "kind": "latent",
+    "why": "The server only stores #rrggbb colours (users.ts:302, auth.ts:207, admin.ts:116 check /^#[0-9a-fA-F]{6}$/): no other form reaches hexColor."
+   },
+   "input": {
+    "hex": "#gg5aa0"
+   }
+  },
+  {
+   "name": "palette \"white\"",
+   "input": {
+    "palette": "white"
+   }
+  },
+  {
+   "name": "palette \"bone\"",
+   "input": {
+    "palette": "bone"
+   }
+  },
+  {
+   "name": "palette \"ivory\"",
+   "input": {
+    "palette": "ivory"
+   }
+  },
+  {
+   "name": "palette \"cream\"",
+   "input": {
+    "palette": "cream"
+   }
+  },
+  {
+   "name": "palette \"stone\"",
+   "input": {
+    "palette": "stone"
+   }
+  },
+  {
+   "name": "palette \"sage\"",
+   "input": {
+    "palette": "sage"
+   }
+  },
+  {
+   "name": "palette \"mist\"",
+   "input": {
+    "palette": "mist"
+   }
+  },
+  {
+   "name": "palette \"studio\"",
+   "input": {
+    "palette": "studio"
+   }
+  },
+  {
+   "name": "palette \"slate\"",
+   "input": {
+    "palette": "slate"
+   }
+  },
+  {
+   "name": "palette \"forest\"",
+   "input": {
+    "palette": "forest"
+   }
+  },
+  {
+   "name": "palette \"plum\"",
+   "input": {
+    "palette": "plum"
+   }
+  },
+  {
+   "name": "palette \"espresso\"",
+   "input": {
+    "palette": "espresso"
+   }
+  },
+  {
+   "name": "palette \"unknown\"",
+   "input": {
+    "palette": "unknown"
+   }
+  },
+  {
+   "name": "palette \"\"",
+   "input": {
+    "palette": ""
+   }
+  },
+  {
+   "name": "palette \"Cream\"",
+   "input": {
+    "palette": "Cream"
+   }
+  },
+  {
+   "name": "palette \"auto\"",
+   "input": {
+    "palette": "auto"
+   }
+  }
+ ]
+}

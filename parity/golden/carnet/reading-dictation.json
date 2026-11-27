@@ -1,0 +1,264 @@
+{
+  "domain" : "reading-dictation",
+  "results" : {
+    "accepted (202) with words" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "failed"
+    },
+    "consent required" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "failed"
+    },
+    "duration 0.05" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "0.1"
+          }
+        }
+      ],
+      "result" : ""
+    },
+    "duration 0.25" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "0.2"
+          }
+        }
+      ],
+      "result" : ""
+    },
+    "duration 0.35" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "0.3"
+          }
+        }
+      ],
+      "result" : "oui"
+    },
+    "duration 1.45" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "1.4"
+          }
+        }
+      ],
+      "result" : "oui"
+    },
+    "duration 2.65" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "2.6"
+          }
+        }
+      ],
+      "result" : "oui"
+    },
+    "duration 12.34" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO-DATA"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "12.3"
+          }
+        }
+      ],
+      "result" : "x"
+    },
+    "duration 599.96" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "600.0"
+          }
+        }
+      ],
+      "result" : "long"
+    },
+    "five seconds" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "AUDIO-DATA"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "5.0"
+          }
+        }
+      ],
+      "result" : "Bonjour Maurice."
+    },
+    "reply not JSON" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "failed"
+    },
+    "reply without text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "failed"
+    },
+    "server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "failed"
+    },
+    "silence" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : ""
+    },
+    "words with spaces and a newline around" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "A"
+          },
+          "contentType" : "audio/mp4",
+          "method" : "POST",
+          "path" : "/api/dictation",
+          "query" : {
+            "duration" : "3.0"
+          }
+        }
+      ],
+      "result" : "Été à Paris."
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

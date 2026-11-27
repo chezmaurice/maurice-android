@@ -1,0 +1,889 @@
+{
+  "domain" : "cross-household-requests",
+  "results" : {
+    "conversation, whole" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/conversations/c1/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "date" : "2025-04-02",
+        "messages" : [
+          {
+            "author" : "Me",
+            "isMaurice" : false,
+            "role" : "user",
+            "text" : "Qui est le renard ?"
+          },
+          {
+            "author" : null,
+            "isMaurice" : true,
+            "role" : "assistant",
+            "text" : "**Un ami.**"
+          }
+        ],
+        "title" : "Le renard"
+      }
+    },
+    "conversation: others took part (403)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/conversations/c2/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "forbidden:others_took_part",
+        "message" : "others took part"
+      }
+    },
+    "export: a bare entry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/movies/en/m/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "author" : null,
+        "card" : null,
+        "conversations" : null,
+        "hasFiche" : false,
+        "hasSource" : false,
+        "highlights" : null,
+        "kind" : null,
+        "notes" : [
+
+        ],
+        "prose" : null,
+        "sourceKind" : null,
+        "title" : "M"
+      }
+    },
+    "export: a book, whole" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/le-petit-prince/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "author" : "Antoine de Saint-Exupéry, Ill. A. S.-E.",
+        "card" : {
+          "body" : "# Le Petit Prince\n\nUn conte.",
+          "isDraft" : false,
+          "status" : "published",
+          "url" : "https://me.example/books/le-petit-prince"
+        },
+        "conversations" : [
+          {
+            "date" : "2025-04-02",
+            "id" : "c1",
+            "messageCount" : 6,
+            "reason" : null,
+            "shareable" : true,
+            "summary" : "Sur l'amitié.",
+            "title" : "Le renard"
+          },
+          {
+            "date" : "2025-05-01",
+            "id" : "c2",
+            "messageCount" : null,
+            "reason" : "others_took_part",
+            "shareable" : false,
+            "summary" : null,
+            "title" : "Avec Bea"
+          },
+          {
+            "date" : null,
+            "id" : "c3",
+            "messageCount" : null,
+            "reason" : null,
+            "shareable" : true,
+            "summary" : null,
+            "title" : null
+          }
+        ],
+        "hasFiche" : true,
+        "hasSource" : true,
+        "highlights" : [
+          {
+            "chapter" : "XXI",
+            "id" : "7",
+            "note" : "La phrase",
+            "text" : "On ne voit bien qu'avec le cœur."
+          },
+          {
+            "chapter" : null,
+            "id" : "h8",
+            "note" : null,
+            "text" : "Les grandes personnes"
+          }
+        ],
+        "kind" : "book",
+        "notes" : [
+          {
+            "author" : "me",
+            "date" : "2025-03-12",
+            "id" : "n1",
+            "pageLabel" : "32",
+            "quote" : null,
+            "text" : "Le renard.\nApprivoiser."
+          },
+          {
+            "author" : null,
+            "date" : "2024-12-01 10:00:00",
+            "id" : "n2",
+            "pageLabel" : "xii",
+            "quote" : "« À Léon Werth »",
+            "text" : "Préface"
+          },
+          {
+            "author" : null,
+            "date" : null,
+            "id" : "n3",
+            "pageLabel" : null,
+            "quote" : null,
+            "text" : ""
+          }
+        ],
+        "prose" : "Relu en 2026.",
+        "sourceKind" : "book",
+        "title" : "Le Petit Prince"
+      }
+    },
+    "export: an article, no fiche, draft card" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/articles/en/%C3%A9t%C3%A9%20%C3%A0%20paris/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "author" : "J. Doe",
+        "card" : {
+          "body" : "Draft words",
+          "isDraft" : true,
+          "status" : "draft",
+          "url" : null
+        },
+        "conversations" : null,
+        "hasFiche" : false,
+        "hasSource" : true,
+        "highlights" : null,
+        "kind" : "article",
+        "notes" : [
+
+        ],
+        "prose" : null,
+        "sourceKind" : "article",
+        "title" : "Summer"
+      }
+    },
+    "export: unreachable household (502)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/entries/books/fr/x/export",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "offline",
+        "message" : "The Les Martin household isn't answering. Check your connection and try again."
+      }
+    },
+    "guest invite state: unknown code" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/guest-invites/ZZZZ9999",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : null
+    },
+    "guest invite state: used" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/guest-invites/ABCD2345",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "used"
+    },
+    "guest invite: a guest may not (403 not_allowed)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "forbidden:not_allowed",
+        "message" : "Bea can no longer be reached in the Les Martin household."
+      }
+    },
+    "guest invite: code, link, expiry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "ABCD2345",
+        "expiresAt" : "2026-11-18T10:00:00.000Z",
+        "link" : "https://martin.example/join?code=ABCD-2345"
+      }
+    },
+    "guest invite: no link" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "ABCD2345",
+        "expiresAt" : "2026-11-18T10:00:00Z",
+        "link" : null
+      }
+    },
+    "guest invite: old server (404, no error)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "unsupported",
+        "message" : "The Les Martin household can't receive entries yet: its server needs updating."
+      }
+    },
+    "guest invite: server down (503)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "offline",
+        "message" : "The Les Martin household isn't answering. Check your connection and try again."
+      }
+    },
+    "import: 400 another code" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "refused:bad_entry",
+        "message" : "bad_entry"
+      }
+    },
+    "import: 400 unreachable code" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "refused:member_not_reachable_here",
+        "message" : "Bea can no longer be reached in the Les Martin household."
+      }
+    },
+    "import: 403 without a code" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "forbidden:nil",
+        "message" : "Bea can no longer be reached in the Les Martin household."
+      }
+    },
+    "import: 409 another conflict" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "refused:busy",
+        "message" : "busy"
+      }
+    },
+    "import: 409 exists without where" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "refused:exists",
+        "message" : "exists"
+      }
+    },
+    "import: 500 plain text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "other:boom",
+        "message" : "boom"
+      }
+    },
+    "import: 504" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "offline",
+        "message" : "The Les Martin household isn't answering. Check your connection and try again."
+      }
+    },
+    "import: already in one's own notes (409, self)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "exists:movies/en/m",
+        "message" : "It is already in your notes in the Les Martin household."
+      }
+    },
+    "import: already there (409 with where)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "exists:movies/en/m",
+        "message" : "Bea already has it: this entry is already in the Les Martin household."
+      }
+    },
+    "import: everything ticked, to Bea" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "card" : {
+              "body" : "Un conte.",
+              "status" : "published",
+              "url" : "https://me.example/b"
+            },
+            "conversations" : [
+              {
+                "date" : "2025-04-02",
+                "id" : "c1",
+                "mode" : "summary",
+                "summary" : "Sur l'amitié.",
+                "title" : "Le renard"
+              },
+              {
+                "date" : "2025-06-01",
+                "id" : "c3",
+                "messages" : [
+                  {
+                    "role" : "user",
+                    "text" : "?"
+                  },
+                  {
+                    "role" : "assistant",
+                    "text" : "!"
+                  }
+                ],
+                "mode" : "whole",
+                "title" : "Sans titre"
+              }
+            ],
+            "entry" : {
+              "collection" : "books",
+              "kind" : "book",
+              "locale" : "fr",
+              "slug" : "le-petit-prince",
+              "title" : "Le Petit Prince"
+            },
+            "from_household" : "Chez nous",
+            "highlights" : [
+              {
+                "chapter" : "XXI",
+                "id" : 7,
+                "text" : "Le cœur"
+              }
+            ],
+            "notes" : [
+              {
+                "date" : "2025-03-12",
+                "extra" : {
+                  "x" : 1
+                },
+                "id" : "n1",
+                "page" : 32,
+                "text" : "Le renard"
+              }
+            ],
+            "prose" : "  Relu.  ",
+            "share_with" : "bea",
+            "source" : {
+              "calibre" : {
+                "title" : "Le Petit Prince"
+              },
+              "kind" : "book"
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "ref" : "books/fr/le-petit-prince-2"
+      }
+    },
+    "import: not a contact (403)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "forbidden:not_a_contact",
+        "message" : "Bea can no longer be reached in the Les Martin household."
+      }
+    },
+    "import: nothing ticked, a draft card" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "card" : {
+              "body" : "Draft",
+              "status" : "draft"
+            },
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "u9"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "ref" : "movies/en/m"
+      }
+    },
+    "import: old server (404, no error)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "unsupported",
+        "message" : "The Les Martin household can't receive entries yet: its server needs updating."
+      }
+    },
+    "import: only the source, to oneself" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "kind" : "article",
+              "title" : "Summer"
+            },
+            "from_household" : "Chez nous",
+            "source" : {
+              "kind" : "article",
+              "text" : "One."
+            }
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "ref" : "articles/en/summer"
+      }
+    },
+    "import: session refused (401)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "sessionEnded",
+        "message" : "Your session in the Les Martin household has ended. Sign in there again, then try again."
+      }
+    },
+    "import: too large (413)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "tooLarge",
+        "message" : "This is more than the Les Martin household takes in one go: untick a conversation or the card, then try again."
+      }
+    },
+    "import: unknown member (404)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : {
+              "title" : "M"
+            },
+            "from_household" : "Chez nous",
+            "share_with" : "bea"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/entries/import",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "unreachable",
+        "message" : "Bea can no longer be reached in the Les Martin household."
+      }
+    },
+    "roster of the other household" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/users",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "avatarUrl" : null,
+          "displayName" : "Me there",
+          "id" : "u1",
+          "role" : "standard",
+          "username" : "me"
+        },
+        {
+          "avatarUrl" : "/api/avatars/bea.jpg",
+          "displayName" : "Bea",
+          "id" : "u9",
+          "role" : "guest",
+          "username" : "bea"
+        }
+      ]
+    },
+    "roster: session refused (401)" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/users",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failure" : "sessionEnded",
+        "message" : "Your session in the Les Martin household has ended. Sign in there again, then try again."
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

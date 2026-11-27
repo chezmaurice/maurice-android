@@ -1,0 +1,757 @@
+{
+  "domain" : "settings-reports",
+  "results" : {
+    "act: 404 not found" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : false,
+            "remove_message" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/zz/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: 500" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : true,
+            "remove_message" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: answer is {ok: true}" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : false,
+            "remove_message" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: both at once" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : true,
+            "remove_message" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: eject the member" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : true,
+            "remove_message" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r2/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: mark a reply handled" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : false,
+            "remove_message" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/a1/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "act: remove the message" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "eject_member" : false,
+            "remove_message" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/action",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "dismiss: 404" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/zz/dismiss",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "dismiss: answer is {}" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/dismiss",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "dismiss: ok" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/reports/r1/dismiss",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "queue: 403 not the admin" : {
+      "error" : true,
+      "reports" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: 500" : {
+      "error" : true,
+      "reports" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: a reply's report without room_id" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r1",
+          "member" : null,
+          "message" : "Envoie-moi une photo",
+          "note" : "Il dit avoir 12 ans",
+          "question" : null,
+          "reason" : "child_safety",
+          "reporter" : "Bob",
+          "roomTitle" : "Famille",
+          "targetType" : "message"
+        },
+        {
+          "id" : "a1",
+          "member" : null,
+          "message" : "Prenez 4 g de paracétamol.",
+          "note" : null,
+          "question" : "Combien de paracétamol ?",
+          "reason" : "harmful_or_misleading",
+          "reporter" : "Alice",
+          "roomTitle" : null,
+          "targetType" : "ai_reply"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: a report with only id, target_type, reason" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r5",
+          "member" : null,
+          "message" : null,
+          "note" : null,
+          "question" : null,
+          "reason" : "spam",
+          "reporter" : null,
+          "roomTitle" : null,
+          "targetType" : "message"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: an object instead of a list" : {
+      "error" : true,
+      "reports" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: child safety first, then a reply of Maurice's, then a member" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r1",
+          "member" : null,
+          "message" : "Envoie-moi une photo",
+          "note" : "Il dit avoir 12 ans",
+          "question" : null,
+          "reason" : "child_safety",
+          "reporter" : "Bob",
+          "roomTitle" : "Famille",
+          "targetType" : "message"
+        },
+        {
+          "id" : "a1",
+          "member" : null,
+          "message" : "Prenez 4 g de paracétamol.",
+          "note" : null,
+          "question" : "Combien de paracétamol ?",
+          "reason" : "harmful_or_misleading",
+          "reporter" : "Alice",
+          "roomTitle" : null,
+          "targetType" : "ai_reply"
+        },
+        {
+          "id" : "r2",
+          "member" : "Eve",
+          "message" : null,
+          "note" : "",
+          "question" : null,
+          "reason" : "spam",
+          "reporter" : null,
+          "roomTitle" : "Famille",
+          "targetType" : "member"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: empty" : {
+      "error" : false,
+      "reports" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: malformed JSON" : {
+      "error" : true,
+      "reports" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: reported message without created_at" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r1",
+          "member" : null,
+          "message" : "Envoie-moi une photo",
+          "note" : "Il dit avoir 12 ans",
+          "question" : null,
+          "reason" : "child_safety",
+          "reporter" : "Bob",
+          "roomTitle" : "Famille",
+          "targetType" : "message"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: server order kept as given (spam before child safety)" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r2",
+          "member" : "Eve",
+          "message" : null,
+          "note" : "",
+          "question" : null,
+          "reason" : "spam",
+          "reporter" : null,
+          "roomTitle" : "Famille",
+          "targetType" : "member"
+        },
+        {
+          "id" : "r1",
+          "member" : null,
+          "message" : "Envoie-moi une photo",
+          "note" : "Il dit avoir 12 ans",
+          "question" : null,
+          "reason" : "child_safety",
+          "reporter" : "Bob",
+          "roomTitle" : "Famille",
+          "targetType" : "message"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: Unicode and long text" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r1",
+          "member" : null,
+          "message" : "مرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\n",
+          "note" : "« Ça suffit » 👶🏽 très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long ",
+          "question" : null,
+          "reason" : "child_safety",
+          "reporter" : "Bob",
+          "roomTitle" : "Famille",
+          "targetType" : "message"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "queue: unknown reason and target type" : {
+      "error" : false,
+      "reports" : [
+        {
+          "id" : "r6",
+          "member" : "Eve",
+          "message" : null,
+          "note" : "",
+          "question" : null,
+          "reason" : "impersonation",
+          "reporter" : null,
+          "roomTitle" : "Famille",
+          "targetType" : "room"
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/reports",
+          "query" : {
+            "status" : "open"
+          }
+        }
+      ]
+    },
+    "reasons offered and their labels" : {
+      "reply" : [
+        {
+          "label" : "Wrong or misleading in a way that can hurt",
+          "reason" : "harmful_or_misleading"
+        },
+        {
+          "label" : "Sexual content",
+          "reason" : "sexual_content"
+        },
+        {
+          "label" : "Hateful, insulting or threatening",
+          "reason" : "harassment_or_bullying"
+        },
+        {
+          "label" : "Child safety / content involving a minor",
+          "reason" : "child_safety"
+        },
+        {
+          "label" : "Something else",
+          "reason" : "other"
+        }
+      ],
+      "room" : [
+        {
+          "label" : "Spam",
+          "reason" : "spam"
+        },
+        {
+          "label" : "Harassment or bullying",
+          "reason" : "harassment_or_bullying"
+        },
+        {
+          "label" : "Sexual content",
+          "reason" : "sexual_content"
+        },
+        {
+          "label" : "Child safety / content involving a minor",
+          "reason" : "child_safety"
+        },
+        {
+          "label" : "Other",
+          "reason" : "other"
+        }
+      ]
+    },
+    "report: 403 not in the room" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "spam",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : false
+    },
+    "report: 500" : {
+      "error" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "spam",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : false
+    },
+    "report: a member" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "spam",
+            "target_id" : "u3",
+            "target_type" : "member"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: a message, blank note" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "other",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: a message, empty note" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "sexual_content",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: a message, no note (null)" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "harassment_or_bullying",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: a message, spam, with a note" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "note" : "Pub en boucle",
+            "reason" : "spam",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: a reply of Maurice's" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "note" : "Dose dangereuse",
+            "reason" : "harmful_or_misleading",
+            "target_id" : "m9",
+            "target_type" : "ai_reply"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: child safety" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "note" : "Il a 12 ans 👶",
+            "reason" : "child_safety",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    },
+    "report: server answers {}" : {
+      "error" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "reason" : "spam",
+            "target_id" : "m1",
+            "target_type" : "message"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports",
+          "query" : {
+
+          }
+        }
+      ],
+      "sent" : true
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

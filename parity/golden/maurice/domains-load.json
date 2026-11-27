@@ -1,0 +1,6777 @@
+{
+  "domain" : "domains-load",
+  "results" : {
+    "a family without a title" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "a model without a name" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "a model without a provider" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "anthropic",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "a row without a name" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "context items of every sort" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-a",
+            "file-7"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "everyday model unknown to the roster" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-gone",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Claude",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "everyday route missing" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : null,
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          },
+          "unmatched" : true
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Claude",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "everything empty" : {
+      "companions" : [
+
+      ],
+      "defaultModel" : null,
+      "domains" : [
+
+      ],
+      "everydayModel" : null,
+      "families" : [
+
+      ],
+      "models" : [
+
+      ],
+      "overview" : {
+
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : null
+      },
+      "rows" : [
+
+      ]
+    },
+    "family flags as numbers and strings" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "icons: valid, unknown, other SF Symbols" : {
+      "companions" : [
+        "i5"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "i0",
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i6",
+        "i7",
+        "i8",
+        "i9"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "i0" : "Claude",
+        "i1" : "Claude",
+        "i2" : "Claude",
+        "i3" : "Claude",
+        "i4" : "Claude",
+        "i5" : "Claude",
+        "i6" : "Claude",
+        "i7" : "Claude",
+        "i8" : "Claude",
+        "i9" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "",
+          "id" : "i0",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône ",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "BOOK.CLOSED",
+          "id" : "i1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône BOOK.CLOSED",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book.pages",
+          "id" : "i2",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône book.pages",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "trash",
+          "id" : "i3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône trash",
+          "prompt" : "",
+          "symbol" : "trash",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "heart.fill",
+          "id" : "i4",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône heart.fill",
+          "prompt" : "",
+          "symbol" : "heart.fill",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "figure.run",
+          "id" : "i5",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Icône figure.run",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "newspaper",
+          "id" : "i6",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône newspaper",
+          "prompt" : "",
+          "symbol" : "newspaper",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "not.a.symbol.at.all",
+          "id" : "i7",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône not.a.symbol.at.all",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "person.crop.circle",
+          "id" : "i8",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône person.crop.circle",
+          "prompt" : "",
+          "symbol" : "person.crop.circle",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "leaf.fill",
+          "id" : "i9",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Icône leaf.fill",
+          "prompt" : "",
+          "symbol" : "leaf.fill",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "models: server error" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : null,
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : null,
+        "c1" : null,
+        "d1" : null,
+        "d2" : null,
+        "d3" : null
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "no default model" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : null,
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : null,
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Claude",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "null users, empty tool families, thinking false" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : false,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "overview: a line without id" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "overview: notes without total, brief without date" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "overview: null mine, string book id" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "overview: server error" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "rows: an object, not a list" : {
+      "companions" : [
+
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large"
+      },
+      "rows" : [
+
+      ]
+    },
+    "rows: malformed JSON" : {
+      "companions" : [
+
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large"
+      },
+      "rows" : [
+
+      ]
+    },
+    "rows: server error" : {
+      "companions" : [
+
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large"
+      },
+      "rows" : [
+
+      ]
+    },
+    "temperature as a string" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "temperature as an integer" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 1,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "typical" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "unicode and long names" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "🌿 Jardin d’été — « long » xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "日本語のタグライン",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "unknown kind and missing kind" : {
+      "companions" : [
+
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "c1"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "room",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "weight and count as floats" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 1200
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    },
+    "weight with a fraction" : {
+      "companions" : [
+        "c1"
+      ],
+      "defaultModel" : "m-claude",
+      "domains" : [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "everydayModel" : "m-mistral",
+      "families" : [
+        {
+          "alwaysOn" : true,
+          "blurb" : "b",
+          "count" : 3,
+          "group" : "core",
+          "icon" : "globe",
+          "id" : "web",
+          "title" : "Web"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 5,
+          "group" : "garden",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "garden-notes",
+          "title" : "Notes"
+        },
+        {
+          "alwaysOn" : false,
+          "blurb" : "",
+          "count" : 0,
+          "group" : "experimental",
+          "icon" : "wrench.and.screwdriver",
+          "id" : "exp",
+          "title" : "Expérimental"
+        }
+      ],
+      "models" : [
+        {
+          "available" : true,
+          "desc" : "d",
+          "id" : "m-claude",
+          "isLocal" : false,
+          "name" : "Claude",
+          "note" : "n",
+          "provider" : "anthropic",
+          "sub" : "Sonnet",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "cloud"
+        },
+        {
+          "available" : true,
+          "desc" : "",
+          "id" : "m-mistral",
+          "isLocal" : false,
+          "name" : "Mistral Large",
+          "note" : "",
+          "provider" : "mistral",
+          "sub" : "",
+          "thinking" : "optional",
+          "thinkingIsOptional" : true,
+          "tier" : "cloud"
+        },
+        {
+          "available" : false,
+          "desc" : "",
+          "id" : "m-local",
+          "isLocal" : true,
+          "name" : "Qwen",
+          "note" : "",
+          "provider" : "ollama",
+          "sub" : "",
+          "thinking" : "none",
+          "thinkingIsOptional" : false,
+          "tier" : "local"
+        }
+      ],
+      "overview" : {
+        "c1" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : "conv9",
+          "kind" : "companion",
+          "mine" : true
+        },
+        "d1" : {
+          "briefByMember" : true,
+          "briefUpdatedAt" : "2026-11-09 08:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        },
+        "d2" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : "2026-11-01 02:00:00",
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : false
+        },
+        "d3" : {
+          "briefByMember" : false,
+          "briefUpdatedAt" : null,
+          "conversationId" : null,
+          "kind" : "domain",
+          "mine" : true
+        }
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/tool-families",
+          "query" : {
+
+          }
+        }
+      ],
+      "resolvedModel" : {
+        "__everyday__" : "Mistral Large",
+        "c1" : "Claude",
+        "d1" : "Claude",
+        "d2" : "Mistral Large",
+        "d3" : "Claude"
+      },
+      "rows" : [
+        {
+          "context" : [
+            "note-health"
+          ],
+          "count" : 1,
+          "createdBy" : "u1",
+          "icon" : "cross.case",
+          "id" : "d1",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Santé",
+          "prompt" : "Sois bref.",
+          "symbol" : "cross.case",
+          "tagline" : "Le corps",
+          "temp" : 0.29999999999999999,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+            "u1"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u2",
+          "icon" : "leaf",
+          "id" : "d2",
+          "isCompanion" : false,
+          "isDomainOfU1" : false,
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Jardin",
+          "prompt" : "",
+          "symbol" : "leaf",
+          "tagline" : "",
+          "temp" : 0.80000000000000004,
+          "thinking" : true,
+          "toolFamilies" : [
+            "garden-notes"
+          ],
+          "users" : [
+            "u1",
+            "u2"
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : null,
+          "id" : "d3",
+          "isCompanion" : false,
+          "isDomainOfU1" : true,
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Voyages",
+          "prompt" : "",
+          "symbol" : "book.closed",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        },
+        {
+          "context" : [
+            "book-42"
+          ],
+          "count" : 0,
+          "createdBy" : "u1",
+          "icon" : "book",
+          "id" : "c1",
+          "isCompanion" : true,
+          "isDomainOfU1" : false,
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Dune",
+          "prompt" : "",
+          "symbol" : "book.pages",
+          "tagline" : "",
+          "temp" : 0.5,
+          "thinking" : null,
+          "toolFamilies" : null,
+          "users" : [
+
+          ],
+          "weight" : 0
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "carnet-card-write",
+  "app": "carnet",
+  "about": "The card side's editor: what the member would say about it to someone else, typed and saved.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Turn over"
+    },
+    {
+      "see": "· NOT ON YOUR SITE"
+    },
+    {
+      "checkpoint": "the card"
+    },
+    {
+      "tap": "Edit",
+      "last": true
+    },
+    {
+      "see": "Save"
+    },
+    {
+      "checkpoint": "the editor"
+    },
+    {
+      "type": "Un livre sur la sagesse."
+    },
+    {
+      "tap": "Save",
+      "pause": 2
+    },
+    {
+      "checkpoint": "saved"
+    }
+  ]
+}

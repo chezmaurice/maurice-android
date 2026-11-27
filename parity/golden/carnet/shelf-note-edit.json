@@ -1,0 +1,304 @@
+{
+  "domain" : "shelf-note-edit",
+  "results" : {
+    "a note on a library row" : {
+      "reloads" : 1,
+      "requests" : [
+
+      ],
+      "result" : {
+        "failed" : "This note changed in the meantime."
+      }
+    },
+    "a note rewritten" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Une note, finie."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note rewritten on another member's entry" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Ma note, revue."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/movies/fr/sans-soleil/notes/n7",
+          "query" : {
+            "owner" : "bob"
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note rewritten with its passage and page" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "page" : "13",
+            "quote" : "Le monde est là.",
+            "text" : "Oui, vraiment."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/q1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note rewritten, empty passage and page left out" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Autre chose."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note rewritten, server error" : {
+      "reloads" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Une note, finie."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "The garden could not be written."
+      }
+    },
+    "a note taken off" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note taken off another member's entry" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/entries/movies/fr/sans-soleil/notes/n7",
+          "query" : {
+            "owner" : "bob"
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note taken off, already gone" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "This note changed in the meantime."
+      }
+    },
+    "a note taken off, refused" : {
+      "reloads" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "You can't edit this note."
+      }
+    },
+    "a note taken off, server error as text" : {
+      "reloads" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "Bad gateway"
+      }
+    },
+    "a note that changed in the meantime" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Une note, finie."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "This note changed in the meantime."
+      }
+    },
+    "a note that is not the member's" : {
+      "reloads" : 0,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Une note, finie."
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/notes/n1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "You can't edit this note."
+      }
+    },
+    "a note whose id needs encoding" : {
+      "reloads" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "y"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/v1/garden/entries/books/fr/l-%C3%A9t%C3%A9%20%C3%A0%20deux/notes/2026-11-01%2010:00%2Fa%20b",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "done"
+    },
+    "a note with no id" : {
+      "reloads" : 0,
+      "requests" : [
+
+      ],
+      "result" : {
+        "failed" : "This note changed in the meantime."
+      }
+    },
+    "what a note says: an old server" : {
+      "canDelete" : false,
+      "canEdit" : false,
+      "edited" : null,
+      "editedLine" : null
+    },
+    "what a note says: both offered, edited" : {
+      "canDelete" : true,
+      "canEdit" : true,
+      "edited" : "2026-11-03",
+      "editedLine" : "edited Nov 3, 2026"
+    },
+    "what a note says: editable but no id" : {
+      "canDelete" : false,
+      "canEdit" : false,
+      "edited" : null,
+      "editedLine" : null
+    },
+    "what a note says: edited empty" : {
+      "failed" : "undecodable"
+    },
+    "what a note says: edited with a time" : {
+      "canDelete" : false,
+      "canEdit" : true,
+      "edited" : "2026-01-09T08:30:00Z",
+      "editedLine" : "edited Jan 9, 2026"
+    },
+    "what a note says: edited, unreadable" : {
+      "canDelete" : false,
+      "canEdit" : true,
+      "edited" : "yesterday",
+      "editedLine" : "edited yesterday"
+    },
+    "what a note says: only taken off" : {
+      "canDelete" : true,
+      "canEdit" : false,
+      "edited" : null,
+      "editedLine" : null
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

@@ -1,0 +1,1867 @@
+{
+  "domain" : "domains-edit",
+  "results" : {
+    "create: 201 answer" : {
+      "everydayModel" : null,
+      "outcome" : "saved:c",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "c",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Charlie"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: 400 with a message" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: 409 with existing but no name" : {
+      "everydayModel" : null,
+      "outcome" : "nameTaken:beta",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: 409 without the other's name" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: accented name sorts as its letter" : {
+      "everydayModel" : null,
+      "outcome" : "saved:eb",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "eb",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Ébène"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: answer is not a row" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: answer is not JSON" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: lowercase name sorts first" : {
+      "everydayModel" : null,
+      "outcome" : "saved:a",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "a",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "alpha"
+        },
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: name taken (409 names the other)" : {
+      "everydayModel" : null,
+      "outcome" : "nameTaken:Beta",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: saved, sorted into the list" : {
+      "everydayModel" : null,
+      "outcome" : "saved:c",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "c",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Charlie"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "create: server error" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "delete: 204" : {
+      "everydayModel" : null,
+      "outcome" : "done",
+      "overview" : [
+        "b",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/maurices/e",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "delete: 404" : {
+      "everydayModel" : null,
+      "outcome" : "done",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/maurices/e",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "delete: a companion" : {
+      "everydayModel" : null,
+      "outcome" : "done",
+      "overview" : [
+        "b",
+        "e"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/maurices/z",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        }
+      ]
+    },
+    "delete: ok" : {
+      "everydayModel" : null,
+      "outcome" : "done",
+      "overview" : [
+        "b",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/maurices/e",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "delete: server error" : {
+      "everydayModel" : null,
+      "outcome" : "done",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/maurices/e",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "edit: 404 (deleted elsewhere)" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "edit: renamed row replaces the old and re-sorts" : {
+      "everydayModel" : null,
+      "outcome" : "saved:b",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Yankee"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "edit: server error leaves the row" : {
+      "everydayModel" : null,
+      "outcome" : "failed",
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a companion's" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-local"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/z",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : "m-local",
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a domain's" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : "m-mistral",
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a domain's, answer is another row" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a domain's, answer not a row" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a domain's, provider not accepted (403)" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-openai"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: a domain's, server error" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "model" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/maurices/b",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: everyday, answer without id" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "id" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: everyday, kept as asked" : {
+      "everydayModel" : "m-mistral",
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "id" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: everyday, provider not accepted (403)" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "id" : "m-openai"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: everyday, server error" : {
+      "everydayModel" : null,
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "id" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    },
+    "model: everyday, the server keeps another" : {
+      "everydayModel" : "m-claude",
+      "outcome" : null,
+      "overview" : [
+        "b",
+        "e",
+        "z"
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "id" : "m-mistral"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/models/everyday",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "id" : "b",
+          "kind" : "domain",
+          "model" : null,
+          "name" : "Beta"
+        },
+        {
+          "id" : "e",
+          "kind" : "domain",
+          "model" : "m-claude",
+          "name" : "Echo"
+        },
+        {
+          "id" : "z",
+          "kind" : "companion",
+          "model" : null,
+          "name" : "Zeta"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

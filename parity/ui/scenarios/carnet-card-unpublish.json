@@ -1,0 +1,36 @@
+{
+  "name": "carnet-card-unpublish",
+  "app": "carnet",
+  "about": "A published card taken off the site, after its confirmation.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "Sans soleil"
+    },
+    {
+      "tap": "Turn over"
+    },
+    {
+      "tap": "Unpublish"
+    },
+    {
+      "see": "Take this off your site?"
+    },
+    {
+      "checkpoint": "the confirmation"
+    },
+    {
+      "tap": "Unpublish",
+      "last": true,
+      "pause": 2
+    },
+    {
+      "checkpoint": "unpublished"
+    }
+  ]
+}

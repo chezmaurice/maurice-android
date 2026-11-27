@@ -1,0 +1,53 @@
+{
+ "domain": "shelf-session-refused",
+ "about": "A garden request answered 401: the member's session on this device ends (back to the member picker); other refusals leave it.",
+ "ios": "Shared/CarnetAPI.swift — fetch/note; CarnetSession.sessionRejected",
+ "android": "core/net/ApiClient.send → Session.onUnauthorized",
+ "cases": [
+  {
+   "name": "the list answered 401",
+   "input": null,
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/garden/entries",
+     "status": 401,
+     "json": {
+      "error": "session revoked"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the list answered 403",
+   "input": null,
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/garden/entries",
+     "status": 403,
+     "json": {
+      "error": "forbidden"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the list answered",
+   "input": null,
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/garden/entries",
+     "json": {
+      "garden": {
+       "username": "alice"
+      },
+      "kinds": [],
+      "entries": []
+     }
+    }
+   ]
+  }
+ ]
+}

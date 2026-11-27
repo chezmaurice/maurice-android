@@ -1,0 +1,15 @@
+{
+  "domain": "strings-table",
+  "about": "Every word of the Maurice app, per language: the iOS table as the app reads it, against the copy Android ships (files/strings, synced by scripts/sync-strings.sh). Android's own additions (files/android) are keys iOS does not have and are not compared.",
+  "ios": "Maurice/Resources/<lang>.lproj/Localizable.strings, read from the runner's bundle",
+  "android": "maurice/shared composeResources files/strings/<lang>.strings, parsed by ui Strings.parse",
+  "cases": [
+    { "name": "en", "input": "en" },
+    { "name": "fr", "input": "fr" },
+    { "name": "de", "input": "de" },
+    { "name": "es", "input": "es" },
+    { "name": "it", "input": "it" },
+    { "name": "nl", "input": "nl" },
+    { "name": "pt", "input": "pt" }
+  ]
+}

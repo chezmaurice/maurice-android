@@ -1,0 +1,102 @@
+{
+  "checkpoints": [
+    {
+      "name": "the confirmation",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Anyone can read it once it is online, a few seconds from now.",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Draft",
+        "Edit",
+        "Forward",
+        "Globe",
+        "Horizontal scroll bar, 1 page",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Publish",
+        "Publish this on your site?",
+        "Read",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "dismiss popup",
+        "· NOT ON YOUR SITE"
+      ]
+    },
+    {
+      "name": "published",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "POST",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/shared/publish",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Edit",
+        "Forward",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Online",
+        "Read",
+        "Selected",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "· NOT ON YOUR SITE"
+      ]
+    }
+  ],
+  "failures": []
+}

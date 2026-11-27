@@ -1,0 +1,119 @@
+{
+  "domain": "reading-calibre",
+  "about": "A book's reading surface on the wire: the chapter list and texts (decoding, wrapped lists, slugs in the path), the member's place (read, saved, paused, reset), chapter bookmarks and their note, the summarize/extract jobs and their status, following a book with Maurice. What is sent, and what the reader gets of the answer (a failure is {thrown: true}).",
+  "ios": "CalibreAPI.* (and DomainsAPI.createCompanion for following)",
+  "android": "CalibreApi.*",
+  "cases": [
+    { "name": "chapters, bare array", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": [
+        { "index": 3, "slug": "0003-intro", "title": "Introduction", "wordCount": 3200, "summaryWordCount": 420, "hasSummary": true },
+        { "index": 4, "slug": "0004-ete", "title": "L'été — 夏", "wordCount": 115, "summaryWordCount": null, "hasSummary": false },
+        { "index": 5, "slug": "0005-vide", "title": "Vide", "wordCount": null, "hasSummary": false }
+      ] } ] },
+    { "name": "chapters, wrapped", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": { "chapters": [
+        { "index": 1, "slug": "c1", "title": "One", "wordCount": 345, "hasSummary": true } ] } } ] },
+    { "name": "chapters, wrapped beside a count", "accepted": {"kind": "lenient", "why": "Android takes the chapters array beside another field; iOS decodes the wrapper as [String: [Chapter]] and fails on the count."}, "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": { "chapters": [
+        { "index": 1, "slug": "c1", "title": "One", "wordCount": 345, "hasSummary": true } ], "total": 1 } } ] },
+    { "name": "chapters, wrapped under another key", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": { "items": [
+        { "index": 1, "slug": "c1", "title": "One", "wordCount": 345, "hasSummary": true } ] } } ] },
+    { "name": "chapters, one row without a title", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": [
+        { "index": 1, "slug": "c1", "title": "One", "hasSummary": true },
+        { "index": 2, "slug": "c2", "hasSummary": false } ] } ] },
+    { "name": "chapters, one row without hasSummary", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": [
+        { "index": 1, "slug": "c1", "title": "One", "hasSummary": true },
+        { "index": 2, "slug": "c2", "title": "Two" } ] } ] },
+    { "name": "chapters, empty", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "json": [] } ] },
+    { "name": "chapters, server error", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "chapters, malformed JSON", "input": { "op": "chapters" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters", "text": "<html>gateway</html>" } ] },
+
+    { "name": "chapter text", "input": { "op": "chapter", "slug": "0003-intro" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/0003-intro", "json": { "title": "Introduction", "text": "Para one.\n\nPara two — été.", "wordCount": 5 } } ] },
+    { "name": "chapter slug with a space and accents", "input": { "op": "chapter", "slug": "chapitre 1 été" }, "routes": [
+      { "method": "GET", "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/", "json": { "title": "Été", "text": "x" } } ] },
+    { "name": "chapter slug with a slash", "accepted": {"kind": "latent", "why": "Chapter slugs are made by the server's slugify (0003-intro): never a slash. iOS keeps it as a path separator (.urlPathAllowed), Android encodes it."}, "input": { "op": "chapter", "slug": "part/1" }, "routes": [
+      { "method": "GET", "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/", "json": { "title": "P", "text": "x" } } ] },
+    { "name": "chapter slug with ? # % +", "input": { "op": "chapter", "slug": "q?a#b%c+d" }, "routes": [
+      { "method": "GET", "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/", "json": { "title": "Q", "text": "x" } } ] },
+    { "name": "chapter without its text", "accepted": {"kind": "lenient", "why": "Android reads a chapter without text as an empty text; iOS's ChapterText requires it."}, "input": { "op": "chapter", "slug": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "One" } } ] },
+    { "name": "chapter not found", "input": { "op": "chapter", "slug": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "status": 404, "json": { "error": "not found" } } ] },
+    { "name": "chapter summary", "input": { "op": "summary", "slug": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "json": { "exists": true, "title": "One", "summary": "In short." } } ] },
+    { "name": "chapter summary missing", "input": { "op": "summary", "slug": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "json": { "exists": false, "title": null, "summary": null } } ] },
+    { "name": "chapter summary without exists", "accepted": {"kind": "lenient", "why": "Android reads a summary without `exists` as false; iOS requires it."}, "input": { "op": "summary", "slug": "c1" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "json": { "summary": "In short." } } ] },
+
+    { "name": "reading progress", "input": { "op": "progress" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/reading-progress", "json": { "book_id": 7, "chapter_index": 3, "chapter_slug": "0003-intro", "view": "summary", "enabled": 1, "position": 2, "updated_at": "2026-11-10 09:00:00" } } ] },
+    { "name": "reading progress null", "input": { "op": "progress" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/reading-progress", "text": "null", "headers": { "content-type": "application/json" } } ] },
+    { "name": "reading progress, server error", "input": { "op": "progress" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/reading-progress", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "save position in the text", "input": { "op": "setProgress", "chapterIndex": 3, "chapterSlug": "0003-intro", "view": "full", "position": 1234 }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/reading-progress", "json": { "ok": true } } ] },
+    { "name": "save position in the summary", "input": { "op": "setProgress", "chapterIndex": 4, "chapterSlug": "0004-été", "view": "summary", "position": 3 }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/reading-progress", "json": { "ok": true } } ] },
+    { "name": "save position refused", "input": { "op": "setProgress", "chapterIndex": 3, "chapterSlug": "c3", "view": "full", "position": 0 }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/reading-progress", "status": 400, "json": { "error": "chapter_slug required" } } ] },
+    { "name": "pause tracking", "input": { "op": "tracking", "paused": true }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/reading-progress/tracking", "json": { "enabled": 0 } } ] },
+    { "name": "resume tracking", "input": { "op": "tracking", "paused": false }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/reading-progress/tracking", "json": { "enabled": 1 } } ] },
+    { "name": "reset progress", "input": { "op": "reset" }, "routes": [
+      { "method": "DELETE", "path": "/api/v1/calibre/books/7/reading-progress", "status": 204 } ] },
+    { "name": "reset progress fails", "input": { "op": "reset" }, "routes": [
+      { "method": "DELETE", "path": "/api/v1/calibre/books/7/reading-progress", "status": 500, "json": { "error": "boom" } } ] },
+
+    { "name": "bookmarks", "input": { "op": "bookmarks" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/bookmarks", "json": [
+        { "id": 1, "book_id": 7, "chapter_slug": "c1", "view": "full", "note": "À relire", "created_at": "2026-11-10 09:00:00" },
+        { "id": 2, "book_id": 7, "chapter_slug": "c2", "view": "summary", "note": null } ] } ] },
+    { "name": "bookmarks, wrapped", "input": { "op": "bookmarks" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/bookmarks", "json": { "bookmarks": [
+        { "id": 1, "chapter_slug": "c1", "view": "full" } ] } } ] },
+    { "name": "bookmarks, a row without view", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "bookmarks" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/bookmarks", "json": [
+        { "id": 1, "chapter_slug": "c1", "view": "full" }, { "id": 2, "chapter_slug": "c2" } ] } ] },
+    { "name": "bookmark this chapter", "input": { "op": "toggleBookmark", "slug": "c1", "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/bookmarks", "json": { "bookmarked": true, "bookmark": { "id": 9, "chapter_slug": "c1", "view": "full", "note": null } } } ] },
+    { "name": "remove the bookmark", "input": { "op": "toggleBookmark", "slug": "c1", "view": "summary" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/bookmarks", "json": { "bookmarked": false } } ] },
+    { "name": "bookmark answer without bookmarked", "accepted": {"kind": "lenient", "why": "Android reads a toggle answer without `bookmarked` as false; iOS requires it."}, "input": { "op": "toggleBookmark", "slug": "c1", "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/bookmarks", "json": { "bookmark": { "id": 9, "chapter_slug": "c1", "view": "full" } } } ] },
+    { "name": "bookmark note", "input": { "op": "bookmarkNote", "id": 9, "note": "Relire — p. 12" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/calibre/books/7/bookmarks/9", "json": { "ok": true } } ] },
+    { "name": "bookmark note cleared", "input": { "op": "bookmarkNote", "id": 9, "note": null }, "routes": [
+      { "method": "PUT", "path": "/api/v1/calibre/books/7/bookmarks/9", "json": { "ok": true } } ] },
+
+    { "name": "status with a job", "input": { "op": "status" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/status", "json": { "chapters": 12, "summarized": 12, "indexed": 10, "job": { "action": "summarize", "state": "ok", "error": null, "at": "2026-11-10 09:00:00" } } } ] },
+    { "name": "status, job failed", "input": { "op": "status" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/status", "json": { "chapters": 12, "summarized": 3, "indexed": 3, "job": { "action": "extract", "state": "error", "error": "EPUB unreadable" } } } ] },
+    { "name": "status, unknown job state", "accepted": {"kind": "lenient", "why": "Android keeps a job state it does not know; iOS's enum rejects the status."}, "input": { "op": "status" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/status", "json": { "chapters": 12, "summarized": 3, "job": { "action": "summarize", "state": "queued" } } } ] },
+    { "name": "status, nothing extracted", "input": { "op": "status" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/status", "json": { "chapters": 0, "summarized": null, "indexed": null } } ] },
+    { "name": "status, summarized missing", "input": { "op": "status" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/status", "json": { "chapters": 3 } } ] },
+    { "name": "summarize", "accepted": {"kind": "wire", "why": "iOS posts no body, Android {} as JSON; the server reads neither."}, "input": { "op": "summarize" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/summarize", "status": 202, "json": { "status": "started", "pid": 4242 } } ] },
+    { "name": "summarize refused", "accepted": {"kind": "wire", "why": "iOS posts no body, Android {} as JSON; the server reads neither."}, "input": { "op": "summarize" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/summarize", "status": 409, "json": { "error": "already running" } } ] },
+    { "name": "extract", "accepted": {"kind": "wire", "why": "iOS posts no body, Android {} as JSON; the server reads neither."}, "input": { "op": "extract" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/extract", "status": 202, "json": { "status": "started" } } ] },
+    { "name": "follow the book with Maurice", "input": { "op": "follow", "title": "L'Étranger" }, "routes": [
+      { "method": "POST", "path": "/api/maurices", "json": { "id": "m1" } } ] },
+    { "name": "follow refused", "input": { "op": "follow", "title": "X" }, "routes": [
+      { "method": "POST", "path": "/api/maurices", "status": 403, "json": { "error": "guests cannot" } } ] }
+  ]
+}

@@ -1,0 +1,5267 @@
+{
+  "domain" : "composer-tray",
+  "results" : {
+    "a blank page's tray is not saved anywhere" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-potager" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-potager" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-potager",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "potager",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "potager",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "note",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Potager",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-potager" : 100
+      }
+    },
+    "a blank page's tray, then the conversation it became" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-potager" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-potager" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-potager",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "potager",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "potager",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "note",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Potager",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c-new",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-potager" : 100
+      }
+    },
+    "add: a MOC note recurses, is weighed and saved" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-jardin" : 12
+      },
+      "displayTotal" : 1200,
+      "heavy" : {
+        "note-jardin" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-jardin",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : true,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "jardin",
+            "include_archived" : false,
+            "recurse" : true,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "jardin",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "MOC · 12 notes",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Jardin",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "jardin",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "jardin",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 1200,
+      "weights" : {
+        "note-jardin" : 1200
+      }
+    },
+    "add: every kind, with its defaults" : {
+      "attachmentCount" : 2,
+      "counts" : {
+        "book-42" : null,
+        "conversation-c9" : null,
+        "fiche-movies/fr/dune" : null,
+        "file-f1" : null,
+        "file-f2" : null,
+        "file-f3" : null,
+        "folder-dir1" : null,
+        "note-potager" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "book-42" : false,
+        "conversation-c9" : false,
+        "fiche-movies/fr/dune" : false,
+        "file-f1" : false,
+        "file-f2" : false,
+        "file-f3" : false,
+        "folder-dir1" : false,
+        "note-potager" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-potager",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "potager",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "potager",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "note",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Potager",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "folder-dir1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "dir1",
+            "recurse" : true,
+            "type" : "folder"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "dir1",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Docs",
+          "type" : "folder",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "img",
+          "moc" : false,
+          "na" : true,
+          "payload" : {
+            "id" : "f1",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "photo.jpg",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f2",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "text",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "f2",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f2",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "notes.txt",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : true,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f3",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "pdf",
+          "moc" : false,
+          "na" : true,
+          "payload" : {
+            "id" : "f3",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f3",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "scan.pdf",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "all"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Dune",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "fiche-movies/fr/dune",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "movies/fr/dune",
+            "include_fragments" : true,
+            "type" : "fiche"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "movies/fr/dune",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Dune (film)",
+          "type" : "fiche",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "conversation-c9",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "c9",
+            "type" : "conversation"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "c9",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Recettes",
+          "type" : "conversation",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "movies/fr/dune",
+                "include_fragments" : true,
+                "type" : "fiche"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "movies/fr/dune",
+                "include_fragments" : true,
+                "type" : "fiche"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "movies/fr/dune",
+                "include_fragments" : true,
+                "type" : "fiche"
+              },
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "dir1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              },
+              {
+                "id" : "f3",
+                "type" : "file"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "movies/fr/dune",
+                "include_fragments" : true,
+                "type" : "fiche"
+              },
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "book-42" : 0,
+        "conversation-c9" : 0,
+        "fiche-movies/fr/dune" : 0,
+        "file-f1" : 0,
+        "file-f2" : 0,
+        "file-f3" : 0,
+        "folder-dir1" : 0,
+        "note-potager" : 0
+      }
+    },
+    "add: the same entry twice is once" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-potager" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-potager" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-potager",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "potager",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "potager",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "note",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Potager",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-potager" : 100
+      }
+    },
+    "bind: another conversation replaces the tray" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "n1/a"
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c2",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "bind: no saved spec (404)" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "bind: spec with an unknown item" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n" : null
+      },
+      "displayTotal" : 10,
+      "heavy" : {
+        "note-n" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 10,
+      "weights" : {
+        "note-n" : 10
+      }
+    },
+    "bind: the saved spec, weighed" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null,
+        "conversation-c9" : null,
+        "note-n1" : 3
+      },
+      "displayTotal" : 8000,
+      "heavy" : {
+        "book-42" : false,
+        "conversation-c9" : false,
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+            "n1/a"
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : true,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+              "n1/a"
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : true,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Potager",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : 5,
+          "progressPaused" : true,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Dune",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 20
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 9000,
+          "id" : "conversation-c9",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "c9",
+            "type" : "conversation"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "c9",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : true,
+          "summaryStatus" : "ready",
+          "title" : "Recettes",
+          "type" : "conversation",
+          "uncovered" : 2,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 2,
+        "name" : "Santé",
+        "weight" : 3000
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "n1/a"
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              },
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              },
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 5000,
+      "weights" : {
+        "book-42" : 3000,
+        "conversation-c9" : 1000,
+        "note-n1" : 1000
+      }
+    },
+    "chapters: empty answer is asked again" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/books/42/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+        [
+
+        ],
+        [
+
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "chapters: read once, then from memory" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/books/42/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+        [
+          {
+            "hasSummary" : false,
+            "hidden" : true,
+            "index" : 0,
+            "name" : "Couverture",
+            "ref" : "front",
+            "sectionType" : "front_matter",
+            "wordCount" : 10
+          },
+          {
+            "hasSummary" : true,
+            "hidden" : false,
+            "index" : 1,
+            "name" : "Chapitre 1",
+            "ref" : "c1",
+            "sectionType" : "body",
+            "wordCount" : 4000
+          }
+        ],
+        [
+          {
+            "hasSummary" : false,
+            "hidden" : true,
+            "index" : 0,
+            "name" : "Couverture",
+            "ref" : "front",
+            "sectionType" : "front_matter",
+            "wordCount" : 10
+          },
+          {
+            "hasSummary" : true,
+            "hidden" : false,
+            "index" : 1,
+            "name" : "Chapitre 1",
+            "ref" : "c1",
+            "sectionType" : "body",
+            "wordCount" : 4000
+          }
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "chapters: server error" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/books/42/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+        [
+
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "reading: a book id that is not a number" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "reading: forget the position" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+        "book-42" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "42",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : "application/json",
+          "method" : "DELETE",
+          "path" : "/api/v1/calibre/books/42/reading-progress",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+        "book-42" : 0
+      }
+    },
+    "reading: pause a followed book" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null
+      },
+      "displayTotal" : 300,
+      "heavy" : {
+        "book-42" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : 4,
+          "progressPaused" : true,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "42",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "paused" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/42/reading-progress/tracking",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 300,
+      "weights" : {
+        "book-42" : 300
+      }
+    },
+    "reading: pause fails" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null
+      },
+      "displayTotal" : 300,
+      "heavy" : {
+        "book-42" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : 4,
+          "progressPaused" : false,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "42",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "paused" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/42/reading-progress/tracking",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 300,
+      "weights" : {
+        "book-42" : 300
+      }
+    },
+    "reading: resume" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null
+      },
+      "displayTotal" : 300,
+      "heavy" : {
+        "book-42" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : 4,
+          "progressPaused" : false,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "42",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "paused" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/42/reading-progress/tracking",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 300,
+      "weights" : {
+        "book-42" : 300
+      }
+    },
+    "remove: the last item resets the totals" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "resolve: a folder" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "folder-d1" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "folder-d1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+            "f9"
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "folder-d1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+              "f9"
+            ],
+            "id" : "d1",
+            "recurse" : true,
+            "type" : "folder"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "d1",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "d1",
+          "type" : "folder",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "f9"
+                ],
+                "id" : "d1",
+                "recurse" : true,
+                "type" : "folder"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/folders/d1/resolve",
+          "query" : {
+            "exclude" : "f9",
+            "recurse" : "true"
+          }
+        }
+      ],
+      "results" : [
+        {
+          "binaryCount" : 2,
+          "count" : 5,
+          "hasChildren" : true,
+          "manualExcluded" : 1,
+          "textCount" : 3,
+          "tree" : {
+            "children" : [
+              {
+                "children" : [
+
+                ],
+                "excluded" : false,
+                "id" : "f1",
+                "included" : false,
+                "isFolder" : false,
+                "kind" : "text",
+                "na" : false,
+                "name" : "a.txt",
+                "weight" : 900
+              }
+            ],
+            "excluded" : false,
+            "id" : "d1",
+            "included" : false,
+            "isFolder" : true,
+            "kind" : "file",
+            "na" : false,
+            "name" : "Docs",
+            "weight" : 0
+          },
+          "weight" : 900
+        }
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "folder-d1" : 100
+      }
+    },
+    "resolve: a note, answer without a tree" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/notes/n1/resolve",
+          "query" : {
+            "exclude" : "",
+            "include_archived" : "false",
+            "recurse" : "false"
+          }
+        }
+      ],
+      "results" : [
+        null
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-n1" : 100
+      }
+    },
+    "resolve: a note, server error" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/notes/n1/resolve",
+          "query" : {
+            "exclude" : "",
+            "include_archived" : "false",
+            "recurse" : "false"
+          }
+        }
+      ],
+      "results" : [
+        null
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-n1" : 100
+      }
+    },
+    "resolve: a note's tree, with exclusions" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-jardin été" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-jardin été" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+            "a b",
+            "c,d"
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-jardin été",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+              "a b",
+              "c,d"
+            ],
+            "id" : "jardin été",
+            "include_archived" : false,
+            "recurse" : true,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "jardin été",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "jardin été",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "a b",
+                  "c,d"
+                ],
+                "id" : "jardin été",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/notes/jardin%20%C3%A9t%C3%A9/resolve",
+          "query" : {
+            "exclude" : "a b,c,d",
+            "include_archived" : "false",
+            "recurse" : "true"
+          }
+        }
+      ],
+      "results" : [
+        {
+          "archivedWithheld" : 1,
+          "count" : 2,
+          "encrypted" : false,
+          "hasChildren" : true,
+          "manualExcluded" : 1,
+          "tree" : {
+            "archived" : false,
+            "childCount" : 2,
+            "children" : [
+              {
+                "archived" : false,
+                "childCount" : 0,
+                "children" : [
+
+                ],
+                "excluded" : false,
+                "id" : "jardin/a",
+                "included" : true,
+                "moc" : false,
+                "title" : "A",
+                "weight" : 50
+              },
+              {
+                "archived" : true,
+                "childCount" : 0,
+                "children" : [
+
+                ],
+                "excluded" : true,
+                "id" : "jardin/b",
+                "included" : false,
+                "moc" : false,
+                "title" : "B",
+                "weight" : 70
+              }
+            ],
+            "excluded" : false,
+            "id" : "jardin",
+            "included" : true,
+            "moc" : true,
+            "title" : "Jardin",
+            "weight" : 100
+          },
+          "weight" : 150
+        }
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-jardin été" : 100
+      }
+    },
+    "search: a query with spaces, accents, & and #" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : "été & co #1"
+          }
+        }
+      ],
+      "results" : [
+        [
+
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "search: answer without results" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : "dune"
+          }
+        }
+      ],
+      "results" : [
+        null
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "search: empty query" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : ""
+          }
+        }
+      ],
+      "results" : [
+        [
+
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "search: nothing found" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : "zzz"
+          }
+        }
+      ],
+      "results" : [
+        [
+
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "search: results of every kind" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : "dune"
+          }
+        }
+      ],
+      "results" : [
+        [
+          {
+            "encrypted" : false,
+            "hasDate" : true,
+            "id" : "note-jardin",
+            "kind" : "",
+            "moc" : true,
+            "rawId" : "jardin",
+            "sub" : "MOC",
+            "title" : "Jardin",
+            "type" : "note"
+          },
+          {
+            "encrypted" : false,
+            "hasDate" : true,
+            "id" : "book-42",
+            "kind" : "",
+            "moc" : false,
+            "rawId" : "42",
+            "sub" : "Frank Herbert",
+            "title" : "Dune",
+            "type" : "book"
+          },
+          {
+            "encrypted" : true,
+            "hasDate" : false,
+            "id" : "file-f1",
+            "kind" : "pdf",
+            "moc" : false,
+            "rawId" : "f1",
+            "sub" : "",
+            "title" : "scan.pdf",
+            "type" : "file"
+          },
+          {
+            "encrypted" : false,
+            "hasDate" : false,
+            "id" : "fiche-movies/fr/dune",
+            "kind" : "",
+            "moc" : false,
+            "rawId" : "movies/fr/dune",
+            "sub" : "",
+            "title" : "Dune (film)",
+            "type" : "fiche"
+          },
+          {
+            "encrypted" : false,
+            "hasDate" : false,
+            "id" : "conversation-c9",
+            "kind" : "",
+            "moc" : false,
+            "rawId" : "c9",
+            "sub" : "hier",
+            "title" : "c9",
+            "type" : "conversation"
+          },
+          {
+            "encrypted" : false,
+            "hasDate" : false,
+            "id" : "folder-d1",
+            "kind" : "",
+            "moc" : false,
+            "rawId" : "d1",
+            "sub" : "",
+            "title" : "Docs",
+            "type" : "folder"
+          }
+        ]
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "search: server error" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/search",
+          "query" : {
+            "q" : "dune"
+          }
+        }
+      ],
+      "results" : [
+        null
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "summary pending: waited for, then weighed and saved again" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "conversation-c9" : null
+      },
+      "displayTotal" : 800,
+      "heavy" : {
+        "conversation-c9" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 9000,
+          "id" : "conversation-c9",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "c9",
+            "type" : "conversation"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "c9",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : true,
+          "summaryStatus" : "ready",
+          "title" : "c9",
+          "type" : "conversation",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/conversations/c9/summary",
+          "query" : {
+            "wait" : "1"
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 800,
+      "weights" : {
+        "conversation-c9" : 800
+      }
+    },
+    "toggle: on, then off" : {
+      "attachmentCount" : 0,
+      "counts" : {
+
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+
+      },
+      "items" : [
+
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "potager",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+
+      }
+    },
+    "update: a book up to a chapter, then chosen chapters, then full text" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "book-42" : null
+      },
+      "displayTotal" : 3000,
+      "heavy" : {
+        "book-42" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "book-42",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : 42,
+            "representation" : "summary",
+            "scope" : {
+              "mode" : "progress"
+            },
+            "type" : "book"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "42",
+          "recurse" : false,
+          "representation" : "full",
+          "scopeMode" : "progress",
+          "selectedRefs" : [
+            "c1",
+            "c4"
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "42",
+          "type" : "book",
+          "uncovered" : 0,
+          "uptoChapter" : 6,
+          "visibleChapters" : 30
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "all"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "chapter" : 6,
+                  "mode" : "up_to"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "chapter" : 6,
+                  "mode" : "up_to"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "chapters",
+                  "refs" : [
+                    "c1",
+                    "c4"
+                  ]
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "chapters",
+                  "refs" : [
+                    "c1",
+                    "c4"
+                  ]
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : 42,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 3000,
+      "weights" : {
+        "book-42" : 3000
+      }
+    },
+    "update: a conversation pinned to its transcript" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "conversation-c9" : null
+      },
+      "displayTotal" : 9000,
+      "heavy" : {
+        "conversation-c9" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : true,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 9000,
+          "id" : "conversation-c9",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "c9",
+            "representation" : "full",
+            "type" : "conversation"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "c9",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : true,
+          "summaryStatus" : "ready",
+          "title" : "c9",
+          "type" : "conversation",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "representation" : "full",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "c9",
+                "representation" : "full",
+                "type" : "conversation"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 9000,
+      "weights" : {
+        "conversation-c9" : 9000
+      }
+    },
+    "update: a fiche without its fragments" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "fiche-people/fr/x" : null
+      },
+      "displayTotal" : 50,
+      "heavy" : {
+        "fiche-people/fr/x" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 4,
+          "fullWeight" : 0,
+          "id" : "fiche-people/fr/x",
+          "includeArchived" : false,
+          "includeFragments" : false,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "id" : "people/fr/x",
+            "include_fragments" : false,
+            "type" : "fiche"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "people/fr/x",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "people/fr/x",
+          "type" : "fiche",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "people/fr/x",
+                "include_fragments" : true,
+                "type" : "fiche"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "people/fr/x",
+                "include_fragments" : false,
+                "type" : "fiche"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "people/fr/x",
+                "include_fragments" : false,
+                "type" : "fiche"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 50,
+      "weights" : {
+        "fiche-people/fr/x" : 50
+      }
+    },
+    "update: a note's options" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 300,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+            "n1/x",
+            "n1/y"
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : true,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+              "n1/x",
+              "n1/y"
+            ],
+            "id" : "n1",
+            "include_archived" : true,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : true,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "n1/x",
+                  "n1/y"
+                ],
+                "id" : "n1",
+                "include_archived" : true,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+                  "n1/x",
+                  "n1/y"
+                ],
+                "id" : "n1",
+                "include_archived" : true,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 300,
+      "weights" : {
+        "note-n1" : 300
+      }
+    },
+    "weigh: a file's kind and path make its line" : {
+      "attachmentCount" : 2,
+      "counts" : {
+        "file-f1" : null,
+        "file-f2" : null
+      },
+      "displayTotal" : 400,
+      "heavy" : {
+        "file-f1" : false,
+        "file-f2" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "pdf",
+          "moc" : false,
+          "na" : true,
+          "payload" : {
+            "id" : "f1",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "pdf · docs/scan.pdf",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "f1",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f2",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "img",
+          "moc" : false,
+          "na" : true,
+          "payload" : {
+            "id" : "f2",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f2",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "img",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "f2",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "id" : "f1",
+                "type" : "file"
+              },
+              {
+                "id" : "f2",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 400,
+      "weights" : {
+        "file-f1" : 400,
+        "file-f2" : 0
+      }
+    },
+    "weigh: a folder sweeps attachments in" : {
+      "attachmentCount" : 4,
+      "counts" : {
+        "file-f1" : null,
+        "folder-d1" : 12
+      },
+      "displayTotal" : 5000,
+      "heavy" : {
+        "file-f1" : false,
+        "folder-d1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "folder-d1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "d1",
+            "recurse" : true,
+            "type" : "folder"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "d1",
+          "recurse" : true,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "d1",
+          "type" : "folder",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "file-f1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "img",
+          "moc" : false,
+          "na" : true,
+          "payload" : {
+            "id" : "f1",
+            "type" : "file"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "f1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "img",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "f1",
+          "type" : "file",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "d1",
+                "recurse" : true,
+                "type" : "folder"
+              },
+              {
+                "id" : "f1",
+                "type" : "file"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 5000,
+      "weights" : {
+        "file-f1" : 0,
+        "folder-d1" : 5000
+      }
+    },
+    "weigh: an empty title keeps the id" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-n1" : 100
+      }
+    },
+    "weigh: fewer weights than items" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null,
+        "note-n2" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-n1" : false,
+        "note-n2" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "Un",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        },
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n2",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n2",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n2",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n2",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              },
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n2",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-n1" : 100,
+        "note-n2" : 0
+      }
+    },
+    "weigh: numbers as floats and strings" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 100,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : true,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 100,
+      "weights" : {
+        "note-n1" : 100
+      }
+    },
+    "weigh: over the budget" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : null
+      },
+      "displayTotal" : 250000,
+      "heavy" : {
+        "note-n1" : true
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "over",
+      "total" : 250000,
+      "weights" : {
+        "note-n1" : 250000
+      }
+    },
+    "weigh: server error keeps the spec's figures" : {
+      "attachmentCount" : 0,
+      "counts" : {
+        "note-n1" : 2
+      },
+      "displayTotal" : 0,
+      "heavy" : {
+        "note-n1" : false
+      },
+      "items" : [
+        {
+          "conversationFull" : false,
+          "encrypted" : false,
+          "exclude" : [
+
+          ],
+          "fragmentCount" : 0,
+          "fullWeight" : 0,
+          "id" : "note-n1",
+          "includeArchived" : false,
+          "includeFragments" : true,
+          "kind" : "",
+          "moc" : false,
+          "na" : false,
+          "payload" : {
+            "exclude" : [
+
+            ],
+            "id" : "n1",
+            "include_archived" : false,
+            "recurse" : false,
+            "type" : "note"
+          },
+          "progressChapter" : -1,
+          "progressPaused" : false,
+          "rawId" : "n1",
+          "recurse" : false,
+          "representation" : "summary",
+          "scopeMode" : "all",
+          "selectedRefs" : [
+
+          ],
+          "sub" : "",
+          "summarisable" : false,
+          "summaryStatus" : "none",
+          "title" : "n1",
+          "type" : "note",
+          "uncovered" : 0,
+          "uptoChapter" : 0,
+          "visibleChapters" : 0
+        }
+      ],
+      "locked" : {
+        "count" : 0,
+        "name" : "",
+        "weight" : 0
+      },
+      "over" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/composer/context/c1",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "exclude" : [
+
+                ],
+                "id" : "n1",
+                "include_archived" : false,
+                "recurse" : false,
+                "type" : "note"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/composer/weigh",
+          "query" : {
+
+          }
+        }
+      ],
+      "results" : [
+
+      ],
+      "tier" : "light",
+      "total" : 0,
+      "weights" : {
+        "note-n1" : 800
+      }
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

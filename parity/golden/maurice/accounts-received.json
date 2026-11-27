@@ -1,0 +1,181 @@
+{
+  "domain" : "accounts-received",
+  "results" : {
+    "an older server: neither field" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c2"
+      ],
+      "received" : null
+    },
+    "an ordinary conversation" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1",
+        "c2"
+      ],
+      "received" : null
+    },
+    "go on: a new conversation held from the same entry" : {
+      "active" : "c9",
+      "after" : null,
+      "banner" : null,
+      "entry" : "books/fr/dune",
+      "list" : [
+        "c9",
+        "c1",
+        "c2"
+      ],
+      "received" : "Les Martin",
+      "sent" : [
+        {
+          "body" : {
+            "entry" : "books/fr/dune"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        }
+      ]
+    },
+    "go on: no entry given here, a new conversation" : {
+      "active" : "c9",
+      "after" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c9",
+        "c1"
+      ],
+      "received" : "Les Martin",
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        }
+      ]
+    },
+    "go on: refused by the server" : {
+      "active" : "c1",
+      "after" : "Les Martin",
+      "banner" : "[403] This entry is not yours",
+      "entry" : "books/fr/dune",
+      "list" : [
+        "c1"
+      ],
+      "received" : "Les Martin",
+      "sent" : [
+        {
+          "body" : {
+            "entry" : "books/fr/dune"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        }
+      ]
+    },
+    "go on: the server answers a conversation already listed" : {
+      "active" : "c2",
+      "after" : null,
+      "banner" : null,
+      "entry" : "books/fr/dune",
+      "list" : [
+        "c1",
+        "c2"
+      ],
+      "received" : "Les Martin",
+      "sent" : [
+        {
+          "body" : {
+            "entry" : "books/fr/dune"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        }
+      ]
+    },
+    "nothing open" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : null
+    },
+    "read_only false with a household named" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c2"
+      ],
+      "received" : null
+    },
+    "received, imported_from null" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : ""
+    },
+    "received, named household: no composer, its band" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : "books/fr/dune",
+      "list" : [
+        "c1",
+        "c2"
+      ],
+      "received" : "Les Martin"
+    },
+    "received, the household unnamed" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : ""
+    },
+    "the detail says received, the row says nothing" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : "Chez Paul"
+    },
+    "the row says received, the detail says not" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : "Les Martin"
+    },
+    "the row says received, the detail says nothing" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        "c1"
+      ],
+      "received" : "Les Martin"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

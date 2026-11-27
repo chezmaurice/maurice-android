@@ -1,0 +1,396 @@
+{
+  "domain" : "reading-articles",
+  "results" : {
+    "article given by another member" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "",
+        "hasSummary" : false,
+        "hasText" : null,
+        "id" : "en/a",
+        "locale" : "en",
+        "readableSummary" : "",
+        "readingMinutes" : 1,
+        "sharedBy" : {
+          "displayName" : "Bob",
+          "username" : "bob"
+        },
+        "slug" : "a",
+        "textRev" : null,
+        "title" : "Shared",
+        "url" : null
+      }
+    },
+    "article not found" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/gone",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article page" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "Le Monde · 2026-10-30",
+        "hasSummary" : true,
+        "hasText" : true,
+        "id" : "fr/la-lenteur",
+        "locale" : "fr",
+        "readableSummary" : "Le long résumé.\n\nDeux paragraphes.",
+        "readingMinutes" : 10,
+        "sharedBy" : null,
+        "slug" : "la-lenteur",
+        "textRev" : "r2",
+        "title" : "La lenteur",
+        "url" : "https://example.org/lenteur"
+      }
+    },
+    "article text with styles" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "styles" : [
+          {
+            "end" : 5,
+            "kind" : "heading",
+            "start" : 0
+          },
+          {
+            "end" : 17,
+            "kind" : "strong",
+            "start" : 7
+          },
+          {
+            "end" : 25,
+            "kind" : "em",
+            "start" : 18
+          },
+          {
+            "end" : 34,
+            "kind" : "underline",
+            "start" : 30
+          }
+        ],
+        "text" : "Titre\n\nQuestion ?\nRéponse — été 🌞.\n\nFin.",
+        "title" : "La lenteur"
+      }
+    },
+    "article text without slug and locale" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article text, a style without kind" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article text, empty" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a/text",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "styles" : [
+
+        ],
+        "text" : "",
+        "title" : null
+      }
+    },
+    "article text, never captured" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/bookmark-only/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article text, no styles key" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "styles" : [
+
+        ],
+        "text" : "Plain.",
+        "title" : null
+      }
+    },
+    "article text, styles null" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/text",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "styles" : [
+
+        ],
+        "text" : "Plain.",
+        "title" : null
+      }
+    },
+    "article without a body" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "",
+        "hasSummary" : false,
+        "hasText" : null,
+        "id" : "en/a",
+        "locale" : "en",
+        "readableSummary" : "",
+        "readingMinutes" : 1,
+        "sharedBy" : null,
+        "slug" : "a",
+        "textRev" : null,
+        "title" : "Sans corps",
+        "url" : null
+      }
+    },
+    "article without a title" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article, accented slug and a regional locale" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/l'%C3%A9t%C3%A9%20%C3%A0%20paris",
+          "query" : {
+            "locale" : "pt-BR"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "",
+        "hasSummary" : false,
+        "hasText" : null,
+        "id" : "pt-BR/l'été à paris",
+        "locale" : "pt-BR",
+        "readableSummary" : "",
+        "readingMinutes" : 1,
+        "sharedBy" : null,
+        "slug" : "l'été à paris",
+        "textRev" : null,
+        "title" : "Verão",
+        "url" : null
+      }
+    },
+    "article, long summary blank: the paragraph is read" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "",
+        "hasSummary" : true,
+        "hasText" : null,
+        "id" : "en/a",
+        "locale" : "en",
+        "readableSummary" : "Short one.",
+        "readingMinutes" : 1,
+        "sharedBy" : null,
+        "slug" : "a",
+        "textRev" : null,
+        "title" : "A",
+        "url" : null
+      }
+    },
+    "article, no summary at all, saved date only" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "2026-11-02",
+        "hasSummary" : false,
+        "hasText" : false,
+        "id" : "en/a",
+        "locale" : "en",
+        "readableSummary" : "",
+        "readingMinutes" : 1,
+        "sharedBy" : null,
+        "slug" : "a",
+        "textRev" : null,
+        "title" : "A",
+        "url" : null
+      }
+    },
+    "article, publication without a date" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/a",
+          "query" : {
+            "locale" : "en"
+          }
+        }
+      ],
+      "result" : {
+        "bylineShort" : "The Atlantic",
+        "hasSummary" : false,
+        "hasText" : null,
+        "id" : "en/a",
+        "locale" : "en",
+        "readableSummary" : "",
+        "readingMinutes" : 1,
+        "sharedBy" : null,
+        "slug" : "a",
+        "textRev" : null,
+        "title" : "A",
+        "url" : null
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "domain": "strings-table",
+  "about": "Every word of the Carnet app, per language: the iOS table (Localizable.xcstrings) as the app reads it, against the copy Android ships (files/strings, written out by scripts/sync-strings.sh). Android's own additions (files/android: the words Carnet iOS writes in English, unkeyed) are keys iOS does not have and are not compared; nor is Maurice's table, which Android loads underneath.",
+  "ios": "CarnetApp/Localizable.xcstrings, compiled into <lang>.lproj/Localizable.strings, read from the runner's bundle",
+  "android": "carnet/shared composeResources files/strings/<lang>.strings, parsed by ui Strings.parse",
+  "cases": [
+    { "name": "en", "input": "en" },
+    { "name": "fr", "input": "fr" },
+    { "name": "de", "input": "de" },
+    { "name": "es", "input": "es" },
+    { "name": "it", "input": "it" },
+    { "name": "nl", "input": "nl" },
+    { "name": "pt", "input": "pt" }
+  ]
+}

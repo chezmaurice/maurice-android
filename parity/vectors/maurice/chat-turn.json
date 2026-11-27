@@ -1,0 +1,7642 @@
+{
+ "domain": "chat-turn",
+ "about": "One turn, end to end: what is sent, the NDJSON stream read event by event (text, thinking, tools, data, images, usage, done, error, resume), the reply it leaves, the tools' recap, the thread, the banner; refusals over HTTP, a dropped stream re-attached, regenerate, stop.",
+ "ios": "ChatService.send/regenerate/stop (followTurn, render), APIClient.streamMessage/streamTurn, StreamEvent",
+ "android": "ChatController.send/regenerate/stop (runTurn, apply), ChatApi.send/follow, TurnEvent.parse; the banner as ChatScreen resolves it",
+ "cases": [
+  {
+   "name": "send: plain reply",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "thinking"
+       },
+       {
+        "type": "text_delta",
+        "text": "Bon"
+       },
+       {
+        "type": "text_delta",
+        "text": "jour."
+       },
+       {
+        "type": "usage",
+        "usage": {
+         "provider": "anthropic",
+         "model": "claude-x",
+         "rounds": 2,
+         "input": 100,
+         "output": 20,
+         "cache_read": 50,
+         "cache_write": 0,
+         "cost": 0.0123,
+         "cost_uncached": 0.02
+        }
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Bonjour.",
+         "created_at": "2026-11-10 18:31:05",
+         "usage": {
+          "provider": "anthropic",
+          "model": "claude-x",
+          "rounds": 2,
+          "input": 100,
+          "output": 20,
+          "cache_read": 50,
+          "cache_write": 0,
+          "cost": 0.0123,
+          "cost_uncached": 0.02
+         }
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: tools and data",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "tool_call",
+        "tool": "corpus__search",
+        "status": "start"
+       },
+       {
+        "type": "tool_data",
+        "tool": "corpus__search",
+        "data": {
+         "card": "sources",
+         "origin": "corpus",
+         "query": "x",
+         "results": [
+          {
+           "title": "Note",
+           "subtitle": ""
+          }
+         ]
+        }
+       },
+       {
+        "type": "tool_call",
+        "tool": "corpus__search",
+        "status": "end"
+       },
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "start"
+       },
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "end"
+       },
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "start"
+       },
+       {
+        "type": "tool_data",
+        "tool": "web_search",
+        "data": {
+         "card": "sources",
+         "origin": "web",
+         "query": "pain",
+         "results": [
+          {
+           "title": "Pain",
+           "url": "https://pain.fr",
+           "subtitle": "x"
+          }
+         ]
+        }
+       },
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "end"
+       },
+       {
+        "type": "tool_call",
+        "tool": "garden__read_note",
+        "status": "start"
+       },
+       {
+        "type": "text_delta",
+        "text": "Voilà."
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Cherche",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Voilà.",
+         "created_at": "2026-11-10 18:31:05",
+         "data": [
+          {
+           "tool": "corpus__search",
+           "data": {
+            "card": "sources",
+            "origin": "corpus",
+            "query": "x",
+            "results": [
+             {
+              "title": "Note",
+              "subtitle": ""
+             }
+            ]
+           }
+          },
+          {
+           "tool": "web_search",
+           "data": {
+            "card": "sources",
+            "origin": "web",
+            "query": "pain",
+            "results": [
+             {
+              "title": "Pain",
+              "url": "https://pain.fr",
+              "subtitle": "x"
+             }
+            ]
+           }
+          }
+         ]
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Cherche"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: tool_call without status, error status, without tool",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "tool_call",
+        "tool": "music__list"
+       },
+       {
+        "type": "tool_call",
+        "tool": "music__list",
+        "status": "error"
+       },
+       {
+        "type": "tool_call",
+        "status": "start"
+       },
+       {
+        "type": "tool_data",
+        "data": [
+         {
+          "a": 1
+         }
+        ]
+       },
+       {
+        "type": "text_delta",
+        "text": "Fait."
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Liste",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Fait.",
+         "created_at": "2026-11-10 18:31:05",
+         "data": [
+          {
+           "tool": "tool",
+           "data": [
+            {
+             "a": 1
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Liste"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: end without tool, end of a tool never started",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "start"
+       },
+       {
+        "type": "tool_call",
+        "status": "end"
+       },
+       {
+        "type": "tool_call",
+        "tool": "corpus__search",
+        "status": "start"
+       },
+       {
+        "type": "tool_call",
+        "tool": "unknown__x",
+        "status": "end"
+       },
+       {
+        "type": "text_delta",
+        "text": "Ok"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Va",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Ok",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Va"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: generated image",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "image_loading",
+        "text": "un chat"
+       },
+       {
+        "type": "image",
+        "image_url": "/api/images/abc.png",
+        "text": "un chat"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Dessine",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "![un chat](/api/images/abc.png)",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Dessine"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: image without prompt, after text",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Je dessine…"
+       },
+       {
+        "type": "image_loading"
+       },
+       {
+        "type": "image",
+        "image_url": "/api/images/x.png"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Dessine",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "![image](/api/images/x.png)",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Dessine"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: image event without url",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "image_loading",
+        "text": "p"
+       },
+       {
+        "type": "image",
+        "text": "p"
+       },
+       {
+        "type": "text_delta",
+        "text": "Raté."
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Dessine",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Raté.",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Dessine"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: error event",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "thinking"
+       },
+       {
+        "type": "error",
+        "message": "Budget reached for this month."
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: error event with `error` key only",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Début"
+       },
+       {
+        "type": "error",
+        "error": "provider_down"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: error event without message",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "error"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: junk lines in the stream",
+   "accepted": {"kind": "lenient", "why": "a text_delta whose text is a number: Android reads it as text, iOS drops the line"},
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       "",
+       "   ",
+       "not json",
+       "{\"type\":\"unknown_kind\",\"text\":\"x\"}",
+       "{\"type\":\"ping\"}",
+       "{\"text\":\"no type\"}",
+       "  {\"type\":\"text_delta\",\"text\":\"A\"}  ",
+       "{\"type\":\"text_delta\",\"text\":\"B\"}\r",
+       "{\"type\":\"text_delta\"}",
+       "{\"type\":\"text_delta\",\"text\":42}",
+       "{\"type\":\"done\",\"message_id\":\"m4\"}"
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "AB",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: lines after done",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "x"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       },
+       {
+        "type": "text_delta",
+        "text": "after done"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "x",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: unicode deltas",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Élan "
+       },
+       {
+        "type": "text_delta",
+        "text": "😀"
+       },
+       {
+        "type": "text_delta",
+        "text": "👨‍👩‍👧"
+       },
+       {
+        "type": "text_delta",
+        "text": " مرحبا "
+       },
+       {
+        "type": "text_delta",
+        "text": "日本語"
+       },
+       {
+        "type": "text_delta",
+        "text": "\n\n"
+       },
+       {
+        "type": "text_delta",
+        "text": "**gras**"
+       },
+       {
+        "type": "text_delta",
+        "text": " $$x^2$$"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Écris ✍️",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Élan 😀👨‍👩‍👧 مرحبا 日本語\n\n**gras** $$x^2$$",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Écris ✍️"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: long reply",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lore"
+       },
+       {
+        "type": "text_delta",
+        "text": "m ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ip"
+       },
+       {
+        "type": "text_delta",
+        "text": "sum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+       },
+       {
+        "type": "text_delta",
+        "text": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lore"
+       },
+       {
+        "type": "text_delta",
+        "text": "m ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ip"
+       },
+       {
+        "type": "text_delta",
+        "text": "sum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+       },
+       {
+        "type": "text_delta",
+        "text": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lore"
+       },
+       {
+        "type": "text_delta",
+        "text": "m ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ip"
+       },
+       {
+        "type": "text_delta",
+        "text": "sum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+       },
+       {
+        "type": "text_delta",
+        "text": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lore"
+       },
+       {
+        "type": "text_delta",
+        "text": "m ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum "
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Long",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Long"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: done without message_id",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Sans id"
+       },
+       {
+        "type": "done"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Sans id",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: partial usage",
+   "accepted": {"kind": "lenient", "why": "a usage event missing fields: Android reads the cost, iOS drops the event"},
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Ok"
+       },
+       {
+        "type": "usage",
+        "usage": {
+         "cost": 0.5
+        }
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Ok",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: usage without a price",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Ok"
+       },
+       {
+        "type": "usage",
+        "usage": {
+         "provider": "anthropic",
+         "model": "claude-x",
+         "rounds": 2,
+         "input": 100,
+         "output": 20,
+         "cache_read": 50,
+         "cache_write": 0,
+         "cost": null,
+         "cost_uncached": null
+        }
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Ok",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: done with no text at all",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: dropped, re-attached with resume",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Bon"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "resume",
+        "text": "Bonjour",
+        "data": [
+         {
+          "tool": "web_search",
+          "data": {
+           "card": "sources",
+           "origin": "web",
+           "query": "pain",
+           "results": [
+            {
+             "title": "Pain",
+             "url": "https://pain.fr",
+             "subtitle": "x"
+            }
+           ]
+          }
+         }
+        ],
+        "tool": "web_search",
+        "usage": {
+         "provider": "anthropic",
+         "model": "claude-x",
+         "rounds": 2,
+         "input": 100,
+         "output": 20,
+         "cache_read": 50,
+         "cache_write": 0,
+         "cost": 0.0123,
+         "cost_uncached": 0.02
+        },
+        "finished": false,
+        "started_at": "2026-11-10T18:31:00Z"
+       },
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "end"
+       },
+       {
+        "type": "text_delta",
+        "text": " à toi"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Bonjour à toi",
+         "created_at": "2026-11-10 18:31:05",
+         "data": [
+          {
+           "tool": "web_search",
+           "data": {
+            "card": "sources",
+            "origin": "web",
+            "query": "pain",
+            "results": [
+             {
+              "title": "Pain",
+              "url": "https://pain.fr",
+              "subtitle": "x"
+             }
+            ]
+           }
+          }
+         ],
+         "usage": {
+          "provider": "anthropic",
+          "model": "claude-x",
+          "rounds": 2,
+          "input": 100,
+          "output": 20,
+          "cache_read": 50,
+          "cache_write": 0,
+          "cost": 0.0123,
+          "cost_uncached": 0.02
+         }
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: resume with malformed blocks and no tool",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "tool_call",
+        "tool": "web_search",
+        "status": "start"
+       },
+       {
+        "type": "text_delta",
+        "text": "Bon"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "resume",
+        "text": "Bonjour",
+        "data": [
+         {
+          "tool": "web_search",
+          "data": {
+           "card": "sources",
+           "origin": "web",
+           "query": "pain",
+           "results": [
+            {
+             "title": "Pain",
+             "url": "https://pain.fr",
+             "subtitle": "x"
+            }
+           ]
+          }
+         },
+         {
+          "broken": true
+         },
+         {
+          "tool": "x"
+         }
+        ],
+        "tool": null,
+        "finished": false
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Bonjour",
+         "created_at": "2026-11-10 18:31:05",
+         "data": [
+          {
+           "tool": "web_search",
+           "data": {
+            "card": "sources",
+            "origin": "web",
+            "query": "pain",
+            "results": [
+             {
+              "title": "Pain",
+              "url": "https://pain.fr",
+              "subtitle": "x"
+             }
+            ]
+           }
+          }
+         ]
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: resume of a finished turn, no terminal",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Bon"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "resume",
+        "text": "Bonjour fini",
+        "data": [],
+        "tool": null,
+        "finished": true
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Bonjour fini",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: empty stream, nothing running",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": []
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Stocké entre-temps",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: every re-attach drops (gives up)",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Bon"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "jour"
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 400 content required",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 400,
+      "json": {
+       "error": "content required"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 402 budget",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 402,
+      "json": {
+       "error": "Spending limit reached."
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 403 consent",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 403,
+      "json": {
+       "error": "Nothing was sent: you have not agreed to send your messages to Anthropic.",
+       "code": "ai_consent_required"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 404",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 404,
+      "json": {
+       "error": "Not found"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 500 json",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 500,
+      "json": {
+       "error": "boom"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 429 with Retry-After",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 429,
+      "json": {
+       "error": "Too many requests"
+      },
+      "headers": {
+       "Retry-After": "30"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 500 plain text",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 500,
+      "text": "Internal Server Error"
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: refused 502 empty body",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 502,
+      "text": ""
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: busy 409, nothing running after",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 409,
+      "json": {
+       "error": "A reply is already in progress"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m9",
+         "role": "assistant",
+         "content": "L'autre réponse",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: busy 409, follows the running reply",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 409,
+      "json": {
+       "error": "A reply is already in progress"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "resume",
+        "text": "Réponse en cours",
+        "data": [],
+        "tool": null,
+        "finished": false
+       },
+       {
+        "type": "done",
+        "message_id": "m9"
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m9",
+         "role": "assistant",
+         "content": "Réponse en cours",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: two photos",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Belles photos"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "![photo](pending)\n![photo](pending)\n\nRegarde",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Belles photos",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Regarde",
+    "images": [
+     "YWJj",
+     "ZGVm"
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: one photo, no text",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Belles photos"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "![photo](pending)",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Belles photos",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "",
+    "images": [
+     "YWJj"
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: in a conversation bound to a domain",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Belles photos"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": "d1",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Belles photos",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": "d1",
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": "d1",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": "d1",
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "send: first message of a new conversation",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations",
+      "json": {
+       "id": "c9",
+       "title": null,
+       "maurice_id": null,
+       "created_at": "2026-11-11 08:00:00",
+       "updated_at": "2026-11-11 08:00:00"
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c9/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Belles photos"
+       },
+       {
+        "type": "done",
+        "message_id": "m4"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c9/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c9/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c9/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c9",
+      "json": {
+       "id": "c9",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Nouveau",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        },
+        {
+         "id": "m4",
+         "role": "assistant",
+         "content": "Belles photos",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c9",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Nouveau",
+    "open": null
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "send: new conversation refused",
+   "input": {
+    "action": "send",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations",
+      "status": 403,
+      "json": {
+       "error": "guests cannot start conversations"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     }
+    ],
+    "text": "Nouveau",
+    "open": null
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "regenerate: last reply replaced",
+   "input": {
+    "action": "regenerate",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Autre réponse"
+       },
+       {
+        "type": "done",
+        "message_id": "m5"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": "d1",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m5",
+         "role": "assistant",
+         "content": "Autre réponse",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": "d1",
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": "d1",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": "d1",
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "regenerate: thread ends on the member",
+   "input": {
+    "action": "regenerate",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Autre réponse"
+       },
+       {
+        "type": "done",
+        "message_id": "m5"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m5",
+         "role": "assistant",
+         "content": "Autre réponse",
+         "created_at": "2026-11-10 18:31:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "regenerate: refused 409",
+   "input": {
+    "action": "regenerate",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "status": 409,
+      "json": {
+       "error": "A reply is already in progress"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "regenerate: empty thread",
+   "input": {
+    "action": "regenerate",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "text_delta",
+        "text": "Autre réponse"
+       },
+       {
+        "type": "done",
+        "message_id": "m5"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "status": 204
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "stop: during a turn",
+   "input": {
+    "action": "stop",
+    "after": [
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/messages",
+      "ndjson": [
+       {
+        "type": "thinking"
+       },
+       {
+        "type": "text_delta",
+        "text": "Un début"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1/turn",
+      "ndjson": [
+       {
+        "type": "error",
+        "message": "Stopped"
+       }
+      ]
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/turn/stop",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "POST",
+      "path": "/api/conversations/c1/read",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "assistant",
+         "content": "Bonjour !",
+         "created_at": "2026-11-10 18:00:05"
+        },
+        {
+         "id": "m3",
+         "role": "user",
+         "content": "Encore",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:31:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-11-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     }
+    ],
+    "text": "Encore"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/read",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1/turn",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "Recettes",
+      "maurice_id": null,
+      "created_at": "2026-11-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "assistant",
+        "content": "Bonjour !",
+        "created_at": "2026-11-10 18:00:05"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

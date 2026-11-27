@@ -1,0 +1,298 @@
+{
+  "domain" : "shelf-link-book",
+  "results" : {
+    "a book linked" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "book_id" : 12
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/garden/entries/books/fr/le-rouge-et-le-noir/book",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : null,
+        "detail" : {
+          "mine" : {
+            "file" : "books/fr/le-rouge-et-le-noir.md",
+            "items" : [
+
+            ],
+            "notes" : 0,
+            "opened" : false,
+            "prose" : "",
+            "webPath" : null
+          },
+          "shared" : null
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : "Stendhal",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/le-rouge-et-le-noir",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Stendhal",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : false,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "le-rouge-et-le-noir",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 30,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Le Rouge et le Noir : chronique de 1830",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-09 21:00:00"
+        }
+      }
+    },
+    "a book linked on a library row" : {
+      "requests" : [
+
+      ],
+      "result" : {
+        "failed" : "server: No entry to tie to a book."
+      }
+    },
+    "a book linked on another member's entry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "book_id" : 3
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/book",
+          "query" : {
+            "owner" : "bob"
+          }
+        }
+      ],
+      "result" : {
+        "deploy" : null,
+        "detail" : {
+          "mine" : null,
+          "shared" : null
+        },
+        "entry" : {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 3,
+            "captured" : null,
+            "chapters" : null,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      }
+    },
+    "a book linked, refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "book_id" : 99
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/garden/entries/books/fr/la-sagesse/book",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: No such book in the library."
+      }
+    },
+    "the library, a book without authors" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "the library, bare" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "author" : "Gaspard Kœnig",
+          "coverLetter" : "L",
+          "id" : 1,
+          "title" : "La Sagesse"
+        }
+      ]
+    },
+    "the library, empty" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "the library, not reachable" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: Calibre is not reachable."
+      }
+    },
+    "the library, wrapped" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "author" : "Stendhal",
+          "coverLetter" : "L",
+          "id" : 12,
+          "title" : "Le Rouge et le Noir"
+        },
+        {
+          "author" : "Rimbaud, Verlaine",
+          "coverLetter" : "Œ",
+          "id" : 7,
+          "title" : " œuvres complètes"
+        },
+        {
+          "author" : "Unknown",
+          "coverLetter" : "S",
+          "id" : 9,
+          "title" : "Sans auteur"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

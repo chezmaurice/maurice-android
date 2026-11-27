@@ -1,0 +1,26 @@
+{
+  "name": "carnet-card-share",
+  "app": "carnet",
+  "about": "The card shared: the app makes the picture and hands it to the system's share sheet (where the scenario stops).",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "Sans soleil"
+    },
+    {
+      "tap": "Turn over"
+    },
+    {
+      "tap": "Share the card",
+      "pause": 3
+    },
+    {
+      "checkpoint": "the share sheet"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "domain" : "session-move-proof",
+  "results" : {
+    "a valid signature of another nonce" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "follow: no TXT record under the old name" : {
+      "requests" : [
+
+      ],
+      "result" : null
+    },
+    "health without status or version" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "malformed JSON" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "no proof given" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "pinned key empty: nothing asked" : {
+      "requests" : [
+
+      ],
+      "result" : false
+    },
+    "pinned key not base64url: nothing asked" : {
+      "requests" : [
+
+      ],
+      "result" : false
+    },
+    "pinned key too short: nothing asked" : {
+      "requests" : [
+
+      ],
+      "result" : false
+    },
+    "proof not base64url" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "proof too short" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "server error" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    },
+    "the address holds another key" : {
+      "requests" : [
+        {
+          "auth" : null,
+          "method" : "GET",
+          "path" : "/api/health",
+          "proofLength" : 32
+        }
+      ],
+      "result" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

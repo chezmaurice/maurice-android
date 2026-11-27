@@ -1,0 +1,173 @@
+{
+ "domain": "shelf-household-refresh",
+ "about": "The paired household's name, colour, icon and identity key refreshed from /api/health (at launch, on coming back).",
+ "ios": "CarnetApp/Services/CarnetSession.swift — refreshHouseholdIdentities",
+ "android": "core/session/Session.kt — refreshHouseholds",
+ "cases": [
+  {
+   "name": "named, coloured, keyed",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "household": "Les Lambert",
+      "household_color": "#aa5500",
+      "household_icon": "house",
+      "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a blank name keeps the old one",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "household": "   "
+     }
+    }
+   ]
+  },
+  {
+   "name": "no name",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a name with spaces around",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "household": "  Chez nous  "
+     }
+    }
+   ]
+  },
+  {
+   "name": "status not ok",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "starting",
+      "household": "Les Lambert"
+     }
+    }
+   ]
+  },
+  {
+   "name": "no status",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "household": "Les Lambert"
+     }
+    }
+   ]
+  },
+  {
+   "name": "the key is pinned once",
+   "input": {
+    "times": 2
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "times": 1,
+     "json": {
+      "status": "ok",
+      "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "identity_key": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a colour and icon no longer given",
+   "input": {
+    "times": 2
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "times": 1,
+     "json": {
+      "status": "ok",
+      "household": "A",
+      "household_color": "#aa5500",
+      "household_icon": "house"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "json": {
+      "status": "ok",
+      "household": "B"
+     }
+    }
+   ]
+  },
+  {
+   "name": "silent, no key: unchanged",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "status": 503,
+     "json": {
+      "error": "down"
+     }
+    }
+   ]
+  },
+  {
+   "name": "malformed health",
+   "input": {},
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/health",
+     "text": "<html>",
+     "headers": {
+      "content-type": "text/html"
+     }
+    }
+   ]
+  }
+ ]
+}

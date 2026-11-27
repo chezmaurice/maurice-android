@@ -1,0 +1,23 @@
+{
+  "name": "carnet-article-reader",
+  "app": "carnet",
+  "about": "An article opened from its entry: its text.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La lenteur"
+    },
+    {
+      "tap": "Read",
+      "pause": 3
+    },
+    {
+      "checkpoint": "the article"
+    }
+  ]
+}

@@ -1,0 +1,441 @@
+{
+  "checkpoints": [
+    {
+      "name": "name taken",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "password": "correct-horse",
+            "username": "alice"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/events",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/budget",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/maurices",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/ai-consent",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "device_locale": "en"
+          },
+          "contentType": "application/json",
+          "method": "PATCH",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/models/everyday",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/me/store",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "app": "maurice",
+            "app_version": "0.1 (1)",
+            "install_id": "be301734-edef-42e8-8974-80089cd836c8",
+            "model": "iPhone18,1",
+            "os_version": "26.3.1",
+            "platform": "iOS"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/users/me/device",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/tool-families",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/unread",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/gardens",
+          "query": {},
+          "unmatched": true
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/tool-families",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "context": [],
+            "kind": "domain",
+            "model": null,
+            "name": "Cuisine",
+            "prompt": "",
+            "tagline": "",
+            "temp": 0.5,
+            "thinking": null,
+            "tool_families": [
+              "garden-notes"
+            ]
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/maurices",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "A",
+        "A domain is a part of your life Maurice follows, with a brief he keeps on it. A reading companion is a book followed at the reading position, entered as its own conversation; it has no brief.",
+        "A, Alice",
+        "Add",
+        "Add context",
+        "Alice",
+        "Back",
+        "Baked-in knowledge — notes, books, and past conversations Maurice always carries in this domain.",
+        "Balanced",
+        "CONTEXT",
+        "CREATIVITY",
+        "Cards",
+        "Chez Maurice",
+        "Chips",
+        "Context",
+        "Context · 0",
+        "Create",
+        "Creative",
+        "Cuisine",
+        "DOMAIN",
+        "Default model",
+        "Domain",
+        "Domains",
+        "Hide Keyboard",
+        "ICON",
+        "KIND",
+        "MODEL",
+        "Model",
+        "NEW DOMAIN",
+        "Name",
+        "New conversation",
+        "No tagline yet.",
+        "One-line tagline",
+        "Precise",
+        "Reading companion",
+        "Search",
+        "Toolbar",
+        "Tools",
+        "Typing Predictions",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 2 pages",
+        "What it is about",
+        "What this domain covers, in a few sentences. Maurice reads it as the statement of the domain, and the night’s brief follows it.",
+        "You already have a domain called “Cuisine”. Give this one another name, or open the one you have.",
+        "book.closed",
+        "ctx 0 / 200k",
+        "gearshape",
+        "maurice-logomark",
+        "none",
+        "‘Cuisine’"
+      ]
+    },
+    {
+      "name": "created",
+      "requests": [
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/conversations",
+          "query": {
+            "limit": "40"
+          }
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains/proposals",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": {
+            "context": [],
+            "kind": "domain",
+            "model": null,
+            "name": "Jardin",
+            "prompt": "",
+            "tagline": "",
+            "temp": 0.5,
+            "thinking": null,
+            "tool_families": [
+              "garden-notes"
+            ]
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/maurices",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-u1",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/domains",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "A",
+        "A, Alice",
+        "Add",
+        "Alice",
+        "Chez Maurice",
+        "Domains",
+        "New conversation",
+        "Search",
+        "Vertical scroll bar, 1 page",
+        "gearshape",
+        "maurice-logomark"
+      ]
+    }
+  ],
+  "failures": []
+}

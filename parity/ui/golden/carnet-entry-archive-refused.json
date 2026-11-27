@@ -1,0 +1,68 @@
+{
+  "checkpoints": [
+    {
+      "name": "refused",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "archived": true,
+            "id": "articles/fr/la-lenteur"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/garden/entries/archive",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "shelf"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "Horizontal scroll bar, 1 page",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "OK",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "That did not go through",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 2 pages",
+        "cannot archive",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

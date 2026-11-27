@@ -1,0 +1,690 @@
+{
+  "domain" : "session-ai-consent",
+  "results" : {
+    "a new provider since the yes" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : true
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : true,
+      "newProviders" : [
+        "anthropic"
+      ],
+      "providers" : [
+        "scaleway",
+        "anthropic"
+      ],
+      "record" : {
+        "providers" : [
+          "scaleway"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : true
+    },
+    "accept a new provider, the old yes kept" : {
+      "covers" : {
+        "anthropic" : true,
+        "mistral" : true,
+        "ollama" : true,
+        "scaleway" : true
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway",
+        "anthropic"
+      ],
+      "record" : {
+        "providers" : [
+          "anthropic",
+          "mistral",
+          "scaleway"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "anthropic",
+              "mistral",
+              "scaleway"
+            ],
+            "status" : "accepted"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "accept on first time" : {
+      "covers" : {
+        "anthropic" : true,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : true
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway",
+        "anthropic"
+      ],
+      "record" : {
+        "providers" : [
+          "anthropic",
+          "scaleway"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "anthropic",
+              "scaleway"
+            ],
+            "status" : "accepted"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "accept, the server refuses" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : true,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "scaleway"
+            ],
+            "status" : "accepted"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : true
+    },
+    "answer missing its flags" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : false,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "before anything is read" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : false,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+
+      ],
+      "showsQuestion" : false
+    },
+    "decline on first time" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : true,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+
+        ],
+        "status" : "declined"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "scaleway"
+            ],
+            "status" : "declined"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "declined" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : true,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+
+        ],
+        "status" : "declined"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "declined, and the server asks again" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : true,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : true,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+
+        ],
+        "status" : "declined"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : true
+    },
+    "everything accepted" : {
+      "covers" : {
+        "anthropic" : true,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : true
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway",
+        "anthropic"
+      ],
+      "record" : {
+        "providers" : [
+          "anthropic",
+          "scaleway"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "first time: two providers to accept" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : true,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway",
+        "anthropic"
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : true
+    },
+    "household on local models only" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "malformed answer" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : false,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "persona editor after a no" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : true,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+          "mistral"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "mistral"
+            ],
+            "status" : "accepted"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "persona editor: one more provider" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : true,
+        "ollama" : true,
+        "scaleway" : true
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : true,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+          "mistral",
+          "scaleway"
+        ],
+        "status" : "accepted"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "providers" : [
+              "mistral",
+              "scaleway"
+            ],
+            "status" : "accepted"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "record missing its providers" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : false,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "server before the route (404), models in use" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : true,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : true
+    },
+    "server error" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : false,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+
+      ],
+      "record" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    },
+    "unknown status" : {
+      "covers" : {
+        "anthropic" : false,
+        "mistral" : false,
+        "ollama" : true,
+        "scaleway" : false
+      },
+      "declined" : false,
+      "loaded" : true,
+      "mayUseAI" : false,
+      "needsAnswer" : false,
+      "newProviders" : [
+
+      ],
+      "providers" : [
+        "scaleway"
+      ],
+      "record" : {
+        "providers" : [
+          "scaleway"
+        ],
+        "status" : "maybe"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/me/ai-consent"
+        }
+      ],
+      "showsQuestion" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

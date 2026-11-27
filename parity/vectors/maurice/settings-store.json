@@ -1,0 +1,467 @@
+{
+ "domain": "settings-store",
+ "about": "Settings › Subscription (hosted household, admin): the catalogue, the tower's account state as the pane reads it, and the refresh that asks the household then the tower.",
+ "ios": "Services/StoreStore.swift — StoreStore.subscriptions/topUps, StoreAccountState (isSubscribed, isInTrial), StoreStore.refresh(_:)",
+ "android": "core/store/Store.kt — StoreProducts, StoreAccountState; maurice/store/StoreController.refresh() with a billing channel that sells nothing (as the simulator's App Store)",
+ "cases": [
+  {
+   "name": "catalogue",
+   "input": {
+    "kind": "catalogue"
+   }
+  },
+  {
+   "name": "state: subscribed monthly",
+   "input": {
+    "kind": "state",
+    "json": {
+     "name": "Les Dupont",
+     "server": "dupont.chezmaurice.eu",
+     "state": "active",
+     "trial_ends_at": 946684800000,
+     "paid_through": 4102444800000,
+     "paid_until": 4102444800000,
+     "via": "apple",
+     "plan": "monthly",
+     "products": [
+      "eu.chezmaurice.maurice.sub.monthly",
+      "eu.chezmaurice.maurice.sub.yearly",
+      "eu.chezmaurice.maurice.topup.5",
+      "eu.chezmaurice.maurice.topup.10",
+      "eu.chezmaurice.maurice.topup.20"
+     ]
+    }
+   }
+  },
+  {
+   "name": "state: subscribed yearly through Google",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "active",
+     "paid_through": 4102444800000,
+     "via": "google",
+     "plan": "yearly",
+     "products": [
+      "eu.chezmaurice.maurice.sub.monthly",
+      "eu.chezmaurice.maurice.sub.yearly",
+      "eu.chezmaurice.maurice.topup.5",
+      "eu.chezmaurice.maurice.topup.10",
+      "eu.chezmaurice.maurice.topup.20"
+     ]
+    }
+   }
+  },
+  {
+   "name": "state: paid through the future but no plan",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "active",
+     "paid_through": 4102444800000,
+     "plan": null
+    }
+   }
+  },
+  {
+   "name": "state: plan but paid through the past, trial running",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "trial",
+     "trial_ends_at": 4102444800000,
+     "paid_through": 946684800000,
+     "plan": "monthly"
+    }
+   }
+  },
+  {
+   "name": "state: trial over, nothing paid",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "expired",
+     "trial_ends_at": 946684800000
+    }
+   }
+  },
+  {
+   "name": "state: in trial",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "trial",
+     "trial_ends_at": 4102444800000,
+     "products": [
+      "eu.chezmaurice.maurice.sub.monthly",
+      "eu.chezmaurice.maurice.sub.yearly"
+     ]
+    }
+   }
+  },
+  {
+   "name": "state: billed by Mollie",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "active",
+     "paid_through": 4102444800000,
+     "via": "mollie",
+     "plan": "yearly",
+     "products": [
+      "eu.chezmaurice.maurice.topup.5",
+      "eu.chezmaurice.maurice.topup.10",
+      "eu.chezmaurice.maurice.topup.20"
+     ]
+    }
+   }
+  },
+  {
+   "name": "state: empty object",
+   "input": {
+    "kind": "state",
+    "json": {}
+   }
+  },
+  {
+   "name": "state: times as strings",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "active",
+     "paid_through": "4102444800000",
+     "plan": "monthly"
+    }
+   },
+   "accepted": { "kind": "lenient", "why": "Android coerces paid_through \"4102444800000\" to a number; iOS rejects the state." }
+  },
+  {
+   "name": "state: unknown plan",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "active",
+     "paid_through": 4102444800000,
+     "plan": "weekly"
+    }
+   }
+  },
+  {
+   "name": "state: products null",
+   "input": {
+    "kind": "state",
+    "json": {
+     "state": "trial",
+     "trial_ends_at": 4102444800000,
+     "products": null
+    }
+   }
+  },
+  {
+   "name": "refresh: admin, subscribed",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": {
+       "state": "active",
+       "paid_through": 4102444800000,
+       "via": "apple",
+       "plan": "monthly",
+       "products": [
+        "eu.chezmaurice.maurice.sub.monthly",
+        "eu.chezmaurice.maurice.sub.yearly",
+        "eu.chezmaurice.maurice.topup.5",
+        "eu.chezmaurice.maurice.topup.10",
+        "eu.chezmaurice.maurice.topup.20"
+       ]
+      }
+     }
+    ]
+   },
+   "accepted": { "kind": "platform", "why": "Android sells through Play Billing (parity.md: StoreKit vs Play): `?store=google` asks the tower for Play's catalogue; without it the tower answers as to the iOS app." }
+  },
+  {
+   "name": "refresh: admin, in trial",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": {
+       "state": "trial",
+       "trial_ends_at": 4102444800000,
+       "products": [
+        "eu.chezmaurice.maurice.sub.monthly",
+        "eu.chezmaurice.maurice.sub.yearly",
+        "eu.chezmaurice.maurice.topup.5",
+        "eu.chezmaurice.maurice.topup.10",
+        "eu.chezmaurice.maurice.topup.20"
+       ]
+      }
+     }
+    ]
+   },
+   "accepted": { "kind": "platform", "why": "Android sells through Play Billing (parity.md: StoreKit vs Play): `?store=google` asks the tower for Play's catalogue; without it the tower answers as to the iOS app." }
+  },
+  {
+   "name": "refresh: admin, no store (404)",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "error": "Not found"
+      },
+      "status": 404
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "refresh: admin, 403",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "error": "Admin only"
+      },
+      "status": 403
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "refresh: admin, household 500",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "error": "boom"
+      },
+      "status": 500
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "refresh: admin, store without url",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "refresh: admin, tower 500",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": {
+       "error": "boom"
+      },
+      "status": 500
+     }
+    ]
+   },
+   "accepted": { "kind": "platform", "why": "Android sells through Play Billing (parity.md: StoreKit vs Play): `?store=google` asks the tower for Play's catalogue; without it the tower answers as to the iOS app." }
+  },
+  {
+   "name": "refresh: admin, tower refuses with a sentence",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": {
+       "error": "unknown_account",
+       "message": "Ce compte n'existe pas."
+      },
+      "status": 404
+     }
+    ]
+   },
+   "accepted": { "kind": "platform", "why": "Android sells through Play Billing (parity.md: StoreKit vs Play): `?store=google` asks the tower for Play's catalogue; without it the tower answers as to the iOS app." }
+  },
+  {
+   "name": "refresh: admin, tower malformed",
+   "input": {
+    "kind": "refresh",
+    "role": "admin",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "text": "{\"state\":",
+      "headers": {
+       "content-type": "application/json"
+      }
+     }
+    ]
+   },
+   "accepted": { "kind": "platform", "why": "Android sells through Play Billing (parity.md: StoreKit vs Play): `?store=google` asks the tower for Play's catalogue; without it the tower answers as to the iOS app." }
+  },
+  {
+   "name": "refresh: standard member (household would say 403)",
+   "input": {
+    "kind": "refresh",
+    "role": "standard",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "error": "Admin only"
+      },
+      "status": 403
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   },
+   "accepted": { "kind": "latent", "why": "StoreController does not check the role itself, but HomeScreen.kt builds one only for an admin (member.role != Role.Admin → no store), so a member or a guest never reaches refresh()." }
+  },
+  {
+   "name": "refresh: standard member, household answers anyway",
+   "input": {
+    "kind": "refresh",
+    "role": "standard",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "account": "0b5e6a1c-0000-4000-8000-000000000001",
+       "url": "{{base}}/tower"
+      }
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": {
+       "state": "trial",
+       "trial_ends_at": 4102444800000
+      }
+     }
+    ]
+   },
+   "accepted": { "kind": "latent", "why": "StoreController does not check the role itself, but HomeScreen.kt builds one only for an admin (member.role != Role.Admin → no store), so a member or a guest never reaches refresh()." }
+  },
+  {
+   "name": "refresh: guest",
+   "input": {
+    "kind": "refresh",
+    "role": "guest",
+    "serve": [
+     {
+      "method": "GET",
+      "path": "/api/me/store",
+      "json": {
+       "error": "Admin only"
+      },
+      "status": 403
+     },
+     {
+      "method": "GET",
+      "path": "/tower/api/app/store/0b5e6a1c-0000-4000-8000-000000000001",
+      "json": null
+     }
+    ]
+   },
+   "accepted": { "kind": "latent", "why": "StoreController does not check the role itself, but HomeScreen.kt builds one only for an admin (member.role != Role.Admin → no store), so a member or a guest never reaches refresh()." }
+  }
+ ]
+}

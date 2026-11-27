@@ -1,0 +1,312 @@
+{
+ "domain": "composer-spec",
+ "about": "A saved context item (a conversation's spec, a domain's baked-in context) read back into the tray, and what the tray sends for it (the payload of /weigh and of the saved spec).",
+ "ios": "Maurice/Services/ComposerStore.swift — ComposerStore.itemFromSpec, TrayItem.payload()",
+ "android": "core/composer/TrayItem.kt — TrayItem.fromSpec, TrayItem.payload()",
+ "cases": [
+  {
+   "name": "note, full options",
+   "input": {
+    "type": "note",
+    "id": "jardin/potager",
+    "recurse": true,
+    "include_archived": true,
+    "exclude": [
+     "a",
+     "b"
+    ],
+    "snapshot": {
+     "encrypted": true,
+     "weight": 900,
+     "count": 3
+    }
+   }
+  },
+  {
+   "name": "note, bare",
+   "input": {
+    "type": "note",
+    "id": "santé-été"
+   }
+  },
+  {
+   "name": "note, exclude with a number",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android keeps the readable entries of `exclude` (a number as its string, null left out); iOS drops the whole list for one entry that is not a string."
+   },
+   "input": {
+    "type": "note",
+    "id": "n",
+    "exclude": [
+     1,
+     "a",
+     null
+    ]
+   }
+  },
+  {
+   "name": "note, recurse as a string",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads \"true\" as true; iOS takes only a boolean (1 and 0 now read alike on both sides)."
+   },
+   "input": {
+    "type": "note",
+    "id": "n",
+    "recurse": "true",
+    "include_archived": 1
+   }
+  },
+  {
+   "name": "book, numeric id, all",
+   "input": {
+    "type": "book",
+    "id": 42,
+    "representation": "full",
+    "scope": {
+     "mode": "all"
+    }
+   }
+  },
+  {
+   "name": "book, id as a string",
+   "input": {
+    "type": "book",
+    "id": "42",
+    "scope": {
+     "mode": "all"
+    }
+   }
+  },
+  {
+   "name": "book, id not a number",
+   "input": {
+    "type": "book",
+    "id": "calibre-42"
+   }
+  },
+  {
+   "name": "book, id with a fraction",
+   "input": {
+    "type": "book",
+    "id": 42.5
+   }
+  },
+  {
+   "name": "book, up to chapter 6",
+   "input": {
+    "type": "book",
+    "id": 7,
+    "representation": "summary",
+    "scope": {
+     "mode": "up_to",
+     "chapter": 6
+    }
+   }
+  },
+  {
+   "name": "book, up to, chapter as a string",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads the chapter \"6\" as 6; iOS takes only a number and falls back to 0."
+   },
+   "input": {
+    "type": "book",
+    "id": 7,
+    "scope": {
+     "mode": "up_to",
+     "chapter": "6"
+    }
+   }
+  },
+  {
+   "name": "book, chosen chapters",
+   "input": {
+    "type": "book",
+    "id": 7,
+    "representation": "full",
+    "scope": {
+     "mode": "chapters",
+     "refs": [
+      "ch1",
+      "ch3"
+     ],
+     "chapter": 2
+    }
+   }
+  },
+  {
+   "name": "book, progress forces summaries",
+   "input": {
+    "type": "book",
+    "id": 7,
+    "representation": "full",
+    "scope": {
+     "mode": "progress"
+    },
+    "snapshot": {
+     "progressChapter": 4
+    }
+   }
+  },
+  {
+   "name": "book, progress, no snapshot",
+   "input": {
+    "type": "book",
+    "id": 7,
+    "scope": {
+     "mode": "progress"
+    }
+   }
+  },
+  {
+   "name": "book, scope without mode",
+   "input": {
+    "type": "book",
+    "id": 7,
+    "scope": {
+     "chapter": 3
+    }
+   }
+  },
+  {
+   "name": "book, no scope",
+   "input": {
+    "type": "book",
+    "id": 7
+   }
+  },
+  {
+   "name": "fiche, fragments off",
+   "input": {
+    "type": "fiche",
+    "id": "people/fr/marie-curie",
+    "include_fragments": false,
+    "snapshot": {
+     "fragments": 5
+    }
+   }
+  },
+  {
+   "name": "fiche, bare",
+   "input": {
+    "type": "fiche",
+    "id": "movies/en/dune"
+   }
+  },
+  {
+   "name": "conversation, full transcript",
+   "input": {
+    "type": "conversation",
+    "id": "c-9",
+    "representation": "full",
+    "snapshot": {
+     "summary": "pending",
+     "fullWeight": 40000
+    }
+   }
+  },
+  {
+   "name": "conversation, summary",
+   "input": {
+    "type": "conversation",
+    "id": "c-9",
+    "representation": "summary",
+    "snapshot": {
+     "summary": "ready"
+    }
+   }
+  },
+  {
+   "name": "file, an image",
+   "input": {
+    "type": "file",
+    "id": "f1",
+    "snapshot": {
+     "kind": "img",
+     "na": true
+    }
+   }
+  },
+  {
+   "name": "file, no snapshot",
+   "input": {
+    "type": "file",
+    "id": "f2"
+   }
+  },
+  {
+   "name": "folder, recurse unset",
+   "input": {
+    "type": "folder",
+    "id": "dir1",
+    "exclude": [
+     "x"
+    ]
+   }
+  },
+  {
+   "name": "folder, recurse off",
+   "input": {
+    "type": "folder",
+    "id": "dir1",
+    "recurse": false
+   }
+  },
+  {
+   "name": "unknown type",
+   "input": {
+    "type": "video",
+    "id": "v1"
+   }
+  },
+  {
+   "name": "no type",
+   "input": {
+    "id": "x"
+   }
+  },
+  {
+   "name": "type in capitals",
+   "input": {
+    "type": "NOTE",
+    "id": "x"
+   }
+  },
+  {
+   "name": "note, no id",
+   "input": {
+    "type": "note"
+   }
+  },
+  {
+   "name": "note, null id",
+   "input": {
+    "type": "note",
+    "id": null
+   }
+  },
+  {
+   "name": "note, numeric id",
+   "input": {
+    "type": "note",
+    "id": 12
+   }
+  },
+  {
+   "name": "note, boolean id",
+   "input": {
+    "type": "note",
+    "id": true
+   }
+  },
+  {
+   "name": "note, empty id",
+   "input": {
+    "type": "note",
+    "id": ""
+   }
+  }
+ ]
+}

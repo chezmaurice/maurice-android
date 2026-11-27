@@ -1,0 +1,283 @@
+{
+  "domain" : "chat-snippets",
+  "results" : {
+    "article: bad url" : {
+      "fenced" : "```article\ntitle: T\nurl: not a url\n```",
+      "source" : "",
+      "wordCount" : 0
+    },
+    "article: full" : {
+      "fenced" : "```article\ntitle: Le titre\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01\nurl: https://www.lemonde.fr/a\n\nCorps de l'article.\n\nSecond paragraphe.\n```",
+      "source" : "Le Monde",
+      "wordCount" : 5
+    },
+    "article: newline in title, spaces" : {
+      "fenced" : "```article\ntitle: Deux lignes\nurl: https://example.org/p\n```",
+      "source" : "example.org",
+      "wordCount" : 0
+    },
+    "article: no title, www host" : {
+      "fenced" : "```article\nurl: https://www.example.org/p?q=1\n\nun deux  trois\nquatre\n```",
+      "source" : "example.org",
+      "wordCount" : 4
+    },
+    "article: text with backticks" : {
+      "fenced" : "````article\ntitle: Code\nurl: https://x.dev\n\n```\ncode\n```\n````",
+      "source" : "x.dev",
+      "wordCount" : 3
+    },
+    "compose: empty typed" : {
+      "sent" : "```pasted\nx\n```\n\n```article\ntitle: Le titre\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01\nurl: https://www.lemonde.fr/a\n\nCorps de l'article.\n\nSecond paragraphe.\n```"
+    },
+    "compose: nothing" : {
+      "sent" : ""
+    },
+    "compose: paste then typed" : {
+      "sent" : "```pasted\na\nb\n```\n\nRésume"
+    },
+    "compose: typed only" : {
+      "sent" : "Bonjour"
+    },
+    "fence: CRLF edges" : {
+      "fenced" : "```pasted\nbody\n```"
+    },
+    "fence: empty" : {
+      "fenced" : "```pasted\n\n```"
+    },
+    "fence: plain" : {
+      "fenced" : "```pasted\nhello\n```"
+    },
+    "fence: surrounding newlines" : {
+      "fenced" : "```pasted\nbody\n```"
+    },
+    "fence: with five backticks" : {
+      "fenced" : "``````article\n`````\n``````"
+    },
+    "fence: with triple backticks" : {
+      "fenced" : "````pasted\na\n```js\nx\n```\nb\n````"
+    },
+    "insertion: deletion" : null,
+    "insertion: emoji paste 600" : null,
+    "insertion: long paste in middle" : {
+      "inserted" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "remaining" : "debut fin"
+    },
+    "insertion: long paste replaces all" : {
+      "inserted" : "line 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19",
+      "remaining" : ""
+    },
+    "insertion: repeated char boundary" : {
+      "inserted" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "remaining" : "aaa"
+    },
+    "insertion: short paste" : null,
+    "insertion: typing" : null,
+    "isLong: 19 lines" : {
+      "isLong" : false,
+      "lineCount" : 19
+    },
+    "isLong: 20 lines" : {
+      "isLong" : true,
+      "lineCount" : 20
+    },
+    "isLong: 20 lines with trailing newlines" : {
+      "isLong" : true,
+      "lineCount" : 20
+    },
+    "isLong: 600 emoji" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: 999 chars" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: 1000 chars" : {
+      "isLong" : true,
+      "lineCount" : 1
+    },
+    "isLong: accents 1000" : {
+      "isLong" : true,
+      "lineCount" : 1
+    },
+    "isLong: combining 600" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: CRLF 25 lines" : {
+      "isLong" : true,
+      "lineCount" : 25
+    },
+    "isLong: empty" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: leading newlines" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: one line" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "isLong: only newlines" : {
+      "isLong" : false,
+      "lineCount" : 1
+    },
+    "read: article header with unknown key" : {
+      "cards" : [
+        {
+          "author" : "",
+          "date" : "",
+          "kind" : "article",
+          "site" : "",
+          "source" : "u.example",
+          "text" : "Body\n\nMore",
+          "title" : "T",
+          "url" : "https://u.example",
+          "wordCount" : 2
+        }
+      ],
+      "hasText" : false
+    },
+    "read: article then text" : {
+      "cards" : [
+        {
+          "author" : "A. Dupont",
+          "date" : "2026-11-01",
+          "kind" : "article",
+          "site" : "Le Monde",
+          "source" : "Le Monde",
+          "text" : "Corps de l'article.\n\nSecond paragraphe.",
+          "title" : "Le titre",
+          "url" : "https://www.lemonde.fr/a",
+          "wordCount" : 5
+        }
+      ],
+      "hasText" : true
+    },
+    "read: article without header" : {
+      "cards" : [
+        {
+          "author" : "",
+          "date" : "",
+          "kind" : "article",
+          "site" : "",
+          "source" : "",
+          "text" : "Just a body.",
+          "title" : "",
+          "url" : "",
+          "wordCount" : 3
+        }
+      ],
+      "hasText" : false
+    },
+    "read: card after text" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 2,
+          "text" : "A\nB"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: CRLF message" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 1,
+          "text" : "A"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: four-backtick fence holding a fence" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 4,
+          "text" : "x\n```\ny\n```"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: leading newlines" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 1,
+          "text" : "A"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: other code block" : {
+      "cards" : [
+
+      ],
+      "hasText" : true
+    },
+    "read: paste in assistant reply" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 1,
+          "text" : "A"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: paste then text" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 2,
+          "text" : "ligne 1\nligne 2"
+        }
+      ],
+      "hasText" : true
+    },
+    "read: plain text" : {
+      "cards" : [
+
+      ],
+      "hasText" : true
+    },
+    "read: two cards, no text" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 1,
+          "text" : "A"
+        },
+        {
+          "author" : "",
+          "date" : "",
+          "kind" : "article",
+          "site" : "",
+          "source" : "t.example",
+          "text" : "",
+          "title" : "T",
+          "url" : "https://t.example",
+          "wordCount" : 0
+        }
+      ],
+      "hasText" : false
+    },
+    "read: unclosed fence" : {
+      "cards" : [
+        {
+          "kind" : "paste",
+          "lines" : 2,
+          "text" : "A\nB"
+        }
+      ],
+      "hasText" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

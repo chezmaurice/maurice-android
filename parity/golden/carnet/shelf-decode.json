@@ -1,0 +1,3163 @@
+{
+  "domain" : "shelf-decode",
+  "results" : {
+    "a full shelf" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 20,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "ch3",
+              "chapterTitle" : "Trois",
+              "finished" : false,
+              "fraction" : 0.34999999999999998,
+              "tracking" : true,
+              "updatedAt" : "2026-11-01 08:00:00"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Chris Marker",
+          "collection" : "movies",
+          "coverLetter" : "S",
+          "date" : "2026-10-01",
+          "id" : "movies/fr/sans-soleil",
+          "image" : null,
+          "isForeign" : true,
+          "isLibraryOnly" : false,
+          "isShared" : true,
+          "isUntouched" : true,
+          "kind" : "movies",
+          "kindLabel" : "Films",
+          "kindLine" : "Film · Chris Marker",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : false,
+          "owner" : {
+            "displayName" : "Bob",
+            "id" : "u2",
+            "username" : "bob"
+          },
+          "people" : [
+            {
+              "displayName" : "Bob",
+              "id" : "u2",
+              "username" : "bob"
+            },
+            {
+              "displayName" : "Carol",
+              "id" : "u3",
+              "username" : "carol"
+            }
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "sans-soleil",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Sans soleil",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Stendhal",
+          "collection" : null,
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "calibre/12",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : true,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Stendhal",
+          "locale" : null,
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : null,
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : null,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Le Rouge et le Noir",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : false,
+          "byline" : null,
+          "collection" : "posts",
+          "coverLetter" : "N",
+          "date" : "2026-10-01",
+          "id" : "posts/fr/notes",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "posts",
+          "kindLabel" : "Posts",
+          "kindLine" : "Post",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : "published",
+          "slug" : "notes",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Notes d'automne",
+          "translations" : [
+            {
+              "id" : "posts/en/notes",
+              "locale" : "en",
+              "shared" : "draft"
+            }
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        },
+        {
+          "count" : 1,
+          "kind" : "articles",
+          "label" : "Articles"
+        },
+        {
+          "count" : 1,
+          "kind" : "movies",
+          "label" : "Films"
+        },
+        {
+          "count" : 1,
+          "kind" : "posts",
+          "label" : "Posts"
+        }
+      ]
+    },
+    "archived true" : {
+      "entries" : [
+        {
+          "archived" : true,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "article bookmark (not captured)" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "articles",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : null,
+            "captured" : false,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : false,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "article",
+            "url" : "https://x.test/a",
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "article shared by a member" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "articles",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : "bob",
+            "summary" : null,
+            "type" : "article",
+            "url" : "https://x.test/a",
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "article shared by a member who left" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "articles",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : null,
+            "sharedByUsername" : "bob",
+            "summary" : null,
+            "type" : "article",
+            "url" : "https://x.test/a",
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "byline empty" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · ",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "empty" : {
+      "entries" : [
+
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+
+      ]
+    },
+    "entries null" : {
+      "failed" : "undecodable"
+    },
+    "entry rating as a number" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : 4,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry rating as a string" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry rating fractional" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry tags null" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry title null" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without a kind" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without a title" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without an id" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without date nor updated_at" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without tags" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "entry without translations" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "every kind" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "B",
+          "date" : "2026-10-01",
+          "id" : "books/fr/x0",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x0",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "books",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "articles",
+          "coverLetter" : "A",
+          "date" : "2026-10-01",
+          "id" : "articles/fr/x1",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x1",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "articles",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "movies",
+          "coverLetter" : "M",
+          "date" : "2026-10-01",
+          "id" : "movies/fr/x2",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "movies",
+          "kindLabel" : "Films",
+          "kindLine" : "Film · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x2",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "movies",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "series",
+          "coverLetter" : "S",
+          "date" : "2026-10-01",
+          "id" : "series/fr/x3",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "series",
+          "kindLabel" : "Series",
+          "kindLine" : "Series · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x3",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "series",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "music",
+          "coverLetter" : "M",
+          "date" : "2026-10-01",
+          "id" : "music/fr/x4",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "music",
+          "kindLabel" : "Music",
+          "kindLine" : "Album · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x4",
+          "source" : null,
+          "squareCover" : true,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "music",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "podcasts",
+          "coverLetter" : "P",
+          "date" : "2026-10-01",
+          "id" : "podcasts/fr/x5",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "podcasts",
+          "kindLabel" : "Podcasts",
+          "kindLine" : "Podcast · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x5",
+          "source" : null,
+          "squareCover" : true,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "podcasts",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "games",
+          "coverLetter" : "G",
+          "date" : "2026-10-01",
+          "id" : "games/fr/x6",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "games",
+          "kindLabel" : "Games",
+          "kindLine" : "Game · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x6",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "games",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        },
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "posts",
+          "coverLetter" : "P",
+          "date" : "2026-10-01",
+          "id" : "posts/fr/x7",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "posts",
+          "kindLabel" : "Posts",
+          "kindLine" : "Post · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "x7",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "posts",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        },
+        {
+          "count" : 1,
+          "kind" : "articles",
+          "label" : "Articles"
+        },
+        {
+          "count" : 1,
+          "kind" : "movies",
+          "label" : "Films"
+        },
+        {
+          "count" : 1,
+          "kind" : "series",
+          "label" : "Series"
+        },
+        {
+          "count" : 1,
+          "kind" : "music",
+          "label" : "Music"
+        },
+        {
+          "count" : 1,
+          "kind" : "podcasts",
+          "label" : "Podcasts"
+        },
+        {
+          "count" : 1,
+          "kind" : "games",
+          "label" : "Games"
+        },
+        {
+          "count" : 1,
+          "kind" : "posts",
+          "label" : "Posts"
+        }
+      ]
+    },
+    "extra unknown fields" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "garden site null" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 20,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "ch3",
+              "chapterTitle" : "Trois",
+              "finished" : false,
+              "fraction" : 0.34999999999999998,
+              "tracking" : true,
+              "updatedAt" : "2026-11-01 08:00:00"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : null,
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "garden without a site" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 20,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "ch3",
+              "chapterTitle" : "Trois",
+              "finished" : false,
+              "fraction" : 0.34999999999999998,
+              "tracking" : true,
+              "updatedAt" : "2026-11-01 08:00:00"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : null,
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "garden without username" : {
+      "failed" : "undecodable"
+    },
+    "kind count without count" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 20,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "ch3",
+              "chapterTitle" : "Trois",
+              "finished" : false,
+              "fraction" : 0.34999999999999998,
+              "tracking" : true,
+              "updatedAt" : "2026-11-01 08:00:00"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+
+      ]
+    },
+    "long title" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "malformed JSON" : {
+      "failed" : "undecodable"
+    },
+    "mine notes zero, not opened" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : false,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "mine notes zero, opened" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "mine without opened" : {
+      "entries" : [
+
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "no entries" : {
+      "failed" : "undecodable"
+    },
+    "no garden" : {
+      "failed" : "undecodable"
+    },
+    "no kinds" : {
+      "failed" : "undecodable"
+    },
+    "not an object" : {
+      "failed" : "undecodable"
+    },
+    "owner without avatar_color" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "owner without username" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "participants empty" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "participants only, no owner" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : true,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : false,
+          "owner" : null,
+          "people" : [
+            {
+              "displayName" : "Bob",
+              "id" : "u2",
+              "username" : "bob"
+            },
+            {
+              "displayName" : "Carol",
+              "id" : "u3",
+              "username" : "carol"
+            }
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "progress fraction as integer" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 1,
+            "captured" : null,
+            "chapters" : null,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "a",
+              "chapterTitle" : null,
+              "finished" : true,
+              "fraction" : 1,
+              "tracking" : true,
+              "updatedAt" : "x"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "progress without updated_at" : {
+      "entries" : [
+
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "shared state unknown" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "shared without state" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "source without type" : {
+      "entries" : [
+
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "summary without current" : {
+      "entries" : [
+
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title blank" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "   ",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title empty" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title ß" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "SS",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "ßtraße",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title starting with an emoji" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "👩‍👩‍👧",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "👩‍👩‍👧 Family",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title with a leading newline" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "\n",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "\nœuvre au noir",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "title with leading spaces and accent" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "É",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : null,
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "   écume des jours",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "translation without locale" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : null,
+          "collection" : "articles",
+          "coverLetter" : "T",
+          "date" : "2026-10-01",
+          "id" : "articles/en/quiet-web",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : true,
+          "kind" : "articles",
+          "kindLabel" : "Articles",
+          "kindLine" : "Article",
+          "locale" : "en",
+          "noteCount" : 0,
+          "opened" : null,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "quiet-web",
+          "source" : {
+            "bookId" : null,
+            "captured" : true,
+            "chapters" : null,
+            "isBook" : false,
+            "isReadable" : true,
+            "progress" : null,
+            "readingMinutes" : 6,
+            "sharedByUsername" : null,
+            "summary" : {
+              "current" : true,
+              "long" : "Long one.",
+              "text" : "Short."
+            },
+            "type" : "article",
+            "url" : "https://example.org/quiet",
+            "wordCount" : 1200
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "The quiet web",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 2,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    },
+    "unknown kind of entry and of count" : {
+      "entries" : [
+        {
+          "archived" : null,
+          "byline" : "Gaspard Kœnig",
+          "collection" : "books",
+          "coverLetter" : "L",
+          "date" : "2026-10-01",
+          "id" : "books/fr/la-sagesse",
+          "image" : null,
+          "isForeign" : false,
+          "isLibraryOnly" : false,
+          "isShared" : false,
+          "isUntouched" : false,
+          "kind" : "books",
+          "kindLabel" : "Books",
+          "kindLine" : "Book · Gaspard Kœnig",
+          "locale" : "fr",
+          "noteCount" : 2,
+          "opened" : true,
+          "owner" : null,
+          "people" : [
+
+          ],
+          "rating" : null,
+          "shared" : null,
+          "slug" : "la-sagesse",
+          "source" : {
+            "bookId" : 12,
+            "captured" : null,
+            "chapters" : 20,
+            "isBook" : true,
+            "isReadable" : true,
+            "progress" : {
+              "chapterSlug" : "ch3",
+              "chapterTitle" : "Trois",
+              "finished" : false,
+              "fraction" : 0.34999999999999998,
+              "tracking" : true,
+              "updatedAt" : "2026-11-01 08:00:00"
+            },
+            "readingMinutes" : null,
+            "sharedByUsername" : null,
+            "summary" : null,
+            "type" : "book",
+            "url" : null,
+            "wordCount" : null
+          },
+          "squareCover" : false,
+          "status" : null,
+          "tags" : [
+
+          ],
+          "title" : "La Sagesse",
+          "translations" : [
+
+          ],
+          "updatedAt" : "2026-11-02 10:00:00"
+        }
+      ],
+      "garden" : {
+        "site" : "https://alice.example",
+        "username" : "alice"
+      },
+      "kinds" : [
+        {
+          "count" : 1,
+          "kind" : "books",
+          "label" : "Books"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

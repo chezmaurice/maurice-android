@@ -1,0 +1,78 @@
+{
+  "name": "carnet-way-in-code",
+  "app": "carnet",
+  "about": "A blank device: a code, then the household's address; the household makes Alice a member at once; the notice about a server run by someone else, accepted; her shelf.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "see": "Enter a code or an address"
+    },
+    {
+      "tap": "Enter a code or an address"
+    },
+    {
+      "tap": "XXXX-XXXX or myhome.chezmaurice.eu"
+    },
+    {
+      "type": "ABCD-EFGH"
+    },
+    {
+      "tap": "Connect"
+    },
+    {
+      "see": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "checkpoint": "the address asked"
+    },
+    {
+      "tap": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "type": "{base}"
+    },
+    {
+      "tap": "Connect",
+      "pause": 3
+    },
+    {
+      "tap": {
+        "ios": "Don’t Allow",
+        "android": "Don’t allow"
+      },
+      "optional": true
+    },
+    {
+      "see": "I understand — Connect"
+    },
+    {
+      "checkpoint": "the notice",
+      "accepted": {
+        "kind": "wire",
+        "why": "The way in, as the household sees it, is the same: Android sends the code as the server reads it (ABCDEFGH; the server normalises ABCD-EFGH alike), checks /api/health once where iOS checks it twice, asks /api/dictation at sign-in, and loads the shelf once the notice is accepted where iOS loads it behind the notice — the same requests, across two checkpoints."
+      }
+    },
+    {
+      "tap": "I understand — Connect",
+      "pause": 2
+    },
+    {
+      "see": "La Sagesse"
+    },
+    {
+      "checkpoint": "the shelf",
+      "accepted": {
+        "kind": "wire",
+        "why": "The way in, as the household sees it, is the same: Android sends the code as the server reads it (ABCDEFGH; the server normalises ABCD-EFGH alike), checks /api/health once where iOS checks it twice, asks /api/dictation at sign-in, and loads the shelf once the notice is accepted where iOS loads it behind the notice — the same requests, across two checkpoints."
+      }
+    }
+  ]
+}

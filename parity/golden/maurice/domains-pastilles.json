@@ -1,0 +1,139 @@
+{
+  "domain" : "domains-pastilles",
+  "results" : {
+    "a block whose data is not an object" : {
+      "pastilles" : [
+
+      ]
+    },
+    "a domain id given as a number" : {
+      "pastilles" : [
+
+      ]
+    },
+    "a human message without data" : {
+      "pastilles" : [
+        {
+          "id" : "d2",
+          "kind" : "read"
+        }
+      ]
+    },
+    "an id unknown, a name known" : {
+      "pastilles" : [
+        {
+          "id" : "d2",
+          "kind" : "read"
+        }
+      ]
+    },
+    "an older reply with the name only" : {
+      "pastilles" : [
+        {
+          "id" : "d3",
+          "kind" : "read"
+        }
+      ]
+    },
+    "bound by the member" : {
+      "pastilles" : [
+        {
+          "id" : "d1",
+          "kind" : "bound"
+        }
+      ]
+    },
+    "bound by the night" : {
+      "pastilles" : [
+        {
+          "id" : "d1",
+          "kind" : "boundAuto"
+        }
+      ]
+    },
+    "bound to a companion" : {
+      "pastilles" : [
+
+      ]
+    },
+    "bound to someone else's domain" : {
+      "pastilles" : [
+
+      ]
+    },
+    "bound, then two briefs read, then recognised" : {
+      "pastilles" : [
+        {
+          "id" : "d1",
+          "kind" : "bound"
+        },
+        {
+          "id" : "d2",
+          "kind" : "read"
+        },
+        {
+          "id" : "d3",
+          "kind" : "read"
+        }
+      ]
+    },
+    "no domains of the member's" : {
+      "pastilles" : [
+
+      ]
+    },
+    "nothing bound, nothing read" : {
+      "pastilles" : [
+
+      ]
+    },
+    "other tools are ignored" : {
+      "pastilles" : [
+        {
+          "id" : "d3",
+          "kind" : "read"
+        }
+      ]
+    },
+    "recognised before a brief, by order" : {
+      "pastilles" : [
+        {
+          "id" : "d2",
+          "kind" : "read"
+        },
+        {
+          "id" : "d3",
+          "kind" : "recognised"
+        }
+      ]
+    },
+    "recognised is the bound one" : {
+      "pastilles" : [
+        {
+          "id" : "d2",
+          "kind" : "boundAuto"
+        }
+      ]
+    },
+    "recognised twice: only the last" : {
+      "pastilles" : [
+        {
+          "id" : "d3",
+          "kind" : "recognised"
+        }
+      ]
+    },
+    "the same brief read twice" : {
+      "pastilles" : [
+        {
+          "id" : "d2",
+          "kind" : "read"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "domain" : "session-prefs-save",
+  "results" : {
+    "back to the device's language" : {
+      "locale" : null,
+      "localeBeforeRelaunch" : null,
+      "palette" : "auto",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : null,
+            "palette" : "auto"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/users/me/preferences"
+        }
+      ]
+    },
+    "palette and language" : {
+      "locale" : "fr",
+      "localeBeforeRelaunch" : "fr",
+      "palette" : "cream",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "fr",
+            "palette" : "cream"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/users/me/preferences"
+        }
+      ]
+    },
+    "regional language" : {
+      "locale" : "pt-BR",
+      "localeBeforeRelaunch" : "pt-BR",
+      "palette" : "studio",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "pt-BR",
+            "palette" : "studio"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/users/me/preferences"
+        }
+      ]
+    },
+    "server refuses" : {
+      "locale" : "it",
+      "localeBeforeRelaunch" : "it",
+      "palette" : "cream",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "locale" : "it",
+            "palette" : "cream"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/users/me/preferences"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

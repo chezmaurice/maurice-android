@@ -1,0 +1,95 @@
+{
+  "checkpoints": [
+    {
+      "name": "the article",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/articles/fr/la-lenteur/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/articles/fr/la-lenteur",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "force": false,
+            "locale": "fr"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/garden/articles/la-lenteur/summary",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/articles/la-lenteur",
+          "query": {
+            "locale": "fr"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/articles/la-lenteur/text",
+          "query": {
+            "locale": "fr"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/articles/fr/la-lenteur",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/articles/la-lenteur/highlights",
+          "query": {
+            "locale": "fr"
+          }
+        }
+      ],
+      "texts": [
+        "0%",
+        "5 MIN",
+        "Add a note",
+        "Add a note…",
+        "Ask Maurice about this",
+        "Back",
+        "Carnet",
+        "Horizontal scroll bar, 1 page",
+        "LE MONDE · 2026-09-10",
+        "La lenteur",
+        "Le degré de la lenteur est proportionnel à l'intensité de la mémoire.",
+        "Pourquoi le plaisir de la lenteur a-t-il disparu ?",
+        "Pourquoi le plaisir de la lenteur a-t-il disparu ?\n\nLe degré de la lenteur est proportionnel à l'intensité de la mémoire.",
+        "Summary",
+        "Text",
+        "Text size",
+        "Vertical scroll bar, 1 page",
+        "quote.opening"
+      ]
+    }
+  ],
+  "failures": []
+}

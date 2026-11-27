@@ -1,0 +1,24 @@
+{
+  "domain": "session-rejected",
+  "about": "A request carrying the member's token answered 401: the session was revoked, so the token is forgotten and the device goes back to the member picker, which says why once. Any other refusal leaves the member signed in. Driven through the requests each side makes after sign-in (preferences, budget, AI consent).",
+  "ios": "Maurice/Services/APIClient.swift — APIClient.note → SessionStore.sessionRejected",
+  "android": "core/net/ApiClient.kt — onUnauthorized → Session.onUnauthorized",
+  "cases": [
+    { "name": "preferences 401", "input": { "via": "prefs" },
+      "routes": [ { "method": "GET", "path": "/api/users/me/preferences", "status": 401, "json": { "error": "unauthorized" } } ] },
+    { "name": "preferences 401 without a body", "input": { "via": "prefs" },
+      "routes": [ { "method": "GET", "path": "/api/users/me/preferences", "status": 401, "text": "" } ] },
+    { "name": "preferences 403", "input": { "via": "prefs" },
+      "routes": [ { "method": "GET", "path": "/api/users/me/preferences", "status": 403, "json": { "error": "forbidden" } } ] },
+    { "name": "preferences 500", "input": { "via": "prefs" },
+      "routes": [ { "method": "GET", "path": "/api/users/me/preferences", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "budget 401", "input": { "via": "budget" },
+      "routes": [ { "method": "GET", "path": "/api/me/budget", "status": 401, "json": { "error": "unauthorized" } } ] },
+    { "name": "budget 404", "input": { "via": "budget" },
+      "routes": [ { "method": "GET", "path": "/api/me/budget", "status": 404, "json": { "error": "not found" } } ] },
+    { "name": "AI consent 401", "input": { "via": "consent" },
+      "routes": [ { "method": "GET", "path": "/api/me/ai-consent", "status": 401, "json": { "error": "unauthorized" } } ] },
+    { "name": "AI consent 419", "input": { "via": "consent" },
+      "routes": [ { "method": "GET", "path": "/api/me/ai-consent", "status": 419, "json": { "error": "expired" } } ] }
+  ]
+}

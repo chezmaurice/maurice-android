@@ -1,0 +1,2752 @@
+{
+ "domain": "shelf-decode",
+ "about": "The list of entries as the app decodes it from GET /api/v1/garden/entries?view=shelf, and what a row reads off an entry (kind line, cover letter, untouched, notes, people, source).",
+ "ios": "CarnetApp/Models/Shelf.swift — ShelfResponse(from:), ShelfEntry's computed properties",
+ "android": "core/carnet/Garden.kt — Shelf.parse, ShelfEntry's properties",
+ "cases": [
+  {
+   "name": "a full shelf",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     },
+     {
+      "kind": "articles",
+      "count": 1
+     },
+     {
+      "kind": "movies",
+      "count": 1
+     },
+     {
+      "kind": "posts",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "movies/fr/sans-soleil",
+      "kind": "movies",
+      "collection": "movies",
+      "locale": "fr",
+      "slug": "sans-soleil",
+      "title": "Sans soleil",
+      "byline": "Chris Marker",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 0,
+       "opened": false
+      },
+      "shared": null,
+      "translations": [],
+      "owner": {
+       "id": "u2",
+       "username": "bob",
+       "display_name": "Bob",
+       "avatar_color": "#335577",
+       "avatar_url": null
+      },
+      "participants": [
+       {
+        "id": "u3",
+        "username": "carol",
+        "display_name": "Carol",
+        "avatar_color": "#775533",
+        "avatar_url": "/api/avatars/c.png"
+       }
+      ]
+     },
+     {
+      "id": "calibre/12",
+      "kind": "books",
+      "collection": null,
+      "locale": null,
+      "slug": null,
+      "title": "Le Rouge et le Noir",
+      "byline": "Stendhal",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": null,
+       "progress": null
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "posts/fr/notes",
+      "kind": "posts",
+      "collection": "posts",
+      "locale": "fr",
+      "slug": "notes",
+      "title": "Notes d'automne",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": {
+       "state": "published"
+      },
+      "translations": [
+       {
+        "id": "posts/en/notes",
+        "locale": "en",
+        "shared": {
+         "state": "draft"
+        }
+       }
+      ],
+      "archived": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "empty",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [],
+    "entries": []
+   }
+  },
+  {
+   "name": "garden without a site",
+   "input": {
+    "garden": {
+     "username": "alice"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "garden site null",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": null
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "no garden",
+   "accepted": {"kind": "lenient", "why": "A shelf answer missing a top-level field (garden, its username, kinds, entries) or with entries null: iOS's ShelfResponse refuses the whole answer, Android reads the rest with defaults."},
+   "input": {
+    "kinds": [],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "garden without username",
+   "accepted": {"kind": "lenient", "why": "A shelf answer missing a top-level field (garden, its username, kinds, entries) or with entries null: iOS's ShelfResponse refuses the whole answer, Android reads the rest with defaults."},
+   "input": {
+    "garden": {
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "no kinds",
+   "accepted": {"kind": "lenient", "why": "A shelf answer missing a top-level field (garden, its username, kinds, entries) or with entries null: iOS's ShelfResponse refuses the whole answer, Android reads the rest with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "no entries",
+   "accepted": {"kind": "lenient", "why": "A shelf answer missing a top-level field (garden, its username, kinds, entries) or with entries null: iOS's ShelfResponse refuses the whole answer, Android reads the rest with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": []
+   }
+  },
+  {
+   "name": "entries null",
+   "accepted": {"kind": "lenient", "why": "A shelf answer missing a top-level field (garden, its username, kinds, entries) or with entries null: iOS's ShelfResponse refuses the whole answer, Android reads the rest with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [],
+    "entries": null
+   }
+  },
+  {
+   "name": "unknown kind of entry and of count",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "recipes",
+      "count": 1
+     },
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "recipes/fr/x",
+      "kind": "recipes",
+      "collection": "recipes",
+      "locale": "fr",
+      "slug": "x",
+      "title": "Soupe",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without a title",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry title null",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": null,
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without tags",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry tags null",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": null,
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without translations",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without date nor updated_at",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without an id",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry without a kind",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry rating as a string",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": "4",
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry rating as a number",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": 4,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "entry rating fractional",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": 3.5,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "shared state unknown",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": {
+       "state": "scheduled"
+      },
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "shared without state",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": {},
+      "translations": []
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "translation without locale",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [
+       {
+        "id": "books/en/x"
+       }
+      ]
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "owner without username",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [],
+      "owner": {
+       "id": "u2",
+       "display_name": "Bob",
+       "avatar_color": "#335577"
+      }
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "owner without avatar_color",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 2
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [],
+      "owner": {
+       "id": "u2",
+       "username": "bob",
+       "display_name": "Bob"
+      }
+     },
+     {
+      "id": "articles/en/quiet-web",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "en",
+      "slug": "quiet-web",
+      "title": "The quiet web",
+      "byline": null,
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://example.org/quiet",
+       "captured": true,
+       "word_count": 1200,
+       "reading_minutes": 6,
+       "summary": {
+        "text": "Short.",
+        "long": "Long one.",
+        "current": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "participants empty",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [],
+      "participants": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "participants only, no owner",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 0,
+       "opened": false
+      },
+      "shared": null,
+      "translations": [],
+      "participants": [
+       {
+        "id": "u2",
+        "username": "bob",
+        "display_name": "Bob",
+        "avatar_color": "#335577",
+        "avatar_url": null
+       },
+       {
+        "id": "u3",
+        "username": "carol",
+        "display_name": "Carol",
+        "avatar_color": "#775533",
+        "avatar_url": "/api/avatars/c.png"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "name": "mine without opened",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 3
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "mine notes zero, opened",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 0,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "mine notes zero, not opened",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": {
+       "notes": 0,
+       "opened": false
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "progress without updated_at",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 1,
+       "progress": {
+        "chapter_slug": "a",
+        "fraction": 0.5,
+        "finished": false,
+        "tracking": true
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "progress fraction as integer",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 1,
+       "progress": {
+        "chapter_slug": "a",
+        "fraction": 1,
+        "finished": true,
+        "tracking": true,
+        "updated_at": "x"
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "source without type",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "url": "https://x.test"
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "article bookmark (not captured)",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://x.test/a",
+       "captured": false
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "article shared by a member",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://x.test/a",
+       "captured": true,
+       "shared_by": {
+        "username": "bob",
+        "display_name": "Bob",
+        "avatar_color": "#335577"
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "article shared by a member who left",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "url": "https://x.test/a",
+       "captured": true,
+       "shared_by": {
+        "username": "bob"
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "summary without current",
+   "accepted": {"kind": "lenient", "why": "A row missing or mistyping a field iOS requires (title, tags, translations, dates, rating as a string, a shared state, a translation's locale, an owner's username or colour, mine.opened, progress.updated_at, source.type, summary.current): iOS drops that row and keeps the others, Android keeps it with defaults."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "article",
+       "captured": true,
+       "summary": {
+        "text": "S"
+       }
+      },
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "byline empty",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title with leading spaces and accent",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "   écume des jours",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title with a leading newline",
+   "accepted": {"kind": "ios-bug", "why": "ShelfEntry.coverLetter trims only .whitespaces, not newlines: a title starting with a newline shows a blank cover letter. Android trims every kind of white space and shows the first letter.", "issue": "https://github.com/chezmaurice/carnet/issues/7"},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "\nœuvre au noir",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title starting with an emoji",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "👩‍👩‍👧 Family",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title ß",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "ßtraße",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title blank",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "   ",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "title empty",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "long title",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "every kind",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     },
+     {
+      "kind": "articles",
+      "count": 1
+     },
+     {
+      "kind": "movies",
+      "count": 1
+     },
+     {
+      "kind": "series",
+      "count": 1
+     },
+     {
+      "kind": "music",
+      "count": 1
+     },
+     {
+      "kind": "podcasts",
+      "count": 1
+     },
+     {
+      "kind": "games",
+      "count": 1
+     },
+     {
+      "kind": "posts",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/x0",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "x0",
+      "title": "books",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "articles/fr/x1",
+      "kind": "articles",
+      "collection": "articles",
+      "locale": "fr",
+      "slug": "x1",
+      "title": "articles",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "movies/fr/x2",
+      "kind": "movies",
+      "collection": "movies",
+      "locale": "fr",
+      "slug": "x2",
+      "title": "movies",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "series/fr/x3",
+      "kind": "series",
+      "collection": "series",
+      "locale": "fr",
+      "slug": "x3",
+      "title": "series",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "music/fr/x4",
+      "kind": "music",
+      "collection": "music",
+      "locale": "fr",
+      "slug": "x4",
+      "title": "music",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "podcasts/fr/x5",
+      "kind": "podcasts",
+      "collection": "podcasts",
+      "locale": "fr",
+      "slug": "x5",
+      "title": "podcasts",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "games/fr/x6",
+      "kind": "games",
+      "collection": "games",
+      "locale": "fr",
+      "slug": "x6",
+      "title": "games",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     },
+     {
+      "id": "posts/fr/x7",
+      "kind": "posts",
+      "collection": "posts",
+      "locale": "fr",
+      "slug": "x7",
+      "title": "posts",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "kind count without count",
+   "accepted": {"kind": "lenient", "why": "A kind count without its count: iOS drops it, Android reads it as 0."},
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books"
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": {
+       "type": "book",
+       "book_id": 12,
+       "chapters": 20,
+       "progress": {
+        "chapter_slug": "ch3",
+        "chapter_title": "Trois",
+        "fraction": 0.35,
+        "finished": false,
+        "tracking": true,
+        "updated_at": "2026-11-01 08:00:00"
+       }
+      },
+      "mine": {
+       "notes": 2,
+       "opened": true
+      },
+      "shared": null,
+      "translations": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "archived true",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [],
+      "archived": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "extra unknown fields",
+   "input": {
+    "garden": {
+     "username": "alice",
+     "site": "https://alice.example"
+    },
+    "kinds": [
+     {
+      "kind": "books",
+      "count": 1
+     }
+    ],
+    "entries": [
+     {
+      "id": "books/fr/la-sagesse",
+      "kind": "books",
+      "collection": "books",
+      "locale": "fr",
+      "slug": "la-sagesse",
+      "title": "La Sagesse",
+      "byline": "Gaspard Kœnig",
+      "date": "2026-10-01",
+      "updated_at": "2026-11-02 10:00:00",
+      "image": null,
+      "tags": [],
+      "rating": null,
+      "status": null,
+      "source": null,
+      "mine": null,
+      "shared": null,
+      "translations": [],
+      "future": {
+       "a": 1
+      },
+      "domain": "x"
+     }
+    ]
+   }
+  },
+  {
+   "name": "malformed JSON",
+   "input": "{\"garden\": {\"username\": \"alice\"}, \"kinds\": [], \"entries\": ["
+  },
+  {
+   "name": "not an object",
+   "input": "[]"
+  }
+ ]
+}

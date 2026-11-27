@@ -1,0 +1,199 @@
+{
+  "domain": "strings-format",
+  "about": "How a string with placeholders is filled: iOS String(format:) against Android's Strings formatter. Cases iOS cannot run without undefined behaviour (fewer arguments than placeholders, %s with a Swift string) are left out: they crash the iOS app.",
+  "ios": "SessionStore.localized / L(key, args) — String(format:arguments:)",
+  "android": "ui/Strings.kt — Strings.invoke(key, args)",
+  "cases": [
+    {
+      "name": "no placeholder",
+      "input": {
+        "template": "Bonjour",
+        "args": []
+      }
+    },
+    {
+      "name": "one %@",
+      "input": {
+        "template": "Bonjour %@",
+        "args": [
+          "Alice"
+        ]
+      }
+    },
+    {
+      "name": "two %@",
+      "input": {
+        "template": "%@ a invité %@",
+        "args": [
+          "Alice",
+          "Bob"
+        ]
+      }
+    },
+    {
+      "name": "%d",
+      "input": {
+        "template": "%d messages",
+        "args": [
+          3
+        ]
+      }
+    },
+    {
+      "name": "%ld",
+      "input": {
+        "template": "%ld messages",
+        "args": [
+          12
+        ]
+      }
+    },
+    {
+      "name": "%lld",
+      "input": {
+        "template": "%lld octets",
+        "args": [
+          123456789
+        ]
+      }
+    },
+    {
+      "name": "negative %d",
+      "input": {
+        "template": "%d",
+        "args": [
+          -4
+        ]
+      }
+    },
+    {
+      "name": "positional %1$@ %2$@",
+      "input": {
+        "template": "%2$@ puis %1$@",
+        "args": [
+          "un",
+          "deux"
+        ]
+      }
+    },
+    {
+      "name": "positional repeated",
+      "input": {
+        "template": "%1$@ et encore %1$@",
+        "args": [
+          "x"
+        ]
+      }
+    },
+    {
+      "name": "mixed %@ and %d",
+      "input": {
+        "template": "%@ a %d ans",
+        "args": [
+          "Alice",
+          7
+        ]
+      }
+    },
+    {
+      "name": "positional mixed",
+      "input": {
+        "template": "%2$d · %1$@",
+        "args": [
+          "Alice",
+          7
+        ]
+      }
+    },
+    {
+      "name": "percent literal",
+      "input": {
+        "template": "%d %% du budget",
+        "args": [
+          20
+        ]
+      }
+    },
+    {
+      "name": "percent literal alone",
+      "input": {
+        "template": "100 %%",
+        "args": []
+      }
+    },
+    {
+      "name": "%@ with unicode arg",
+      "input": {
+        "template": "« %@ »",
+        "args": [
+          "Ça va ? 🎩"
+        ]
+      }
+    },
+    {
+      "name": "%@ with empty arg",
+      "input": {
+        "template": "[%@]",
+        "args": [
+          ""
+        ]
+      }
+    },
+    {
+      "name": "%@ with percent in arg",
+      "input": {
+        "template": "%@",
+        "args": [
+          "50 % off"
+        ]
+      }
+    },
+    {
+      "name": "too many args",
+      "input": {
+        "template": "%@",
+        "args": [
+          "a",
+          "b"
+        ]
+      }
+    },
+    {
+      "name": "%.1f",
+      "input": {
+        "template": "%.1f €",
+        "args": [
+          2.25
+        ]
+      }
+    },
+    {
+      "name": "%f",
+      "input": {
+        "template": "%f",
+        "args": [
+          1.5
+        ]
+      }
+    },
+    {
+      "name": "%02d",
+      "input": {
+        "template": "%02d:%02d",
+        "args": [
+          5,
+          7
+        ]
+      }
+    },
+    {
+      "name": "newline escape kept",
+      "input": {
+        "template": "a\nb %@",
+        "args": [
+          "c"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1332 @@
+{
+ "domain": "shelf-share-card",
+ "about": "An entry's card handed to the system share sheet (carnet e4b3e7f, 1d1dd73): \"Title — byline\", a blank line, the card's words without Markdown; the public page if published, else the original's link; whether there is anything written to share.",
+ "ios": "CarnetApp/Views/Shelf/EntryShareCard.swift — CardText.text, CardText.link, CardText.hasText",
+ "android": "carnet/shared/entry/EntryShareCard.kt — cardShareText, cardLink, cardCanBeShared(hasSite = false)",
+ "cases": [
+  {
+   "name": "a draft, title and byline",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "Sans soleil",
+     "body": "# Sans soleil\n\nUn film qui **pense** à voix haute, comme [[la-jetee|La Jetée]] ou [[Tokyo]].\nVoir [la critique](https://x.test/c) et __le reste__.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "published: its public page",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "published",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": "https://alice.chezmaurice.eu/fr/films/sans-soleil",
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "published without a public url",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "published",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "published, public url empty",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "published",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": "",
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a draft with a public url: not the garden's",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": "https://alice.chezmaurice.eu/x",
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article draft: the original's link",
+   "input": {
+    "entry": {
+     "id": "posts/en/x",
+     "kind": "posts",
+     "collection": "posts",
+     "locale": "en",
+     "slug": "x",
+     "title": "The quiet web",
+     "byline": null,
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "https://example.org/quiet-web",
+      "captured": true
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article published: the public page",
+   "input": {
+    "entry": {
+     "id": "posts/en/x",
+     "kind": "posts",
+     "collection": "posts",
+     "locale": "en",
+     "slug": "x",
+     "title": "The quiet web",
+     "byline": null,
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "https://example.org/quiet-web",
+      "captured": true
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "published",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": "https://alice.chezmaurice.eu/fr/films/sans-soleil",
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article whose original is not http",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "ftp://example.org/x"
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article whose original is http",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "http://example.org/x"
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article whose original has a scheme starting with http",
+   "accepted": {"kind": "ios-bug", "why": "CardText.link accepts any scheme that starts with 'http' (url.scheme?.hasPrefix(\"http\")), so 'httpx://' is handed as the link. Android takes http:// and https:// only.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "httpx://example.org/x"
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an article whose original is not a url",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": {
+      "type": "article",
+      "url": "not a url at all"
+     },
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Calme.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "published public url not http",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "published",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": "/fr/films/sans-soleil",
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "no byline",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": null,
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "empty byline",
+   "accepted": {"kind": "ios-bug", "why": "CardText.text joins a byline that is empty or blank: the head ends in a dangling ' — '. Android shows the title alone.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "blank byline",
+   "accepted": {"kind": "ios-bug", "why": "CardText.text joins a byline that is empty or blank: the head ends in a dangling ' — '. Android shows the title alone.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "  ",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "the card's own title wins",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "Sans soleil (1983)",
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "the card's title empty: the entry's",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "",
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "the card's title blank",
+   "accepted": {"kind": "ios-bug", "why": "CardText.text keeps a blank card title ('   — Chris Marker'); only an empty one falls back to the entry's. Android falls back on blank too.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "  ",
+     "body": "Beau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with only its title",
+   "accepted": {"kind": "ios-bug", "why": "CardText.text always appends '\\n\\n' + body: with nothing written the shared text ends in two blank lines. Android stops at the head.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "Sans soleil",
+     "body": "# Sans soleil\n",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an empty body",
+   "accepted": {"kind": "ios-bug", "why": "CardText.text always appends '\\n\\n' + body: with nothing written the shared text ends in two blank lines. Android stops at the head.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a blank body without title",
+   "accepted": {"kind": "ios-bug", "why": "SharedBody.withoutTitle trims only when the card has a title: an untitled body shares its surrounding blank lines and spaces, and a whitespace-only body counts as written (hasText true). Android trims always.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "   \n  ",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with a title line but no card title",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "# Sans soleil\n\nBeau.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with several title lines",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "T",
+     "body": "# T\n\nUn.\n# Deux\n\n## Sous-titre\n\nTrois.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with surrounding blank lines",
+   "accepted": {"kind": "ios-bug", "why": "SharedBody.withoutTitle trims only when the card has a title: an untitled body shares its surrounding blank lines and spaces, and a whitespace-only body counts as written (hasText true). Android trims always.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "\n\n  Beau.  \n\n",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with surrounding blank lines and a title",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "T",
+     "body": "\n\n  Beau.  \n\n",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "citations: label, bare, empty label",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "[[a|Alpha]], [[b]], [[c|]] et [[|d]].",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a citation never closed",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Voir [[la-jetee|La Jetée et la suite.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a link with an empty label",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Voir [](https://x.test) ici.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a link with an empty url",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Voir [ceci]() ici.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "nested brackets",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "[[a|[b]]] et [x [y]](https://z.test).",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "bold and underscores",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "**gras** __souligné__ *italique* _penché_ snake_case_word",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "an odd number of bold marks",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "**gras sans fin",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a quote and a list",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "> Une citation\n> sur deux lignes\n\n- un\n- deux",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "unicode and emoji",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Œuvre — « vraiment » 👩‍👩‍👧 belle.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a long body",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir. Une phrase assez longue pour remplir.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "windows line endings",
+   "accepted": {"kind": "ios-bug", "why": "SharedBody.withoutTitle splits on Character \"\\n\", which a \"\\r\\n\" grapheme never equals: a CRLF body is one line starting '# ', dropped whole — the card shares nothing and hasText is false. Android splits CRLF lines.", "issue": "https://github.com/chezmaurice/carnet/issues/4"},
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": "T",
+     "body": "# T\r\n\r\nUn.\r\nDeux.",
+     "links": []
+    }
+   }
+  },
+  {
+   "name": "a body with --- rules",
+   "input": {
+    "entry": {
+     "id": "movies/fr/sans-soleil",
+     "kind": "movies",
+     "collection": "movies",
+     "locale": "fr",
+     "slug": "sans-soleil",
+     "title": "Sans soleil",
+     "byline": "Chris Marker",
+     "date": "2026-10-01",
+     "updated_at": "2026-11-02 10:00:00",
+     "image": null,
+     "tags": [],
+     "rating": null,
+     "status": null,
+     "source": null,
+     "mine": null,
+     "shared": {
+      "state": "draft"
+     },
+     "translations": []
+    },
+    "card": {
+     "state": "draft",
+     "web_path": null,
+     "file": "movies/fr/sans-soleil.md",
+     "public_url": null,
+     "title": null,
+     "body": "Un.\n\n---\n\nDeux.",
+     "links": []
+    }
+   }
+  }
+ ]
+}

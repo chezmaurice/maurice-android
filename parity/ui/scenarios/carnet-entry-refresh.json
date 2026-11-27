@@ -1,0 +1,30 @@
+{
+  "name": "carnet-entry-refresh",
+  "app": "carnet",
+  "about": "The ⋯ menu's « Refresh details »: the household looks the entry up again.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "Sans soleil"
+    },
+    {
+      "tap": "More"
+    },
+    {
+      "tap": "Refresh details",
+      "pause": 2
+    },
+    {
+      "checkpoint": "refreshed",
+      "accepted": {
+        "kind": "wire",
+        "why": "Android posts {} where iOS posts no body (publish, details): the server reads neither."
+      }
+    }
+  ]
+}

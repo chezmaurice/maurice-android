@@ -1,0 +1,933 @@
+{
+  "domain" : "reading-calibre",
+  "results" : {
+    "bookmark answer without bookmarked" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "bookmark note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "note" : "Relire — p. 12"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/calibre/books/7/bookmarks/9",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "bookmark note cleared" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "note" : null
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/calibre/books/7/bookmarks/9",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "bookmark this chapter" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "bookmarked" : true,
+        "bookmarkId" : 9,
+        "note" : null
+      }
+    },
+    "bookmarks" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "c1",
+          "id" : 1,
+          "note" : "À relire",
+          "view" : "full"
+        },
+        {
+          "chapterSlug" : "c2",
+          "id" : 2,
+          "note" : null,
+          "view" : "summary"
+        }
+      ]
+    },
+    "bookmarks, a row without view" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "bookmarks, wrapped" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "c1",
+          "id" : 1,
+          "note" : null,
+          "view" : "full"
+        }
+      ]
+    },
+    "chapter not found" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapter slug with ? # % +" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/q%3Fa%23b%25c+d",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "text" : "x",
+        "title" : "Q",
+        "wordCount" : null
+      }
+    },
+    "chapter slug with a slash" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/part/1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "text" : "x",
+        "title" : "P",
+        "wordCount" : null
+      }
+    },
+    "chapter slug with a space and accents" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/chapitre%201%20%C3%A9t%C3%A9",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "text" : "x",
+        "title" : "Été",
+        "wordCount" : null
+      }
+    },
+    "chapter summary" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "exists" : true,
+        "summary" : "In short.",
+        "title" : "One"
+      }
+    },
+    "chapter summary missing" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "exists" : false,
+        "summary" : null,
+        "title" : null
+      }
+    },
+    "chapter summary without exists" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapter text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/0003-intro",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "text" : "Para one.\n\nPara two — été.",
+        "title" : "Introduction",
+        "wordCount" : 5
+      }
+    },
+    "chapter without its text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, bare array" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "hasSummary" : true,
+          "index" : 3,
+          "readingMinutes" : 2,
+          "slug" : "0003-intro",
+          "summaryWordCount" : 420,
+          "title" : "Introduction",
+          "wordCount" : 3200
+        },
+        {
+          "hasSummary" : false,
+          "index" : 4,
+          "readingMinutes" : 1,
+          "slug" : "0004-ete",
+          "summaryWordCount" : null,
+          "title" : "L'été — 夏",
+          "wordCount" : 115
+        },
+        {
+          "hasSummary" : false,
+          "index" : 5,
+          "readingMinutes" : 1,
+          "slug" : "0005-vide",
+          "summaryWordCount" : null,
+          "title" : "Vide",
+          "wordCount" : null
+        }
+      ]
+    },
+    "chapters, empty" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "chapters, malformed JSON" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, one row without a title" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, one row without hasSummary" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, wrapped" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "hasSummary" : true,
+          "index" : 1,
+          "readingMinutes" : 2,
+          "slug" : "c1",
+          "summaryWordCount" : null,
+          "title" : "One",
+          "wordCount" : 345
+        }
+      ]
+    },
+    "chapters, wrapped beside a count" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "chapters, wrapped under another key" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "hasSummary" : true,
+          "index" : 1,
+          "readingMinutes" : 2,
+          "slug" : "c1",
+          "summaryWordCount" : null,
+          "title" : "One",
+          "wordCount" : 345
+        }
+      ]
+    },
+    "extract" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/extract",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "follow refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "context" : [
+              {
+                "id" : 7,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ],
+            "kind" : "companion",
+            "name" : "X",
+            "tagline" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "follow the book with Maurice" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "context" : [
+              {
+                "id" : 7,
+                "representation" : "summary",
+                "scope" : {
+                  "mode" : "progress"
+                },
+                "type" : "book"
+              }
+            ],
+            "kind" : "companion",
+            "name" : "L'Étranger",
+            "tagline" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/maurices",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "pause tracking" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "paused" : true
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/reading-progress/tracking",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "reading progress" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "bookId" : 7,
+        "chapterIndex" : 3,
+        "chapterSlug" : "0003-intro",
+        "enabled" : 1,
+        "position" : 2,
+        "updatedAt" : "2026-11-10 09:00:00",
+        "view" : "summary"
+      }
+    },
+    "reading progress null" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : null
+    },
+    "reading progress, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "remove the bookmark" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "view" : "summary"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/bookmarks",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "bookmarked" : false,
+        "bookmarkId" : null,
+        "note" : null
+      }
+    },
+    "reset progress" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "reset progress fails" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "resume tracking" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "paused" : false
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/reading-progress/tracking",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "save position in the summary" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_index" : 4,
+            "chapter_slug" : "0004-été",
+            "position" : 3,
+            "view" : "summary"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "save position in the text" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_index" : 3,
+            "chapter_slug" : "0003-intro",
+            "position" : 1234,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "save position refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_index" : 3,
+            "chapter_slug" : "c3",
+            "position" : 0,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/reading-progress",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "status with a job" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/status",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapters" : 12,
+        "indexed" : 10,
+        "isComplete" : true,
+        "job" : {
+          "action" : "summarize",
+          "error" : null,
+          "state" : "ok"
+        },
+        "summarized" : 12
+      }
+    },
+    "status, job failed" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/status",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapters" : 12,
+        "indexed" : 3,
+        "isComplete" : false,
+        "job" : {
+          "action" : "extract",
+          "error" : "EPUB unreadable",
+          "state" : "error"
+        },
+        "summarized" : 3
+      }
+    },
+    "status, nothing extracted" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/status",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapters" : 0,
+        "indexed" : null,
+        "isComplete" : false,
+        "job" : null,
+        "summarized" : null
+      }
+    },
+    "status, summarized missing" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/status",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapters" : 3,
+        "indexed" : null,
+        "isComplete" : false,
+        "job" : null,
+        "summarized" : null
+      }
+    },
+    "status, unknown job state" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/status",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "summarize" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/summarize",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "summarize refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/summarize",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

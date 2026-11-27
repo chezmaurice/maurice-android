@@ -1,0 +1,117 @@
+{
+  "domain" : "domains-format",
+  "results" : {
+    "proposal numbers: alive with a 'to'" : {
+      "text" : "12 conversations"
+    },
+    "proposal numbers: both, and recent" : {
+      "text" : "3 conversations · 2 mail threads · 2 recent"
+    },
+    "proposal numbers: conversations only" : {
+      "text" : "12 conversations"
+    },
+    "proposal numbers: creation date late in the day (UTC)" : {
+      "text" : "12 conversations · Nov 11, 2026"
+    },
+    "proposal numbers: creation date unparsable" : {
+      "text" : "12 conversations"
+    },
+    "proposal numbers: everything" : {
+      "text" : "1 conversation · 1 mail thread · 1 recent · quiet since 2025-12 · Jan 2, 2026"
+    },
+    "proposal numbers: lived without a 'to'" : {
+      "text" : "12 conversations"
+    },
+    "proposal numbers: lived, quiet since" : {
+      "text" : "12 conversations · quiet since 2026-03"
+    },
+    "proposal numbers: mail only" : {
+      "text" : "4 mail threads"
+    },
+    "proposal numbers: no conversations, no mail" : {
+      "text" : "0 conversations"
+    },
+    "proposal numbers: one conversation" : {
+      "text" : "1 conversation"
+    },
+    "proposal numbers: one mail thread" : {
+      "text" : "1 mail thread"
+    },
+    "proposal numbers: recent zero" : {
+      "text" : "12 conversations"
+    },
+    "proposal numbers: with a creation date" : {
+      "text" : "12 conversations · Nov 10, 2026"
+    },
+    "tokens -5" : {
+      "text" : "-5"
+    },
+    "tokens -1500" : {
+      "text" : "-1500"
+    },
+    "tokens 0" : {
+      "text" : "0"
+    },
+    "tokens 1" : {
+      "text" : "1"
+    },
+    "tokens 999" : {
+      "text" : "999"
+    },
+    "tokens 1000" : {
+      "text" : "1.0k"
+    },
+    "tokens 1049" : {
+      "text" : "1.0k"
+    },
+    "tokens 1050" : {
+      "text" : "1.1k"
+    },
+    "tokens 1051" : {
+      "text" : "1.1k"
+    },
+    "tokens 1234" : {
+      "text" : "1.2k"
+    },
+    "tokens 9999" : {
+      "text" : "10.0k"
+    },
+    "tokens 12345" : {
+      "text" : "12.3k"
+    },
+    "tokens 99949" : {
+      "text" : "99.9k"
+    },
+    "tokens 99950" : {
+      "text" : "100.0k"
+    },
+    "tokens 99999" : {
+      "text" : "100.0k"
+    },
+    "tokens 100000" : {
+      "text" : "100k"
+    },
+    "tokens 100499" : {
+      "text" : "100k"
+    },
+    "tokens 100500" : {
+      "text" : "101k"
+    },
+    "tokens 123456" : {
+      "text" : "123k"
+    },
+    "tokens 200000" : {
+      "text" : "200k"
+    },
+    "tokens 1999999" : {
+      "text" : "2000k"
+    },
+    "tokens 2147483647" : {
+      "text" : "2147484k"
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "checkpoints": [
+    {
+      "name": "the address asked",
+      "requests": [],
+      "texts": [
+        "0%",
+        "ABCD-EFGH",
+        "Cancel",
+        "Carnet",
+        "Chez Maurice",
+        "Connect",
+        "Enter a code or an address",
+        "Every household has its own Maurice. Your invitation lets you in.",
+        "Half screen",
+        "Household address",
+        "Scan Qr Code",
+        "Scan an invitation",
+        "Sheet Grabber",
+        "Vertical scroll bar, 1 page",
+        "What you read, watch and note, in one place.",
+        "carnet-emblem",
+        "carnet-tile",
+        "dismiss popup",
+        "myhome.chezmaurice.eu"
+      ]
+    },
+    {
+      "name": "the notice",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": {
+            "code": "ABCD-EFGH"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/enroll",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "shelf"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Anything you post in a shared room is visible to other members of that room, and to the operator.",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Before you connect",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Cancel",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "I understand — Connect",
+        "If you weren't expecting to join this server, or someone you don't know asked you to install Maurice and connect here, don't connect.",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "The operator of this server controls how Maurice behaves here — its personality and its instructions.",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "You can leave any room, block other members, and report content at any time.",
+        "You're joining a Maurice server run by someone else.",
+        "Your private conversations stay private. Maurice keeps each member's personal data isolated, and the operator cannot read it.",
+        "·",
+        "•"
+      ]
+    },
+    {
+      "name": "the shelf",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

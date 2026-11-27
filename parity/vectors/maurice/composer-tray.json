@@ -1,0 +1,2065 @@
+{
+ "domain": "composer-tray",
+ "about": "The context tray of a conversation: its saved spec read back and weighed, what adding, toggling, removing and changing an item sends (weigh, then save), what the weighing says on the cards and the totals, a blank page's tray, a followed book's reading controls, the picker's search, the note/folder previews and a book's chapters.",
+ "ios": "Maurice/Services/ComposerStore.swift — setConversation, carryTo, add, toggle, remove, update, reweigh, save, setReadingPaused, resetReadingProgress, search, resolveNote, resolveFolder, bookChapters",
+ "android": "core/composer/ComposerStore.kt (+ ComposerApi.kt) — bind, carryTo, add, toggle, remove, update, setReadingPaused, resetReadingProgress, search, resolveNote, resolveFolder, bookChapters",
+ "cases": [
+  {
+   "name": "bind: the saved spec, weighed",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1",
+      "locked": {
+       "name": "Santé",
+       "count": 2,
+       "weight": 3000
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1",
+        "recurse": true,
+        "exclude": [
+         "n1/a"
+        ],
+        "snapshot": {
+         "weight": 800
+        }
+       },
+       {
+        "type": "book",
+        "id": 42,
+        "representation": "summary",
+        "scope": {
+         "mode": "progress"
+        },
+        "snapshot": {
+         "progressChapter": 2
+        }
+       },
+       {
+        "type": "conversation",
+        "id": "c9"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 5000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 1000,
+        "count": 3,
+        "title": "Potager",
+        "moc": true,
+        "heavy": false
+       },
+       {
+        "weight": 3000,
+        "visibleCount": 20,
+        "progressChapter": 5,
+        "progressPaused": true,
+        "title": "Dune"
+       },
+       {
+        "weight": 1000,
+        "summarisable": true,
+        "summary": "ready",
+        "fullWeight": 9000,
+        "uncovered": 2,
+        "title": "Recettes"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "bind: no saved spec (404)",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "status": 404,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "bind: spec with an unknown item",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "video",
+        "id": "v"
+       },
+       {
+        "type": "note",
+        "id": "n"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 10,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 10
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "bind: another conversation replaces the tray",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "bind": "c2"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1",
+        "recurse": true,
+        "exclude": [
+         "n1/a"
+        ],
+        "snapshot": {
+         "weight": 800
+        }
+       },
+       {
+        "type": "book",
+        "id": 42,
+        "representation": "summary",
+        "scope": {
+         "mode": "progress"
+        },
+        "snapshot": {
+         "progressChapter": 2
+        }
+       },
+       {
+        "type": "conversation",
+        "id": "c9"
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c2",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 5000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 1000
+       },
+       {
+        "weight": 3000
+       },
+       {
+        "weight": 1000
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "add: a MOC note recurses, is weighed and saved",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "jardin",
+       "title": "Jardin",
+       "sub": "MOC · 12 notes",
+       "encrypted": false,
+       "moc": true,
+       "kind": ""
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 1200,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 1200,
+        "count": 12
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "add: every kind, with its defaults",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "add": {
+       "type": "folder",
+       "id": "dir1",
+       "title": "Docs",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "add": {
+       "type": "file",
+       "id": "f1",
+       "title": "photo.jpg",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": "img"
+      }
+     },
+     {
+      "add": {
+       "type": "file",
+       "id": "f2",
+       "title": "notes.txt",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": "text"
+      }
+     },
+     {
+      "add": {
+       "type": "file",
+       "id": "f3",
+       "title": "scan.pdf",
+       "sub": "",
+       "encrypted": true,
+       "moc": false,
+       "kind": "pdf"
+      }
+     },
+     {
+      "add": {
+       "type": "book",
+       "id": "42",
+       "title": "Dune",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "add": {
+       "type": "fiche",
+       "id": "movies/fr/dune",
+       "title": "Dune (film)",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "add": {
+       "type": "conversation",
+       "id": "c9",
+       "title": "Recettes",
+       "sub": "",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": []
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "add: the same entry twice is once",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "toggle: on, then off",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "toggle": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "toggle": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "remove: the last item resets the totals",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "remove": "note-n1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 800,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 800
+       }
+      ]
+     },
+     "times": 1
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "update: a conversation pinned to its transcript",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "update": "conversation-c9",
+      "set": {
+       "conversationFull": true
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "conversation",
+        "id": "c9"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 9000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 9000,
+        "summarisable": true,
+        "summary": "ready",
+        "fullWeight": 9000
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "update: a note's options",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "update": "note-n1",
+      "set": {
+       "recurse": false,
+       "includeArchived": true,
+       "exclude": [
+        "n1/x",
+        "n1/y"
+       ]
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1",
+        "recurse": true
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 300,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 300
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "update: a book up to a chapter, then chosen chapters, then full text",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "update": "book-42",
+      "set": {
+       "scopeMode": "up_to",
+       "uptoChapter": 6
+      }
+     },
+     {
+      "update": "book-42",
+      "set": {
+       "scopeMode": "chapters",
+       "selectedRefs": [
+        "c1",
+        "c4"
+       ]
+      }
+     },
+     {
+      "update": "book-42",
+      "set": {
+       "representation": "full",
+       "scopeMode": "progress"
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "book",
+        "id": 42
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 3000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 3000,
+        "visibleCount": 30
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "update: a fiche without its fragments",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "update": "fiche-people/fr/x",
+      "set": {
+       "includeFragments": false
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "fiche",
+        "id": "people/fr/x"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 50,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 50,
+        "fragments": 4
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: a file's kind and path make its line",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "file",
+        "id": "f1"
+       },
+       {
+        "type": "file",
+        "id": "f2",
+        "snapshot": {
+         "kind": "img",
+         "na": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 400,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 400,
+        "kind": "pdf",
+        "na": true,
+        "path": "docs/scan.pdf"
+       },
+       {
+        "weight": 0
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: a folder sweeps attachments in",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "folder",
+        "id": "d1"
+       },
+       {
+        "type": "file",
+        "id": "f1",
+        "snapshot": {
+         "kind": "img",
+         "na": true
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 5000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 5000,
+        "count": 12,
+        "binaryCount": 3
+       },
+       {
+        "weight": 0,
+        "na": true,
+        "kind": "img"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: over the budget",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 250000,
+      "tier": "over",
+      "over": true,
+      "items": [
+       {
+        "weight": 250000,
+        "heavy": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: fewer weights than items",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       },
+       {
+        "type": "note",
+        "id": "n2"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100,
+        "title": "Un"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: an empty title keeps the id",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100,
+        "title": ""
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: server error keeps the spec's figures",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1",
+        "snapshot": {
+         "weight": 800,
+         "count": 2
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "weigh: numbers as floats and strings",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads the count \"3\" and moc \"true\"; iOS takes only a number and a boolean (encrypted: 1 now reads true on both sides)."
+   },
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100.0,
+        "count": "3",
+        "moc": "true",
+        "encrypted": 1
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "summary pending: waited for, then weighed and saved again",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "conversation",
+        "id": "c9"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 9000,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 9000,
+        "summarisable": true,
+        "summary": "pending",
+        "fullWeight": 9000
+       }
+      ]
+     },
+     "times": 1
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/conversations/c9/summary",
+     "json": {
+      "ready": true
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 800,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 800,
+        "summarisable": true,
+        "summary": "ready",
+        "fullWeight": 9000
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a blank page's tray, then the conversation it became",
+   "accepted": {"kind": "wire", "why": "Both keep the blank page's tray and save it to the new conversation before its first turn; iOS then weighs it once more when the view binds the conversation (setConversation after carryTo), Android does not: same items, same figures."},
+   "input": {
+    "steps": [
+     {
+      "bind": null
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     },
+     {
+      "created": "c-new"
+     },
+     {
+      "bind": "c-new"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c-new",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/v1/composer/context/c-new",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a blank page's tray is not saved anywhere",
+   "input": {
+    "steps": [
+     {
+      "bind": null
+     },
+     {
+      "add": {
+       "type": "note",
+       "id": "potager",
+       "title": "Potager",
+       "sub": "note",
+       "encrypted": false,
+       "moc": false,
+       "kind": ""
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "reading: pause a followed book",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "pause": {
+       "book": "42",
+       "paused": true
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "book",
+        "id": 42,
+        "scope": {
+         "mode": "progress"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/calibre/books/42/reading-progress/tracking",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 300,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 300,
+        "progressChapter": 4,
+        "progressPaused": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "reading: resume",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "pause": {
+       "book": "42",
+       "paused": false
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "book",
+        "id": 42,
+        "scope": {
+         "mode": "progress"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/calibre/books/42/reading-progress/tracking",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 300,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 300,
+        "progressChapter": 4,
+        "progressPaused": false
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "reading: forget the position",
+   "accepted": {
+    "kind": "wire",
+    "why": "iOS sets Content-Type: application/json on a DELETE without a body; the server reads no body."
+   },
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "reset": "42"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "book",
+        "id": 42,
+        "scope": {
+         "mode": "progress"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/v1/calibre/books/42/reading-progress",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 0,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 0,
+        "progressChapter": -1
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "reading: a book id that is not a number",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "pause": {
+       "book": "calibre-42",
+       "paused": true
+      }
+     },
+     {
+      "reset": "calibre-42"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": []
+     }
+    },
+    {
+     "method": "POST",
+     "path": "re:^/api/v1/calibre/",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "re:^/api/v1/calibre/",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "reading: pause fails",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "pause": {
+       "book": "42",
+       "paused": true
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "book",
+        "id": 42,
+        "scope": {
+         "mode": "progress"
+        }
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/calibre/books/42/reading-progress/tracking",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 300,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 300,
+        "progressChapter": 4,
+        "progressPaused": false
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: results of every kind",
+   "input": {
+    "steps": [
+     {
+      "search": "dune"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "json": {
+      "results": [
+       {
+        "type": "note",
+        "id": "jardin",
+        "title": "Jardin",
+        "sub": "MOC",
+        "badges": {
+         "moc": true
+        },
+        "updated_at": "2026-11-10T08:00:00.123Z"
+       },
+       {
+        "type": "book",
+        "id": 42,
+        "title": "Dune",
+        "sub": "Frank Herbert",
+        "updated_at": "2026-11-01T08:00:00Z"
+       },
+       {
+        "type": "file",
+        "id": "f1",
+        "title": "scan.pdf",
+        "badges": {
+         "kind": "pdf",
+         "encrypted": true
+        },
+        "updated_at": "not a date"
+       },
+       {
+        "type": "fiche",
+        "id": "movies/fr/dune",
+        "title": "Dune (film)"
+       },
+       {
+        "type": "conversation",
+        "id": "c9",
+        "sub": "hier"
+       },
+       {
+        "type": "folder",
+        "id": "d1",
+        "title": "Docs",
+        "updated_at": "2026-11-10 08:00:00"
+       },
+       {
+        "type": "video",
+        "id": "v1",
+        "title": "Vidéo"
+       },
+       {
+        "type": "note",
+        "title": "Sans id"
+       },
+       {
+        "id": "x",
+        "title": "Sans type"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: nothing found",
+   "input": {
+    "steps": [
+     {
+      "search": "zzz"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "json": {
+      "results": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: a query with spaces, accents, & and #",
+   "input": {
+    "steps": [
+     {
+      "search": "été & co #1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "json": {
+      "results": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: empty query",
+   "input": {
+    "steps": [
+     {
+      "search": ""
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "json": {
+      "results": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: server error",
+   "input": {
+    "steps": [
+     {
+      "search": "dune"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "search: answer without results",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads an answer without `results` as nothing found; iOS as no answer (nil)."
+   },
+   "input": {
+    "steps": [
+     {
+      "search": "dune"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/search",
+     "json": {
+      "hits": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "resolve: a note's tree, with exclusions",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "resolveNote": "note-jardin été"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "jardin été",
+        "recurse": true,
+        "exclude": [
+         "a b",
+         "c,d"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/v1/composer/notes/",
+     "json": {
+      "resolved": {
+       "count": 2,
+       "weight": 150,
+       "archivedWithheld": 1,
+       "manualExcluded": 1,
+       "hasChildren": true
+      },
+      "tree": {
+       "id": "jardin",
+       "title": "Jardin",
+       "moc": true,
+       "weight": 100,
+       "childCount": 2,
+       "included": true,
+       "children": [
+        {
+         "id": "jardin/a",
+         "title": "A",
+         "weight": 50,
+         "included": true
+        },
+        {
+         "id": "jardin/b",
+         "title": "B",
+         "archived": true,
+         "weight": 70,
+         "excluded": true
+        }
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "resolve: a note, server error",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "resolveNote": "note-n1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/v1/composer/notes/",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "resolve: a note, answer without a tree",
+   "accepted": {
+    "kind": "lenient",
+    "why": "Android reads an answer without `tree` with an empty one; iOS rejects it."
+   },
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "resolveNote": "note-n1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "note",
+        "id": "n1"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/v1/composer/notes/",
+     "json": {
+      "resolved": {
+       "count": 2
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "resolve: a folder",
+   "input": {
+    "steps": [
+     {
+      "bind": "c1"
+     },
+     {
+      "resolveFolder": "folder-d1"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/context/c1",
+     "json": {
+      "items": [
+       {
+        "type": "folder",
+        "id": "d1",
+        "exclude": [
+         "f9"
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/v1/composer/weigh",
+     "json": {
+      "total": 100,
+      "tier": "light",
+      "over": false,
+      "items": [
+       {
+        "weight": 100
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/v1/composer/folders/",
+     "json": {
+      "weight": 900,
+      "count": 5,
+      "textCount": 3,
+      "binaryCount": 2,
+      "hasChildren": true,
+      "manualExcluded": 1,
+      "tree": {
+       "id": "d1",
+       "name": "Docs",
+       "isFolder": true,
+       "children": [
+        {
+         "id": "f1",
+         "name": "a.txt",
+         "kind": "text",
+         "weight": 900
+        }
+       ]
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "chapters: read once, then from memory",
+   "input": {
+    "steps": [
+     {
+      "chapters": "42"
+     },
+     {
+      "chapters": "42"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/books/42/chapters",
+     "json": {
+      "chapters": [
+       {
+        "index": 0,
+        "ref": "front",
+        "name": "Couverture",
+        "hidden": true,
+        "section_type": "front_matter",
+        "word_count": 10
+       },
+       {
+        "index": 1,
+        "ref": "c1",
+        "name": "Chapitre 1",
+        "section_type": "body",
+        "word_count": 4000,
+        "has_summary": true
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "chapters: empty answer is asked again",
+   "input": {
+    "steps": [
+     {
+      "chapters": "42"
+     },
+     {
+      "chapters": "42"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/books/42/chapters",
+     "json": {
+      "chapters": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "chapters: server error",
+   "input": {
+    "steps": [
+     {
+      "chapters": "42"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/composer/books/42/chapters",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  }
+ ]
+}

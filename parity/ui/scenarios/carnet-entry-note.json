@@ -1,0 +1,32 @@
+{
+  "name": "carnet-entry-note",
+  "app": "carnet",
+  "about": "A note written on an entry and kept.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Add a note…"
+    },
+    {
+      "checkpoint": "the note sheet"
+    },
+    {
+      "type": "Une idee en passant."
+    },
+    {
+      "tap": "Keep",
+      "pause": 2
+    },
+    {
+      "checkpoint": "kept"
+    }
+  ]
+}

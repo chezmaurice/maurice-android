@@ -1,0 +1,428 @@
+{
+ "domain": "domains-binding",
+ "about": "Filing a conversation under one of the member's domains, or taking it out (the pastille menu, the brief page): what is sent, whether it took, and what the list then says of the conversation.",
+ "ios": "Maurice/Services/ChatService.swift — setDomain(_:forConversation:)",
+ "android": "core/chat/ChatController.kt — setDomain(mauriceId, conversationId)",
+ "cases": [
+  {
+   "name": "bind to a domain",
+   "input": {
+    "conversation": "c2",
+    "domain": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c2/maurice",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "take out of the night's domain (explicit null)",
+   "input": {
+    "conversation": "c1",
+    "domain": null
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c1/maurice",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "rebind to another domain",
+   "input": {
+    "conversation": "c1",
+    "domain": "d2"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c1/maurice",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "answer without ok",
+   "accepted": {
+    "kind": "lenient",
+    "why": "The server answers {ok: true}; iOS decodes OkResponse and rejects {} as a failure, Android takes any 2xx as done."
+   },
+   "input": {
+    "conversation": "c2",
+    "domain": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c2/maurice",
+     "json": {}
+    }
+   ]
+  },
+  {
+   "name": "answer ok false",
+   "input": {
+    "conversation": "c2",
+    "domain": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c2/maurice",
+     "json": {
+      "ok": false
+     }
+    }
+   ]
+  },
+  {
+   "name": "204",
+   "accepted": {
+    "kind": "lenient",
+    "why": "The server answers {ok: true} with 200; iOS rejects an empty 204 body (OkResponse), Android takes any 2xx as done."
+   },
+   "input": {
+    "conversation": "c2",
+    "domain": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c2/maurice",
+     "status": 204
+    }
+   ]
+  },
+  {
+   "name": "not the member's domain (403)",
+   "input": {
+    "conversation": "c2",
+    "domain": "dX"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c2/maurice",
+     "status": 403,
+     "json": {
+      "error": "not your domain"
+     }
+    }
+   ]
+  },
+  {
+   "name": "server error",
+   "input": {
+    "conversation": "c1",
+    "domain": null
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c1/maurice",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "a conversation not in the list",
+   "input": {
+    "conversation": "c9",
+    "domain": "d1"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Course",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-10 09:00:00",
+       "maurice_id": "d1",
+       "maurice_bound_by": "auto"
+      },
+      {
+       "id": "c2",
+       "title": "Autre",
+       "created_at": "2026-11-01 09:00:00",
+       "updated_at": "2026-11-09 09:00:00"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains/proposals",
+     "json": {
+      "total_conversations": 0,
+      "proposals": [],
+      "settled": [],
+      "unseen": 0
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/conversations/c9/maurice",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+  "domain": "session-invitation-link",
+  "about": "The link an invitation's QR code carries, built from a household address and a code.",
+  "ios": "Maurice/Services/SessionStore.swift — Invitation(server:code:).link",
+  "android": "core/session/Invitation.kt — Invitation(serverUrl, code).link",
+  "cases": [
+    { "name": "dashed code", "input": { "server": "https://maison.example", "code": "ABCD-EFGH" } },
+    { "name": "plain code", "input": { "server": "https://maison.example", "code": "ABCD1234" } },
+    { "name": "http with port", "input": { "server": "http://192.168.1.10:3000", "code": "ABCD1234" } },
+    { "name": "server with trailing slash", "input": { "server": "https://maison.example/", "code": "ABCD1234" } },
+    { "name": "code with a space", "input": { "server": "https://maison.example", "code": "AB CD" } },
+    { "name": "code with & and +", "input": { "server": "https://maison.example", "code": "A&B+C" } },
+    { "name": "code with # and ?", "input": { "server": "https://maison.example", "code": "A#B?C" } },
+    { "name": "accented code", "input": { "server": "https://maison.example", "code": "café" } },
+    { "name": "empty code", "input": { "server": "https://maison.example", "code": "" } }
+  ]
+}

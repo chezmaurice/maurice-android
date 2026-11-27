@@ -1,0 +1,180 @@
+{
+  "domain" : "shelf-handoff",
+  "results" : {
+    "a library book's row" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "calibre/12"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "conversation" : "c43"
+      }
+    },
+    "a new conversation" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/la-sagesse"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "conversation" : "c42"
+      }
+    },
+    "a unicode entry" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/l-œuvre-é"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "conversation" : "c44"
+      }
+    },
+    "an id that is a number" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "no id in the answer" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "undecodable"
+      }
+    },
+    "rate limited" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: budget exhausted"
+      }
+    },
+    "refused, with a message" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: ai_consent_required"
+      }
+    },
+    "server error, body not JSON" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: HTTP 502"
+      }
+    },
+    "server error, no message" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "entry" : "books/fr/x"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/conversations",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "failed" : "server: HTTP 500"
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

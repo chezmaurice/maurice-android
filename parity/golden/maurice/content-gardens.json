@@ -1,0 +1,291 @@
+{
+  "domain" : "content-gardens",
+  "results" : {
+    "access: refused" : {
+      "access" : null,
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens/note/u1/vacances/access"
+        }
+      ]
+    },
+    "access: who has the note" : {
+      "access" : {
+        "members" : [
+          {
+            "id" : "u1",
+            "name" : "Alice",
+            "owner" : true,
+            "self" : true,
+            "tends" : true
+          },
+          {
+            "id" : "u3",
+            "name" : "Bob",
+            "owner" : false,
+            "self" : false,
+            "tends" : false
+          }
+        ],
+        "ownerId" : "u1",
+        "slug" : "vacances",
+        "title" : "Vacances"
+      },
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens/note/u1/vacances/access"
+        }
+      ]
+    },
+    "labels: alone on the device" : {
+      "labels" : [
+        "My notes",
+        "You & Nadia",
+        "You, Nadia & Bob"
+      ]
+    },
+    "labels: three members and a guest" : {
+      "labels" : [
+        "My notes",
+        "You & Nadia",
+        "The whole house"
+      ]
+    },
+    "labels: two members and a guest" : {
+      "labels" : [
+        "My notes",
+        "You & Nadia",
+        "You, Nadia & Bob"
+      ]
+    },
+    "leave: take myself off" : {
+      "gardens" : [
+        "mine"
+      ],
+      "requests" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/v1/gardens/note/u1/vacances/leave"
+        },
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "load: a garden without its theme" : {
+      "gardens" : [
+
+      ],
+      "loaded" : false,
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "load: none" : {
+      "gardens" : [
+
+      ],
+      "loaded" : true,
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "load: refused" : {
+      "gardens" : [
+
+      ],
+      "loaded" : false,
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "load: three gardens" : {
+      "gardens" : [
+        {
+          "id" : "mine",
+          "members" : [
+            "u1"
+          ],
+          "mine" : true,
+          "notes" : [
+            {
+              "id" : "u1/note/recettes",
+              "isNote" : true,
+              "unreviewed" : false,
+              "updatedAt" : "2026-11-01T10:00:00Z"
+            },
+            {
+              "id" : "u1/fiche/the-gene",
+              "isNote" : false,
+              "unreviewed" : false,
+              "updatedAt" : "2026-11-01T10:00:00Z"
+            },
+            {
+              "id" : "u1/card/recettes",
+              "isNote" : false,
+              "unreviewed" : false,
+              "updatedAt" : "2026-11-01T10:00:00Z"
+            },
+            {
+              "id" : "u1/note/brouillon",
+              "isNote" : true,
+              "unreviewed" : true,
+              "updatedAt" : "2026-11-01T10:00:00Z"
+            }
+          ],
+          "webPath" : "/g/alice",
+          "webTheme" : "manuscript"
+        },
+        {
+          "id" : "u1+u2",
+          "members" : [
+            "u1",
+            "u2"
+          ],
+          "mine" : false,
+          "notes" : [
+            {
+              "id" : "u1/note/vacances",
+              "isNote" : true,
+              "unreviewed" : false,
+              "updatedAt" : "2026-11-01T10:00:00Z"
+            }
+          ],
+          "webPath" : "/g/shared/u1+u2",
+          "webTheme" : "default"
+        },
+        {
+          "id" : "u1+u2+u3",
+          "members" : [
+            "u1",
+            "u2",
+            "u3"
+          ],
+          "mine" : false,
+          "notes" : [
+
+          ],
+          "webPath" : "/g/shared/u1+u2+u3",
+          "webTheme" : "default"
+        }
+      ],
+      "loaded" : true,
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "share: refused, still reloads" : {
+      "gardens" : [
+        "mine",
+        "u1+u2",
+        "u1+u2+u3"
+      ],
+      "requests" : [
+        {
+          "body" : {
+            "member_id" : "u3"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/gardens/note/u1/vacances/share"
+        },
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "share: with Bob" : {
+      "gardens" : [
+        "mine",
+        "u1+u2",
+        "u1+u2+u3"
+      ],
+      "requests" : [
+        {
+          "body" : {
+            "member_id" : "u3"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/gardens/note/u1/vacances/share"
+        },
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "theme: a shared garden" : {
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        },
+        {
+          "body" : {
+            "web_theme" : "default"
+          },
+          "method" : "PATCH",
+          "path" : "/api/v1/gardens/u1+u2"
+        },
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    },
+    "theme: a shared garden, refused" : {
+      "requests" : [
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        },
+        {
+          "body" : {
+            "web_theme" : "night"
+          },
+          "method" : "PATCH",
+          "path" : "/api/v1/gardens/u1+u2+u3"
+        },
+        {
+          "body" : null,
+          "method" : "GET",
+          "path" : "/api/v1/gardens"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

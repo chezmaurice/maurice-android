@@ -1,0 +1,92 @@
+{
+ "domain": "shelf-address",
+ "about": "A household's address as typed: what Carnet makes of it (scheme, case, port, path).",
+ "ios": "CarnetApp/Services/Invitation.swift — EntryInput.normalizedAddress",
+ "android": "core/session/Invitation.kt — normalizeServerUrl",
+ "cases": [
+  {
+   "name": "monfoyer.chezmaurice.eu",
+   "input": "monfoyer.chezmaurice.eu"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu",
+   "input": "https://monfoyer.chezmaurice.eu"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/",
+   "input": "https://monfoyer.chezmaurice.eu/"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/some/path",
+   "input": "https://monfoyer.chezmaurice.eu/some/path"
+  },
+  {
+   "name": "MonFoyer.ChezMaurice.EU",
+   "input": "MonFoyer.ChezMaurice.EU"
+  },
+  {
+   "name": "http://192.168.1.20:3000",
+   "input": "http://192.168.1.20:3000"
+  },
+  {
+   "name": "192.168.1.20:3000",
+   "input": "192.168.1.20:3000"
+  },
+  {
+   "name": "localhost:3000",
+   "input": "localhost:3000"
+  },
+  {
+   "name": "localhost",
+   "input": "localhost"
+  },
+  {
+   "name": "nodot",
+   "input": "nodot"
+  },
+  {
+   "name": "  monfoyer.chezmaurice.eu  ",
+   "input": "  monfoyer.chezmaurice.eu  "
+  },
+  {
+   "name": "mon foyer.eu",
+   "input": "mon foyer.eu"
+  },
+  {
+   "name": "ftp://monfoyer.eu",
+   "input": "ftp://monfoyer.eu"
+  },
+  {
+   "name": "HTTPS://monfoyer.eu",
+   "input": "HTTPS://monfoyer.eu"
+  },
+  {
+   "name": "https://monfoyer.eu?x=1",
+   "input": "https://monfoyer.eu?x=1"
+  },
+  {
+   "name": "https://monfoyer.eu#frag",
+   "input": "https://monfoyer.eu#frag"
+  },
+  {
+   "name": "https://user:pw@monfoyer.eu",
+   "input": "https://user:pw@monfoyer.eu"
+  },
+  {
+   "name": "https://monfoyer.eu:443",
+   "input": "https://monfoyer.eu:443"
+  },
+  {
+   "name": "(empty)",
+   "input": ""
+  },
+  {
+   "name": "https://",
+   "input": "https://"
+  },
+  {
+   "name": "foyer.éte.fr",
+   "input": "foyer.éte.fr"
+  }
+ ]
+}

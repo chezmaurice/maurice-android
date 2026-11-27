@@ -1,0 +1,2078 @@
+{
+  "domain" : "domains-proposals",
+  "results" : {
+    "apply: adopt with notes, renamed" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "adopt",
+                "id" : "p1",
+                "name" : "Course",
+                "seed" : true
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "adopted" : [
+          {
+            "domainId" : "d10",
+            "id" : "p1"
+          }
+        ],
+        "errors" : [
+
+        ]
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "apply: an error for one item" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "adopt",
+                "id" : "p1",
+                "seed" : false
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "adopted" : [
+
+        ],
+        "errors" : [
+          {
+            "error" : "already settled",
+            "id" : "p1"
+          }
+        ]
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "apply: answer with adopted only" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "adopt",
+                "id" : "p1",
+                "seed" : false
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "apply: dismiss" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "dismiss",
+                "id" : "p2",
+                "seed" : false
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "adopted" : [
+
+        ],
+        "errors" : [
+
+        ]
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "apply: keep with a new name and summary" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "keep",
+                "id" : "p2",
+                "name" : "Le potager",
+                "seed" : false,
+                "summary" : "Tout sur le jardin. « ok »"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "adopted" : [
+
+        ],
+        "errors" : [
+
+        ]
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "apply: server error" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "items" : [
+              {
+                "action" : "adopt",
+                "id" : "p1",
+                "seed" : false
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/apply",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "detail: 404" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals/p1",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "detail: conversations and mail" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals/p1",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "conversations" : [
+          {
+            "date" : "2026-10-01",
+            "id" : "c1",
+            "title" : "Fractionné"
+          },
+          {
+            "date" : null,
+            "id" : "c2",
+            "title" : null
+          }
+        ],
+        "id" : "p1",
+        "mail" : [
+          {
+            "from" : "club@x.fr",
+            "path" : "inbox/7",
+            "title" : "Licence",
+            "to" : "me"
+          }
+        ],
+        "name" : "Course à pied",
+        "state" : "proposed",
+        "summary" : "s"
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "detail: without lists" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals/p1",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : {
+        "conversations" : [
+
+        ],
+        "id" : "p1",
+        "mail" : [
+
+        ],
+        "name" : "Course à pied",
+        "state" : "proposed",
+        "summary" : "s"
+      },
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "detail: without summary" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals/p1",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "load: a proposal with a null weight" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: a proposal without summary" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: empty" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: is_new as a number" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: no settled, no unseen keys" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: no total_conversations" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "load: open and settled" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "load: server error" : {
+      "open" : [
+
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+
+      ],
+      "result" : null,
+      "settled" : [
+
+      ],
+      "unseen" : 0
+    },
+    "merge: answer without from" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "ids" : [
+              "p1",
+              "p2"
+            ],
+            "name" : "X"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/merge",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "merge: server error" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "ids" : [
+              "p1",
+              "p2"
+            ],
+            "name" : "X"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/merge",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "merge: two into one, named" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "ids" : [
+              "p1",
+              "p2"
+            ],
+            "name" : "Plein air"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/merge",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : true,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "merge: without a name" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "ids" : [
+              "p1",
+              "p2"
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/merge",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : true,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "restore: 409" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p3/restore",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "restore: answered ok only" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p3/restore",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "restore: answered with the proposal" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p3/restore",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : true,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "seen: answer missing open" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/seen",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "seen: badge goes" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/seen",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "seen: nothing unseen sends nothing" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "seen: server error" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/seen",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : null,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "split: 400" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p1",
+          "isAlive" : true,
+          "isNew" : true,
+          "mailThreads" : 3,
+          "name" : "Course à pied",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Course à pied recouvre.",
+          "weight" : 4
+        },
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "parts" : [
+              {
+                "conversation_ids" : [
+
+                ],
+                "mail" : [
+
+                ],
+                "name" : ""
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p1/split",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 2
+    },
+    "split: a part cut out" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "parts" : [
+              {
+                "conversation_ids" : [
+                  "c1",
+                  "c2"
+                ],
+                "mail" : [
+                  "inbox/7"
+                ],
+                "name" : "Trail"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p1/split",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : true,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "split: answer without left" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "parts" : [
+              {
+                "conversation_ids" : [
+                  "c1"
+                ],
+                "mail" : [
+
+                ],
+                "name" : "Trail"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p1/split",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : false,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    },
+    "split: conversations only" : {
+      "open" : [
+        {
+          "canRestore" : false,
+          "conversations" : 12,
+          "domainId" : null,
+          "id" : "p2",
+          "isAlive" : false,
+          "isNew" : false,
+          "mailThreads" : null,
+          "name" : "Potager",
+          "oneLine" : "Une ligne.",
+          "state" : "proposed",
+          "summary" : "Ce que Potager recouvre.",
+          "weight" : 4
+        }
+      ],
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "parts" : [
+              {
+                "conversation_ids" : [
+                  "c1"
+                ],
+                "mail" : [
+
+                ],
+                "name" : "Trail"
+              }
+            ]
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/domains/proposals/p1/split",
+          "query" : {
+
+          }
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/proposals",
+          "query" : {
+
+          }
+        }
+      ],
+      "restorable" : [
+        "p3",
+        "p4"
+      ],
+      "result" : true,
+      "settled" : [
+        "p3",
+        "p4",
+        "p5"
+      ],
+      "unseen" : 0
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

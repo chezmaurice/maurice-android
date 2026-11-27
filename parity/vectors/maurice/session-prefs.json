@@ -1,0 +1,63 @@
+{
+  "domain": "session-prefs",
+  "about": "After sign-in: the member's palette and language taken from the server, the device's language told to it when it changed, and what the app runs on reported (at most weekly unless it changed). The report's values are platform-specific (iOS vs Android), so only its field names and the app are compared. The device speaks English. `twice`: the same done again right after.",
+  "ios": "Maurice/Services/SessionStore.swift — SessionStore.loadPreferences (+ reportDevice)",
+  "android": "core/session/Session.kt — Session.loadServerPrefs(deviceLanguage = \"en\") (+ reportDevice)",
+  "cases": [
+    { "name": "palette and language set, device language known", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr", "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "device language changed", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "studio", "locale": null, "device_locale": "fr" } },
+        { "method": "PATCH", "path": "/api/users/me/preferences", "json": { "palette": "studio", "locale": null, "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "device language never told", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "de" } },
+        { "method": "PATCH", "path": "/api/users/me/preferences", "json": {} },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "nothing set", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": {} },
+        { "method": "PATCH", "path": "/api/users/me/preferences", "json": {} },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "unknown palette, regional language", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "neon", "locale": "pt-BR", "device_locale": "en", "theme": "old" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "device language upper-case on the server", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr", "device_locale": "EN" } },
+        { "method": "PATCH", "path": "/api/users/me/preferences", "json": {} },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "preferences server error", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "status": 500, "json": { "error": "boom" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "preferences malformed", "input": {},
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "text": "nope" },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "preferences with a wrong type", "input": {},
+      "accepted": { "kind": "lenient", "why": "Android reads a preferences answer with a wrongly typed palette (a number) that iOS rejects whole, then reports the device as after any good answer; lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": 3, "locale": "fr", "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "twice: the device reported once", "input": { "twice": true },
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr", "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "twice: the first report refused", "input": { "twice": true },
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr", "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "status": 500, "json": { "error": "boom" }, "times": 1 },
+        { "method": "POST", "path": "/api/users/me/device", "json": { "ok": true } } ] },
+    { "name": "report answered without ok", "input": { "twice": true },
+      "accepted": { "kind": "lenient", "why": "Android takes the device report's answer {} (no ok) as received and does not send it again within the week; iOS rejects it and reports again at the next load. Lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [
+        { "method": "GET", "path": "/api/users/me/preferences", "json": { "palette": "cream", "locale": "fr", "device_locale": "en" } },
+        { "method": "POST", "path": "/api/users/me/device", "json": {} } ] }
+  ]
+}

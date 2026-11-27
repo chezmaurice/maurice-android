@@ -1,0 +1,39 @@
+{
+  "name": "carnet-entry-delete-refused",
+  "app": "carnet",
+  "about": "Deleted, but the household refuses (403 « not yours »).",
+  "routes": [
+    {
+      "method": "DELETE",
+      "path": "re:^/api/v1/garden/entries/movies/fr/sans-soleil$",
+      "status": 403,
+      "json": {
+        "error": "not yours"
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "swipe": "Sans soleil",
+      "to": "left",
+      "pause": 2
+    },
+    {
+      "tap": "Delete",
+      "last": true,
+      "pause": 2
+    },
+    {
+      "checkpoint": "refused"
+    }
+  ]
+}

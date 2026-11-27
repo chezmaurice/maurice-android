@@ -1,0 +1,115 @@
+{
+  "checkpoints": [
+    {
+      "name": "the note sheet",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2026-10-01",
+        "Add a note",
+        "Add a note…",
+        "Add a quote",
+        "Ask Maurice about this",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Cancel",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Dictate",
+        "Forward",
+        "GOES ON YOUR SIDE · LA SAGESSE",
+        "Half screen",
+        "Keep",
+        "L",
+        "La Sagesse",
+        "Lock",
+        "More",
+        "NOTE · 2026-11-01",
+        "Not started",
+        "ONLY YOU · 1 NOTE",
+        "Read",
+        "Selected",
+        "Share with someone",
+        "Sheet Grabber",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Typing Predictions",
+        "Une note sur la sagesse.",
+        "Vertical scroll bar, 1 page",
+        "dismiss popup",
+        "quote.opening"
+      ]
+    },
+    {
+      "name": "kept",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "text": "Une idee en passant."
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/notes",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2026-10-01",
+        "Add a note",
+        "Add a note…",
+        "Ask Maurice about this",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Forward",
+        "L",
+        "La Sagesse",
+        "Lock",
+        "More",
+        "NOTE · 2026-11-01",
+        "Not started",
+        "ONLY YOU · 1 NOTE",
+        "Read",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Une note sur la sagesse.",
+        "Vertical scroll bar, 1 page",
+        "quote.opening"
+      ]
+    }
+  ],
+  "failures": []
+}

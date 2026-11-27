@@ -1,0 +1,2 @@
+/* Strings Android shows that the iOS Localizable.strings copied beside
+   does not hold. Loaded over it; any key missing here falls back to English. */

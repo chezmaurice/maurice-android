@@ -1,0 +1,88 @@
+{
+  "domain": "reading-caches",
+  "about": "What the device keeps to read offline: an article's captured text and its styles (kept under its text revision and its member: a new capture or another member finds nothing), a book's chapter texts and summaries (kept per household and book, shared by its members), and a whole book downloaded — the requests, the retry, what is kept, the size shown.",
+  "ios": "ArticleCache.cacheText/text/styles/hasText; BookCache.cacheChapterText/cacheChapterSummary/chapterText/chapterSummary/isChapterCached/remove/download/isDownloaded/size/cachedChapters",
+  "android": "ArticleCache(scope, article).keep/text/styles; BookCache(baseUrl, bookId).keepText/keepSummary/text/summary/isCached/remove/download/isDownloaded/size/chapters",
+  "cases": [
+    { "name": "article text read back", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "la-lenteur", "locale": "fr", "title": "L", "text_rev": "r1" }, "text": "Titre\n\nCorps — été 🌞.", "styles": [ { "start": 0, "end": 5, "kind": "heading" } ] },
+      "read": { "member": "u1", "article": { "slug": "la-lenteur", "locale": "fr", "title": "L", "text_rev": "r1" } } } },
+    { "name": "article text, a new capture is not found", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "la-lenteur", "locale": "fr", "title": "L", "text_rev": "r1" }, "text": "old", "styles": [] },
+      "read": { "member": "u1", "article": { "slug": "la-lenteur", "locale": "fr", "title": "L", "text_rev": "r2" } } } },
+    { "name": "article text, no revision then an empty one", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A" }, "text": "kept", "styles": [] },
+      "read": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "" } } } },
+    { "name": "article text, no revision either time", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A" }, "text": "kept", "styles": [] },
+      "read": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A" } } } },
+    { "name": "article text, another member finds nothing", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" }, "text": "mine", "styles": [] },
+      "read": { "member": "u2", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" } } } },
+    { "name": "article text, same slug in another locale", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" }, "text": "fr", "styles": [] },
+      "read": { "member": "u1", "article": { "slug": "a", "locale": "en", "title": "A", "text_rev": "r1" } } } },
+    { "name": "article text kept without styles", "input": { "op": "article",
+      "keep": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" }, "text": "plain", "styles": [] },
+      "read": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" } } } },
+    { "name": "article text, nothing kept", "input": { "op": "article",
+      "read": { "member": "u1", "article": { "slug": "a", "locale": "fr", "title": "A", "text_rev": "r1" } } } },
+
+    { "name": "chapter text read back", "input": { "op": "book",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "full", "text": "Chapitre — été." } ],
+      "read": { "household": "home", "bookId": 7, "slug": "c1" } } },
+    { "name": "chapter summary only", "input": { "op": "book",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "summary", "text": "Résumé." } ],
+      "read": { "household": "home", "bookId": 7, "slug": "c1" } } },
+    { "name": "chapter kept by another member is shared", "input": { "op": "book", "readAs": "u2",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "full", "text": "Household's." } ],
+      "read": { "household": "home", "bookId": 7, "slug": "c1" } } },
+    { "name": "chapter, another household finds nothing", "input": { "op": "book",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "full", "text": "Home." } ],
+      "read": { "household": "other", "bookId": 7, "slug": "c1" } } },
+    { "name": "chapter, another book finds nothing", "input": { "op": "book",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "full", "text": "Seven." } ],
+      "read": { "household": "home", "bookId": 8, "slug": "c1" } } },
+    { "name": "chapter, slugs differing in case", "input": { "op": "book",
+      "keep": [ { "household": "home", "bookId": 7, "slug": "Intro", "kind": "full", "text": "Upper." } ],
+      "read": { "household": "home", "bookId": 7, "slug": "intro" } } },
+    { "name": "book removed from the device", "input": { "op": "book", "remove": true,
+      "keep": [ { "household": "home", "bookId": 7, "slug": "c1", "kind": "full", "text": "x" }, { "household": "home", "bookId": 7, "slug": "c1", "kind": "summary", "text": "y" } ],
+      "read": { "household": "home", "bookId": 7, "slug": "c1" } } },
+
+    { "name": "download a book", "input": { "op": "download", "chapters": [
+        { "index": 1, "slug": "c1", "title": "Un", "wordCount": 10, "hasSummary": true },
+        { "index": 2, "slug": "c2", "title": "Deux", "wordCount": 10, "hasSummary": false },
+        { "index": 3, "slug": "c3-été", "title": "Trois", "wordCount": 10, "hasSummary": true } ] },
+      "routes": [
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "Un", "text": "Texte un." } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "json": { "exists": true, "summary": "Résumé un." } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c2", "json": { "title": "Deux", "text": "Texte deux — 夏 🌞." } },
+        { "method": "GET", "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/c3-.*/summary$", "json": { "exists": true, "summary": "Résumé trois." } },
+        { "method": "GET", "path": "re:^/api/v1/calibre/books/7/chapters/by-slug/c3-", "json": { "title": "Trois", "text": "Texte trois." } } ] },
+    { "name": "download, a chapter answers on the second try", "input": { "op": "download", "chapters": [
+        { "index": 1, "slug": "c1", "title": "Un", "hasSummary": false },
+        { "index": 2, "slug": "c2", "title": "Deux", "hasSummary": false } ] },
+      "routes": [
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "Un", "text": "Un." } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c2", "status": 503, "json": { "error": "busy" }, "times": 1 },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c2", "json": { "title": "Deux", "text": "Deux." } } ] },
+    { "name": "download, a chapter fails twice", "input": { "op": "download", "chapters": [
+        { "index": 1, "slug": "c1", "title": "Un", "hasSummary": false },
+        { "index": 2, "slug": "c2", "title": "Deux", "hasSummary": false } ] },
+      "routes": [
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "Un", "text": "Un." } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c2", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "download, a summary fails", "input": { "op": "download", "chapters": [
+        { "index": 1, "slug": "c1", "title": "Un", "hasSummary": true } ] },
+      "routes": [
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "status": 500, "json": { "error": "boom" } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "Un", "text": "Un." } } ] },
+    { "name": "download, a summary that does not exist", "input": { "op": "download", "chapters": [
+        { "index": 1, "slug": "c1", "title": "Un", "hasSummary": true } ] },
+      "routes": [
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1/summary", "json": { "exists": false, "summary": null } },
+        { "method": "GET", "path": "/api/v1/calibre/books/7/chapters/by-slug/c1", "json": { "title": "Un", "text": "Un." } } ] },
+    { "name": "download, no chapters", "input": { "op": "download", "chapters": [] }, "routes": [] }
+  ]
+}

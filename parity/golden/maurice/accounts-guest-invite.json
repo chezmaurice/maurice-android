@@ -1,0 +1,320 @@
+{
+  "domain" : "accounts-guest-invite",
+  "results" : {
+    "403: a child not allowed, the row goes" : {
+      "refused" : {
+        "self" : true
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "not_allowed"
+      }
+    },
+    "404: a server without the route, the row goes" : {
+      "refused" : {
+        "self" : true
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "not_allowed"
+      }
+    },
+    "429: failed, the row stays" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "failed",
+        "message" : "[429] Too many invitations"
+      }
+    },
+    "500 with the server's words: failed, the row stays" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "failed",
+        "message" : "[500] Database is locked"
+      }
+    },
+    "an answer that is not JSON" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "failed",
+        "message" : "The data couldn’t be read because it isn’t in the correct format."
+      }
+    },
+    "an answer without expires_at" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "kind" : "failed",
+        "message" : "The data couldn’t be read because it is missing."
+      }
+    },
+    "another member of the same household is not hidden by a refusal" : {
+      "refused" : {
+        "also" : true,
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "AB12CD34",
+        "expires_at" : "2026-11-18T10:00:00Z",
+        "invitation" : {
+          "code" : "AB12CD34",
+          "link" : "<household>/join?code=AB12CD34",
+          "server" : "<household>"
+        },
+        "kind" : "code"
+      }
+    },
+    "issued, a link that is not an invitation" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "AB12CD34",
+        "expires_at" : "2026-11-18T10:00:00Z",
+        "invitation" : {
+          "code" : "AB12CD34",
+          "link" : "<household>/join?code=AB12CD34",
+          "server" : "<household>"
+        },
+        "kind" : "code"
+      }
+    },
+    "issued, a maurice:// link to another address" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "ZZ99YY88",
+        "expires_at" : "2026-11-18T10:00:00Z",
+        "invitation" : {
+          "code" : "ZZ99YY88",
+          "link" : "https://chez-nous.example/join?code=ZZ99YY88",
+          "server" : "https://chez-nous.example"
+        },
+        "kind" : "code"
+      }
+    },
+    "issued, a null link" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "AB12CD34",
+        "expires_at" : "2026-11-18T10:00:00Z",
+        "invitation" : {
+          "code" : "AB12CD34",
+          "link" : "<household>/join?code=AB12CD34",
+          "server" : "<household>"
+        },
+        "kind" : "code"
+      }
+    },
+    "issued, no link: built from the household's address" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "AB12CD34",
+        "expires_at" : "2026-11-18T10:00:00Z",
+        "invitation" : {
+          "code" : "AB12CD34",
+          "link" : "<household>/join?code=AB12CD34",
+          "server" : "<household>"
+        },
+        "kind" : "code"
+      }
+    },
+    "issued, with the server's link" : {
+      "refused" : {
+        "self" : false
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/me/guest-invite",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "code" : "GQ7K2M4P",
+        "expires_at" : "2026-11-18T10:00:00.000Z",
+        "invitation" : {
+          "code" : "GQ7K2M4P",
+          "link" : "https://martin.chezmaurice.eu/join?code=GQ7K2M4P",
+          "server" : "https://martin.chezmaurice.eu"
+        },
+        "kind" : "code"
+      }
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

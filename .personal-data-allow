@@ -1,0 +1,41 @@
+# Made-up addresses the tests need on a real provider's domain (they test how a provider is recognised),
+# a service's public address, and Kotlin labels that look like addresses (this@Canvas...).
+# One per line; adding one is the moment to ask whether it is somebody's.
+a@gmail.com
+a@googlemail.com
+alice@gmail.com
+b@free.fr
+b@gmail.com
+b@me.com
+club@x.fr
+maman@free.fr
+news@shop.fr
+pw@monfoyer.eu
+safety@chezmaurice.eu
+this@canvas.size.height
+this@canvas.size.width
+this@folded.lowercase
+x@fastmail.com
+x@fastmail.fm
+x@free.fr
+x@gmail.com
+x@googlemail.com
+x@hotmail.fr
+x@icloud.com
+x@laposte.net
+x@live.com
+x@mac.com
+x@mailfence.com
+x@me.com
+x@msn.com
+x@orange.fr
+x@outlook.com
+x@pm.me
+x@proton.me
+x@protonmail.com
+x@sub.gmail.com
+x@wanadoo.fr
+x@yahoo.com
+x@yahoo.fr
+x@ymail.com
+alex.example@icloud.com

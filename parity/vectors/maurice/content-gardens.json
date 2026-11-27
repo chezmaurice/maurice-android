@@ -1,0 +1,1516 @@
+{
+ "domain": "content-gardens",
+ "about": "Shared gardens in the sidebar: the list, each named by its people, who has a note, sharing it wider, leaving it, a shared garden's web theme.",
+ "ios": "Maurice/Views/ScopePickerView.swift — GardensStore (load, label(for:), noteAccess, share, leave, setTheme)",
+ "android": "core/gardens/Gardens.kt — GardensStore; maurice/chat/Gardens.kt — GardensHub.label",
+ "cases": [
+  {
+   "name": "load: three gardens",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: refused",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: none",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": []
+     }
+    }
+   ]
+  },
+  {
+   "name": "load: a garden without its theme",
+   "input": {
+    "op": "load"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "labels: alone on the device",
+   "input": {
+    "op": "labels",
+    "members": []
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "labels: two members and a guest",
+   "input": {
+    "op": "labels",
+    "members": [
+     {
+      "id": "u2",
+      "displayName": "Nadia",
+      "role": "standard"
+     },
+     {
+      "id": "u4",
+      "displayName": "Invité",
+      "role": "guest"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "labels: three members and a guest",
+   "input": {
+    "op": "labels",
+    "members": [
+     {
+      "id": "u2",
+      "displayName": "Nadia",
+      "role": "standard"
+     },
+     {
+      "id": "u3",
+      "displayName": "Bob",
+      "role": "standard"
+     },
+     {
+      "id": "u4",
+      "displayName": "Invité",
+      "role": "guest"
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "access: who has the note",
+   "input": {
+    "op": "access",
+    "note": {
+     "owner_id": "u1",
+     "owner_username": "alice",
+     "slug": "vacances",
+     "locale": "fr",
+     "title": "Vacances",
+     "updated_at": "2026-11-01T10:00:00Z",
+     "web_path": "/g/alice/fr/notes/vacances"
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens/note/u1/vacances/access",
+     "json": {
+      "owner_id": "u1",
+      "slug": "vacances",
+      "title": "Vacances",
+      "members": [
+       {
+        "member_id": "u1",
+        "username": "alice",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000",
+        "avatar_url": null,
+        "tends": true,
+        "is_owner": true,
+        "is_self": true
+       },
+       {
+        "member_id": "u3",
+        "display_name": "Bob",
+        "avatar_color": "#0000aa",
+        "tends": false,
+        "is_owner": false,
+        "is_self": false
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "access: refused",
+   "input": {
+    "op": "access",
+    "note": {
+     "owner_id": "u1",
+     "owner_username": "alice",
+     "slug": "vacances",
+     "locale": "fr",
+     "title": "Vacances",
+     "updated_at": "2026-11-01T10:00:00Z",
+     "web_path": "/g/alice/fr/notes/vacances"
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens/note/u1/vacances/access",
+     "status": 404,
+     "json": {
+      "error": "no"
+     }
+    }
+   ]
+  },
+  {
+   "name": "share: with Bob",
+   "input": {
+    "op": "share",
+    "note": {
+     "owner_id": "u1",
+     "owner_username": "alice",
+     "slug": "vacances",
+     "locale": "fr",
+     "title": "Vacances",
+     "updated_at": "2026-11-01T10:00:00Z",
+     "web_path": "/g/alice/fr/notes/vacances"
+    },
+    "member": "u3"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/gardens/note/u1/vacances/share",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "share: refused, still reloads",
+   "input": {
+    "op": "share",
+    "note": {
+     "owner_id": "u1",
+     "owner_username": "alice",
+     "slug": "vacances",
+     "locale": "fr",
+     "title": "Vacances",
+     "updated_at": "2026-11-01T10:00:00Z",
+     "web_path": "/g/alice/fr/notes/vacances"
+    },
+    "member": "u3"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/gardens/note/u1/vacances/share",
+     "status": 403,
+     "json": {
+      "error": "no"
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "leave: take myself off",
+   "input": {
+    "op": "leave",
+    "note": {
+     "owner_id": "u1",
+     "owner_username": "alice",
+     "slug": "vacances",
+     "locale": "fr",
+     "title": "Vacances",
+     "updated_at": "2026-11-01T10:00:00Z",
+     "web_path": "/g/alice/fr/notes/vacances"
+    }
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/gardens/note/u1/vacances/leave",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "theme: a shared garden",
+   "input": {
+    "op": "theme",
+    "garden": 1,
+    "theme": "default"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "re:^/api/v1/gardens/",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "theme: a shared garden, refused",
+   "input": {
+    "op": "theme",
+    "garden": 2,
+    "theme": "night"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/v1/gardens",
+     "json": {
+      "gardens": [
+       {
+        "id": "mine",
+        "mine": true,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "manuscript",
+        "web_path": "/g/alice",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "the-gene",
+          "locale": "fr",
+          "title": "The-Gene",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/the-gene",
+          "kind": "fiche",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "recettes",
+          "locale": "fr",
+          "title": "Recettes",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/recettes",
+          "kind": "card",
+          "collection": "books"
+         },
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "brouillon",
+          "locale": "fr",
+          "title": "Brouillon",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/brouillon",
+          "unreviewed": true
+         }
+        ]
+       },
+       {
+        "id": "u1+u2",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#00aa00",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2",
+        "notes": [
+         {
+          "owner_id": "u1",
+          "owner_username": "alice",
+          "slug": "vacances",
+          "locale": "fr",
+          "title": "Vacances",
+          "updated_at": "2026-11-01T10:00:00Z",
+          "web_path": "/g/alice/fr/notes/vacances"
+         }
+        ]
+       },
+       {
+        "id": "u1+u2+u3",
+        "mine": false,
+        "members": [
+         {
+          "member_id": "u1",
+          "username": "alice",
+          "display_name": "Alice",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u2",
+          "username": "nadia",
+          "display_name": "Nadia",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         },
+         {
+          "member_id": "u3",
+          "username": "bob",
+          "display_name": "Bob",
+          "avatar_color": "#aa0000",
+          "avatar_url": null
+         }
+        ],
+        "web_theme": "default",
+        "web_path": "/g/shared/u1+u2+u3",
+        "notes": []
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "re:^/api/v1/gardens/",
+     "status": 400,
+     "json": {
+      "error": "no"
+     }
+    }
+   ]
+  }
+ ]
+}

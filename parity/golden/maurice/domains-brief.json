@@ -1,0 +1,650 @@
+{
+  "domain" : "domains-brief",
+  "results" : {
+    "erase: 204" : {
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "erase: 404" : {
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "erase: empty answer" : {
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "erase: erased" : {
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "erase: nothing to erase" : {
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "erase: server error" : {
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: brief and notes" : {
+      "brief" : {
+        "byMember" : false,
+        "model" : "claude-x",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "Il court le mardi.\nPréfère le matin.",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "found" : true,
+      "notes" : {
+        "total" : 4,
+        "unreviewed" : 2,
+        "webPath" : "/g/x"
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: brief without its date" : {
+      "brief" : null,
+      "found" : true,
+      "notes" : {
+        "total" : 1,
+        "unreviewed" : 0,
+        "webPath" : null
+      },
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: brief without sources" : {
+      "brief" : {
+        "byMember" : false,
+        "model" : null,
+        "sources" : [
+
+        ],
+        "text" : "x",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: empty object" : {
+      "brief" : null,
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: malformed JSON" : {
+      "brief" : null,
+      "found" : false,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: no brief yet" : {
+      "brief" : null,
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: not the member's (404)" : {
+      "brief" : null,
+      "found" : false,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: notes with total 0" : {
+      "brief" : {
+        "byMember" : false,
+        "model" : "claude-x",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "Il court le mardi.\nPréfère le matin.",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: notes without total" : {
+      "brief" : {
+        "byMember" : false,
+        "model" : "claude-x",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "Il court le mardi.\nPréfère le matin.",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: server error" : {
+      "brief" : null,
+      "found" : false,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "load: written by the member" : {
+      "brief" : {
+        "byMember" : true,
+        "model" : "member",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "Il court le mardi.\nPréfère le matin.",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "found" : true,
+      "notes" : null,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: 200 failed with a reason" : {
+      "outcome" : "failed:no conversations",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: 404" : {
+      "outcome" : "failed:not found",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: 502 without a reason" : {
+      "outcome" : "failed:",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: model failed (502 with a reason)" : {
+      "outcome" : "failed:model timed out",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: server error with a message" : {
+      "outcome" : "failed:boom",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: server error without a body" : {
+      "outcome" : "failed:HTTP 500",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: the night's allowance is spent (429)" : {
+      "outcome" : "capped",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: unchanged" : {
+      "outcome" : "unchanged",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: unknown outcome" : {
+      "outcome" : "failed:HTTP 200",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: written from 1" : {
+      "outcome" : "written:1",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: written from 3" : {
+      "outcome" : "written:3",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "rewrite: written, no count" : {
+      "outcome" : "written:0",
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "POST",
+          "path" : "/api/domains/d1/brief/refresh",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: 200 without a brief key" : {
+      "brief" : null,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "t"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: 201" : {
+      "brief" : null,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "t"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: empty text erases" : {
+      "brief" : null,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : ""
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: kept" : {
+      "brief" : {
+        "byMember" : true,
+        "model" : "member",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "Nouveau texte",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Nouveau texte"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: server error" : {
+      "brief" : null,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "t"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    },
+    "save: unicode and newlines" : {
+      "brief" : {
+        "byMember" : true,
+        "model" : "member",
+        "sources" : [
+          "c1",
+          "c2",
+          "mail:inbox/42"
+        ],
+        "text" : "x",
+        "updatedAt" : "2026-11-10 03:00:00"
+      },
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "text" : "Ligne 1\n« guillemets » — 🌿\n\tindent"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/domains/d1/brief",
+          "query" : {
+
+          }
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

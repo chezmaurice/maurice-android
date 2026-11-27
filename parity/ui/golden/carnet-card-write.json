@@ -1,0 +1,138 @@
+{
+  "checkpoints": [
+    {
+      "name": "the card",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/conversations",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Draft",
+        "Edit",
+        "Forward",
+        "Globe",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Publish",
+        "Read",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "· NOT ON YOUR SITE"
+      ]
+    },
+    {
+      "name": "the editor",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Cancel",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "DRAFT · LA SAGESSE",
+        "Dictate",
+        "Draft",
+        "Edit",
+        "Forward",
+        "Globe",
+        "Horizontal scroll bar, 1 page",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Publish",
+        "Read",
+        "Save",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Typing Predictions",
+        "Vertical scroll bar, 1 page",
+        "· NOT ON YOUR SITE"
+      ]
+    },
+    {
+      "name": "saved",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "body": "Un livre sur la sagesse.",
+            "title": "La Sagesse"
+          },
+          "contentType": "application/json",
+          "method": "PUT",
+          "path": "/api/v1/garden/entries/books/fr/la-sagesse/shared",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1 NOTE",
+        "2026-10-01",
+        "Back",
+        "Book · Gaspard Kœnig",
+        "Bookmark",
+        "Carnet",
+        "Chapters",
+        "DRAFT",
+        "Draft",
+        "Edit",
+        "Forward",
+        "Globe",
+        "L",
+        "La Sagesse",
+        "More",
+        "Not started",
+        "Publish",
+        "Read",
+        "Share with someone",
+        "THE BOOK · 3 CHAPTERS",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "· NOT ON YOUR SITE"
+      ]
+    }
+  ],
+  "failures": []
+}

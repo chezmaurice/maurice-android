@@ -1,0 +1,30 @@
+{
+  "domain" : "shelf-address",
+  "results" : {
+    "  monfoyer.chezmaurice.eu  " : "https://monfoyer.chezmaurice.eu",
+    "(empty)" : null,
+    "192.168.1.20:3000" : "https://192.168.1.20:3000",
+    "foyer.éte.fr" : "https://foyer.éte.fr",
+    "ftp://monfoyer.eu" : null,
+    "http://192.168.1.20:3000" : "http://192.168.1.20:3000",
+    "https://" : null,
+    "https://monfoyer.chezmaurice.eu" : "https://monfoyer.chezmaurice.eu",
+    "https://monfoyer.chezmaurice.eu/" : "https://monfoyer.chezmaurice.eu",
+    "https://monfoyer.chezmaurice.eu/some/path" : "https://monfoyer.chezmaurice.eu",
+    "HTTPS://monfoyer.eu" : "https://monfoyer.eu",
+    "https://monfoyer.eu:443" : "https://monfoyer.eu:443",
+    "https://monfoyer.eu?x=1" : "https://monfoyer.eu",
+    "https://monfoyer.eu#frag" : "https://monfoyer.eu",
+    "https://user:pw@monfoyer.eu" : "https://monfoyer.eu",
+    "localhost" : "https://localhost",
+    "localhost:3000" : "https://localhost:3000",
+    "mon foyer.eu" : null,
+    "monfoyer.chezmaurice.eu" : "https://monfoyer.chezmaurice.eu",
+    "MonFoyer.ChezMaurice.EU" : "https://monfoyer.chezmaurice.eu",
+    "nodot" : null
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

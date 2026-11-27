@@ -1,0 +1,89 @@
+{
+  "domain" : "shelf-household-refresh",
+  "results" : {
+    "a blank name keeps the old one" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "a colour and icon no longer given" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "B",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "a name with spaces around" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Chez nous",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "malformed health" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "named, coloured, keyed" : {
+      "color" : "#aa5500",
+      "icon" : "house",
+      "key" : "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "name" : "Les Lambert",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "no name" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "no status" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "silent, no key: unchanged" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "status not ok" : {
+      "color" : null,
+      "icon" : null,
+      "key" : null,
+      "name" : "Les Lambert",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    },
+    "the key is pinned once" : {
+      "color" : null,
+      "icon" : null,
+      "key" : "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "name" : "Parity",
+      "serverURL" : "{base}",
+      "signedIn" : true
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "checkpoints": [
+    {
+      "name": "the sheet",
+      "requests": [],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "A",
+        "A, Alice, You",
+        "Active",
+        "Add",
+        "Add a device",
+        "Add household",
+        "Alice",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "B",
+        "B, Bruno, PIN required",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Bruno",
+        "Carnet",
+        "DRAFT",
+        "Done",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "Half screen",
+        "Home",
+        "Households",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Les Tilleuls",
+        "Les Tilleuls, Active",
+        "Members",
+        "Menu",
+        "PIN required",
+        "PUBLISHED",
+        "Qr Code",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sheet Grabber",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "Vertical scroll bar, 3 pages",
+        "You",
+        "dismiss popup",
+        "·"
+      ]
+    },
+    {
+      "name": "wrong PIN",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "pin": "1111",
+            "user_id": "u2"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "B",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Bruno",
+        "Cancel",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Enter",
+        "Enter your PIN",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "Invalid PIN",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PIN",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "dismiss popup",
+        "·"
+      ]
+    },
+    {
+      "name": "Bruno's shelf",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": {
+            "pin": "4826",
+            "user_id": "u2"
+          },
+          "contentType": "application/json",
+          "method": "POST",
+          "path": "/api/auth/login",
+          "query": {}
+        },
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-bruno",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users/me/preferences",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-bruno",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/users",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-bruno",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "shelf"
+          }
+        },
+        {
+          "auth": "Bearer tok-bruno",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "1",
+        "1 NOTE",
+        "2 NOTES",
+        "5 MIN",
+        "Add",
+        "Article · Milan Kundera",
+        "Articles",
+        "Articles, 1",
+        "Book · Gaspard Kœnig",
+        "Books",
+        "Books, 1",
+        "Carnet",
+        "DRAFT",
+        "EVERYTHING · 3",
+        "Film · Chris Marker",
+        "Films",
+        "Films, 1",
+        "L",
+        "La Sagesse",
+        "La lenteur",
+        "Menu",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Sort",
+        "UNREAD",
+        "Vertical scroll bar, 1 page",
+        "·"
+      ]
+    }
+  ],
+  "failures": []
+}

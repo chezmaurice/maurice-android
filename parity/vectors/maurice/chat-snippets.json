@@ -1,0 +1,418 @@
+{
+ "domain": "chat-snippets",
+ "about": "Long pastes and shared articles as cards: when a paste becomes a card, the fenced block sent, a shared article's block, and the cards a sent message is read back into.",
+ "ios": "Maurice/Views/ChatSnippets.swift — PastedText, SharedArticle; Maurice/Views/ReplyText.swift — ReplyDocument.make (pieces)",
+ "android": "core/chat/Snippets.kt — Snippet.isLong/lineCount/fence/compose/insertion, Snippet.Article, Snippet.parse (user messages, ChatScreen)",
+ "cases": [
+  {
+   "name": "isLong: empty",
+   "input": {
+    "op": "isLong",
+    "text": ""
+   }
+  },
+  {
+   "name": "isLong: one line",
+   "input": {
+    "op": "isLong",
+    "text": "hello"
+   }
+  },
+  {
+   "name": "isLong: 999 chars",
+   "input": {
+    "op": "isLong",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "name": "isLong: 1000 chars",
+   "input": {
+    "op": "isLong",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "name": "isLong: 19 lines",
+   "input": {
+    "op": "isLong",
+    "text": "line 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18"
+   }
+  },
+  {
+   "name": "isLong: 20 lines",
+   "input": {
+    "op": "isLong",
+    "text": "line 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19"
+   }
+  },
+  {
+   "name": "isLong: 20 lines with trailing newlines",
+   "input": {
+    "op": "isLong",
+    "text": "line 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19\n\n\n"
+   }
+  },
+  {
+   "name": "isLong: leading newlines",
+   "input": {
+    "op": "isLong",
+    "text": "\n\n\nabc"
+   }
+  },
+  {
+   "name": "isLong: 600 emoji",
+   "input": {
+    "op": "isLong",
+    "text": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+   }
+  },
+  {
+   "name": "isLong: CRLF 25 lines",
+   "input": {
+    "op": "isLong",
+    "text": "l0\r\nl1\r\nl2\r\nl3\r\nl4\r\nl5\r\nl6\r\nl7\r\nl8\r\nl9\r\nl10\r\nl11\r\nl12\r\nl13\r\nl14\r\nl15\r\nl16\r\nl17\r\nl18\r\nl19\r\nl20\r\nl21\r\nl22\r\nl23\r\nl24"
+   }
+  },
+  {
+   "name": "isLong: accents 1000",
+   "input": {
+    "op": "isLong",
+    "text": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+   }
+  },
+  {
+   "name": "isLong: combining 600",
+   "input": {
+    "op": "isLong",
+    "text": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé"
+   }
+  },
+  {
+   "name": "isLong: only newlines",
+   "input": {
+    "op": "isLong",
+    "text": "\n\n\n"
+   }
+  },
+  {
+   "name": "fence: plain",
+   "input": {
+    "op": "fence",
+    "text": "hello",
+    "info": "pasted"
+   }
+  },
+  {
+   "name": "fence: with triple backticks",
+   "input": {
+    "op": "fence",
+    "text": "a\n```js\nx\n```\nb",
+    "info": "pasted"
+   }
+  },
+  {
+   "name": "fence: with five backticks",
+   "input": {
+    "op": "fence",
+    "text": "`````",
+    "info": "article"
+   }
+  },
+  {
+   "name": "fence: surrounding newlines",
+   "input": {
+    "op": "fence",
+    "text": "\n\nbody\n\n",
+    "info": "pasted"
+   }
+  },
+  {
+   "name": "fence: empty",
+   "input": {
+    "op": "fence",
+    "text": "",
+    "info": "pasted"
+   }
+  },
+  {
+   "name": "fence: CRLF edges",
+   "input": {
+    "op": "fence",
+    "text": "\r\nbody\r\n",
+    "info": "pasted"
+   }
+  },
+  {
+   "name": "compose: typed only",
+   "input": {
+    "op": "compose",
+    "typed": "Bonjour",
+    "snippets": []
+   }
+  },
+  {
+   "name": "compose: paste then typed",
+   "input": {
+    "op": "compose",
+    "typed": "Résume",
+    "snippets": [
+     {
+      "paste": "a\nb"
+     }
+    ]
+   }
+  },
+  {
+   "name": "compose: empty typed",
+   "input": {
+    "op": "compose",
+    "typed": "",
+    "snippets": [
+     {
+      "paste": "x"
+     },
+     {
+      "article": {
+       "title": "Le titre",
+       "site": "Le Monde",
+       "author": "A. Dupont",
+       "date": "2026-11-01",
+       "url": "https://www.lemonde.fr/a",
+       "text": "Corps de l'article.\n\nSecond paragraphe."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "name": "compose: nothing",
+   "input": {
+    "op": "compose",
+    "typed": "",
+    "snippets": []
+   }
+  },
+  {
+   "name": "insertion: typing",
+   "input": {
+    "op": "insertion",
+    "old": "abc",
+    "new": "abcd"
+   }
+  },
+  {
+   "name": "insertion: short paste",
+   "input": {
+    "op": "insertion",
+    "old": "ab",
+    "new": "aXYZb"
+   }
+  },
+  {
+   "name": "insertion: long paste in middle",
+   "input": {
+    "op": "insertion",
+    "old": "debut fin",
+    "new": "debut aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaafin"
+   }
+  },
+  {
+   "name": "insertion: long paste replaces all",
+   "input": {
+    "op": "insertion",
+    "old": "",
+    "new": "line 0\nline 1\nline 2\nline 3\nline 4\nline 5\nline 6\nline 7\nline 8\nline 9\nline 10\nline 11\nline 12\nline 13\nline 14\nline 15\nline 16\nline 17\nline 18\nline 19"
+   }
+  },
+  {
+   "name": "insertion: deletion",
+   "input": {
+    "op": "insertion",
+    "old": "abcdef",
+    "new": "abc"
+   }
+  },
+  {
+   "name": "insertion: repeated char boundary",
+   "input": {
+    "op": "insertion",
+    "old": "aaa",
+    "new": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "name": "insertion: emoji paste 600",
+   "input": {
+    "op": "insertion",
+    "old": "x",
+    "new": "x😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+   }
+  },
+  {
+   "name": "article: full",
+   "input": {
+    "op": "article",
+    "article": {
+     "title": "Le titre",
+     "site": "Le Monde",
+     "author": "A. Dupont",
+     "date": "2026-11-01",
+     "url": "https://www.lemonde.fr/a",
+     "text": "Corps de l'article.\n\nSecond paragraphe."
+    }
+   }
+  },
+  {
+   "name": "article: newline in title, spaces",
+   "input": {
+    "op": "article",
+    "article": {
+     "title": " Deux\nlignes ",
+     "site": "",
+     "author": "",
+     "date": "",
+     "url": "https://example.org/p",
+     "text": "  "
+    }
+   }
+  },
+  {
+   "name": "article: no title, www host",
+   "input": {
+    "op": "article",
+    "article": {
+     "title": "",
+     "url": "https://www.example.org/p?q=1",
+     "text": "un deux  trois\nquatre"
+    }
+   }
+  },
+  {
+   "name": "article: bad url",
+   "input": {
+    "op": "article",
+    "article": {
+     "title": "T",
+     "url": "not a url",
+     "text": ""
+    }
+   }
+  },
+  {
+   "name": "article: text with backticks",
+   "input": {
+    "op": "article",
+    "article": {
+     "title": "Code",
+     "url": "https://x.dev",
+     "text": "```\ncode\n```"
+    }
+   }
+  },
+  {
+   "name": "read: plain text",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "Juste du texte."
+   }
+  },
+  {
+   "name": "read: paste then text",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```pasted\nligne 1\nligne 2\n```\n\nQu'en penses-tu ?"
+   }
+  },
+  {
+   "name": "read: article then text",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```article\ntitle: Le titre\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01\nurl: https://www.lemonde.fr/a\n\nCorps de l'article.\n\nSecond paragraphe.\n```\n\nRésume-le."
+   }
+  },
+  {
+   "name": "read: two cards, no text",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```pasted\nA\n```\n\n```article\ntitle: T\nurl: https://t.example\n```"
+   }
+  },
+  {
+   "name": "read: four-backtick fence holding a fence",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "````pasted\nx\n```\ny\n```\n````\n\nok"
+   }
+  },
+  {
+   "name": "read: card after text",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "Regarde ça :\n\n```pasted\nA\nB\n```"
+   }
+  },
+  {
+   "name": "read: article without header",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```article\nJust a body.\n```"
+   }
+  },
+  {
+   "name": "read: article header with unknown key",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```article\ntitle: T\nlang: fr\nurl: https://u.example\n\nBody\n\nMore\n```"
+   }
+  },
+  {
+   "name": "read: other code block",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```python\nprint(1)\n```"
+   }
+  },
+  {
+   "name": "read: leading newlines",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "\n\n```pasted\nA\n```\nB"
+   }
+  },
+  {
+   "name": "read: paste in assistant reply",
+   "input": {
+    "op": "read",
+    "role": "assistant",
+    "content": "Voici :\n\n```pasted\nA\n```"
+   }
+  },
+  {
+   "name": "read: CRLF message",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```pasted\r\nA\r\n```\r\n\r\nB"
+   }
+  },
+  {
+   "name": "read: unclosed fence",
+   "input": {
+    "op": "read",
+    "role": "user",
+    "content": "```pasted\nA\nB"
+   }
+  }
+ ]
+}

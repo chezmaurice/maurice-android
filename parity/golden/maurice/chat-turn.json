@@ -1,0 +1,2483 @@
+{
+  "domain" : "chat-turn",
+  "results" : {
+    "regenerate: empty thread" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "trails" : {
+
+      }
+    },
+    "regenerate: last reply replaced" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Autre réponse",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "",
+            "maurice_id" : "d1",
+            "regenerate" : true,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Autre réponse",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "regenerate: refused 409" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : "Maurice is already answering in this conversation.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "",
+            "maurice_id" : null,
+            "regenerate" : true,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "regenerate: thread ends on the member" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Autre réponse",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "",
+            "maurice_id" : null,
+            "regenerate" : true,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Autre réponse",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: busy 409, follows the running reply" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : "Maurice is already answering in this conversation.",
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Réponse en cours",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Réponse en cours",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: busy 409, nothing running after" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : "Maurice is already answering in this conversation.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "L'autre réponse",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: done with no text at all" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: done without message_id" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Sans id",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Sans id",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: dropped, re-attached with resume" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : null,
+      "reply" : {
+        "cost" : 0.0123,
+        "model" : "claude-x",
+        "text" : "Bonjour à toi",
+        "tools" : [
+          "web_search"
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour à toi",
+          "cost" : 0.0123,
+          "role" : "assistant",
+          "tools" : [
+            "web_search"
+          ]
+        }
+      ],
+      "trails" : {
+        "m4" : [
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "web_search"
+          }
+        ]
+      }
+    },
+    "send: empty stream, nothing running" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : null,
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Stocké entre-temps",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: end without tool, end of a tool never started" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Ok",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Va",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Va",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Ok",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+        "m4" : [
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "web_search"
+          },
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "corpus__search"
+          }
+        ]
+      }
+    },
+    "send: error event" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "Budget reached for this month.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: error event with `error` key only" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "Stream error",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: error event without message" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "Stream error",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: every re-attach drops (gives up)" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : "The connection to Maurice was lost. If he finished answering, his reply will show up in the thread.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: first message of a new conversation" : {
+      "active" : "c9",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Belles photos",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        },
+        {
+          "body" : {
+            "content" : "Nouveau",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c9/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Nouveau",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Belles photos",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: generated image" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "![un chat](/api/images/abc.png)",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Dessine",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Dessine",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "![un chat](/api/images/abc.png)",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: image event without url" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Raté.",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Dessine",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Dessine",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Raté.",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: image without prompt, after text" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "![image](/api/images/x.png)",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Dessine",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Dessine",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "![image](/api/images/x.png)",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: in a conversation bound to a domain" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Belles photos",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : "d1",
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Belles photos",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: junk lines in the stream" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "AB",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "AB",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: lines after done" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "x",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "x",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: long reply" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Long",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Long",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: new conversation refused" : {
+      "active" : null,
+      "attached" : false,
+      "banner" : "[403] guests cannot start conversations",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: one photo, no text" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Belles photos",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "",
+            "image" : "data:image/jpeg;base64,YWJj",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "![photo](pending)",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Belles photos",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: partial usage" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Ok",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Ok",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: plain reply" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : 0.0123,
+        "model" : "claude-x",
+        "text" : "Bonjour.",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour.",
+          "cost" : 0.0123,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 400 content required" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[400] content required",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 402 budget" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[402] Spending limit reached.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 403 consent" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[403] Nothing was sent: you have not agreed to send your messages to Anthropic.",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 404" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[404] Not found",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 429 with Retry-After" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[429] Too many requests",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 500 json" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[500] boom",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 500 plain text" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[500] Request failed",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: refused 502 empty body" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : "[502] Request failed",
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: resume of a finished turn, no terminal" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : null,
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour fini",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: resume with malformed blocks and no tool" : {
+      "active" : "c1",
+      "attached" : true,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Bonjour",
+        "tools" : [
+          "web_search"
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+            "web_search"
+          ]
+        }
+      ],
+      "trails" : {
+        "m4" : [
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "web_search"
+          }
+        ]
+      }
+    },
+    "send: tool_call without status, error status, without tool" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Fait.",
+        "tools" : [
+          "tool"
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Liste",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Liste",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Fait.",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+            "tool"
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: tools and data" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Voilà.",
+        "tools" : [
+          "corpus__search",
+          "web_search"
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Cherche",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Cherche",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Voilà.",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+            "corpus__search",
+            "web_search"
+          ]
+        }
+      ],
+      "trails" : {
+        "m4" : [
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "corpus__search"
+          },
+          {
+            "count" : 2,
+            "running" : false,
+            "tool" : "web_search"
+          },
+          {
+            "count" : 1,
+            "running" : false,
+            "tool" : "garden__read_note"
+          }
+        ]
+      }
+    },
+    "send: two photos" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Belles photos",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Regarde",
+            "images" : [
+              "data:image/jpeg;base64,YWJj",
+              "data:image/jpeg;base64,ZGVm"
+            ],
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "![photo](pending)\n![photo](pending)\n\nRegarde",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Belles photos",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: unicode deltas" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : null,
+        "text" : "Élan 😀👨‍👩‍👧 مرحبا 日本語\n\n**gras** $$x^2$$",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Écris ✍️",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Écris ✍️",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Élan 😀👨‍👩‍👧 مرحبا 日本語\n\n**gras** $$x^2$$",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "send: usage without a price" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : {
+        "cost" : null,
+        "model" : "claude-x",
+        "text" : "Ok",
+        "tools" : [
+
+        ]
+      },
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Ok",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    },
+    "stop: during a turn" : {
+      "active" : "c1",
+      "attached" : false,
+      "banner" : null,
+      "reply" : null,
+      "running" : false,
+      "sent" : [
+        {
+          "body" : {
+            "content" : "Encore",
+            "maurice_id" : null,
+            "summon" : true
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/messages"
+        },
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/turn/stop"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u1",
+          "content" : "Encore",
+          "cost" : null,
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "trails" : {
+
+      }
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

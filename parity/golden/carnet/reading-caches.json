@@ -1,0 +1,335 @@
+{
+  "domain" : "reading-caches",
+  "results" : {
+    "article text kept without styles" : {
+      "styles" : [
+
+      ],
+      "text" : "plain"
+    },
+    "article text read back" : {
+      "styles" : [
+        {
+          "end" : 5,
+          "kind" : "heading",
+          "start" : 0
+        }
+      ],
+      "text" : "Titre\n\nCorps — été 🌞."
+    },
+    "article text, a new capture is not found" : {
+      "styles" : [
+
+      ],
+      "text" : null
+    },
+    "article text, another member finds nothing" : {
+      "styles" : [
+
+      ],
+      "text" : null
+    },
+    "article text, no revision either time" : {
+      "styles" : [
+
+      ],
+      "text" : "kept"
+    },
+    "article text, no revision then an empty one" : {
+      "styles" : [
+
+      ],
+      "text" : null
+    },
+    "article text, nothing kept" : {
+      "styles" : [
+
+      ],
+      "text" : null
+    },
+    "article text, same slug in another locale" : {
+      "styles" : [
+
+      ],
+      "text" : null
+    },
+    "book removed from the device" : {
+      "cached" : false,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : null
+    },
+    "chapter kept by another member is shared" : {
+      "cached" : true,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : "Household's."
+    },
+    "chapter summary only" : {
+      "cached" : true,
+      "downloaded" : false,
+      "summary" : "Résumé.",
+      "text" : null
+    },
+    "chapter text read back" : {
+      "cached" : true,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : "Chapitre — été."
+    },
+    "chapter, another book finds nothing" : {
+      "cached" : false,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : null
+    },
+    "chapter, another household finds nothing" : {
+      "cached" : false,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : null
+    },
+    "chapter, slugs differing in case" : {
+      "cached" : false,
+      "downloaded" : false,
+      "summary" : null,
+      "text" : null
+    },
+    "download a book" : {
+      "downloaded" : true,
+      "keptChapters" : [
+        "c1",
+        "c2",
+        "c3-été"
+      ],
+      "lastProgress" : [
+        3,
+        3
+      ],
+      "progressReports" : 3,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c2"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c3-%C3%A9t%C3%A9"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c3-%C3%A9t%C3%A9/summary"
+        }
+      ],
+      "size" : 72,
+      "sizeText" : "72 bytes",
+      "texts" : [
+        {
+          "slug" : "c1",
+          "summary" : "Résumé un.",
+          "text" : "Texte un."
+        },
+        {
+          "slug" : "c2",
+          "summary" : null,
+          "text" : "Texte deux — 夏 🌞."
+        },
+        {
+          "slug" : "c3-été",
+          "summary" : "Résumé trois.",
+          "text" : "Texte trois."
+        }
+      ],
+      "thrown" : false
+    },
+    "download, a chapter answers on the second try" : {
+      "downloaded" : true,
+      "keptChapters" : [
+        "c1",
+        "c2"
+      ],
+      "lastProgress" : [
+        2,
+        2
+      ],
+      "progressReports" : 2,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c2"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c2"
+        }
+      ],
+      "size" : 8,
+      "sizeText" : "8 bytes",
+      "texts" : [
+        {
+          "slug" : "c1",
+          "summary" : null,
+          "text" : "Un."
+        },
+        {
+          "slug" : "c2",
+          "summary" : null,
+          "text" : "Deux."
+        }
+      ],
+      "thrown" : false
+    },
+    "download, a chapter fails twice" : {
+      "downloaded" : false,
+      "keptChapters" : [
+
+      ],
+      "lastProgress" : [
+        1,
+        2
+      ],
+      "progressReports" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c2"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c2"
+        }
+      ],
+      "size" : 0,
+      "sizeText" : "Zero KB",
+      "texts" : [
+        {
+          "slug" : "c1",
+          "summary" : null,
+          "text" : "Un."
+        },
+        {
+          "slug" : "c2",
+          "summary" : null,
+          "text" : null
+        }
+      ],
+      "thrown" : true
+    },
+    "download, a summary fails" : {
+      "downloaded" : true,
+      "keptChapters" : [
+        "c1"
+      ],
+      "lastProgress" : [
+        1,
+        1
+      ],
+      "progressReports" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary"
+        }
+      ],
+      "size" : 3,
+      "sizeText" : "3 bytes",
+      "texts" : [
+        {
+          "slug" : "c1",
+          "summary" : null,
+          "text" : "Un."
+        }
+      ],
+      "thrown" : false
+    },
+    "download, a summary that does not exist" : {
+      "downloaded" : true,
+      "keptChapters" : [
+        "c1"
+      ],
+      "lastProgress" : [
+        1,
+        1
+      ],
+      "progressReports" : 1,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1"
+        },
+        {
+          "auth" : "Bearer tok-u1",
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/chapters/by-slug/c1/summary"
+        }
+      ],
+      "size" : 3,
+      "sizeText" : "3 bytes",
+      "texts" : [
+        {
+          "slug" : "c1",
+          "summary" : null,
+          "text" : "Un."
+        }
+      ],
+      "thrown" : false
+    },
+    "download, no chapters" : {
+      "downloaded" : true,
+      "keptChapters" : [
+
+      ],
+      "lastProgress" : [
+
+      ],
+      "progressReports" : 0,
+      "requests" : [
+
+      ],
+      "size" : 0,
+      "sizeText" : "Zero KB",
+      "texts" : [
+
+      ],
+      "thrown" : false
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

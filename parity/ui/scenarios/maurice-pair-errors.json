@@ -1,0 +1,28 @@
+{
+  "name": "maurice-pair-errors",
+  "app": "maurice",
+  "about": "Typing an address that is not one, one where nothing answers, a web server that is no Maurice, and a Maurice that is not ready: an error each time, the sheet stays, and nothing is paired.",
+  "routes": [
+    { "method": "GET", "path": "/api/health", "status": 404, "text": "<html><body>Not Found</body></html>", "headers": { "content-type": "text/html" }, "times": 1 },
+    { "method": "GET", "path": "/api/health", "json": { "status": "starting", "version": "1.0.0", "setup_complete": true, "household": "Les Tilleuls" } }
+  ],
+  "steps": [
+    { "tap": "Enter a code or an address" },
+    { "tap": "XXXX-XXXX or martin.chezmaurice.eu" },
+    { "type": "http://:1" },
+    { "tap": "Connect", "pause": 2 },
+    { "checkpoint": "invalid address" },
+    { "clear": true },
+    { "type": "http://{host}:1" },
+    { "tap": "Connect", "pause": 3 },
+    { "checkpoint": "unreachable" },
+    { "clear": true },
+    { "type": "{base}" },
+    { "tap": "Connect", "pause": 3 },
+    { "checkpoint": "not a Maurice" },
+    { "clear": true },
+    { "type": "{base}/" },
+    { "tap": "Connect", "pause": 3 },
+    { "checkpoint": "not ready" }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "domain": "reading-highlights",
+  "about": "Passage highlights in a book and in an article: the list the reader washes in (decoding, colours, the view the offsets belong to), and what a new highlight, a changed note or colour, a deletion send. Notes are passed as the readers pass them to the API: nil for none (the iOS views turn an empty note into nil before the call).",
+  "ios": "CalibreAPI.highlights/createHighlight/updateHighlight/deleteHighlight; GardenAPI.highlights/createHighlight/updateHighlight/deleteHighlight",
+  "android": "CalibreApi.highlights/createHighlight/updateHighlight/deleteHighlight; CalibreApi.articleHighlights/createArticleHighlight/updateArticleHighlight/deleteArticleHighlight",
+  "cases": [
+    { "name": "book highlights", "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": [
+        { "id": 1, "book_id": 7, "chapter_slug": "c1", "quote": "one of the most important", "note": "Premise.", "color": "yellow", "start_offset": 120, "end_offset": 145, "view": "full", "created_at": "2026-11-10 09:00:00" },
+        { "id": 2, "book_id": 7, "chapter_slug": "c1", "quote": "été 🌞", "note": null, "color": "blue", "start_offset": 3, "end_offset": 9, "view": "summary" },
+        { "id": 3, "book_id": 7, "chapter_slug": "c2", "quote": "old", "color": "green", "start_offset": null, "end_offset": null } ] } ] },
+    { "name": "book highlights, wrapped", "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": { "highlights": [
+        { "id": 1, "chapter_slug": "c1", "quote": "q", "color": "pink", "start_offset": 0, "end_offset": 1 } ] } } ] },
+    { "name": "book highlights, unknown colour", "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": [
+        { "id": 1, "chapter_slug": "c1", "quote": "q", "color": "purple", "start_offset": 0, "end_offset": 1 } ] } ] },
+    { "name": "book highlights, a row without colour", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": [
+        { "id": 1, "chapter_slug": "c1", "quote": "q", "color": "pink", "start_offset": 0, "end_offset": 1 },
+        { "id": 2, "chapter_slug": "c1", "quote": "r", "start_offset": 2, "end_offset": 3 } ] } ] },
+    { "name": "book highlights, a row without quote", "accepted": {"kind": "lenient", "why": "Android keeps the rows it can read and fills a missing field with its default; iOS rejects the whole answer."}, "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": [
+        { "id": 1, "chapter_slug": "c1", "quote": "q", "color": "pink", "start_offset": 0, "end_offset": 1 },
+        { "id": 2, "chapter_slug": "c1", "color": "pink", "start_offset": 2, "end_offset": 3 } ] } ] },
+    { "name": "book highlights, empty", "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "json": [] } ] },
+    { "name": "book highlights, server error", "input": { "op": "book.list" }, "routes": [
+      { "method": "GET", "path": "/api/v1/calibre/books/7/highlights", "status": 502, "text": "Bad gateway" } ] },
+    { "name": "new book highlight in the text, no note", "input": { "op": "book.create", "slug": "c1", "quote": "one of the most important", "color": "yellow", "note": null, "start": 120, "end": 145, "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/highlights", "json": { "id": 10, "book_id": 7, "chapter_slug": "c1", "quote": "one of the most important", "note": null, "color": "yellow", "start_offset": 120, "end_offset": 145, "view": "full" } } ] },
+    { "name": "new book highlight in the summary, with a note", "input": { "op": "book.create", "slug": "0004-été", "quote": "Ce qui compte — 夏 🌞", "color": "green", "note": "À garder\nligne deux", "start": 0, "end": 18, "view": "summary" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/highlights", "json": { "id": 11, "chapter_slug": "0004-été", "quote": "Ce qui compte — 夏 🌞", "note": "À garder\nligne deux", "color": "green", "start_offset": 0, "end_offset": 18, "view": "summary" } } ] },
+    { "name": "new book highlight, answer from an older server", "input": { "op": "book.create", "slug": "c1", "quote": "q", "color": "pink", "note": null, "start": 5, "end": 6, "view": "summary" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/highlights", "json": { "id": 12, "chapter_slug": "c1", "quote": "q", "color": "pink", "start_offset": 5, "end_offset": 6 } } ] },
+    { "name": "new book highlight refused", "input": { "op": "book.create", "slug": "c1", "quote": "q", "color": "yellow", "note": null, "start": 5, "end": 6, "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/calibre/books/7/highlights", "status": 400, "json": { "error": "quote required" } } ] },
+    { "name": "book highlight note and colour", "input": { "op": "book.update", "id": 10, "note": "Revu", "color": "blue" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/calibre/books/7/highlights/10", "json": { "id": 10, "chapter_slug": "c1", "quote": "q", "note": "Revu", "color": "blue", "start_offset": 1, "end_offset": 2, "view": "full" } } ] },
+    { "name": "book highlight note removed", "input": { "op": "book.update", "id": 10, "note": null, "color": "yellow" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/calibre/books/7/highlights/10", "json": { "id": 10, "chapter_slug": "c1", "quote": "q", "note": null, "color": "yellow", "start_offset": 1, "end_offset": 2, "view": "full" } } ] },
+    { "name": "book highlight update fails", "input": { "op": "book.update", "id": 10, "note": "x", "color": "yellow" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/calibre/books/7/highlights/10", "status": 404, "json": { "error": "not found" } } ] },
+    { "name": "book highlight deleted", "input": { "op": "book.delete", "id": 10 }, "routes": [
+      { "method": "DELETE", "path": "/api/v1/calibre/books/7/highlights/10", "json": { "ok": true } } ] },
+    { "name": "book highlight delete fails", "input": { "op": "book.delete", "id": 10 }, "routes": [
+      { "method": "DELETE", "path": "/api/v1/calibre/books/7/highlights/10", "status": 500, "json": { "error": "boom" } } ] },
+
+    { "name": "article highlights", "input": { "op": "article.list", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": [
+        { "id": 1, "slug": "la-lenteur", "quote": "lent", "note": "n", "color": "yellow", "start_offset": 4, "end_offset": 8, "view": "full", "created_at": "2026-11-10 09:00:00" },
+        { "id": 2, "slug": "la-lenteur", "quote": "vite", "note": null, "color": "pink", "start_offset": 0, "end_offset": 4, "view": "summary" },
+        { "id": 3, "slug": "la-lenteur", "quote": "ancien", "color": "blue" } ] } ] },
+    { "name": "article highlights, wrapped", "accepted": {"kind": "lenient", "why": "Android also reads article highlights wrapped under `highlights`; iOS decodes a bare array only."}, "input": { "op": "article.list", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": { "highlights": [
+        { "id": 1, "slug": "la-lenteur", "quote": "lent", "color": "yellow", "start_offset": 4, "end_offset": 8 } ] } } ] },
+    { "name": "article highlights, a row without slug", "accepted": {"kind": "lenient", "why": "Android puts the article's slug in for a row without one; iOS's DTO requires it."}, "input": { "op": "article.list", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": [
+        { "id": 1, "quote": "lent", "color": "yellow", "start_offset": 4, "end_offset": 8 } ] } ] },
+    { "name": "article highlights, locale with a region and an accented slug", "input": { "op": "article.list", "slug": "l'été-à-paris", "locale": "pt-BR" }, "routes": [
+      { "method": "GET", "path": "re:^/api/v1/garden/articles/.*/highlights$", "json": [] } ] },
+    { "name": "article highlights, server error", "input": { "op": "article.list", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/highlights", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "new article highlight", "input": { "op": "article.create", "slug": "la-lenteur", "locale": "fr", "quote": "la lenteur", "color": "yellow", "note": null, "start": 10, "end": 20, "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": { "id": 5, "slug": "la-lenteur", "quote": "la lenteur", "note": null, "color": "yellow", "start_offset": 10, "end_offset": 20, "view": "full" } } ] },
+    { "name": "new article highlight in the summary, with a note", "input": { "op": "article.create", "slug": "la-lenteur", "locale": "fr", "quote": "résumé", "color": "pink", "note": "Pourquoi ?", "start": 0, "end": 6, "view": "summary" }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": { "id": 6, "slug": "la-lenteur", "quote": "résumé", "note": "Pourquoi ?", "color": "pink", "start_offset": 0, "end_offset": 6, "view": "summary" } } ] },
+    { "name": "new article highlight, answer without slug", "accepted": {"kind": "lenient", "why": "Android puts the article's slug in for an answer without one; iOS's DTO requires it."}, "input": { "op": "article.create", "slug": "la-lenteur", "locale": "fr", "quote": "q", "color": "yellow", "note": null, "start": 0, "end": 1, "view": "full" }, "routes": [
+      { "method": "POST", "path": "/api/v1/garden/articles/la-lenteur/highlights", "json": { "id": 7, "quote": "q", "color": "yellow", "start_offset": 0, "end_offset": 1, "view": "full" } } ] },
+    { "name": "article highlight note and colour", "input": { "op": "article.update", "slug": "la-lenteur", "id": 5, "note": "Revu", "color": "green" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/garden/articles/la-lenteur/highlights/5", "json": { "id": 5, "slug": "la-lenteur", "quote": "la lenteur", "note": "Revu", "color": "green", "start_offset": 10, "end_offset": 20, "view": "full" } } ] },
+    { "name": "article highlight note removed", "input": { "op": "article.update", "slug": "la-lenteur", "id": 5, "note": null, "color": "yellow" }, "routes": [
+      { "method": "PUT", "path": "/api/v1/garden/articles/la-lenteur/highlights/5", "json": { "id": 5, "slug": "la-lenteur", "quote": "la lenteur", "note": null, "color": "yellow", "start_offset": 10, "end_offset": 20, "view": "full" } } ] },
+    { "name": "article highlight deleted", "input": { "op": "article.delete", "slug": "la-lenteur", "id": 5 }, "routes": [
+      { "method": "DELETE", "path": "/api/v1/garden/articles/la-lenteur/highlights/5", "json": { "ok": true } } ] },
+    { "name": "article highlight, accented slug deleted", "input": { "op": "article.delete", "slug": "l'été-à-paris", "id": 5 }, "routes": [
+      { "method": "DELETE", "path": "re:^/api/v1/garden/articles/.*/highlights/5$", "json": { "ok": true } } ] }
+  ]
+}

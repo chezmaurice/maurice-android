@@ -1,0 +1,172 @@
+{
+ "domain": "shelf-add-entry",
+ "about": "The shelf's « + » (01c3d4e, 6e024c9, ed512a3): the member's own words looked up with no conversation, the list read again by its batch, a row kept and the entry it opens; an EPUB or a PDF sent to the household's library and what the sheet does with the answer.",
+ "ios": "CarnetApp/Services/MauriceAPI.swift — suggestions(fromText:), suggestions(batch:), keep; Shared/CarnetAPI.swift — addBookToCalibre, CalibreAddResult.alreadyThere",
+ "android": "carnet/shelf/AddEntrySheet.kt — AddEntry; core/carnet/Suggestions.kt; core/carnet/CalibreApi.kt — addBook",
+ "cases": [
+  {
+   "name": "words looked up",
+   "input": {"call": "ask", "text": "le dernier Houellebecq", "locale": "fr"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "json": {
+     "batch": "b-42", "entry": null, "pending": 2, "kept": 0,
+     "suggestions": [
+      {"id": "s1", "kind": "books", "title": "Anéantir", "year": 2022, "subtitle": "Michel Houellebecq", "image": "/api/garden-images/x.jpg", "note": "", "state": "pending", "existing": false, "bound": false, "links": false, "candidates": [], "entry": null, "query": "Houellebecq", "searchable": true},
+      {"id": "s2", "kind": "books", "title": "Sérotonine", "year": 2019, "subtitle": "Michel Houellebecq", "note": "", "state": "pending", "existing": true, "bound": false, "links": false, "candidates": [], "entry": "books/fr/serotonine", "searchable": true}
+     ]
+    }}
+   ]
+  },
+  {
+   "name": "words looked up, no language",
+   "input": {"call": "ask", "text": "Hannah Arendt"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "json": {"batch": "b-1", "pending": 1, "kept": 0, "suggestions": [
+     {"id": "p1", "kind": "people", "title": "Hannah Arendt", "note": "", "state": "pending", "existing": false, "bound": false, "links": false,
+      "candidates": [{"id": "wd:Q60025", "title": "Hannah Arendt", "year": 1906, "subtitle": "philosopher"}, {"id": "wd:Q1", "title": "Hannah Arendt (film)", "year": 2012}], "entry": null, "searchable": true}
+    ]}}
+   ]
+  },
+  {
+   "name": "words looked up, nothing found",
+   "input": {"call": "ask", "text": "zzz", "locale": "en"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "json": {"batch": "b-2", "pending": 0, "kept": 0, "suggestions": []}}
+   ]
+  },
+  {
+   "name": "words looked up, Unicode and new lines",
+   "input": {"call": "ask", "text": "« L'Étranger »\nde Camus 🇫🇷", "locale": "fr"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "json": {"batch": null, "pending": 0, "kept": 0, "suggestions": []}}
+   ]
+  },
+  {
+   "name": "words looked up, refused",
+   "input": {"call": "ask", "text": "Dune", "locale": "en"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "status": 403, "json": {"error": "ai_consent_required"}}
+   ]
+  },
+  {
+   "name": "words looked up, server error without words",
+   "input": {"call": "ask", "text": "Dune", "locale": "en"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "status": 500, "json": {}}
+   ]
+  },
+  {
+   "name": "words looked up, answer not a list",
+   "input": {"call": "ask", "text": "Dune", "locale": "en"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/from-text", "text": "<html>oops</html>"}
+   ]
+  },
+  {
+   "name": "the list read again",
+   "input": {"call": "reread", "batch": "b-42"},
+   "routes": [
+    {"method": "GET", "path": "/api/suggestions", "json": {"batch": "b-42", "pending": 1, "kept": 1, "suggestions": [
+     {"id": "s1", "kind": "books", "title": "Anéantir", "note": "", "state": "kept", "existing": false, "bound": false, "links": false, "candidates": [], "entry": "books/fr/aneantir"},
+     {"id": "s2", "kind": "books", "title": "Sérotonine", "note": "", "state": "pending", "existing": true, "bound": false, "links": false, "candidates": [], "entry": "books/fr/serotonine"}
+    ]}}
+   ]
+  },
+  {
+   "name": "a row kept: its entry opens",
+   "accepted": {"kind": "wire", "why": "Carnet iOS leaves out an empty episodes list; Android sends \"episodes\": [] (as the Maurice app does): the server reads both as none."},
+   "input": {"call": "keep", "id": "s1"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/s1/keep", "json": {"id": "s1", "kind": "books", "title": "Anéantir", "note": "", "state": "kept", "existing": false, "bound": false, "links": false, "candidates": [], "entry": "books/fr/aneantir"}}
+   ]
+  },
+  {
+   "name": "a row kept with its pick",
+   "accepted": {"kind": "wire", "why": "Carnet iOS leaves out an empty episodes list; Android sends \"episodes\": [] (as the Maurice app does): the server reads both as none."},
+   "input": {"call": "keep", "id": "p1", "candidate": "wd:Q60025"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/p1/keep", "json": {"id": "p1", "kind": "people", "title": "Hannah Arendt", "note": "", "state": "kept", "existing": false, "bound": false, "links": false, "candidates": [], "entry": "people/fr/hannah-arendt"}}
+   ]
+  },
+  {
+   "name": "a row kept, no entry in the answer",
+   "accepted": {"kind": "wire", "why": "Carnet iOS leaves out an empty episodes list; Android sends \"episodes\": [] (as the Maurice app does): the server reads both as none."},
+   "input": {"call": "keep", "id": "s3"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/s3/keep", "json": {"ok": true}}
+   ]
+  },
+  {
+   "name": "a row kept, refused",
+   "accepted": {"kind": "wire", "why": "Carnet iOS leaves out an empty episodes list; Android sends \"episodes\": [] (as the Maurice app does): the server reads both as none."},
+   "input": {"call": "keep", "id": "s4"},
+   "routes": [
+    {"method": "POST", "path": "/api/suggestions/s4/keep", "status": 409, "json": {"error": "Pick one first."}}
+   ]
+  },
+  {
+   "name": "a book added to the library",
+   "input": {"call": "addFile", "filename": "Le Rouge et le Noir.epub", "bytes": "PK fake epub"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 57, "filename": "Le Rouge et le Noir.epub", "output": "Added book ids: 57"}}
+   ]
+  },
+  {
+   "name": "a PDF added to the library, name in capitals",
+   "input": {"call": "addFile", "filename": "NOTES.PDF", "bytes": "%PDF-1.4"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 58}}
+   ]
+  },
+  {
+   "name": "a book the home library already holds",
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "output": "The following books were not added as they already exist in the database"}}
+   ]
+  },
+  {
+   "name": "a book a hosted library already holds",
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 12, "duplicate": true}}
+   ]
+  },
+  {
+   "name": "a book added, no id yet",
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "output": "Queued."}}
+   ]
+  },
+  {
+   "name": "a file the library refuses",
+   "input": {"call": "addFile", "filename": "a.pdf", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 400, "json": {"error": "Not a book."}}
+   ]
+  },
+  {
+   "name": "the library does not answer",
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 503, "json": {"error": "The library is not reachable."}}
+   ]
+  },
+  {
+   "name": "the library does not answer, empty body",
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 503, "text": ""}
+   ]
+  },
+  {
+   "name": "a book added, answer unreadable",
+   "accepted": {"kind": "lenient", "why": "An answer without \"ok\": iOS cannot decode it, Android reads the book id it carries and opens the book."},
+   "input": {"call": "addFile", "filename": "a.epub", "bytes": "x"},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"bookId": 3}}
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "maurice-forget-household",
+  "app": "maurice",
+  "about": "« Forget this Maurice » from « Who's here? »: a confirmation, then the device is blank again (the welcome screen).",
+  "routes": [
+    {"method": "GET", "path": "/api/health", "json": {"status": "ok", "version": "1.0.0", "setup_complete": true, "household": "Les Tilleuls", "household_color": "#4a7c59", "household_icon": "leaf"}}
+  ],
+  "steps": [
+    {"tap": "Enter a code or an address"},
+    {"tap": "XXXX-XXXX or martin.chezmaurice.eu"},
+    {"type": "{base}"},
+    {"tap": "Connect", "pause": 3},
+    {"see": "Who's here?"},
+    {"tap": "Other options"},
+    {"tap": "Forget this Maurice"},
+    {"checkpoint": "asked"},
+    {"tap": "Forget", "pause": 2},
+    {"see": "Enter a code or an address"},
+    {"checkpoint": "forgotten"}
+  ]
+}

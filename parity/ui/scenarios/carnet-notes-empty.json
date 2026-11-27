@@ -1,0 +1,41 @@
+{
+  "name": "carnet-notes-empty",
+  "app": "carnet",
+  "about": "Menu → Notes, with no note yet.",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/v1/garden/entries",
+      "query": {
+        "view": "notes"
+      },
+      "json": {
+        "entries": [],
+        "notes": []
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": "Notes"
+    },
+    {
+      "wait": 2
+    },
+    {
+      "checkpoint": "no notes"
+    }
+  ]
+}

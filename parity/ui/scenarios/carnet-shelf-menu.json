@@ -1,0 +1,43 @@
+{
+  "name": "carnet-shelf-menu",
+  "app": "carnet",
+  "about": "The shelf's menu: Entries, Archived (the other half read), Notes, Maurice.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "checkpoint": "the menu"
+    },
+    {
+      "tap": "Archived"
+    },
+    {
+      "see": "Twin Peaks"
+    },
+    {
+      "checkpoint": "archived"
+    },
+    {
+      "tap": "Menu"
+    },
+    {
+      "tap": "Entries"
+    },
+    {
+      "see": "Sans soleil"
+    },
+    {
+      "checkpoint": "entries again"
+    }
+  ]
+}

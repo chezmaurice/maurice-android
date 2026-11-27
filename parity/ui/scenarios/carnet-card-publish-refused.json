@@ -1,0 +1,47 @@
+{
+  "name": "carnet-card-publish-refused",
+  "app": "carnet",
+  "about": "Published, but the site refuses (409 « no site »).",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse/shared/publish$",
+      "status": 409,
+      "json": {
+        "error": "no site"
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Turn over"
+    },
+    {
+      "tap": "Publish"
+    },
+    {
+      "see": "Publish this on your site?"
+    },
+    {
+      "tap": "Publish",
+      "last": true,
+      "pause": 2
+    },
+    {
+      "checkpoint": "refused",
+      "accepted": {
+        "kind": "wire",
+        "why": "Android posts {} where iOS posts no body (publish, details): the server reads neither."
+      }
+    }
+  ]
+}

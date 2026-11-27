@@ -1,0 +1,684 @@
+{
+  "domain" : "reading-highlights",
+  "results" : {
+    "article highlight deleted" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights/5",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "article highlight note and colour" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "green",
+            "note" : "Revu"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights/5",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "la-lenteur",
+        "color" : "green",
+        "end" : 20,
+        "id" : 5,
+        "note" : "Revu",
+        "quote" : "la lenteur",
+        "readerView" : "full",
+        "start" : 10
+      }
+    },
+    "article highlight note removed" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "yellow",
+            "note" : null
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights/5",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "la-lenteur",
+        "color" : "yellow",
+        "end" : 20,
+        "id" : 5,
+        "note" : null,
+        "quote" : "la lenteur",
+        "readerView" : "full",
+        "start" : 10
+      }
+    },
+    "article highlight, accented slug deleted" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/garden/articles/l'%C3%A9t%C3%A9-%C3%A0-paris/highlights/5",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "article highlights" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "la-lenteur",
+          "color" : "yellow",
+          "end" : 8,
+          "id" : 1,
+          "note" : "n",
+          "quote" : "lent",
+          "readerView" : "full",
+          "start" : 4
+        },
+        {
+          "chapterSlug" : "la-lenteur",
+          "color" : "pink",
+          "end" : 4,
+          "id" : 2,
+          "note" : null,
+          "quote" : "vite",
+          "readerView" : "summary",
+          "start" : 0
+        },
+        {
+          "chapterSlug" : "la-lenteur",
+          "color" : "blue",
+          "end" : null,
+          "id" : 3,
+          "note" : null,
+          "quote" : "ancien",
+          "readerView" : "full",
+          "start" : null
+        }
+      ]
+    },
+    "article highlights, a row without slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article highlights, locale with a region and an accented slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/l'%C3%A9t%C3%A9-%C3%A0-paris/highlights",
+          "query" : {
+            "locale" : "pt-BR"
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "article highlights, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "article highlights, wrapped" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+            "locale" : "fr"
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlight delete fails" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/calibre/books/7/highlights/10",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlight deleted" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "DELETE",
+          "path" : "/api/v1/calibre/books/7/highlights/10",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : "ok"
+    },
+    "book highlight note and colour" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "blue",
+            "note" : "Revu"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/calibre/books/7/highlights/10",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "c1",
+        "color" : "blue",
+        "end" : 2,
+        "id" : 10,
+        "note" : "Revu",
+        "quote" : "q",
+        "readerView" : "full",
+        "start" : 1
+      }
+    },
+    "book highlight note removed" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "yellow",
+            "note" : null
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/calibre/books/7/highlights/10",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "c1",
+        "color" : "yellow",
+        "end" : 2,
+        "id" : 10,
+        "note" : null,
+        "quote" : "q",
+        "readerView" : "full",
+        "start" : 1
+      }
+    },
+    "book highlight update fails" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "yellow",
+            "note" : "x"
+          },
+          "contentType" : "application/json",
+          "method" : "PUT",
+          "path" : "/api/v1/calibre/books/7/highlights/10",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlights" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "c1",
+          "color" : "yellow",
+          "end" : 145,
+          "id" : 1,
+          "note" : "Premise.",
+          "quote" : "one of the most important",
+          "readerView" : "full",
+          "start" : 120
+        },
+        {
+          "chapterSlug" : "c1",
+          "color" : "blue",
+          "end" : 9,
+          "id" : 2,
+          "note" : null,
+          "quote" : "été 🌞",
+          "readerView" : "summary",
+          "start" : 3
+        },
+        {
+          "chapterSlug" : "c2",
+          "color" : "green",
+          "end" : null,
+          "id" : 3,
+          "note" : null,
+          "quote" : "old",
+          "readerView" : "full",
+          "start" : null
+        }
+      ]
+    },
+    "book highlights, a row without colour" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlights, a row without quote" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlights, empty" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+
+      ]
+    },
+    "book highlights, server error" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "book highlights, unknown colour" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "c1",
+          "color" : "purple",
+          "end" : 1,
+          "id" : 1,
+          "note" : null,
+          "quote" : "q",
+          "readerView" : "full",
+          "start" : 0
+        }
+      ]
+    },
+    "book highlights, wrapped" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : null,
+          "contentType" : null,
+          "method" : "GET",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : [
+        {
+          "chapterSlug" : "c1",
+          "color" : "pink",
+          "end" : 1,
+          "id" : 1,
+          "note" : null,
+          "quote" : "q",
+          "readerView" : "full",
+          "start" : 0
+        }
+      ]
+    },
+    "new article highlight" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "yellow",
+            "end_offset" : 20,
+            "locale" : "fr",
+            "quote" : "la lenteur",
+            "start_offset" : 10,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "la-lenteur",
+        "color" : "yellow",
+        "end" : 20,
+        "id" : 5,
+        "note" : null,
+        "quote" : "la lenteur",
+        "readerView" : "full",
+        "start" : 10
+      }
+    },
+    "new article highlight in the summary, with a note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "pink",
+            "end_offset" : 6,
+            "locale" : "fr",
+            "note" : "Pourquoi ?",
+            "quote" : "résumé",
+            "start_offset" : 0,
+            "view" : "summary"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "la-lenteur",
+        "color" : "pink",
+        "end" : 6,
+        "id" : 6,
+        "note" : "Pourquoi ?",
+        "quote" : "résumé",
+        "readerView" : "summary",
+        "start" : 0
+      }
+    },
+    "new article highlight, answer without slug" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "color" : "yellow",
+            "end_offset" : 1,
+            "locale" : "fr",
+            "quote" : "q",
+            "start_offset" : 0,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/garden/articles/la-lenteur/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "new book highlight in the summary, with a note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "0004-été",
+            "color" : "green",
+            "end_offset" : 18,
+            "note" : "À garder\nligne deux",
+            "quote" : "Ce qui compte — 夏 🌞",
+            "start_offset" : 0,
+            "view" : "summary"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "0004-été",
+        "color" : "green",
+        "end" : 18,
+        "id" : 11,
+        "note" : "À garder\nligne deux",
+        "quote" : "Ce qui compte — 夏 🌞",
+        "readerView" : "summary",
+        "start" : 0
+      }
+    },
+    "new book highlight in the text, no note" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "color" : "yellow",
+            "end_offset" : 145,
+            "quote" : "one of the most important",
+            "start_offset" : 120,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "c1",
+        "color" : "yellow",
+        "end" : 145,
+        "id" : 10,
+        "note" : null,
+        "quote" : "one of the most important",
+        "readerView" : "full",
+        "start" : 120
+      }
+    },
+    "new book highlight refused" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "color" : "yellow",
+            "end_offset" : 6,
+            "quote" : "q",
+            "start_offset" : 5,
+            "view" : "full"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "thrown" : true
+      }
+    },
+    "new book highlight, answer from an older server" : {
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "chapter_slug" : "c1",
+            "color" : "pink",
+            "end_offset" : 6,
+            "quote" : "q",
+            "start_offset" : 5,
+            "view" : "summary"
+          },
+          "contentType" : "application/json",
+          "method" : "POST",
+          "path" : "/api/v1/calibre/books/7/highlights",
+          "query" : {
+
+          }
+        }
+      ],
+      "result" : {
+        "chapterSlug" : "c1",
+        "color" : "pink",
+        "end" : 6,
+        "id" : 12,
+        "note" : null,
+        "quote" : "q",
+        "readerView" : "full",
+        "start" : 5
+      }
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

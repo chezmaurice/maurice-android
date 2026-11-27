@@ -1,0 +1,78 @@
+{
+ "domain": "shelf-link-book",
+ "about": "Tying a book entry to a book of the household's library (3d2bf6b): the library read for the sheet, the book written on the fiche (PUT …/book) and the entry as it comes back.",
+ "ios": "CarnetApp/Services/CalibreAPI.swift — books; CarnetApp/Services/GardenAPI.swift — linkBook",
+ "android": "core/carnet/CalibreApi.kt — books; core/carnet/GardenApi.kt — linkBook",
+ "cases": [
+  {
+   "name": "the library, wrapped",
+   "input": {"call": "books"},
+   "routes": [
+    {"method": "GET", "path": "/api/v1/calibre/books", "json": {"books": [
+     {"id": 12, "title": "Le Rouge et le Noir", "authors": ["Stendhal"], "tags": [], "formats": ["EPUB"], "chapters": 30},
+     {"id": 7, "title": " œuvres complètes", "authors": ["Rimbaud", "Verlaine"]},
+     {"id": 9, "title": "Sans auteur", "authors": []}
+    ]}}
+   ]
+  },
+  {
+   "name": "the library, bare",
+   "input": {"call": "books"},
+   "routes": [
+    {"method": "GET", "path": "/api/v1/calibre/books", "json": [{"id": 1, "title": "La Sagesse", "authors": ["Gaspard Kœnig"]}]}
+   ]
+  },
+  {
+   "name": "the library, empty",
+   "input": {"call": "books"},
+   "routes": [
+    {"method": "GET", "path": "/api/v1/calibre/books", "json": {"books": []}}
+   ]
+  },
+  {
+   "name": "the library, a book without authors",
+   "accepted": {"kind": "lenient", "why": "A book the library lists without authors: iOS cannot read the list at all, Android leaves that one out."},
+   "input": {"call": "books"},
+   "routes": [
+    {"method": "GET", "path": "/api/v1/calibre/books", "json": {"books": [{"id": 1, "title": "La Sagesse", "authors": ["Gaspard Kœnig"]}, {"id": 2, "title": "Orphelin"}]}}
+   ]
+  },
+  {
+   "name": "the library, not reachable",
+   "input": {"call": "books"},
+   "routes": [
+    {"method": "GET", "path": "/api/v1/calibre/books", "status": 503, "json": {"error": "Calibre is not reachable."}}
+   ]
+  },
+  {
+   "name": "a book linked",
+   "input": {"call": "link", "bookId": 12,
+    "entry": {"id": "books/fr/le-rouge-et-le-noir", "kind": "books", "collection": "books", "locale": "fr", "slug": "le-rouge-et-le-noir", "title": "Le Rouge et le Noir : chronique de 1830", "byline": "Stendhal", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "image": null, "tags": [], "source": null, "mine": {"notes": 0, "opened": false}, "translations": []}},
+   "routes": [
+    {"method": "PUT", "path": "re:^/api/v1/garden/entries/books/fr/.+/book$", "json": {"id": "books/fr/le-rouge-et-le-noir", "kind": "books", "collection": "books", "locale": "fr", "slug": "le-rouge-et-le-noir", "title": "Le Rouge et le Noir : chronique de 1830", "byline": "Stendhal", "date": "2026-10-01", "updated_at": "2026-11-09 21:00:00", "image": null, "tags": [], "source": {"type": "book", "book_id": 12, "chapters": 30}, "mine": {"notes": 0, "opened": false, "file": "books/fr/le-rouge-et-le-noir.md", "prose": "", "items": []}, "translations": []}}
+   ]
+  },
+  {
+   "name": "a book linked on another member's entry",
+   "input": {"call": "link", "bookId": 3,
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": [], "owner": {"id": "u2", "username": "bob", "display_name": "Bob", "avatar_color": "#335577"}}},
+   "routes": [
+    {"method": "PUT", "path": "re:^/api/v1/garden/entries/.+/book$", "json": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "source": {"type": "book", "book_id": 3}, "translations": []}}
+   ]
+  },
+  {
+   "name": "a book linked, refused",
+   "input": {"call": "link", "bookId": 99,
+    "entry": {"id": "books/fr/la-sagesse", "kind": "books", "collection": "books", "locale": "fr", "slug": "la-sagesse", "title": "La Sagesse", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "translations": []}},
+   "routes": [
+    {"method": "PUT", "path": "re:^/api/v1/garden/entries/.+/book$", "status": 404, "json": {"error": "No such book in the library."}}
+   ]
+  },
+  {
+   "name": "a book linked on a library row",
+   "input": {"call": "link", "bookId": 12,
+    "entry": {"id": "calibre/12", "kind": "books", "collection": null, "locale": null, "slug": null, "title": "Le Rouge et le Noir", "date": "2026-10-01", "updated_at": "2026-11-02 10:00:00", "tags": [], "source": {"type": "book", "book_id": 12}, "translations": []}},
+   "routes": []
+  }
+ ]
+}

@@ -1,0 +1,1123 @@
+{
+ "domain": "content-chat",
+ "about": "The words of a tool at work (read_web_page among them), a book of the household's library in a conversation's suggestions, and taking someone out of a room.",
+ "ios": "Maurice/Services/ChatService.swift — ToolStep.label, ToolStep.name, removeParticipant; Views/CarnetSuggestions.swift — EntrySuggestion.in_library",
+ "android": "maurice/chat/Cards.kt — Strings.toolLabel, Strings.toolName; core/chat/ChatController.kt — removeParticipant; core/carnet/Suggestions.kt — EntrySuggestion.inLibrary",
+ "cases": [
+  {
+   "name": "tool: 'web_search' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "web_search",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'web_search' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "web_search",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'web_search' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "web_search",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'web_search' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "web_search",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'read_web_page' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "read_web_page",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'read_web_page' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "read_web_page",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'read_web_page' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "read_web_page",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'read_web_page' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "read_web_page",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'garden__read_note' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "garden__read_note",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'garden__read_note' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "garden__read_note",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'garden__read_note' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "garden__read_note",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'garden__read_note' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "garden__read_note",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'music__add' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "music__add",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'music__add' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "music__add",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'music__add' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "music__add",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'music__add' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "music__add",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'corpus__search' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "corpus__search",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'corpus__search' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "corpus__search",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'corpus__search' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "corpus__search",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'corpus__search' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "corpus__search",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'plain_tool' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "plain_tool",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'plain_tool' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "plain_tool",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: 'plain_tool' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "plain_tool",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: 'plain_tool' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "plain_tool",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: '' running=True ×1",
+   "input": {
+    "op": "tool",
+    "tool": "",
+    "running": true,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: '' running=True ×3",
+   "input": {
+    "op": "tool",
+    "tool": "",
+    "running": true,
+    "count": 3
+   }
+  },
+  {
+   "name": "tool: '' running=False ×1",
+   "input": {
+    "op": "tool",
+    "tool": "",
+    "running": false,
+    "count": 1
+   }
+  },
+  {
+   "name": "tool: '' running=False ×3",
+   "input": {
+    "op": "tool",
+    "tool": "",
+    "running": false,
+    "count": 3
+   }
+  },
+  {
+   "name": "suggestion: a library book",
+   "input": {
+    "op": "suggestion",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "books",
+      "title": "The Gene",
+      "note": "n",
+      "state": "proposed",
+      "existing": false,
+      "candidates": [
+       {
+        "id": "calibre:12",
+        "title": "The Gene",
+        "year": null,
+        "subtitle": "Siddhartha Mukherjee",
+        "image": ""
+       }
+      ],
+      "in_library": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "suggestion: in_library false",
+   "input": {
+    "op": "suggestion",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "books",
+      "title": "The Gene",
+      "note": "n",
+      "state": "proposed",
+      "existing": false,
+      "candidates": [],
+      "in_library": false
+     }
+    ]
+   }
+  },
+  {
+   "name": "suggestion: a server before 8 November (no in_library)",
+   "input": {
+    "op": "suggestion",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "books",
+      "title": "The Gene",
+      "note": "n",
+      "state": "proposed",
+      "existing": false,
+      "candidates": []
+     }
+    ]
+   }
+  },
+  {
+   "name": "suggestion: in_library null",
+   "input": {
+    "op": "suggestion",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "books",
+      "title": "The Gene",
+      "note": "n",
+      "state": "proposed",
+      "existing": false,
+      "candidates": [],
+      "in_library": null
+     }
+    ]
+   }
+  },
+  {
+   "name": "suggestion: existing and in_library",
+   "input": {
+    "op": "suggestion",
+    "rows": [
+     {
+      "id": "s1",
+      "kind": "books",
+      "title": "The Gene",
+      "note": "n",
+      "state": "proposed",
+      "existing": true,
+      "candidates": [],
+      "in_library": true
+     }
+    ]
+   }
+  },
+  {
+   "name": "remove: Bob, added by mistake",
+   "input": {
+    "op": "remove",
+    "open": "c1",
+    "member": "u2",
+    "after": [
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       },
+       {
+        "id": "c2",
+        "title": "Voyage à Lisbonne",
+        "maurice_id": "d1",
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-09 08:00:00"
+       },
+       {
+        "id": "c3",
+        "title": null,
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-01 08:00:00",
+        "unread": true
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     },
+     {
+      "method": "POST",
+      "path": "re:^/api/conversations/[^/]+/read$",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/[^/]+/turn$",
+      "status": 204
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "user",
+         "content": "Coucou de Bob",
+         "author_id": "u2",
+         "created_at": "2026-11-10 18:01:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        },
+        {
+         "member_id": "u2",
+         "role": "member",
+         "display_name": "Bob",
+         "avatar_color": "#0000aa",
+         "username": "bob"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/c[0-9]+$",
+      "json": {
+       "id": "cx",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "DELETE",
+      "path": "re:^/api/conversations/c1/participants/[^/]+$",
+      "json": {
+       "ok": true
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      },
+      {
+       "id": "c2",
+       "title": "Voyage à Lisbonne",
+       "maurice_id": "d1",
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-09 08:00:00"
+      },
+      {
+       "id": "c3",
+       "title": null,
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-01 08:00:00",
+       "unread": true
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "re:^/api/conversations/[^/]+/read$",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/[^/]+/turn$",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "user",
+        "content": "Coucou de Bob",
+        "author_id": "u2",
+        "created_at": "2026-11-10 18:01:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       },
+       {
+        "member_id": "u2",
+        "role": "member",
+        "display_name": "Bob",
+        "avatar_color": "#0000aa",
+        "username": "bob"
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c[0-9]+$",
+     "json": {
+      "id": "cx",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "remove: refused by the server",
+   "input": {
+    "op": "remove",
+    "open": "c1",
+    "member": "u2",
+    "after": [
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       },
+       {
+        "id": "c2",
+        "title": "Voyage à Lisbonne",
+        "maurice_id": "d1",
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-09 08:00:00"
+       },
+       {
+        "id": "c3",
+        "title": null,
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-01 08:00:00",
+        "unread": true
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     },
+     {
+      "method": "POST",
+      "path": "re:^/api/conversations/[^/]+/read$",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/[^/]+/turn$",
+      "status": 204
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "user",
+         "content": "Coucou de Bob",
+         "author_id": "u2",
+         "created_at": "2026-11-10 18:01:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        },
+        {
+         "member_id": "u2",
+         "role": "member",
+         "display_name": "Bob",
+         "avatar_color": "#0000aa",
+         "username": "bob"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/c[0-9]+$",
+      "json": {
+       "id": "cx",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "DELETE",
+      "path": "re:^/api/conversations/c1/participants/[^/]+$",
+      "status": 403,
+      "json": {
+       "error": "Forbidden"
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      },
+      {
+       "id": "c2",
+       "title": "Voyage à Lisbonne",
+       "maurice_id": "d1",
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-09 08:00:00"
+      },
+      {
+       "id": "c3",
+       "title": null,
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-01 08:00:00",
+       "unread": true
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "re:^/api/conversations/[^/]+/read$",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/[^/]+/turn$",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "user",
+        "content": "Coucou de Bob",
+        "author_id": "u2",
+        "created_at": "2026-11-10 18:01:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       },
+       {
+        "member_id": "u2",
+        "role": "member",
+        "display_name": "Bob",
+        "avatar_color": "#0000aa",
+        "username": "bob"
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c[0-9]+$",
+     "json": {
+      "id": "cx",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "remove: someone not in the room",
+   "input": {
+    "op": "remove",
+    "open": "c1",
+    "member": "u9",
+    "after": [
+     {
+      "method": "GET",
+      "path": "/api/conversations",
+      "json": [
+       {
+        "id": "c1",
+        "title": "Recettes",
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-10 18:30:00"
+       },
+       {
+        "id": "c2",
+        "title": "Voyage à Lisbonne",
+        "maurice_id": "d1",
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-09 08:00:00"
+       },
+       {
+        "id": "c3",
+        "title": null,
+        "maurice_id": null,
+        "created_at": "2026-10-01 09:00:00",
+        "updated_at": "2026-11-01 08:00:00",
+        "unread": true
+       }
+      ]
+     },
+     {
+      "method": "GET",
+      "path": "/api/suggestions",
+      "json": {
+       "pending": 0,
+       "kept": 0
+      }
+     },
+     {
+      "method": "POST",
+      "path": "re:^/api/conversations/[^/]+/read$",
+      "json": {
+       "ok": true
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/[^/]+/turn$",
+      "status": 204
+     },
+     {
+      "method": "GET",
+      "path": "/api/conversations/c1",
+      "json": {
+       "id": "c1",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        },
+        {
+         "id": "m2",
+         "role": "user",
+         "content": "Coucou de Bob",
+         "author_id": "u2",
+         "created_at": "2026-11-10 18:01:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        },
+        {
+         "member_id": "u2",
+         "role": "member",
+         "display_name": "Bob",
+         "avatar_color": "#0000aa",
+         "username": "bob"
+        }
+       ]
+      }
+     },
+     {
+      "method": "GET",
+      "path": "re:^/api/conversations/c[0-9]+$",
+      "json": {
+       "id": "cx",
+       "title": "T",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00",
+       "messages": [
+        {
+         "id": "m1",
+         "role": "user",
+         "content": "Salut",
+         "author_id": "u1",
+         "created_at": "2026-11-10 18:00:00"
+        }
+       ],
+       "participants": [
+        {
+         "member_id": "u1",
+         "role": "owner",
+         "display_name": "Alice",
+         "avatar_color": "#aa0000"
+        }
+       ]
+      }
+     },
+     {
+      "method": "DELETE",
+      "path": "re:^/api/conversations/c1/participants/[^/]+$",
+      "json": {
+       "ok": true
+      }
+     }
+    ]
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/conversations",
+     "json": [
+      {
+       "id": "c1",
+       "title": "Recettes",
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-10 18:30:00"
+      },
+      {
+       "id": "c2",
+       "title": "Voyage à Lisbonne",
+       "maurice_id": "d1",
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-09 08:00:00"
+      },
+      {
+       "id": "c3",
+       "title": null,
+       "maurice_id": null,
+       "created_at": "2026-10-01 09:00:00",
+       "updated_at": "2026-11-01 08:00:00",
+       "unread": true
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/suggestions",
+     "json": {
+      "pending": 0,
+      "kept": 0
+     }
+    },
+    {
+     "method": "POST",
+     "path": "re:^/api/conversations/[^/]+/read$",
+     "json": {
+      "ok": true
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/[^/]+/turn$",
+     "status": 204
+    },
+    {
+     "method": "GET",
+     "path": "/api/conversations/c1",
+     "json": {
+      "id": "c1",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       },
+       {
+        "id": "m2",
+        "role": "user",
+        "content": "Coucou de Bob",
+        "author_id": "u2",
+        "created_at": "2026-11-10 18:01:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       },
+       {
+        "member_id": "u2",
+        "role": "member",
+        "display_name": "Bob",
+        "avatar_color": "#0000aa",
+        "username": "bob"
+       }
+      ]
+     }
+    },
+    {
+     "method": "GET",
+     "path": "re:^/api/conversations/c[0-9]+$",
+     "json": {
+      "id": "cx",
+      "title": "T",
+      "maurice_id": null,
+      "created_at": "2026-10-01 09:00:00",
+      "updated_at": "2026-11-10 18:30:00",
+      "messages": [
+       {
+        "id": "m1",
+        "role": "user",
+        "content": "Salut",
+        "author_id": "u1",
+        "created_at": "2026-11-10 18:00:00"
+       }
+      ],
+      "participants": [
+       {
+        "member_id": "u1",
+        "role": "owner",
+        "display_name": "Alice",
+        "avatar_color": "#aa0000"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

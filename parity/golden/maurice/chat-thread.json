@@ -1,0 +1,3580 @@
+{
+  "domain" : "chat-thread",
+  "results" : {
+    "block: a member of the room" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/users/u2/block"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "block: refused" : {
+      "active" : "c1",
+      "banner" : "[400] Cannot block an admin",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/users/u2/block"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "delete: another one" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c2"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "delete: refused 403" : {
+      "active" : "c1",
+      "banner" : "[403] Only the owner can delete",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "delete: server error" : {
+      "active" : "c1",
+      "banner" : "[500] boom",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "delete: the open one" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "delete: the open one, 204" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : null,
+          "method" : "DELETE",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "domain: file under a domain" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d7",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : true,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "maurice_id" : "d7"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "domain: refused" : {
+      "active" : "c2",
+      "banner" : "[404] Not found",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : false,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "maurice_id" : "d7"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "domain: take out of its domain" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : null,
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : true,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "maurice_id" : null
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "leave: refused" : {
+      "active" : "c1",
+      "banner" : "[400] The owner cannot leave",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/leave"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "leave: the open room" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/leave"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: a 1:1 thread" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: a message with an unknown role" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "{}",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "tool",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: a message without created_at" : {
+      "active" : "c1",
+      "banner" : "The server's answer could not be read.",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: a participant without colour" : {
+      "active" : "c1",
+      "banner" : "The server's answer could not be read.",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: a room of three, a system line" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        },
+        {
+          "color" : "#00aa00",
+          "id" : "u3",
+          "name" : "Chloé",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bob joined",
+          "cost" : null,
+          "id" : "m3",
+          "role" : "system",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : null,
+          "content" : "Bonjour à tous",
+          "cost" : 0.001,
+          "id" : "m4",
+          "role" : "assistant",
+          "tools" : [
+            "web_search"
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: an empty thread" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: an unread conversation" : {
+      "active" : "c3",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c3/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+
+      ]
+    },
+    "open: gone (404)" : {
+      "active" : "c2",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: held from a garden entry" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : "books/fr/le-petit-prince",
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: not in the list yet" : {
+      "active" : "c7",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c7/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : null,
+          "content" : "Bonjour !",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "assistant",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: not JSON" : {
+      "active" : "c1",
+      "banner" : "The server's answer could not be read.",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: participants missing" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "open: server error (500)" : {
+      "active" : "c1",
+      "banner" : "[500] database is locked",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "" : ""
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/read"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "page: a short first page asks for nothing" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "p00",
+          "maurice" : null,
+          "title" : "Conv 0"
+        },
+        {
+          "id" : "p01",
+          "maurice" : null,
+          "title" : "Conv 1"
+        },
+        {
+          "id" : "p02",
+          "maurice" : null,
+          "title" : "Conv 2"
+        },
+        {
+          "id" : "p03",
+          "maurice" : null,
+          "title" : "Conv 3"
+        },
+        {
+          "id" : "p04",
+          "maurice" : null,
+          "title" : "Conv 4"
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+
+      ]
+    },
+    "page: second page fails" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "p00",
+          "maurice" : null,
+          "title" : "Conv 0"
+        },
+        {
+          "id" : "p01",
+          "maurice" : null,
+          "title" : "Conv 1"
+        },
+        {
+          "id" : "p02",
+          "maurice" : null,
+          "title" : "Conv 2"
+        },
+        {
+          "id" : "p03",
+          "maurice" : null,
+          "title" : "Conv 3"
+        },
+        {
+          "id" : "p04",
+          "maurice" : null,
+          "title" : "Conv 4"
+        },
+        {
+          "id" : "p05",
+          "maurice" : null,
+          "title" : "Conv 5"
+        },
+        {
+          "id" : "p06",
+          "maurice" : null,
+          "title" : "Conv 6"
+        },
+        {
+          "id" : "p07",
+          "maurice" : null,
+          "title" : "Conv 7"
+        },
+        {
+          "id" : "p08",
+          "maurice" : null,
+          "title" : "Conv 8"
+        },
+        {
+          "id" : "p09",
+          "maurice" : null,
+          "title" : "Conv 9"
+        },
+        {
+          "id" : "p10",
+          "maurice" : null,
+          "title" : "Conv 10"
+        },
+        {
+          "id" : "p11",
+          "maurice" : null,
+          "title" : "Conv 11"
+        },
+        {
+          "id" : "p12",
+          "maurice" : null,
+          "title" : "Conv 12"
+        },
+        {
+          "id" : "p13",
+          "maurice" : null,
+          "title" : "Conv 13"
+        },
+        {
+          "id" : "p14",
+          "maurice" : null,
+          "title" : "Conv 14"
+        },
+        {
+          "id" : "p15",
+          "maurice" : null,
+          "title" : "Conv 15"
+        },
+        {
+          "id" : "p16",
+          "maurice" : null,
+          "title" : "Conv 16"
+        },
+        {
+          "id" : "p17",
+          "maurice" : null,
+          "title" : "Conv 17"
+        },
+        {
+          "id" : "p18",
+          "maurice" : null,
+          "title" : "Conv 18"
+        },
+        {
+          "id" : "p19",
+          "maurice" : null,
+          "title" : "Conv 19"
+        },
+        {
+          "id" : "p20",
+          "maurice" : null,
+          "title" : "Conv 20"
+        },
+        {
+          "id" : "p21",
+          "maurice" : null,
+          "title" : "Conv 21"
+        },
+        {
+          "id" : "p22",
+          "maurice" : null,
+          "title" : "Conv 22"
+        },
+        {
+          "id" : "p23",
+          "maurice" : null,
+          "title" : "Conv 23"
+        },
+        {
+          "id" : "p24",
+          "maurice" : null,
+          "title" : "Conv 24"
+        },
+        {
+          "id" : "p25",
+          "maurice" : null,
+          "title" : "Conv 25"
+        },
+        {
+          "id" : "p26",
+          "maurice" : null,
+          "title" : "Conv 26"
+        },
+        {
+          "id" : "p27",
+          "maurice" : null,
+          "title" : "Conv 27"
+        },
+        {
+          "id" : "p28",
+          "maurice" : null,
+          "title" : "Conv 28"
+        },
+        {
+          "id" : "p29",
+          "maurice" : null,
+          "title" : "Conv 29"
+        },
+        {
+          "id" : "p30",
+          "maurice" : null,
+          "title" : "Conv 30"
+        },
+        {
+          "id" : "p31",
+          "maurice" : null,
+          "title" : "Conv 31"
+        },
+        {
+          "id" : "p32",
+          "maurice" : null,
+          "title" : "Conv 32"
+        },
+        {
+          "id" : "p33",
+          "maurice" : null,
+          "title" : "Conv 33"
+        },
+        {
+          "id" : "p34",
+          "maurice" : null,
+          "title" : "Conv 34"
+        },
+        {
+          "id" : "p35",
+          "maurice" : null,
+          "title" : "Conv 35"
+        },
+        {
+          "id" : "p36",
+          "maurice" : null,
+          "title" : "Conv 36"
+        },
+        {
+          "id" : "p37",
+          "maurice" : null,
+          "title" : "Conv 37"
+        },
+        {
+          "id" : "p38",
+          "maurice" : null,
+          "title" : "Conv 38"
+        },
+        {
+          "id" : "p39",
+          "maurice" : null,
+          "title" : "Conv 39"
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations",
+          "query" : {
+            "before_at" : "2026-11-11 19:00:00",
+            "before_id" : "p39",
+            "limit" : "40"
+          }
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+
+      ]
+    },
+    "page: second page full: more to come" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "p00",
+          "maurice" : null,
+          "title" : "Conv 0"
+        },
+        {
+          "id" : "p01",
+          "maurice" : null,
+          "title" : "Conv 1"
+        },
+        {
+          "id" : "p02",
+          "maurice" : null,
+          "title" : "Conv 2"
+        },
+        {
+          "id" : "p03",
+          "maurice" : null,
+          "title" : "Conv 3"
+        },
+        {
+          "id" : "p04",
+          "maurice" : null,
+          "title" : "Conv 4"
+        },
+        {
+          "id" : "p05",
+          "maurice" : null,
+          "title" : "Conv 5"
+        },
+        {
+          "id" : "p06",
+          "maurice" : null,
+          "title" : "Conv 6"
+        },
+        {
+          "id" : "p07",
+          "maurice" : null,
+          "title" : "Conv 7"
+        },
+        {
+          "id" : "p08",
+          "maurice" : null,
+          "title" : "Conv 8"
+        },
+        {
+          "id" : "p09",
+          "maurice" : null,
+          "title" : "Conv 9"
+        },
+        {
+          "id" : "p10",
+          "maurice" : null,
+          "title" : "Conv 10"
+        },
+        {
+          "id" : "p11",
+          "maurice" : null,
+          "title" : "Conv 11"
+        },
+        {
+          "id" : "p12",
+          "maurice" : null,
+          "title" : "Conv 12"
+        },
+        {
+          "id" : "p13",
+          "maurice" : null,
+          "title" : "Conv 13"
+        },
+        {
+          "id" : "p14",
+          "maurice" : null,
+          "title" : "Conv 14"
+        },
+        {
+          "id" : "p15",
+          "maurice" : null,
+          "title" : "Conv 15"
+        },
+        {
+          "id" : "p16",
+          "maurice" : null,
+          "title" : "Conv 16"
+        },
+        {
+          "id" : "p17",
+          "maurice" : null,
+          "title" : "Conv 17"
+        },
+        {
+          "id" : "p18",
+          "maurice" : null,
+          "title" : "Conv 18"
+        },
+        {
+          "id" : "p19",
+          "maurice" : null,
+          "title" : "Conv 19"
+        },
+        {
+          "id" : "p20",
+          "maurice" : null,
+          "title" : "Conv 20"
+        },
+        {
+          "id" : "p21",
+          "maurice" : null,
+          "title" : "Conv 21"
+        },
+        {
+          "id" : "p22",
+          "maurice" : null,
+          "title" : "Conv 22"
+        },
+        {
+          "id" : "p23",
+          "maurice" : null,
+          "title" : "Conv 23"
+        },
+        {
+          "id" : "p24",
+          "maurice" : null,
+          "title" : "Conv 24"
+        },
+        {
+          "id" : "p25",
+          "maurice" : null,
+          "title" : "Conv 25"
+        },
+        {
+          "id" : "p26",
+          "maurice" : null,
+          "title" : "Conv 26"
+        },
+        {
+          "id" : "p27",
+          "maurice" : null,
+          "title" : "Conv 27"
+        },
+        {
+          "id" : "p28",
+          "maurice" : null,
+          "title" : "Conv 28"
+        },
+        {
+          "id" : "p29",
+          "maurice" : null,
+          "title" : "Conv 29"
+        },
+        {
+          "id" : "p30",
+          "maurice" : null,
+          "title" : "Conv 30"
+        },
+        {
+          "id" : "p31",
+          "maurice" : null,
+          "title" : "Conv 31"
+        },
+        {
+          "id" : "p32",
+          "maurice" : null,
+          "title" : "Conv 32"
+        },
+        {
+          "id" : "p33",
+          "maurice" : null,
+          "title" : "Conv 33"
+        },
+        {
+          "id" : "p34",
+          "maurice" : null,
+          "title" : "Conv 34"
+        },
+        {
+          "id" : "p35",
+          "maurice" : null,
+          "title" : "Conv 35"
+        },
+        {
+          "id" : "p36",
+          "maurice" : null,
+          "title" : "Conv 36"
+        },
+        {
+          "id" : "p37",
+          "maurice" : null,
+          "title" : "Conv 37"
+        },
+        {
+          "id" : "p38",
+          "maurice" : null,
+          "title" : "Conv 38"
+        },
+        {
+          "id" : "p39",
+          "maurice" : null,
+          "title" : "Conv 39"
+        },
+        {
+          "id" : "r00",
+          "maurice" : null,
+          "title" : "R 0"
+        },
+        {
+          "id" : "r01",
+          "maurice" : null,
+          "title" : "R 1"
+        },
+        {
+          "id" : "r02",
+          "maurice" : null,
+          "title" : "R 2"
+        },
+        {
+          "id" : "r03",
+          "maurice" : null,
+          "title" : "R 3"
+        },
+        {
+          "id" : "r04",
+          "maurice" : null,
+          "title" : "R 4"
+        },
+        {
+          "id" : "r05",
+          "maurice" : null,
+          "title" : "R 5"
+        },
+        {
+          "id" : "r06",
+          "maurice" : null,
+          "title" : "R 6"
+        },
+        {
+          "id" : "r07",
+          "maurice" : null,
+          "title" : "R 7"
+        },
+        {
+          "id" : "r08",
+          "maurice" : null,
+          "title" : "R 8"
+        },
+        {
+          "id" : "r09",
+          "maurice" : null,
+          "title" : "R 9"
+        },
+        {
+          "id" : "r10",
+          "maurice" : null,
+          "title" : "R 10"
+        },
+        {
+          "id" : "r11",
+          "maurice" : null,
+          "title" : "R 11"
+        },
+        {
+          "id" : "r12",
+          "maurice" : null,
+          "title" : "R 12"
+        },
+        {
+          "id" : "r13",
+          "maurice" : null,
+          "title" : "R 13"
+        },
+        {
+          "id" : "r14",
+          "maurice" : null,
+          "title" : "R 14"
+        },
+        {
+          "id" : "r15",
+          "maurice" : null,
+          "title" : "R 15"
+        },
+        {
+          "id" : "r16",
+          "maurice" : null,
+          "title" : "R 16"
+        },
+        {
+          "id" : "r17",
+          "maurice" : null,
+          "title" : "R 17"
+        },
+        {
+          "id" : "r18",
+          "maurice" : null,
+          "title" : "R 18"
+        },
+        {
+          "id" : "r19",
+          "maurice" : null,
+          "title" : "R 19"
+        },
+        {
+          "id" : "r20",
+          "maurice" : null,
+          "title" : "R 20"
+        },
+        {
+          "id" : "r21",
+          "maurice" : null,
+          "title" : "R 21"
+        },
+        {
+          "id" : "r22",
+          "maurice" : null,
+          "title" : "R 22"
+        },
+        {
+          "id" : "r23",
+          "maurice" : null,
+          "title" : "R 23"
+        },
+        {
+          "id" : "r24",
+          "maurice" : null,
+          "title" : "R 24"
+        },
+        {
+          "id" : "r25",
+          "maurice" : null,
+          "title" : "R 25"
+        },
+        {
+          "id" : "r26",
+          "maurice" : null,
+          "title" : "R 26"
+        },
+        {
+          "id" : "r27",
+          "maurice" : null,
+          "title" : "R 27"
+        },
+        {
+          "id" : "r28",
+          "maurice" : null,
+          "title" : "R 28"
+        },
+        {
+          "id" : "r29",
+          "maurice" : null,
+          "title" : "R 29"
+        },
+        {
+          "id" : "r30",
+          "maurice" : null,
+          "title" : "R 30"
+        },
+        {
+          "id" : "r31",
+          "maurice" : null,
+          "title" : "R 31"
+        },
+        {
+          "id" : "r32",
+          "maurice" : null,
+          "title" : "R 32"
+        },
+        {
+          "id" : "r33",
+          "maurice" : null,
+          "title" : "R 33"
+        },
+        {
+          "id" : "r34",
+          "maurice" : null,
+          "title" : "R 34"
+        },
+        {
+          "id" : "r35",
+          "maurice" : null,
+          "title" : "R 35"
+        },
+        {
+          "id" : "r36",
+          "maurice" : null,
+          "title" : "R 36"
+        },
+        {
+          "id" : "r37",
+          "maurice" : null,
+          "title" : "R 37"
+        },
+        {
+          "id" : "r38",
+          "maurice" : null,
+          "title" : "R 38"
+        },
+        {
+          "id" : "r39",
+          "maurice" : null,
+          "title" : "R 39"
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations",
+          "query" : {
+            "before_at" : "2026-11-11 19:00:00",
+            "before_id" : "p39",
+            "limit" : "40"
+          }
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+
+      ]
+    },
+    "page: second page, a duplicate, then the end" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "p00",
+          "maurice" : null,
+          "title" : "Conv 0"
+        },
+        {
+          "id" : "p01",
+          "maurice" : null,
+          "title" : "Conv 1"
+        },
+        {
+          "id" : "p02",
+          "maurice" : null,
+          "title" : "Conv 2"
+        },
+        {
+          "id" : "p03",
+          "maurice" : null,
+          "title" : "Conv 3"
+        },
+        {
+          "id" : "p04",
+          "maurice" : null,
+          "title" : "Conv 4"
+        },
+        {
+          "id" : "p05",
+          "maurice" : null,
+          "title" : "Conv 5"
+        },
+        {
+          "id" : "p06",
+          "maurice" : null,
+          "title" : "Conv 6"
+        },
+        {
+          "id" : "p07",
+          "maurice" : null,
+          "title" : "Conv 7"
+        },
+        {
+          "id" : "p08",
+          "maurice" : null,
+          "title" : "Conv 8"
+        },
+        {
+          "id" : "p09",
+          "maurice" : null,
+          "title" : "Conv 9"
+        },
+        {
+          "id" : "p10",
+          "maurice" : null,
+          "title" : "Conv 10"
+        },
+        {
+          "id" : "p11",
+          "maurice" : null,
+          "title" : "Conv 11"
+        },
+        {
+          "id" : "p12",
+          "maurice" : null,
+          "title" : "Conv 12"
+        },
+        {
+          "id" : "p13",
+          "maurice" : null,
+          "title" : "Conv 13"
+        },
+        {
+          "id" : "p14",
+          "maurice" : null,
+          "title" : "Conv 14"
+        },
+        {
+          "id" : "p15",
+          "maurice" : null,
+          "title" : "Conv 15"
+        },
+        {
+          "id" : "p16",
+          "maurice" : null,
+          "title" : "Conv 16"
+        },
+        {
+          "id" : "p17",
+          "maurice" : null,
+          "title" : "Conv 17"
+        },
+        {
+          "id" : "p18",
+          "maurice" : null,
+          "title" : "Conv 18"
+        },
+        {
+          "id" : "p19",
+          "maurice" : null,
+          "title" : "Conv 19"
+        },
+        {
+          "id" : "p20",
+          "maurice" : null,
+          "title" : "Conv 20"
+        },
+        {
+          "id" : "p21",
+          "maurice" : null,
+          "title" : "Conv 21"
+        },
+        {
+          "id" : "p22",
+          "maurice" : null,
+          "title" : "Conv 22"
+        },
+        {
+          "id" : "p23",
+          "maurice" : null,
+          "title" : "Conv 23"
+        },
+        {
+          "id" : "p24",
+          "maurice" : null,
+          "title" : "Conv 24"
+        },
+        {
+          "id" : "p25",
+          "maurice" : null,
+          "title" : "Conv 25"
+        },
+        {
+          "id" : "p26",
+          "maurice" : null,
+          "title" : "Conv 26"
+        },
+        {
+          "id" : "p27",
+          "maurice" : null,
+          "title" : "Conv 27"
+        },
+        {
+          "id" : "p28",
+          "maurice" : null,
+          "title" : "Conv 28"
+        },
+        {
+          "id" : "p29",
+          "maurice" : null,
+          "title" : "Conv 29"
+        },
+        {
+          "id" : "p30",
+          "maurice" : null,
+          "title" : "Conv 30"
+        },
+        {
+          "id" : "p31",
+          "maurice" : null,
+          "title" : "Conv 31"
+        },
+        {
+          "id" : "p32",
+          "maurice" : null,
+          "title" : "Conv 32"
+        },
+        {
+          "id" : "p33",
+          "maurice" : null,
+          "title" : "Conv 33"
+        },
+        {
+          "id" : "p34",
+          "maurice" : null,
+          "title" : "Conv 34"
+        },
+        {
+          "id" : "p35",
+          "maurice" : null,
+          "title" : "Conv 35"
+        },
+        {
+          "id" : "p36",
+          "maurice" : null,
+          "title" : "Conv 36"
+        },
+        {
+          "id" : "p37",
+          "maurice" : null,
+          "title" : "Conv 37"
+        },
+        {
+          "id" : "p38",
+          "maurice" : null,
+          "title" : "Conv 38"
+        },
+        {
+          "id" : "p39",
+          "maurice" : null,
+          "title" : "Conv 39"
+        },
+        {
+          "id" : "q0",
+          "maurice" : null,
+          "title" : "Old 0"
+        },
+        {
+          "id" : "q1",
+          "maurice" : null,
+          "title" : "Old 1"
+        },
+        {
+          "id" : "q2",
+          "maurice" : null,
+          "title" : "Old 2"
+        },
+        {
+          "id" : "q3",
+          "maurice" : null,
+          "title" : "Old 3"
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations",
+          "query" : {
+            "before_at" : "2026-11-11 19:00:00",
+            "before_id" : "p39",
+            "limit" : "40"
+          }
+        }
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+
+      ]
+    },
+    "participants: add one" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        },
+        {
+          "color" : "#00aa00",
+          "id" : "u3",
+          "name" : "Chloé",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "member_id" : "u3"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/participants"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "participants: answer missing fields" : {
+      "active" : "c1",
+      "banner" : "The server's answer could not be read.",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "member_id" : "u3"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/participants"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "participants: refused" : {
+      "active" : "c1",
+      "banner" : "[403] Only the owner can add people",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : null,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "member_id" : "u3"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/participants"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: full row back" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Nouveau titre ✨"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : "Nouveau titre ✨"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: only id and title back" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Nouveau titre ✨"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : "Nouveau titre ✨"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: refused 403" : {
+      "active" : null,
+      "banner" : "[403] Not yours",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : "Nouveau titre ✨"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: server error" : {
+      "active" : null,
+      "banner" : "[500] boom",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : "Nouveau titre ✨"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: title null back" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Nouveau titre ✨"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : "Nouveau titre ✨"
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "rename: to empty, domain row" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : ""
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "result" : null,
+      "room" : false,
+      "sent" : [
+        {
+          "body" : {
+            "title" : ""
+          },
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2"
+        }
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "report: empty note" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : true,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "reason" : "harassment_or_bullying",
+            "target_id" : "m2",
+            "target_type" : "message"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "report: no note" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : true,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "reason" : "harassment_or_bullying",
+            "target_id" : "m2",
+            "target_type" : "message"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "report: refused" : {
+      "active" : "c1",
+      "banner" : "[429] Too many reports",
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : false,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "note" : "x",
+            "reason" : "harassment_or_bullying",
+            "target_id" : "m2",
+            "target_type" : "message"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "report: with a note" : {
+      "active" : "c1",
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+        {
+          "color" : "#aa0000",
+          "id" : "u1",
+          "name" : "Alice",
+          "role" : "owner"
+        },
+        {
+          "color" : "#0000aa",
+          "id" : "u2",
+          "name" : "Bob",
+          "role" : "member"
+        }
+      ],
+      "result" : true,
+      "room" : true,
+      "sent" : [
+        {
+          "body" : {
+            "note" : "Propos déplacés",
+            "reason" : "harassment_or_bullying",
+            "target_id" : "m2",
+            "target_type" : "message"
+          },
+          "method" : "POST",
+          "path" : "/api/conversations/c1/reports"
+        }
+      ],
+      "thread" : [
+        {
+          "author" : "u1",
+          "content" : "Salut",
+          "cost" : null,
+          "id" : "m1",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        },
+        {
+          "author" : "u2",
+          "content" : "Coucou de Bob",
+          "cost" : null,
+          "id" : "m2",
+          "role" : "user",
+          "tools" : [
+
+          ]
+        }
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: answer for another query" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "chou"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: emoji" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "🍞🥖"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+          {
+            "hits" : 1,
+            "id" : "c2",
+            "message" : "m1",
+            "snippet" : "🍞"
+          }
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: one character" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+
+      ],
+      "result" : {
+        "results" : [
+
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: reserved characters" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "a&b=c?d/e+f#g%"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+          {
+            "hits" : 1,
+            "id" : "c3",
+            "message" : "m1",
+            "snippet" : "x"
+          }
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: server error" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "chou"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: spaces and accents" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "pâte à crêpes"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: trimmed" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "soupe"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+          {
+            "hits" : 1,
+            "id" : "c1",
+            "message" : "m1",
+            "snippet" : "⟦soupe⟧"
+          }
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    },
+    "search: two hits" : {
+      "active" : null,
+      "banner" : null,
+      "entry" : null,
+      "list" : [
+        {
+          "id" : "c1",
+          "maurice" : null,
+          "title" : "Recettes"
+        },
+        {
+          "id" : "c2",
+          "maurice" : "d1",
+          "title" : "Voyage à Lisbonne"
+        },
+        {
+          "id" : "c3",
+          "maurice" : null,
+          "title" : null
+        }
+      ],
+      "participants" : [
+
+      ],
+      "reads" : [
+        {
+          "path" : "/api/conversations/search",
+          "query" : {
+            "limit" : "40",
+            "q" : "pain"
+          }
+        }
+      ],
+      "result" : {
+        "results" : [
+          {
+            "hits" : 3,
+            "id" : "c1",
+            "message" : "m1",
+            "snippet" : "du ⟦pain⟧ de mie"
+          },
+          {
+            "hits" : 1,
+            "id" : "c2",
+            "message" : null,
+            "snippet" : "⟦pain⟧ au chocolat"
+          }
+        ]
+      },
+      "room" : false,
+      "sent" : [
+
+      ],
+      "thread" : [
+
+      ],
+      "unread" : [
+        "c3"
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

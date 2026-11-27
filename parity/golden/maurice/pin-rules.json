@@ -1,0 +1,219 @@
+{
+  "domain" : "pin-rules",
+  "results" : {
+    "0000" : {
+      "tooEasy" : true
+    },
+    "000000" : {
+      "tooEasy" : true
+    },
+    "0123" : {
+      "tooEasy" : true
+    },
+    "0852" : {
+      "tooEasy" : true
+    },
+    "1004" : {
+      "tooEasy" : true
+    },
+    "1010" : {
+      "tooEasy" : true
+    },
+    "1111" : {
+      "tooEasy" : true
+    },
+    "1122" : {
+      "tooEasy" : true
+    },
+    "1212" : {
+      "tooEasy" : true
+    },
+    "1231" : {
+      "tooEasy" : false
+    },
+    "1234" : {
+      "tooEasy" : true
+    },
+    "1235" : {
+      "tooEasy" : false
+    },
+    "1313 (common)" : {
+      "tooEasy" : true
+    },
+    "1357" : {
+      "tooEasy" : false
+    },
+    "1984" : {
+      "tooEasy" : true
+    },
+    "1999" : {
+      "tooEasy" : true
+    },
+    "2000" : {
+      "tooEasy" : true
+    },
+    "2001" : {
+      "tooEasy" : true
+    },
+    "2121" : {
+      "tooEasy" : true
+    },
+    "2468" : {
+      "tooEasy" : false
+    },
+    "2580" : {
+      "tooEasy" : true
+    },
+    "2580 with a space" : {
+      "tooEasy" : false
+    },
+    "3210" : {
+      "tooEasy" : true
+    },
+    "4321 (common)" : {
+      "tooEasy" : true
+    },
+    "4545" : {
+      "tooEasy" : true
+    },
+    "6969" : {
+      "tooEasy" : true
+    },
+    "7391" : {
+      "tooEasy" : false
+    },
+    "8901 (wraps)" : {
+      "tooEasy" : false
+    },
+    "9876" : {
+      "tooEasy" : true
+    },
+    "12121 (odd length)" : {
+      "tooEasy" : false
+    },
+    "12345" : {
+      "tooEasy" : true
+    },
+    "13579" : {
+      "tooEasy" : false
+    },
+    "90210" : {
+      "tooEasy" : false
+    },
+    "98765" : {
+      "tooEasy" : true
+    },
+    "111222" : {
+      "tooEasy" : true
+    },
+    "112233" : {
+      "tooEasy" : true
+    },
+    "121212" : {
+      "tooEasy" : true
+    },
+    "123123" : {
+      "tooEasy" : true
+    },
+    "123321" : {
+      "tooEasy" : true
+    },
+    "123412" : {
+      "tooEasy" : false
+    },
+    "159753" : {
+      "tooEasy" : true
+    },
+    "456456" : {
+      "tooEasy" : true
+    },
+    "654321" : {
+      "tooEasy" : true
+    },
+    "696969" : {
+      "tooEasy" : true
+    },
+    "909090" : {
+      "tooEasy" : true
+    },
+    "999999" : {
+      "tooEasy" : true
+    },
+    "arabic-indic 0000" : {
+      "tooEasy" : true
+    },
+    "arabic-indic 0123" : {
+      "tooEasy" : true
+    },
+    "arabic-indic 3827" : {
+      "tooEasy" : false
+    },
+    "circled digits" : {
+      "tooEasy" : true
+    },
+    "devanagari 1234" : {
+      "tooEasy" : true
+    },
+    "eight digits, a run" : {
+      "tooEasy" : true
+    },
+    "eight digits, repeated" : {
+      "tooEasy" : true
+    },
+    "empty" : {
+      "tooEasy" : false
+    },
+    "five same, one off" : {
+      "tooEasy" : false
+    },
+    "fullwidth 1234" : {
+      "tooEasy" : true
+    },
+    "fullwidth 7391" : {
+      "tooEasy" : false
+    },
+    "leading newline" : {
+      "tooEasy" : false
+    },
+    "letter inside" : {
+      "tooEasy" : false
+    },
+    "mathematical bold 1234" : {
+      "tooEasy" : true
+    },
+    "minus sign" : {
+      "tooEasy" : false
+    },
+    "mixed scripts 12٣4" : {
+      "tooEasy" : true
+    },
+    "one digit" : {
+      "tooEasy" : false
+    },
+    "roman numeral" : {
+      "tooEasy" : true
+    },
+    "seven digits, a run" : {
+      "tooEasy" : true
+    },
+    "space inside" : {
+      "tooEasy" : false
+    },
+    "superscript digits" : {
+      "tooEasy" : true
+    },
+    "three digits" : {
+      "tooEasy" : false
+    },
+    "trailing space" : {
+      "tooEasy" : false
+    },
+    "vulgar fraction" : {
+      "tooEasy" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "domain": "session-receive",
+  "about": "An invitation taken from a scan or a link: the household it pairs (or re-selects), how it is named and coloured once /api/health answers, and who is left signed in. `{base}` is the fake household's address. `paired`: the device already holds this household with u1 signed in.",
+  "ios": "Maurice/Services/SessionStore.swift — SessionStore.receive (and the refreshFoyers it starts)",
+  "android": "core/session/Session.kt — Session.receive",
+  "cases": [
+    { "name": "blank device, household answers", "input": { "link": "{base}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous", "household_color": "#aa3300", "household_icon": "leaf", "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } } ] },
+    { "name": "blank device, household silent", "input": { "link": "{base}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "status": 503, "json": { "error": "down" } } ] },
+    { "name": "blank device, household starting", "input": { "link": "{base}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "starting", "version": "1.0", "setup_complete": true, "household": "Chez nous" } } ] },
+    { "name": "blank device, health without version", "input": { "link": "{base}/join?code=ABCD1234" },
+      "accepted": { "kind": "lenient", "why": "Android reads an /api/health answer without version (and setup_complete) that iOS's HealthResponse rejects whole; lenient decoding kept on purpose (11 November 2026)." },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "household": "Chez nous" } } ] },
+    { "name": "blank device, empty household name", "input": { "link": "{base}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "" } } ] },
+    { "name": "app link on a blank device", "input": { "link": "maurice://join?server={base}&code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } } ] },
+    { "name": "already paired and signed in", "input": { "paired": true, "link": "{base}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous", "household_color": "#aa3300" } },
+                  { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "already paired, address spelt with a trailing slash", "input": { "paired": true, "link": "maurice://join?server={base}/&code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } },
+                  { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] },
+    { "name": "already paired, another spelling of the address", "input": { "paired": true, "link": "{localhost}/join?code=ABCD1234" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "household": "Chez nous" } },
+                  { "method": "GET", "path": "/api/users/me/unread", "json": { "unread": 0 } } ] }
+  ]
+}

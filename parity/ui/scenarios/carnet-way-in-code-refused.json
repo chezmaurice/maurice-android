@@ -1,0 +1,73 @@
+{
+  "name": "carnet-way-in-code-refused",
+  "app": "carnet",
+  "about": "A code the household refuses (401 « Invalid or expired code »): the member stays outside and is told.",
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "json": {
+        "status": "ok",
+        "version": "1.0.0",
+        "setup_complete": true,
+        "household": "Les Tilleuls",
+        "household_color": "#4a7c59",
+        "household_icon": "leaf"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/enroll",
+      "status": 401,
+      "json": {
+        "error": "Invalid or expired code"
+      }
+    }
+  ],
+  "steps": [
+    {
+      "see": "Enter a code or an address"
+    },
+    {
+      "tap": "Enter a code or an address"
+    },
+    {
+      "tap": "XXXX-XXXX or myhome.chezmaurice.eu"
+    },
+    {
+      "type": "ABCD-EFGH"
+    },
+    {
+      "tap": "Connect"
+    },
+    {
+      "see": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "checkpoint": "the address asked"
+    },
+    {
+      "tap": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "type": "{base}"
+    },
+    {
+      "tap": "Connect",
+      "pause": 3
+    },
+    {
+      "checkpoint": "refused",
+      "accepted": {
+        "kind": "wire",
+        "why": "The way in, as the household sees it, is the same: Android sends the code as the server reads it (ABCDEFGH; the server normalises ABCD-EFGH alike), checks /api/health once where iOS checks it twice, asks /api/dictation at sign-in, and loads the shelf once the notice is accepted where iOS loads it behind the notice — the same requests, across two checkpoints."
+      }
+    }
+  ]
+}

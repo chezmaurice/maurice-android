@@ -1,0 +1,70 @@
+{
+ "domain": "shelf-browser-connect",
+ "about": "« Connect a browser » (90b027d, c7420ef): the device code asked for, the link the browser's extension is given, its state watched, the time left as written.",
+ "ios": "Shared/CarnetAPI.swift — deviceCode, deviceCodeState; CarnetApp/Services/Invitation.swift — link; CarnetApp/Views/Entry/AddDeviceSheet.swift — remaining",
+ "android": "core/settings/SettingsApi.kt — ownDeviceCode, ownDeviceCodeState; carnet/shelf/BrowserConnect.kt — deviceLink, remaining",
+ "cases": [
+  {
+   "name": "a code",
+   "input": {"call": "code"},
+   "routes": [
+    {"method": "POST", "path": "/api/me/device-code", "json": {"code": "ABCD2345", "expires_at": "2026-11-11T10:10:00.000Z"}}
+   ]
+  },
+  {
+   "name": "a code with its dash, lower case",
+   "input": {"call": "code"},
+   "routes": [
+    {"method": "POST", "path": "/api/me/device-code", "json": {"code": "abcd-2345", "expires_at": "2026-11-11T10:10:00Z"}}
+   ]
+  },
+  {
+   "name": "a code refused",
+   "input": {"call": "code"},
+   "routes": [
+    {"method": "POST", "path": "/api/me/device-code", "status": 403, "json": {"error": "Guests cannot add a device."}}
+   ]
+  },
+  {
+   "name": "the code watched: pending",
+   "input": {"call": "state", "code": "ABCD2345"},
+   "routes": [
+    {"method": "GET", "path": "/api/me/device-code/ABCD2345", "json": {"state": "pending"}}
+   ]
+  },
+  {
+   "name": "the code watched: used",
+   "input": {"call": "state", "code": "ABCD2345"},
+   "routes": [
+    {"method": "GET", "path": "/api/me/device-code/ABCD2345", "json": {"state": "used"}}
+   ]
+  },
+  {
+   "name": "the code watched: unreadable",
+   "input": {"call": "state", "code": "ABCD2345"},
+   "routes": [
+    {"method": "GET", "path": "/api/me/device-code/ABCD2345", "status": 500, "text": "oops"}
+   ]
+  },
+  {
+   "name": "time left: four minutes and a half",
+   "input": {"call": "remaining", "expiresAt": "2026-11-11T10:10:00Z", "now": 1794391528}
+  },
+  {
+   "name": "time left: with milliseconds",
+   "input": {"call": "remaining", "expiresAt": "2026-11-11T10:10:00.500Z", "now": 1794391795}
+  },
+  {
+   "name": "time left: over",
+   "input": {"call": "remaining", "expiresAt": "2026-11-11T10:10:00Z", "now": 1794391900}
+  },
+  {
+   "name": "time left: more than an hour",
+   "input": {"call": "remaining", "expiresAt": "2026-11-11T12:10:00Z", "now": 1794391528}
+  },
+  {
+   "name": "time left: unreadable",
+   "input": {"call": "remaining", "expiresAt": "tomorrow", "now": 1794391528}
+  }
+ ]
+}

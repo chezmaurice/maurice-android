@@ -1,0 +1,75 @@
+{
+  "domain" : "shelf-session-refused",
+  "results" : {
+    "the list answered" : {
+      "activeMember" : "u1",
+      "exchange" : {
+        "requests" : [
+          {
+            "auth" : "Bearer tok-u1",
+            "body" : null,
+            "contentType" : null,
+            "method" : "GET",
+            "path" : "/api/v1/garden/entries",
+            "query" : {
+              "view" : "shelf"
+            }
+          }
+        ],
+        "result" : [
+
+        ]
+      },
+      "households" : 1,
+      "signedIn" : true
+    },
+    "the list answered 401" : {
+      "activeMember" : null,
+      "exchange" : {
+        "requests" : [
+          {
+            "auth" : "Bearer tok-u1",
+            "body" : null,
+            "contentType" : null,
+            "method" : "GET",
+            "path" : "/api/v1/garden/entries",
+            "query" : {
+              "view" : "shelf"
+            }
+          }
+        ],
+        "result" : {
+          "failed" : "server: session revoked"
+        }
+      },
+      "households" : 1,
+      "signedIn" : false
+    },
+    "the list answered 403" : {
+      "activeMember" : "u1",
+      "exchange" : {
+        "requests" : [
+          {
+            "auth" : "Bearer tok-u1",
+            "body" : null,
+            "contentType" : null,
+            "method" : "GET",
+            "path" : "/api/v1/garden/entries",
+            "query" : {
+              "view" : "shelf"
+            }
+          }
+        ],
+        "result" : {
+          "failed" : "server: forbidden"
+        }
+      },
+      "households" : 1,
+      "signedIn" : true
+    }
+  },
+  "source" : {
+    "commit" : "2bd7128",
+    "repo" : "carnet"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "domain": "conversation-list",
+  "about": "The member's conversations as the app first loads them: the request, and the list it keeps.",
+  "ios": "ChatService.loadConversations()",
+  "android": "ChatController.loadConversations()",
+  "cases": [
+    {
+      "name": "two conversations",
+      "routes": [
+        { "method": "GET", "path": "/api/conversations", "json": [
+          { "id": "c2", "title": "Recettes", "created_at": "2026-11-01 09:00:00", "updated_at": "2026-11-10 18:30:00", "unread": true },
+          { "id": "c1", "title": null, "created_at": "2026-10-01 09:00:00", "updated_at": "2026-10-02 10:00:00" }
+        ] },
+        { "method": "GET", "path": "/api/domain-proposals*", "json": { "proposals": [], "settled": [] } }
+      ]
+    },
+    {
+      "name": "empty",
+      "routes": [
+        { "method": "GET", "path": "/api/conversations", "json": [] },
+        { "method": "GET", "path": "/api/domain-proposals*", "json": { "proposals": [], "settled": [] } }
+      ]
+    },
+    {
+      "name": "server error",
+      "routes": [
+        { "method": "GET", "path": "/api/conversations", "status": 500, "json": { "error": "boom" } }
+      ]
+    }
+  ]
+}

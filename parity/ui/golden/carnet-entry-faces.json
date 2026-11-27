@@ -1,0 +1,114 @@
+{
+  "checkpoints": [
+    {
+      "name": "the notes side",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/conversations",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2026-08-20",
+        "Add a note",
+        "Add a note…",
+        "Ask Maurice about this",
+        "Back",
+        "Carnet",
+        "Film · Chris Marker",
+        "La mémoire, encore.",
+        "Les images du Japon.",
+        "Lock",
+        "More",
+        "NOTE · 2026-10-18",
+        "NOTE · 2026-10-19",
+        "ONLY YOU · 2 NOTES",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share with someone",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "quote.opening"
+      ]
+    },
+    {
+      "name": "the card side",
+      "requests": [],
+      "texts": [
+        "0%",
+        "2 NOTES",
+        "2026-08-20",
+        "Back",
+        "Carnet",
+        "Edit",
+        "Film · Chris Marker",
+        "More",
+        "Open",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share the card",
+        "Share with someone",
+        "Turn over",
+        "Un film qui se souvient.",
+        "Unpublish",
+        "Vertical scroll bar, 1 page",
+        "alice.example/sans-soleil",
+        "arrow.up.right"
+      ]
+    },
+    {
+      "name": "the menu",
+      "requests": [],
+      "texts": [
+        "0%",
+        "2 NOTES",
+        "2026-08-20",
+        "Back",
+        "Carnet",
+        "Copy Obsidian link",
+        "Edit",
+        "Edit in Working Copy",
+        "Film · Chris Marker",
+        "Horizontal scroll bar, 1 page",
+        "More",
+        "Open",
+        "Open in Obsidian",
+        "Open in the browser",
+        "PUBLISHED",
+        "Refresh details",
+        "S",
+        "Sans soleil",
+        "Share the card",
+        "Share with someone",
+        "Turn over",
+        "Un film qui se souvient.",
+        "Unpublish",
+        "Vertical scroll bar, 1 page",
+        "alice.example/sans-soleil",
+        "arrow.up.right",
+        "compose",
+        "diamond",
+        "document.on.document",
+        "hide",
+        "refresh",
+        "safari"
+      ]
+    }
+  ],
+  "failures": []
+}

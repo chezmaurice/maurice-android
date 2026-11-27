@@ -1,0 +1,40 @@
+{
+  "name": "carnet-entry-faces",
+  "app": "carnet",
+  "about": "An entry opened: its notes, turned over to its card, the ⋯ menu.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "Sans soleil"
+    },
+    {
+      "see": "Les images du Japon."
+    },
+    {
+      "checkpoint": "the notes side"
+    },
+    {
+      "tap": "Turn over"
+    },
+    {
+      "see": "Un film qui se souvient."
+    },
+    {
+      "checkpoint": "the card side"
+    },
+    {
+      "tap": "More"
+    },
+    {
+      "see": "Refresh details"
+    },
+    {
+      "checkpoint": "the menu"
+    }
+  ]
+}

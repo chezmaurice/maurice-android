@@ -1,0 +1,817 @@
+{
+ "domain": "settings-reports",
+ "about": "Reporting (a room's message or member, a reply of Maurice's) and the admin's queue of open reports: what is sent, what the admin sees, the reasons offered and their labels.",
+ "ios": "Services/ChatService.swift — report, loadOpenReports, actionReport, dismissReport; ReportReason, AIReplyReason (label), ReportView",
+ "android": "core/chat/ChatController.report → ChatApi.report; core/settings/Reports.kt — ReportsApi; maurice/chat/Details.kt REASONS / AI_REASONS with strings report.reason.* / report.ai.reason.*",
+ "cases": [
+  {
+   "name": "queue: child safety first, then a reply of Maurice's, then a member",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r1",
+       "room_id": "room1",
+       "target_type": "message",
+       "target_id": "m1",
+       "reason": "child_safety",
+       "note": "Il dit avoir 12 ans",
+       "status": "open",
+       "created_at": "2026-11-10 10:00:00",
+       "reporter_display_name": "Bob",
+       "room_title": "Famille",
+       "reported_message": {
+        "id": "m1",
+        "content": "Envoie-moi une photo",
+        "author_id": "u3",
+        "created_at": "2026-11-10 09:59:00"
+       },
+       "reported_member": null,
+       "reported_question": null
+      },
+      {
+       "id": "a1",
+       "room_id": "c9",
+       "target_type": "ai_reply",
+       "target_id": "m9",
+       "reason": "harmful_or_misleading",
+       "note": null,
+       "status": "open",
+       "created_at": "2026-11-10 11:00:00",
+       "reporter_display_name": "Alice",
+       "room_title": null,
+       "reported_message": {
+        "id": "m9",
+        "content": "Prenez 4 g de paracétamol.",
+        "author_id": null,
+        "created_at": "2026-11-10 11:00:00"
+       },
+       "reported_member": null,
+       "reported_question": "Combien de paracétamol ?"
+      },
+      {
+       "id": "r2",
+       "room_id": "room1",
+       "target_type": "member",
+       "target_id": "u3",
+       "reason": "spam",
+       "note": "",
+       "status": "open",
+       "created_at": "2026-11-09 08:00:00",
+       "reporter_display_name": null,
+       "room_title": "Famille",
+       "reported_message": null,
+       "reported_member": {
+        "id": "u3",
+        "display_name": "Eve",
+        "username": "eve"
+       },
+       "reported_question": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: server order kept as given (spam before child safety)",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r2",
+       "room_id": "room1",
+       "target_type": "member",
+       "target_id": "u3",
+       "reason": "spam",
+       "note": "",
+       "status": "open",
+       "created_at": "2026-11-09 08:00:00",
+       "reporter_display_name": null,
+       "room_title": "Famille",
+       "reported_message": null,
+       "reported_member": {
+        "id": "u3",
+        "display_name": "Eve",
+        "username": "eve"
+       },
+       "reported_question": null
+      },
+      {
+       "id": "r1",
+       "room_id": "room1",
+       "target_type": "message",
+       "target_id": "m1",
+       "reason": "child_safety",
+       "note": "Il dit avoir 12 ans",
+       "status": "open",
+       "created_at": "2026-11-10 10:00:00",
+       "reporter_display_name": "Bob",
+       "room_title": "Famille",
+       "reported_message": {
+        "id": "m1",
+        "content": "Envoie-moi une photo",
+        "author_id": "u3",
+        "created_at": "2026-11-10 09:59:00"
+       },
+       "reported_member": null,
+       "reported_question": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: empty",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": []
+    }
+   ]
+  },
+  {
+   "name": "queue: a reply's report without room_id",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r1",
+       "room_id": "room1",
+       "target_type": "message",
+       "target_id": "m1",
+       "reason": "child_safety",
+       "note": "Il dit avoir 12 ans",
+       "status": "open",
+       "created_at": "2026-11-10 10:00:00",
+       "reporter_display_name": "Bob",
+       "room_title": "Famille",
+       "reported_message": {
+        "id": "m1",
+        "content": "Envoie-moi une photo",
+        "author_id": "u3",
+        "created_at": "2026-11-10 09:59:00"
+       },
+       "reported_member": null,
+       "reported_question": null
+      },
+      {
+       "id": "a1",
+       "room_id": null,
+       "target_type": "ai_reply",
+       "target_id": "m9",
+       "reason": "harmful_or_misleading",
+       "note": null,
+       "status": "open",
+       "created_at": "2026-11-10 11:00:00",
+       "reporter_display_name": "Alice",
+       "room_title": null,
+       "reported_message": {
+        "id": "m9",
+        "content": "Prenez 4 g de paracétamol.",
+        "author_id": null,
+        "created_at": "2026-11-10 11:00:00"
+       },
+       "reported_member": null,
+       "reported_question": "Combien de paracétamol ?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: reported message without created_at",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r1",
+       "room_id": "room1",
+       "target_type": "message",
+       "target_id": "m1",
+       "reason": "child_safety",
+       "note": "Il dit avoir 12 ans",
+       "status": "open",
+       "created_at": "2026-11-10 10:00:00",
+       "reporter_display_name": "Bob",
+       "room_title": "Famille",
+       "reported_message": {
+        "id": "m1",
+        "content": "Envoie-moi une photo",
+        "author_id": "u3"
+       },
+       "reported_member": null,
+       "reported_question": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: a report with only id, target_type, reason",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r5",
+       "target_type": "message",
+       "reason": "spam"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: unknown reason and target type",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r6",
+       "room_id": "room1",
+       "target_type": "room",
+       "target_id": "u3",
+       "reason": "impersonation",
+       "note": "",
+       "status": "open",
+       "created_at": "2026-11-09 08:00:00",
+       "reporter_display_name": null,
+       "room_title": "Famille",
+       "reported_message": null,
+       "reported_member": {
+        "id": "u3",
+        "display_name": "Eve",
+        "username": "eve"
+       },
+       "reported_question": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: Unicode and long text",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": [
+      {
+       "id": "r1",
+       "room_id": "room1",
+       "target_type": "message",
+       "target_id": "m1",
+       "reason": "child_safety",
+       "note": "« Ça suffit » 👶🏽 très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long très long ",
+       "status": "open",
+       "created_at": "2026-11-10 10:00:00",
+       "reporter_display_name": "Bob",
+       "room_title": "Famille",
+       "reported_message": {
+        "id": "m1",
+        "content": "مرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\nمرحبا 你好 ‍\n",
+        "author_id": "u3",
+        "created_at": "2026-11-10 09:59:00"
+       },
+       "reported_member": null,
+       "reported_question": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "queue: 403 not the admin",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": {
+      "error": "Admin only"
+     },
+     "status": 403
+    }
+   ]
+  },
+  {
+   "name": "queue: 500",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "queue: malformed JSON",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "text": "[{\"id\":",
+     "headers": {
+      "content-type": "application/json"
+     }
+    }
+   ]
+  },
+  {
+   "name": "queue: an object instead of a list",
+   "input": {
+    "kind": "queue"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/reports",
+     "json": {
+      "reports": [
+       {
+        "id": "r1",
+        "room_id": "room1",
+        "target_type": "message",
+        "target_id": "m1",
+        "reason": "child_safety",
+        "note": "Il dit avoir 12 ans",
+        "status": "open",
+        "created_at": "2026-11-10 10:00:00",
+        "reporter_display_name": "Bob",
+        "room_title": "Famille",
+        "reported_message": {
+         "id": "m1",
+         "content": "Envoie-moi une photo",
+         "author_id": "u3",
+         "created_at": "2026-11-10 09:59:00"
+        },
+        "reported_member": null,
+        "reported_question": null
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "name": "act: remove the message",
+   "input": {
+    "id": "r1",
+    "remove": true,
+    "eject": false,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/action",
+     "json": {
+      "id": "r1",
+      "reporter_member_id": "u1",
+      "room_id": "room1",
+      "target_type": "message",
+      "target_id": "m1",
+      "reason": "child_safety",
+      "note": null,
+      "status": "actioned",
+      "created_at": "2026-11-10 10:00:00"
+     }
+    }
+   ]
+  },
+  {
+   "name": "act: eject the member",
+   "input": {
+    "id": "r2",
+    "remove": false,
+    "eject": true,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r2/action",
+     "json": {
+      "id": "r2",
+      "reporter_member_id": "u1",
+      "room_id": "room1",
+      "target_type": "message",
+      "target_id": "m1",
+      "reason": "child_safety",
+      "note": null,
+      "status": "actioned",
+      "created_at": "2026-11-10 10:00:00"
+     }
+    }
+   ]
+  },
+  {
+   "name": "act: mark a reply handled",
+   "input": {
+    "id": "a1",
+    "remove": false,
+    "eject": false,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/a1/action",
+     "json": {
+      "id": "a1",
+      "reporter_member_id": "u1",
+      "room_id": "c9",
+      "target_type": "ai_reply",
+      "target_id": "m1",
+      "reason": "child_safety",
+      "note": null,
+      "status": "actioned",
+      "created_at": "2026-11-10 10:00:00"
+     }
+    }
+   ]
+  },
+  {
+   "name": "act: both at once",
+   "input": {
+    "id": "r1",
+    "remove": true,
+    "eject": true,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/action",
+     "json": {
+      "id": "r1",
+      "reporter_member_id": "u1",
+      "room_id": "room1",
+      "target_type": "message",
+      "target_id": "m1",
+      "reason": "child_safety",
+      "note": null,
+      "status": "actioned",
+      "created_at": "2026-11-10 10:00:00"
+     }
+    }
+   ]
+  },
+  {
+   "name": "act: answer is {ok: true}",
+   "input": {
+    "id": "r1",
+    "remove": true,
+    "eject": false,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/action",
+     "json": {
+      "ok": true
+     }
+    }
+   ],
+   "accepted": { "kind": "lenient", "why": "Android does not read the action's answer; iOS decodes it as a ReportView (the server sends one) and calls {ok: true} a failure." }
+  },
+  {
+   "name": "act: 404 not found",
+   "input": {
+    "id": "zz",
+    "remove": true,
+    "eject": false,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/zz/action",
+     "json": {
+      "error": "Not found"
+     },
+     "status": 404
+    }
+   ]
+  },
+  {
+   "name": "act: 500",
+   "input": {
+    "id": "r1",
+    "remove": false,
+    "eject": true,
+    "kind": "act"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/action",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "dismiss: ok",
+   "input": {
+    "id": "r1",
+    "kind": "dismiss"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/dismiss",
+     "json": {
+      "id": "r1",
+      "reporter_member_id": "u1",
+      "room_id": "room1",
+      "target_type": "message",
+      "target_id": "m1",
+      "reason": "child_safety",
+      "note": null,
+      "status": "dismissed",
+      "created_at": "2026-11-10 10:00:00"
+     }
+    }
+   ]
+  },
+  {
+   "name": "dismiss: answer is {}",
+   "input": {
+    "id": "r1",
+    "kind": "dismiss"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/r1/dismiss",
+     "json": {}
+    }
+   ],
+   "accepted": { "kind": "lenient", "why": "Android does not read the dismissal's answer; iOS decodes it as a ReportView (the server sends one) and calls {} a failure." }
+  },
+  {
+   "name": "dismiss: 404",
+   "input": {
+    "id": "zz",
+    "kind": "dismiss"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/reports/zz/dismiss",
+     "json": {
+      "error": "Not found"
+     },
+     "status": 404
+    }
+   ]
+  },
+  {
+   "name": "report: a message, spam, with a note",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "spam",
+    "note": "Pub en boucle"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: a message, no note (null)",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "harassment_or_bullying",
+    "note": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: a message, empty note",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "sexual_content",
+    "note": ""
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: a message, blank note",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "other",
+    "note": "   "
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: child safety",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "child_safety",
+    "note": "Il a 12 ans 👶"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: a member",
+   "input": {
+    "kind": "report",
+    "targetType": "member",
+    "targetId": "u3",
+    "reason": "spam",
+    "note": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: a reply of Maurice's",
+   "input": {
+    "kind": "report",
+    "targetType": "ai_reply",
+    "targetId": "m9",
+    "reason": "harmful_or_misleading",
+    "note": "Dose dangereuse"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "report: server answers {}",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "spam",
+    "note": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {}
+    }
+   ]
+  },
+  {
+   "name": "report: 403 not in the room",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "spam",
+    "note": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "error": "Not a participant"
+     },
+     "status": 403
+    }
+   ]
+  },
+  {
+   "name": "report: 500",
+   "input": {
+    "kind": "report",
+    "targetType": "message",
+    "targetId": "m1",
+    "reason": "spam",
+    "note": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/conversations/c1/reports",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "reasons offered and their labels",
+   "input": {
+    "kind": "reasons"
+   }
+  }
+ ]
+}

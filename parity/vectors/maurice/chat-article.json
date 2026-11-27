@@ -1,0 +1,304 @@
+{
+ "domain": "chat-article",
+ "about": "A page shared from another app becomes an article card in the composer: what is asked of the server, and the card (and the block sent) it gives — read in full, or just its title and address.",
+ "ios": "Maurice/Services/SharedArticles.swift — ChatService.readSharedArticle",
+ "android": "ChatController.readArticle (ChatApi.readArticle)",
+ "cases": [
+  {
+   "name": "read in full",
+   "input": {
+    "url": "https://www.lemonde.fr/a.html",
+    "title": "Le titre de la page"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "no title from the server",
+   "input": {
+    "url": "https://www.lemonde.fr/a.html",
+    "title": "Le titre de la page"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "no title anywhere",
+   "input": {
+    "url": "https://www.lemonde.fr/a.html",
+    "title": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "canonical address differs",
+   "input": {
+    "url": "https://lemonde.fr/a.html?utm_source=x",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "empty address back",
+   "accepted": {"kind": "latent", "why": "the server answers the address it was sent (articleRead.ts returns its input url, never empty); Android keeps the shared address, iOS would take the empty one"},
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "a date only",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "no date",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "author null",
+   "accepted": {"kind": "lenient", "why": "author null in the answer: Android reads the article, iOS rejects it and keeps a bare link"},
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": null,
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  },
+  {
+   "name": "fields missing",
+   "accepted": {"kind": "lenient", "why": "fields missing from the answer: Android reads what is there, iOS rejects it and keeps a bare link"},
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://example.org/p",
+      "title": "Seul titre",
+      "text": "Corps"
+     }
+    }
+   ]
+  },
+  {
+   "name": "no text",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Le titre du journal",
+      "site_name": "Le Monde",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": ""
+     }
+    }
+   ]
+  },
+  {
+   "name": "refused 422",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "Titre partagé"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "error": "no readable text"
+     },
+     "status": 422
+    }
+   ]
+  },
+  {
+   "name": "refused 422, no title",
+   "input": {
+    "url": "https://example.org/p",
+    "title": null
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "error": "no readable text"
+     },
+     "status": 422
+    }
+   ]
+  },
+  {
+   "name": "server error",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "Titre partagé"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "error": "boom"
+     },
+     "status": 500
+    }
+   ]
+  },
+  {
+   "name": "not JSON",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "Titre partagé"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "text": "<html>oops</html>"
+    }
+   ]
+  },
+  {
+   "name": "newline in title",
+   "input": {
+    "url": "https://example.org/p",
+    "title": "T"
+   },
+   "routes": [
+    {
+     "method": "POST",
+     "path": "/api/v1/articles/read",
+     "json": {
+      "url": "https://www.lemonde.fr/a.html",
+      "title": "Deux\nlignes",
+      "site_name": " Site ",
+      "author": "A. Dupont",
+      "published_at": "2026-11-01T08:30:00.000Z",
+      "text": "Premier paragraphe.\n\nSecond paragraphe, plus long."
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+  "domain" : "session-invitation",
+  "results" : {
+    "app link, bare host" : {
+      "code" : "ABCD-EFGH",
+      "link" : "https://maison.example/join?code=ABCD-EFGH",
+      "server" : "https://maison.example"
+    },
+    "app link, empty server" : null,
+    "app link, encoded https server with slash" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "app link, http server with port" : {
+      "code" : "ABCD1234",
+      "link" : "http://192.168.1.10:3000/join?code=ABCD1234",
+      "server" : "http://192.168.1.10:3000"
+    },
+    "app link, no code" : null,
+    "app link, no server" : null,
+    "app link, other host" : null,
+    "app link, path form" : null,
+    "app link, server with a path" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/sub/join?code=ABCD1234",
+      "server" : "https://maison.example/sub"
+    },
+    "app link, server with trailing space" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "app link, server with uppercase scheme" : {
+      "code" : "ABCD1234",
+      "link" : "HTTPS://maison.example/join?code=ABCD1234",
+      "server" : "HTTPS://maison.example"
+    },
+    "app link, uppercase host" : null,
+    "app link, uppercase scheme" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "bare address" : null,
+    "bare code" : null,
+    "Carnet's app link" : null,
+    "conversation link" : null,
+    "empty" : null,
+    "ftp link" : null,
+    "QR link" : {
+      "code" : "ABCD-EFGH",
+      "link" : "https://maison.example/join?code=ABCD-EFGH",
+      "server" : "https://maison.example"
+    },
+    "QR link inside a sentence" : null,
+    "QR link without a scheme" : null,
+    "QR link, accented code" : {
+      "code" : "café1234",
+      "link" : "https://maison.example/join?code=caf%C3%A91234",
+      "server" : "https://maison.example"
+    },
+    "QR link, code after another parameter, percent-encoded dash" : {
+      "code" : "ABCD-EFGH",
+      "link" : "https://maison.example/join?code=ABCD-EFGH",
+      "server" : "https://maison.example"
+    },
+    "QR link, code in the fragment" : null,
+    "QR link, code with a space" : {
+      "code" : "ABCD 1234",
+      "link" : "https://maison.example/join?code=ABCD%201234",
+      "server" : "https://maison.example"
+    },
+    "QR link, code with punctuation" : {
+      "code" : "AB.CD_EF!",
+      "link" : "https://maison.example/join?code=AB.CD_EF!",
+      "server" : "https://maison.example"
+    },
+    "QR link, code without dash" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "QR link, credentials in the URL" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "QR link, deeper path" : null,
+    "QR link, empty code" : null,
+    "QR link, explicit default http port" : {
+      "code" : "ABCD1234",
+      "link" : "http://maison.example:80/join?code=ABCD1234",
+      "server" : "http://maison.example:80"
+    },
+    "QR link, explicit default https port" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example:443/join?code=ABCD1234",
+      "server" : "https://maison.example:443"
+    },
+    "QR link, http with port" : {
+      "code" : "ABCD1234",
+      "link" : "http://192.168.1.10:3000/join?code=ABCD1234",
+      "server" : "http://192.168.1.10:3000"
+    },
+    "QR link, IDN host" : {
+      "code" : "ABCD1234",
+      "link" : "https://xn--mnchen-3ya.example/join?code=ABCD1234",
+      "server" : "https://münchen.example"
+    },
+    "QR link, IPv6 host" : {
+      "code" : "ABCD1234",
+      "link" : "http://[::1]:8080/join?code=ABCD1234",
+      "server" : "http://[::1]:8080"
+    },
+    "QR link, lowercase code" : {
+      "code" : "abcd-efgh",
+      "link" : "https://maison.example/join?code=abcd-efgh",
+      "server" : "https://maison.example"
+    },
+    "QR link, no code" : null,
+    "QR link, surrounded by whitespace" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "QR link, trailing slash on /join" : null,
+    "QR link, two codes" : {
+      "code" : "ABCD1234",
+      "link" : "https://maison.example/join?code=ABCD1234",
+      "server" : "https://maison.example"
+    },
+    "QR link, uppercase path" : null,
+    "QR link, uppercase scheme and host" : {
+      "code" : "ABCD1234",
+      "link" : "https://Maison.Example/join?code=ABCD1234",
+      "server" : "https://Maison.Example"
+    },
+    "two links on two lines" : {
+      "code" : "ABCD1234\nhttps://other.example/join?code=ZZZZ9999",
+      "link" : "https://maison.example/join?code=ABCD1234%0Ahttps://other.example/join?code%3DZZZZ9999",
+      "server" : "https://maison.example"
+    },
+    "whitespace only" : null
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

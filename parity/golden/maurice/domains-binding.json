@@ -1,0 +1,279 @@
+{
+  "domain" : "domains-binding",
+  "results" : {
+    "204" : {
+      "error" : true,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d1"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "a conversation not in the list" : {
+      "error" : false,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d1"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c9/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "answer ok false" : {
+      "error" : false,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d1"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : "d1",
+          "id" : "c2"
+        }
+      ]
+    },
+    "answer without ok" : {
+      "error" : true,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d1"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "bind to a domain" : {
+      "error" : false,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d1"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : "d1",
+          "id" : "c2"
+        }
+      ]
+    },
+    "not the member's domain (403)" : {
+      "error" : true,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "dX"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c2/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "rebind to another domain" : {
+      "error" : false,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : "d2"
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : null,
+          "domain" : "d2",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "server error" : {
+      "error" : true,
+      "ok" : false,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : null
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : "auto",
+          "domain" : "d1",
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    },
+    "take out of the night's domain (explicit null)" : {
+      "error" : false,
+      "ok" : true,
+      "requests" : [
+        {
+          "auth" : "Bearer tok-u1",
+          "body" : {
+            "maurice_id" : null
+          },
+          "contentType" : "application/json",
+          "method" : "PATCH",
+          "path" : "/api/conversations/c1/maurice",
+          "query" : {
+
+          }
+        }
+      ],
+      "rows" : [
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c1"
+        },
+        {
+          "boundBy" : null,
+          "domain" : null,
+          "id" : "c2"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

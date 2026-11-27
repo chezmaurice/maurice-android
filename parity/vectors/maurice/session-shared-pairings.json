@@ -1,0 +1,27 @@
+{
+  "domain": "session-shared-pairings",
+  "about": "The households the Maurice app and Carnet share: how the pairings two apps held are joined the first time (SharedPairings.absorb), and which household is the same one.",
+  "ios": "Maurice/Services/SharedPairings.swift — absorb, same",
+  "android": "core/session/SharedPairings.kt — absorb, same",
+  "cases": [
+    { "name": "nothing on either side", "input": { "mine": { "households": [] }, "theirs": { "households": [] } } },
+    { "name": "only the other knows a household", "input": {
+      "mine": { "households": [] },
+      "theirs": { "households": [ { "server": "https://a.test", "key": "K", "name": "A", "members": [ { "id": "u1", "display_name": "Alice", "avatar_color": "#111111", "has_pin": true } ], "active": "u1", "tokens": { "u1": "t1" } } ], "current": "https://a.test" } } },
+    { "name": "same address: members and tokens joined, mine win", "input": {
+      "mine": { "households": [ { "server": "https://a.test", "name": "A", "members": [ { "id": "u1", "display_name": "Alice", "avatar_color": "#111111", "has_pin": true } ], "active": "u1", "tokens": { "u1": "mine" } } ] },
+      "theirs": { "households": [ { "server": "https://a.test", "key": "K", "name": "A2", "members": [ { "id": "u2", "display_name": "Bruno", "avatar_color": "#222222", "has_pin": false }, { "id": "u1", "display_name": "Alice B", "avatar_color": "#333333", "has_pin": false } ], "active": "u2", "tokens": { "u1": "theirs", "u2": "t2" } } ], "current": "https://a.test" } } },
+    { "name": "same key, moved address", "input": {
+      "mine": { "households": [ { "server": "https://old.test", "key": "K", "name": "A", "members": [], "tokens": {} } ], "current": "https://old.test" },
+      "theirs": { "households": [ { "server": "https://new.test", "key": "K", "name": "A", "members": [ { "id": "u1", "display_name": "Alice", "avatar_color": "#111111", "has_pin": false } ], "active": "u1", "tokens": { "u1": "t1" } } ], "current": "https://new.test" } } },
+    { "name": "different keys at one address: two households", "input": {
+      "mine": { "households": [ { "server": "https://a.test", "key": "K1", "name": "A", "members": [], "tokens": {} } ] },
+      "theirs": { "households": [ { "server": "https://a.test", "key": "K2", "name": "B", "members": [], "tokens": {} } ] } } },
+    { "name": "a key on one side only: by address", "input": {
+      "mine": { "households": [ { "server": "https://a.test", "name": "A", "members": [], "tokens": {} } ] },
+      "theirs": { "households": [ { "server": "https://a.test", "key": "K", "name": "A", "members": [], "active": "u9", "tokens": {} } ] } } },
+    { "name": "no current here, theirs taken", "input": {
+      "mine": { "households": [ { "server": "https://a.test", "name": "A", "members": [], "tokens": {} } ] },
+      "theirs": { "households": [ { "server": "https://b.test", "name": "B", "members": [], "tokens": {} } ], "current": "https://b.test" } } }
+  ]
+}

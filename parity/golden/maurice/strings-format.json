@@ -1,0 +1,30 @@
+{
+  "domain" : "strings-format",
+  "results" : {
+    "%.1f" : "2.2 €",
+    "%@ with empty arg" : "[]",
+    "%@ with percent in arg" : "50 % off",
+    "%@ with unicode arg" : "« Ça va ? 🎩 »",
+    "%02d" : "05:07",
+    "%d" : "3 messages",
+    "%f" : "1.500000",
+    "%ld" : "12 messages",
+    "%lld" : "123456789 octets",
+    "mixed %@ and %d" : "Alice a 7 ans",
+    "negative %d" : "-4",
+    "newline escape kept" : "a\nb c",
+    "no placeholder" : "Bonjour",
+    "one %@" : "Bonjour Alice",
+    "percent literal" : "20 % du budget",
+    "percent literal alone" : "100 %%",
+    "positional %1$@ %2$@" : "deux puis un",
+    "positional mixed" : "7 · Alice",
+    "positional repeated" : "x et encore x",
+    "too many args" : "a",
+    "two %@" : "Alice a invité Bob"
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "checkpoints": [
+    {
+      "name": "connected",
+      "requests": [
+        {
+          "auth": null,
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/health",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "Chez Maurice",
+        "Go Down",
+        "Have an invite code?",
+        "Les Tilleuls",
+        "MauriceTile",
+        "Other options",
+        "To join this Maurice on this device, enter the invitation code you were given.",
+        "Vertical scroll bar, 1 page",
+        "Who's here?",
+        "leaf"
+      ]
+    }
+  ],
+  "failures": []
+}

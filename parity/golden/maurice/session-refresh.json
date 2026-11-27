@@ -1,0 +1,217 @@
+{
+  "domain" : "session-refresh",
+  "results" : {
+    "colour and icon absent" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : 0
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "colour and icon removed on the server" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : 0
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "empty household name" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : "#aa3300",
+        "icon" : null,
+        "key" : null,
+        "name" : "Parity",
+        "unread" : 0
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "health malformed" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Parity",
+        "unread" : 2
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "health server error" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : "#123456",
+        "icon" : null,
+        "key" : null,
+        "name" : "Parity",
+        "unread" : 2
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "health status not ok" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : "#aa3300",
+        "icon" : null,
+        "key" : "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w",
+        "name" : "Chez nous",
+        "unread" : 1
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "health without version" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Parity",
+        "unread" : 1
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "key already pinned, another one offered" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+        "name" : "Chez nous",
+        "unread" : 0
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "name, colour, icon and key given" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : "#aa3300",
+        "icon" : "leaf",
+        "key" : "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w",
+        "name" : "Chez nous",
+        "unread" : 3
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "silent, key pinned, no record of a move" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w",
+        "name" : "Parity",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "Unicode household name" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : "🏡",
+        "key" : null,
+        "name" : "Chez Zoë 🏡 — 我们的家",
+        "unread" : 12
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "unread malformed" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : true
+    },
+    "unread refused (401)" : {
+      "household" : {
+        "address" : "{base}",
+        "color" : null,
+        "icon" : null,
+        "key" : null,
+        "name" : "Chez nous",
+        "unread" : null
+      },
+      "households" : 1,
+      "requests" : [
+        "GET /api/health -",
+        "GET /api/users/me/unread Bearer tok-u1"
+      ],
+      "signedIn" : false
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

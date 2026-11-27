@@ -1,0 +1,354 @@
+{
+  "domain" : "chat-article",
+  "results" : {
+    "a date only" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre du journal",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "author null" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\ntitle: T\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "T",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "canonical address differs" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre du journal",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://lemonde.fr/a.html?utm_source=x"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "empty address back" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre du journal",
+        "url" : "",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "fields missing" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\ntitle: T\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "T",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "newline in title" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Deux lignes\nsite: Site\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : " Site ",
+        "source" : " Site ",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Deux\nlignes",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "no date" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre du journal",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "no text" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "",
+        "title" : "Le titre du journal",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "no title anywhere" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://www.lemonde.fr/a.html"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "no title from the server" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Le titre de la page\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre de la page",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://www.lemonde.fr/a.html"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "not JSON" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\ntitle: Titre partagé\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "Titre partagé",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "read in full" : {
+      "card" : {
+        "author" : "A. Dupont",
+        "date" : "2026-11-01T08:30:00.000Z",
+        "fenced" : "```article\ntitle: Le titre du journal\nsite: Le Monde\nauthor: A. Dupont\ndate: 2026-11-01T08:30:00.000Z\nurl: https://www.lemonde.fr/a.html\n\nPremier paragraphe.\n\nSecond paragraphe, plus long.\n```",
+        "kind" : "article",
+        "site" : "Le Monde",
+        "source" : "Le Monde",
+        "text" : "Premier paragraphe.\n\nSecond paragraphe, plus long.",
+        "title" : "Le titre du journal",
+        "url" : "https://www.lemonde.fr/a.html",
+        "wordCount" : 6
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://www.lemonde.fr/a.html"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "refused 422" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\ntitle: Titre partagé\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "Titre partagé",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "refused 422, no title" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    },
+    "server error" : {
+      "card" : {
+        "author" : "",
+        "date" : "",
+        "fenced" : "```article\ntitle: Titre partagé\nurl: https://example.org/p\n```",
+        "kind" : "article",
+        "site" : "",
+        "source" : "example.org",
+        "text" : "",
+        "title" : "Titre partagé",
+        "url" : "https://example.org/p",
+        "wordCount" : 0
+      },
+      "sent" : [
+        {
+          "body" : {
+            "url" : "https://example.org/p"
+          },
+          "method" : "POST",
+          "path" : "/api/v1/articles/read"
+        }
+      ]
+    }
+  },
+  "source" : {
+    "commit" : "cf5611b",
+    "repo" : "maurice"
+  }
+}

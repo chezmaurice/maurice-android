@@ -1,0 +1,71 @@
+{
+ "domain": "shelf-book-outbox",
+ "about": "EPUBs and PDFs shared to Carnet and kept until the household's library takes them (ed512a3): sent again oldest first, a refusal dropped, a library that did not answer (503) left for next time.",
+ "ios": "CarnetApp/Services/SyncService.swift — syncNow, .libraryBook",
+ "android": "carnet/share/Outboxes.kt — flushOutboxes, BookOutbox",
+ "cases": [
+  {
+   "name": "nothing waiting",
+   "input": {"books": []},
+   "routes": []
+  },
+  {
+   "name": "a book taken",
+   "input": {"books": [{"filename": "Le Rouge et le Noir.epub", "bytes": "PK epub"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 57}}
+   ]
+  },
+  {
+   "name": "two books, oldest first",
+   "input": {"books": [{"filename": "b.pdf", "at": 60}, {"filename": "a.epub", "at": 0}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 1}}
+   ]
+  },
+  {
+   "name": "a book already there",
+   "input": {"books": [{"filename": "a.epub"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 3, "duplicate": true}}
+   ]
+  },
+  {
+   "name": "the library does not answer",
+   "input": {"books": [{"filename": "a.epub"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 503, "json": {"error": "The library is not reachable."}}
+   ]
+  },
+  {
+   "name": "a file refused",
+   "input": {"books": [{"filename": "a.pdf"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 400, "json": {"error": "Not a book."}}
+   ]
+  },
+  {
+   "name": "a refusal, then a book taken",
+   "input": {"books": [{"filename": "bad.pdf", "at": 0}, {"filename": "good.epub", "at": 10}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 400, "json": {"error": "Not a book."}, "times": 1},
+    {"method": "POST", "path": "/api/v1/calibre/add", "json": {"ok": true, "bookId": 9}}
+   ]
+  },
+  {
+   "name": "the session refused",
+   "accepted": {"kind": "ios-bug", "why": "A 401 is a refusal to iOS's SyncService like any other: the book is dropped. Android keeps it for the member's next session, as both apps keep a page.", "issue": "https://github.com/chezmaurice/carnet/issues/3"},
+   "input": {"books": [{"filename": "a.epub"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "status": 401, "json": {"error": "unauthorized"}}
+   ]
+  },
+  {
+   "name": "a book taken, answer unreadable",
+   "input": {"books": [{"filename": "a.epub"}]},
+   "routes": [
+    {"method": "POST", "path": "/api/v1/calibre/add", "text": "OK"}
+   ]
+  }
+ ]
+}

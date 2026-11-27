@@ -1,0 +1,28 @@
+{
+  "name": "carnet-entry-maurice",
+  "app": "carnet",
+  "about": "« Ask Maurice about this » from an entry: a conversation made about it.",
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "see": "Add a note…"
+    },
+    {
+      "tap": "Ask Maurice about this",
+      "pause": 3
+    },
+    {
+      "checkpoint": "asked",
+      "settle": 4,
+      "paths": ["POST /api/conversations", "GET /api/conversations/c42", "re:^/api/v1/garden/entries/"]
+    }
+  ]
+}

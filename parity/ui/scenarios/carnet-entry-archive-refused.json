@@ -1,0 +1,34 @@
+{
+  "name": "carnet-entry-archive-refused",
+  "app": "carnet",
+  "about": "Put away, but the household refuses (500): the member is told, the list read again.",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/v1/garden/entries/archive",
+      "status": 500,
+      "json": {
+        "error": "cannot archive"
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "see": "La lenteur"
+    },
+    {
+      "swipe": "La lenteur",
+      "to": "right",
+      "pause": 2
+    },
+    {
+      "checkpoint": "refused"
+    }
+  ]
+}

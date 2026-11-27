@@ -1,0 +1,51 @@
+{
+  "domain": "reading-articles",
+  "about": "An article opened to be read: its page (what the reader's heading and the Text/Summary switch use — title, byline, minutes, which summary is read) and its captured text with the stretches the page set apart. The request (path, locale) and what the reader gets.",
+  "ios": "GardenAPI.article(slug:locale:).article / GardenAPI.articleText(slug:locale:)",
+  "android": "CalibreApi.article / CalibreApi.articleText",
+  "cases": [
+    { "name": "article page", "input": { "op": "article", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur", "json": {
+        "slug": "la-lenteur", "locale": "fr", "title": "La lenteur", "url": "https://example.org/lenteur", "saved_at": "2026-11-01",
+        "author": "M. K.", "publication": "Le Monde", "published_at": "2026-10-30", "image": "/images/camille/resources/articles/lenteur.jpg",
+        "summary": "Un paragraphe.", "summary_long": "Le long résumé.\n\nDeux paragraphes.", "word_count": 2300, "has_text": true, "text_rev": "r2",
+        "tags": ["slow"], "opened": true, "body": "> lead\n\nComment" } } ] },
+    { "name": "article, long summary blank: the paragraph is read", "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": {
+        "slug": "a", "locale": "en", "title": "A", "summary": "Short one.", "summary_long": "  \n ", "word_count": 114 } } ] },
+    { "name": "article, no summary at all, saved date only", "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": {
+        "slug": "a", "locale": "en", "title": "A", "saved_at": "2026-11-02", "word_count": 115, "has_text": false } } ] },
+    { "name": "article, publication without a date", "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": {
+        "slug": "a", "locale": "en", "title": "A", "publication": "The Atlantic", "summary": "", "word_count": 0 } } ] },
+    { "name": "article without a title", "accepted": {"kind": "lenient", "why": "Android reads an article without a title as an empty title; iOS's Article requires it."}, "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": { "slug": "a", "locale": "en" } } ] },
+    { "name": "article without a body", "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": { "slug": "a", "locale": "en", "title": "Sans corps" } } ] },
+    { "name": "article given by another member", "input": { "op": "article", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a", "json": { "slug": "a", "locale": "en", "title": "Shared", "shared_by": { "username": "bob", "display_name": "Bob", "avatar_color": "#336699" } } } ] },
+    { "name": "article, accented slug and a regional locale", "input": { "op": "article", "slug": "l'été à paris", "locale": "pt-BR" }, "routes": [
+      { "method": "GET", "path": "re:^/api/v1/garden/articles/[^/]+$", "json": { "slug": "l'été à paris", "locale": "pt-BR", "title": "Verão" } } ] },
+    { "name": "article not found", "input": { "op": "article", "slug": "gone", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/gone", "status": 404, "json": { "error": "not found" } } ] },
+
+    { "name": "article text with styles", "input": { "op": "text", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": {
+        "slug": "la-lenteur", "locale": "fr", "title": "La lenteur",
+        "text": "Titre\n\nQuestion ?\nRéponse — été 🌞.\n\nFin.",
+        "styles": [ { "start": 0, "end": 5, "kind": "heading" }, { "start": 7, "end": 17, "kind": "strong" }, { "start": 18, "end": 25, "kind": "em" }, { "start": 30, "end": 34, "kind": "underline" } ] } } ] },
+    { "name": "article text, no styles key", "input": { "op": "text", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": { "slug": "la-lenteur", "locale": "fr", "text": "Plain." } } ] },
+    { "name": "article text, styles null", "input": { "op": "text", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": { "slug": "la-lenteur", "locale": "fr", "text": "Plain.", "styles": null } } ] },
+    { "name": "article text, a style without kind", "input": { "op": "text", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": { "slug": "la-lenteur", "locale": "fr", "text": "Plain.", "styles": [ { "start": 0, "end": 2 } ] } } ] },
+    { "name": "article text without slug and locale", "accepted": {"kind": "lenient", "why": "Android reads the text without slug and locale; iOS's ArticleText requires both."}, "input": { "op": "text", "slug": "la-lenteur", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/la-lenteur/text", "json": { "text": "Plain." } } ] },
+    { "name": "article text, never captured", "input": { "op": "text", "slug": "bookmark-only", "locale": "fr" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/bookmark-only/text", "status": 404, "json": { "error": "no text" } } ] },
+    { "name": "article text, empty", "input": { "op": "text", "slug": "a", "locale": "en" }, "routes": [
+      { "method": "GET", "path": "/api/v1/garden/articles/a/text", "json": { "slug": "a", "locale": "en", "text": "" } } ] }
+  ]
+}

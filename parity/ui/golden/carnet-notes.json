@@ -1,0 +1,100 @@
+{
+  "checkpoints": [
+    {
+      "name": "the notes",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries",
+          "query": {
+            "view": "notes"
+          }
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/calibre/books/7/cover",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "BOOK",
+        "Back",
+        "Carnet",
+        "FILM",
+        "Forward",
+        "L",
+        "La Sagesse",
+        "La mémoire, encore.",
+        "Les images du Japon.",
+        "NOTE · 2026-10-18",
+        "NOTE · 2026-10-18, La mémoire, encore., S, Sans soleil, FILM",
+        "NOTE · 2026-10-19",
+        "NOTE · 2026-10-19, Les images du Japon., S, Sans soleil, FILM",
+        "NOTE · 2026-11-01",
+        "NOTE · 2026-11-01, Une note sur la sagesse., L, La Sagesse, BOOK",
+        "NOVEMBER 2026",
+        "Notes",
+        "OCTOBER 2026",
+        "S",
+        "Sans soleil",
+        "Search",
+        "Une note sur la sagesse.",
+        "Vertical scroll bar, 1 page",
+        "WHAT YOU WROTE · 3"
+      ]
+    },
+    {
+      "name": "its entry",
+      "requests": [
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil",
+          "query": {}
+        },
+        {
+          "auth": "Bearer tok-alice",
+          "body": null,
+          "contentType": null,
+          "method": "GET",
+          "path": "/api/v1/garden/entries/movies/fr/sans-soleil/conversations",
+          "query": {}
+        }
+      ],
+      "texts": [
+        "0%",
+        "2026-08-20",
+        "Add a note",
+        "Add a note…",
+        "Ask Maurice about this",
+        "Back",
+        "Carnet",
+        "Film · Chris Marker",
+        "La mémoire, encore.",
+        "Les images du Japon.",
+        "Lock",
+        "More",
+        "NOTE · 2026-10-18",
+        "NOTE · 2026-10-19",
+        "ONLY YOU · 2 NOTES",
+        "PUBLISHED",
+        "S",
+        "Sans soleil",
+        "Share with someone",
+        "Turn over",
+        "Vertical scroll bar, 1 page",
+        "quote.opening"
+      ]
+    }
+  ],
+  "failures": []
+}

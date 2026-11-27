@@ -1,0 +1,156 @@
+{
+ "domain": "shelf-invitation",
+ "about": "An invitation as Carnet reads it from a QR code, a link or a pasted text: the household's address, the code, the link it stands for.",
+ "ios": "CarnetApp/Services/Invitation.swift — Invitation(_:)",
+ "android": "core/session/Invitation.kt — Invitation.parse",
+ "cases": [
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ABCD-1234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ABCD-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=abcd1234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=abcd1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join/?code=ABCD-1234",
+   "input": "https://monfoyer.chezmaurice.eu/join/?code=ABCD-1234"
+  },
+  {
+   "name": "https://MonFoyer.ChezMaurice.eu/join?code=ABCD-1234",
+   "input": "https://MonFoyer.ChezMaurice.eu/join?code=ABCD-1234"
+  },
+  {
+   "name": "HTTPS://monfoyer.chezmaurice.eu/join?code=ABCD-1234",
+   "input": "HTTPS://monfoyer.chezmaurice.eu/join?code=ABCD-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu:8443/join?code=ABCD-1234",
+   "input": "https://monfoyer.chezmaurice.eu:8443/join?code=ABCD-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu:443/join?code=ABCD-1234",
+   "input": "https://monfoyer.chezmaurice.eu:443/join?code=ABCD-1234"
+  },
+  {
+   "name": "http://192.168.1.20:3000/join?code=ABCD-1234",
+   "input": "http://192.168.1.20:3000/join?code=ABCD-1234"
+  },
+  {
+   "name": "http://192.168.1.20:80/join?code=ABCD-1234",
+   "input": "http://192.168.1.20:80/join?code=ABCD-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ABC-1234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ABC-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ABCD12345",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ABCD12345"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=AB-CD-12-34",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=AB-CD-12-34"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ABCD 1234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ABCD 1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ABCD%201234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ABCD%201234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=ÉBCD1234",
+   "input": "https://monfoyer.chezmaurice.eu/join?code=ÉBCD1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?code=",
+   "input": "https://monfoyer.chezmaurice.eu/join?code="
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join",
+   "input": "https://monfoyer.chezmaurice.eu/join"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/other?code=ABCD-1234",
+   "input": "https://monfoyer.chezmaurice.eu/other?code=ABCD-1234"
+  },
+  {
+   "name": "https://monfoyer.chezmaurice.eu/join?foo=1&code=ABCD-1234&code=WXYZ-0000",
+   "input": "https://monfoyer.chezmaurice.eu/join?foo=1&code=ABCD-1234&code=WXYZ-0000"
+  },
+  {
+   "name": "  https://monfoyer.chezmaurice.eu/join?code=ABCD-1234  \n",
+   "input": "  https://monfoyer.chezmaurice.eu/join?code=ABCD-1234  \n"
+  },
+  {
+   "name": "carnet://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "carnet://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=https%3A%2F%2Fmonfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "carnet://join?server=https%3A%2F%2Fmonfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=monfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "carnet://join?server=monfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=http://192.168.1.20:3000&code=ABCD-1234",
+   "input": "carnet://join?server=http://192.168.1.20:3000&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=https://monfoyer.chezmaurice.eu/path/&code=ABCD-1234",
+   "input": "carnet://join?server=https://monfoyer.chezmaurice.eu/path/&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=https://MonFoyer.eu&code=ABCD-1234",
+   "input": "carnet://join?server=https://MonFoyer.eu&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=localhost:3000&code=ABCD-1234",
+   "input": "carnet://join?server=localhost:3000&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?server=nodot&code=ABCD-1234",
+   "input": "carnet://join?server=nodot&code=ABCD-1234"
+  },
+  {
+   "name": "carnet://join?code=ABCD-1234",
+   "input": "carnet://join?code=ABCD-1234"
+  },
+  {
+   "name": "carnet://other?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "carnet://other?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "maurice://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "maurice://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "CARNET://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234",
+   "input": "CARNET://join?server=https://monfoyer.chezmaurice.eu&code=ABCD-1234"
+  },
+  {
+   "name": "ftp://monfoyer.chezmaurice.eu/join?code=ABCD-1234",
+   "input": "ftp://monfoyer.chezmaurice.eu/join?code=ABCD-1234"
+  },
+  {
+   "name": "monfoyer.chezmaurice.eu/join?code=ABCD-1234",
+   "input": "monfoyer.chezmaurice.eu/join?code=ABCD-1234"
+  },
+  {
+   "name": "ABCD-1234",
+   "input": "ABCD-1234"
+  },
+  {
+   "name": "(empty)",
+   "input": ""
+  },
+  {
+   "name": "not a link at all",
+   "input": "not a link at all"
+  }
+ ]
+}

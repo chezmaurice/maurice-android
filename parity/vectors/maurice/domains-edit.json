@@ -1,0 +1,2220 @@
+{
+ "domain": "domains-edit",
+ "about": "What the domain editor and the model pill send through the store — create, edit (one name per member), a model chosen for the everyday Maurice or a domain, delete — and the list the member is left with. The body of a create/edit is not compared: Android builds it inside the DomainEditor Composable (see the report).",
+ "ios": "Maurice/Services/MauriceStore.swift — save(_:), setModel(_:for:), delete(_:)",
+ "android": "core/domains/DomainStore.kt — save(id, fields), setModel(modelId, domain), delete(id) (the editor wraps delete in runCatching)",
+ "cases": [
+  {
+   "name": "create: saved, sorted into the list",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "json": {
+      "id": "c",
+      "name": "Charlie",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0,
+      "icon": "leaf"
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: 201 answer",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 201,
+     "json": {
+      "id": "c",
+      "name": "Charlie",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: lowercase name sorts first",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "alpha",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "json": {
+      "id": "a",
+      "name": "alpha",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: accented name sorts as its letter",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Ébène",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "json": {
+      "id": "eb",
+      "name": "Ébène",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: name taken (409 names the other)",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "beta",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 409,
+     "json": {
+      "error": "name taken",
+      "existing": {
+       "id": "b",
+       "name": "Beta"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: 409 without the other's name",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "beta",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 409,
+     "json": {
+      "error": "name taken"
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: 409 with existing but no name",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "beta",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 409,
+     "json": {
+      "error": "name taken",
+      "existing": {
+       "id": "b"
+      }
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: server error",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: 400 with a message",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "status": 400,
+     "json": {
+      "error": "name required"
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: answer is not a row",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "create: answer is not JSON",
+   "input": {
+    "op": "save",
+    "new": true,
+    "draft": {
+     "name": "Charlie",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/api/maurices",
+     "text": "<html>oops</html>"
+    }
+   ]
+  },
+  {
+   "name": "edit: renamed row replaces the old and re-sorts",
+   "input": {
+    "op": "save",
+    "id": "b",
+    "draft": {
+     "name": "Yankee",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "json": {
+      "id": "b",
+      "name": "Yankee",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0
+     }
+    }
+   ]
+  },
+  {
+   "name": "edit: server error leaves the row",
+   "input": {
+    "op": "save",
+    "id": "b",
+    "draft": {
+     "name": "Yankee",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "edit: 404 (deleted elsewhere)",
+   "input": {
+    "op": "save",
+    "id": "b",
+    "draft": {
+     "name": "Yankee",
+     "kind": "domain",
+     "temp": 0.4,
+     "tagline": "t",
+     "prompt": "p",
+     "icon": "leaf",
+     "context": [],
+     "tool_families": null
+    }
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "status": 404,
+     "json": {
+      "error": "not found"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: everyday, kept as asked",
+   "input": {
+    "op": "setModel",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-mistral"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: everyday, the server keeps another",
+   "input": {
+    "op": "setModel",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/models/everyday",
+     "json": {
+      "id": "m-claude"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: everyday, answer without id",
+   "input": {
+    "op": "setModel",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/models/everyday",
+     "json": {}
+    }
+   ]
+  },
+  {
+   "name": "model: everyday, server error",
+   "input": {
+    "op": "setModel",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/models/everyday",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: everyday, provider not accepted (403)",
+   "input": {
+    "op": "setModel",
+    "model": "m-openai"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PUT",
+     "path": "/api/models/everyday",
+     "status": 403,
+     "json": {
+      "error": "provider not accepted",
+      "provider": "openai"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a domain's",
+   "input": {
+    "op": "setModel",
+    "id": "b",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "json": {
+      "id": "b",
+      "name": "Beta",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0,
+      "model": "m-mistral"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a companion's",
+   "input": {
+    "op": "setModel",
+    "id": "z",
+    "model": "m-local"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/z",
+     "json": {
+      "id": "z",
+      "name": "Zeta",
+      "kind": "companion",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0,
+      "model": "m-local"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a domain's, server error",
+   "input": {
+    "op": "setModel",
+    "id": "b",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "status": 500,
+     "json": {
+      "error": "x"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a domain's, provider not accepted (403)",
+   "input": {
+    "op": "setModel",
+    "id": "b",
+    "model": "m-openai"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "status": 403,
+     "json": {
+      "error": "provider not accepted"
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a domain's, answer not a row",
+   "input": {
+    "op": "setModel",
+    "id": "b",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "model: a domain's, answer is another row",
+   "input": {
+    "op": "setModel",
+    "id": "b",
+    "model": "m-mistral"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "PATCH",
+     "path": "/api/maurices/b",
+     "json": {
+      "id": "q",
+      "name": "Quebec",
+      "kind": "domain",
+      "created_by": "u1",
+      "temp": 0.5,
+      "tagline": "",
+      "prompt": "",
+      "users": [
+       "u1"
+      ],
+      "context": [],
+      "weight": 0,
+      "count": 0,
+      "model": "m-mistral"
+     }
+    }
+   ]
+  },
+  {
+   "name": "delete: ok",
+   "input": {
+    "op": "delete",
+    "id": "e"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/maurices/e",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "delete: 204",
+   "input": {
+    "op": "delete",
+    "id": "e"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/maurices/e",
+     "status": 204
+    }
+   ]
+  },
+  {
+   "name": "delete: a companion",
+   "input": {
+    "op": "delete",
+    "id": "z"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/maurices/z",
+     "json": {
+      "ok": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "delete: 404",
+   "input": {
+    "op": "delete",
+    "id": "e"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/maurices/e",
+     "status": 404,
+     "json": {
+      "error": "not found"
+     }
+    }
+   ]
+  },
+  {
+   "name": "delete: server error",
+   "input": {
+    "op": "delete",
+    "id": "e"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/maurices",
+     "json": [
+      {
+       "id": "b",
+       "name": "Beta",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": null
+      },
+      {
+       "id": "e",
+       "name": "Echo",
+       "kind": "domain",
+       "created_by": "u1",
+       "model": "m-claude"
+      },
+      {
+       "id": "z",
+       "name": "Zeta",
+       "kind": "companion",
+       "created_by": "u1"
+      }
+     ]
+    },
+    {
+     "method": "GET",
+     "path": "/api/domains",
+     "json": {
+      "domains": [
+       {
+        "id": "b",
+        "kind": "domain"
+       },
+       {
+        "id": "e",
+        "kind": "domain"
+       }
+      ],
+      "companions": [
+       {
+        "id": "z",
+        "kind": "companion",
+        "conversation_id": "cz"
+       }
+      ]
+     }
+    },
+    {
+     "method": "DELETE",
+     "path": "/api/maurices/e",
+     "status": 500,
+     "json": {
+      "error": "boom"
+     }
+    }
+   ]
+  }
+ ]
+}

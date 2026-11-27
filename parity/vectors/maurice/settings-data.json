@@ -1,0 +1,532 @@
+{
+ "domain": "settings-data",
+ "about": "Settings › Files, Import my conversations and My data: sizes as the library writes them, the library, the history import's state per provider, what the admin did in the account.",
+ "ios": "Views/SettingsView.swift — formatBytes, LibraryResponse; Views/ImportConversationsView.swift — ImportSummary.load, ImportHistory/ImportRun; Views/MyDataView.swift — AccountEvent",
+ "android": "maurice/settings/SettingsScreen.kt — formatBytes; core/settings/SettingsApi.kt — library(), importHistory(provider), accountEvents()",
+ "cases": [
+  {
+   "name": "bytes: 0",
+   "input": {
+    "kind": "bytes",
+    "n": 0
+   }
+  },
+  {
+   "name": "bytes: 1",
+   "input": {
+    "kind": "bytes",
+    "n": 1
+   }
+  },
+  {
+   "name": "bytes: 999",
+   "input": {
+    "kind": "bytes",
+    "n": 999
+   }
+  },
+  {
+   "name": "bytes: 1023",
+   "input": {
+    "kind": "bytes",
+    "n": 1023
+   }
+  },
+  {
+   "name": "bytes: 1024",
+   "input": {
+    "kind": "bytes",
+    "n": 1024
+   }
+  },
+  {
+   "name": "bytes: 1536",
+   "input": {
+    "kind": "bytes",
+    "n": 1536
+   }
+  },
+  {
+   "name": "bytes: 1600",
+   "input": {
+    "kind": "bytes",
+    "n": 1600
+   }
+  },
+  {
+   "name": "bytes: 10239",
+   "input": {
+    "kind": "bytes",
+    "n": 10239
+   }
+  },
+  {
+   "name": "bytes: 102348",
+   "input": {
+    "kind": "bytes",
+    "n": 102348
+   }
+  },
+  {
+   "name": "bytes: 102400",
+   "input": {
+    "kind": "bytes",
+    "n": 102400
+   }
+  },
+  {
+   "name": "bytes: 1048575",
+   "input": {
+    "kind": "bytes",
+    "n": 1048575
+   }
+  },
+  {
+   "name": "bytes: 1048576",
+   "input": {
+    "kind": "bytes",
+    "n": 1048576
+   }
+  },
+  {
+   "name": "bytes: 157286400",
+   "input": {
+    "kind": "bytes",
+    "n": 157286400
+   }
+  },
+  {
+   "name": "bytes: 157810688",
+   "input": {
+    "kind": "bytes",
+    "n": 157810688
+   }
+  },
+  {
+   "name": "bytes: 5000000000",
+   "input": {
+    "kind": "bytes",
+    "n": 5000000000
+   }
+  },
+  {
+   "name": "bytes: 1099511627776",
+   "input": {
+    "kind": "bytes",
+    "n": 1099511627776
+   }
+  },
+  {
+   "name": "bytes: 1125899906842624",
+   "input": {
+    "kind": "bytes",
+    "n": 1125899906842624
+   }
+  },
+  {
+   "name": "bytes: -1",
+   "input": {
+    "kind": "bytes",
+    "n": -1
+   }
+  },
+  {
+   "name": "bytes: -2048",
+   "input": {
+    "kind": "bytes",
+    "n": -2048
+   }
+  },
+  {
+   "name": "library: two folders, two files",
+   "input": {
+    "kind": "library",
+    "json": {
+     "folders": [
+      {
+       "id": "f1",
+       "parent_id": null,
+       "name": "Factures"
+      },
+      {
+       "id": "f2",
+       "parent_id": "f1",
+       "name": "2026 — été ☀️"
+      }
+     ],
+     "files": [
+      {
+       "id": "x1",
+       "folder_id": "f1",
+       "name": "edf.pdf",
+       "kind": "pdf",
+       "size_bytes": 182344,
+       "token_estimate": 3000
+      },
+      {
+       "id": "x2",
+       "folder_id": null,
+       "name": "notes.md",
+       "kind": "text",
+       "size_bytes": 512,
+       "token_estimate": null
+      }
+     ],
+     "summary": {
+      "count": 2,
+      "size_bytes": 182856,
+      "quota_bytes": 1073741824
+     }
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "library: empty",
+   "input": {
+    "kind": "library",
+    "json": {
+     "folders": [],
+     "files": [],
+     "summary": {
+      "count": 0,
+      "size_bytes": 0,
+      "quota_bytes": 0
+     }
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "library: a file without kind",
+   "input": {
+    "kind": "library",
+    "json": {
+     "folders": [],
+     "files": [
+      {
+       "id": "x1",
+       "folder_id": null,
+       "name": "a.bin",
+       "size_bytes": 3
+      }
+     ],
+     "summary": {
+      "count": 1,
+      "size_bytes": 3,
+      "quota_bytes": 0
+     }
+    },
+    "status": 200
+   },
+   "accepted": { "kind": "lenient", "why": "Android defaults a file's missing kind to \"file\"; iOS rejects the whole library." }
+  },
+  {
+   "name": "library: no summary",
+   "input": {
+    "kind": "library",
+    "json": {
+     "folders": [],
+     "files": []
+    },
+    "status": 200
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads a library without summary as zero; iOS rejects it." }
+  },
+  {
+   "name": "library: empty object",
+   "input": {
+    "kind": "library",
+    "json": {},
+    "status": 200
+   },
+   "accepted": { "kind": "lenient", "why": "Android reads {} as an empty library; iOS rejects it." }
+  },
+  {
+   "name": "library: 500",
+   "input": {
+    "kind": "library",
+    "json": {
+     "error": "boom"
+    },
+    "status": 500
+   }
+  },
+  {
+   "name": "events: a device, an export, one seen",
+   "input": {
+    "kind": "events",
+    "json": {
+     "events": [
+      {
+       "id": 1,
+       "kind": "device_by_code",
+       "created_at": "2026-11-02 14:32:00",
+       "seen_at": null
+      },
+      {
+       "id": 2,
+       "kind": "household_export",
+       "created_at": "2026-11-03 09:00:00",
+       "seen_at": "2026-11-03 10:00:00"
+      }
+     ]
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "events: none",
+   "input": {
+    "kind": "events",
+    "json": {
+     "events": []
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "events: unknown kind",
+   "input": {
+    "kind": "events",
+    "json": {
+     "events": [
+      {
+       "id": 3,
+       "kind": "password_reset",
+       "created_at": "2026-11-04 08:00:00"
+      }
+     ]
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "events: id as a string",
+   "input": {
+    "kind": "events",
+    "json": {
+     "events": [
+      {
+       "id": "4",
+       "kind": "device_by_code",
+       "created_at": "2026-11-04 08:00:00"
+      }
+     ]
+    },
+    "status": 200
+   },
+   "accepted": { "kind": "lenient", "why": "Android coerces the id \"4\" to 4; iOS rejects the list." }
+  },
+  {
+   "name": "events: no created_at",
+   "input": {
+    "kind": "events",
+    "json": {
+     "events": [
+      {
+       "id": 5,
+       "kind": "device_by_code"
+      }
+     ]
+    },
+    "status": 200
+   }
+  },
+  {
+   "name": "events: 404 (older server)",
+   "input": {
+    "kind": "events",
+    "json": {
+     "error": "Not found"
+    },
+    "status": 404
+   }
+  },
+  {
+   "name": "imports: Claude synced, ChatGPT never",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "anthropic",
+      "watermark": "2026-10-01T00:00:00Z",
+      "history": [
+       {
+        "id": "i1",
+        "provider": "anthropic",
+        "range_from": "2024-01-01",
+        "range_to": "2026-10-01",
+        "conversations": 812,
+        "messages": 23001,
+        "ran_at": "2026-10-02 08:00:00",
+        "status": "done"
+       }
+      ]
+     },
+     "times": 1
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "chatgpt",
+      "watermark": null,
+      "history": []
+     },
+     "times": 1
+    }
+   ]
+  },
+  {
+   "name": "imports: neither",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "anthropic",
+      "watermark": null,
+      "history": []
+     },
+     "times": 1
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "chatgpt",
+      "watermark": null,
+      "history": []
+     },
+     "times": 1
+    }
+   ]
+  },
+  {
+   "name": "imports: a run without range nor status",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "anthropic",
+      "watermark": "2026-10-01",
+      "history": [
+       {
+        "id": "i2",
+        "provider": "anthropic",
+        "conversations": 1,
+        "messages": 2,
+        "ran_at": "2026-10-02 08:00:00"
+       }
+      ]
+     },
+     "times": 1
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "chatgpt",
+      "watermark": null,
+      "history": []
+     },
+     "times": 1
+    }
+   ],
+   "accepted": { "kind": "lenient", "why": "Android reads a run with its range and status missing; iOS drops the provider's answer." }
+  },
+  {
+   "name": "imports: an answer without history",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "anthropic",
+      "watermark": "2026-10-01"
+     },
+     "times": 1
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "chatgpt",
+      "watermark": null,
+      "history": []
+     },
+     "times": 1
+    }
+   ],
+   "accepted": { "kind": "lenient", "why": "Android reads a missing history as none; iOS drops the provider's answer." }
+  },
+  {
+   "name": "imports: first fails, second synced",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "error": "boom"
+     },
+     "times": 1,
+     "status": 500
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "provider": "chatgpt",
+      "watermark": "2026-09-01",
+      "history": []
+     },
+     "times": 1
+    }
+   ]
+  },
+  {
+   "name": "imports: both fail",
+   "input": {
+    "kind": "imports"
+   },
+   "routes": [
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "error": "boom"
+     },
+     "times": 1,
+     "status": 500
+    },
+    {
+     "method": "GET",
+     "path": "/api/import/history",
+     "json": {
+      "error": "boom"
+     },
+     "times": 1,
+     "status": 503
+    }
+   ]
+  }
+ ]
+}

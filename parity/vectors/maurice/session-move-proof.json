@@ -1,0 +1,32 @@
+{
+  "domain": "session-move-proof",
+  "about": "Asking an address to prove it holds the household's key (GET /api/health?proof=<nonce>): the request sent, and whether the device would follow. The nonce is the device's own, so only refusals can be scripted; the signature itself is compared in session-ed25519. One case asks the real resolver for the TXT record of an address that never moved.",
+  "ios": "Maurice/Services/HouseholdMove.swift — HouseholdMove.proves, HouseholdMove.follow",
+  "android": "core/session/HouseholdMove.kt — HouseholdMove.proves, HouseholdMove.follow",
+  "cases": [
+    { "name": "a valid signature of another nonce", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w", "proof": "JrYGGEXWjQcyZ_1pIxTeY8c_w9ywbZpYJsZsGC6EPqxxucsif1NSika95grWYWGZ_hFxRvhfNeId1sCGJZq1DA" } } ] },
+    { "name": "the address holds another key", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "identity_key": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo", "proof": "JrYGGEXWjQcyZ_1pIxTeY8c_w9ywbZpYJsZsGC6EPqxxucsif1NSika95grWYWGZ_hFxRvhfNeId1sCGJZq1DA" } } ] },
+    { "name": "no proof given", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" } } ] },
+    { "name": "proof not base64url", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w", "proof": "not a proof!" } } ] },
+    { "name": "proof too short", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true, "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w", "proof": "AQID" } } ] },
+    { "name": "health without status or version", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "identity_key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w", "proof": "JrYGGEXWjQcyZ_1pIxTeY8c_w9ywbZpYJsZsGC6EPqxxucsif1NSika95grWYWGZ_hFxRvhfNeId1sCGJZq1DA" } } ] },
+    { "name": "server error", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "status": 500, "json": { "error": "boom" } } ] },
+    { "name": "malformed JSON", "input": { "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "text": "{\"identity_key\": " } ] },
+    { "name": "pinned key too short: nothing asked", "input": { "key": "AQID" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true } } ] },
+    { "name": "pinned key not base64url: nothing asked", "input": { "key": "#not-a-key#" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true } } ] },
+    { "name": "pinned key empty: nothing asked", "input": { "key": "" },
+      "routes": [ { "method": "GET", "path": "/api/health", "json": { "status": "ok", "version": "1.0", "setup_complete": true } } ] },
+    { "name": "follow: no TXT record under the old name", "input": { "follow": true, "key": "iojj3XQJ8ZX9UtstPLpdcspnCb8dlBIb83SIAbQPb1w" },
+      "routes": [ { "method": "GET", "path": "/api/health", "status": 503, "json": { "error": "down" } } ] }
+  ]
+}

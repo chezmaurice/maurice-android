@@ -1,0 +1,113 @@
+{
+  "name": "carnet-way-in-pin",
+  "app": "carnet",
+  "about": "A code whose member must choose a PIN (needs_pin): the PIN typed twice, sent with the new token, then the shelf.",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/api/auth/enroll",
+      "json": {
+        "user_id": "u1",
+        "token": "tok-alice",
+        "role": "standard",
+        "needs_pin": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/set-pin",
+      "json": {
+        "ok": true
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "see": "Enter a code or an address"
+    },
+    {
+      "tap": "Enter a code or an address"
+    },
+    {
+      "tap": "XXXX-XXXX or myhome.chezmaurice.eu"
+    },
+    {
+      "type": "ABCD-EFGH"
+    },
+    {
+      "tap": "Connect"
+    },
+    {
+      "see": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "checkpoint": "the address asked"
+    },
+    {
+      "tap": {
+        "ios": "myhome.chezmaurice.eu",
+        "android": "myhome.chezmaurice.eu"
+      }
+    },
+    {
+      "type": "{base}"
+    },
+    {
+      "tap": "Connect",
+      "pause": 3
+    },
+    {
+      "see": "Set a PIN"
+    },
+    {
+      "checkpoint": "a PIN asked",
+      "accepted": {
+        "kind": "wire",
+        "why": "The way in, as the household sees it, is the same: Android sends the code as the server reads it (ABCDEFGH; the server normalises ABCD-EFGH alike), checks /api/health once where iOS checks it twice, asks /api/dictation at sign-in, and loads the shelf once the notice is accepted where iOS loads it behind the notice — the same requests, across two checkpoints."
+      }
+    },
+    {
+      "tap": "PIN"
+    },
+    {
+      "type": "4826"
+    },
+    {
+      "tap": "Confirm PIN"
+    },
+    {
+      "type": "4826"
+    },
+    {
+      "tap": "Set PIN",
+      "pause": 3
+    },
+    {
+      "tap": {
+        "ios": "Don’t Allow",
+        "android": "Don’t allow"
+      },
+      "optional": true
+    },
+    {
+      "tap": "I understand — Connect",
+      "pause": 2
+    },
+    {
+      "see": "La Sagesse"
+    },
+    {
+      "checkpoint": "the shelf",
+      "accepted": {
+        "kind": "wire",
+        "why": "The way in, as the household sees it, is the same: Android sends the code as the server reads it (ABCDEFGH; the server normalises ABCD-EFGH alike), checks /api/health once where iOS checks it twice, asks /api/dictation at sign-in, and loads the shelf once the notice is accepted where iOS loads it behind the notice — the same requests, across two checkpoints."
+      }
+    }
+  ]
+}

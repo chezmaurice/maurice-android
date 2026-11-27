@@ -1,0 +1,39 @@
+{
+  "name": "carnet-entry-note-refused",
+  "app": "carnet",
+  "about": "A note the household refuses (400): the member keeps the text and is told.",
+  "routes": [
+    {
+      "method": "POST",
+      "path": "re:^/api/v1/garden/entries/books/fr/la-sagesse(/.*)?$",
+      "status": 400,
+      "json": {
+        "error": "text is required"
+      }
+    }
+  ],
+  "households": [
+    "carnet-household"
+  ],
+  "steps": [
+    {
+      "include": "carnet-sign-in"
+    },
+    {
+      "tap": "La Sagesse"
+    },
+    {
+      "tap": "Add a note…"
+    },
+    {
+      "type": "Une idee en passant."
+    },
+    {
+      "tap": "Keep",
+      "pause": 2
+    },
+    {
+      "checkpoint": "refused"
+    }
+  ]
+}
