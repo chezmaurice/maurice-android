@@ -385,7 +385,11 @@ private fun NoteRow(hub: GardensHub, n: GardenNote, onAccess: () -> Unit) {
     }
 }
 
-/** Who has a note — share it wider, or take yourself off it (never others). */
+/**
+ * Who has a note. Only its owner brings someone in or takes someone out (the
+ * server refuses anyone else, 403 `not_owner`, 28 November 2026); the others
+ * see who reads it and may take themselves off it (`NoteAccessSheet`).
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, onDismiss: () -> Unit) {
@@ -394,10 +398,13 @@ private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, o
     val scope = rememberCoroutineScope()
     var access by remember(note.id) { mutableStateOf<NoteAccess?>(null) }
     var confirmLeave by remember { mutableStateOf(false) }
+    var removing by remember { mutableStateOf<NoteAccessMember?>(null) }
+    val iOwnIt = note.ownerId == hub.me
     LaunchedEffect(note.id) { access = hub.store.noteAccess(note) }
     val others = garden.members.filter { it.memberId != hub.me }
     val context = if (others.isEmpty()) L("gardens.in_your_garden") else L("gardens.in_garden_with", others.joinToString(", ") { it.displayName })
     val self = access?.members?.firstOrNull { it.isSelf }
+    val ownerName = access?.members?.firstOrNull { it.isOwner }?.displayName ?: note.ownerUsername
 
     ModalBottomSheet(onDismissRequest = onDismiss, containerColor = theme.surface) {
         Column(Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 20.dp).padding(bottom = 18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -410,10 +417,11 @@ private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, o
                 TextButton(onClick = onDismiss) { Text("OK", fontWeight = FontWeight.SemiBold, color = accent) }
             }
             Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp)).background(theme.surfaceAlt).border(0.5.dp, theme.rule, RoundedCornerShape(12.dp))) {
-                val members = access?.members.orEmpty()
+                // The owner chooses among the whole household; anyone else is shown who the note is shared with.
+                val members = access?.members.orEmpty().let { all -> if (iOwnIt) all else all.filter { it.tends } }
                 if (members.isEmpty()) Box(Modifier.fillMaxWidth().height(88.dp), contentAlignment = Alignment.Center) { CircularProgressIndicator(Modifier.size(20.dp), color = theme.inkSoft, strokeWidth = 2.dp) }
                 members.forEachIndexed { i, m ->
-                    MemberRow(hub, m, accent) {
+                    MemberRow(hub, m, accent, iOwnIt, onRemove = { removing = m }) {
                         scope.launch {
                             hub.store.share(note, m.memberId)
                             access = hub.store.noteAccess(note)
@@ -422,7 +430,7 @@ private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, o
                     if (i != members.lastIndex) HorizontalDivider(color = theme.rule, thickness = 0.5.dp, modifier = Modifier.padding(start = 13.dp))
                 }
             }
-            Text(L("gardens.share_hint"), fontSize = 11.5.sp, lineHeight = 16.sp, color = theme.inkMute)
+            Text(if (iOwnIt) L("gardens.share_hint") else L("gardens.owner_shares_hint", ownerName), fontSize = 11.5.sp, lineHeight = 16.sp, color = theme.inkMute)
             if (self != null && self.tends && !self.isOwner) {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(
@@ -433,6 +441,23 @@ private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, o
                 }
             }
         }
+    }
+    removing?.let { m ->
+        AlertDialog(
+            onDismissRequest = { removing = null },
+            title = { Text(L("gardens.remove_member_confirm", m.displayName)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    removing = null
+                    scope.launch {
+                        hub.store.unshare(note, m.memberId)
+                        access = hub.store.noteAccess(note)
+                    }
+                }) { Text(L("gardens.remove_member"), color = Color.Red) }
+            },
+            dismissButton = { TextButton(onClick = { removing = null }) { Text(L("common.cancel")) } },
+            containerColor = theme.surface,
+        )
     }
     if (confirmLeave) AlertDialog(
         onDismissRequest = { confirmLeave = false },
@@ -449,7 +474,7 @@ private fun NoteAccessSheet(hub: GardensHub, note: GardenNote, garden: Garden, o
 }
 
 @Composable
-private fun MemberRow(hub: GardensHub, m: NoteAccessMember, accent: Color, onShare: () -> Unit) {
+private fun MemberRow(hub: GardensHub, m: NoteAccessMember, accent: Color, iOwnIt: Boolean, onRemove: () -> Unit, onShare: () -> Unit) {
     val theme = LocalMauriceTheme.current
     Row(Modifier.fillMaxWidth().heightIn(min = 44.dp).padding(horizontal = 13.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(11.dp)) {
         Avatar(m.displayName, m.avatarColor, absoluteUrl(hub.serverUrl, m.avatarUrl), size = 26.dp)
@@ -462,7 +487,11 @@ private fun MemberRow(hub: GardensHub, m: NoteAccessMember, accent: Color, onSha
                 L("gardens.tends").uppercase(), fontFamily = FontFamily.Monospace, fontSize = 8.5.sp, letterSpacing = 0.8.sp, color = theme.inkSoft,
                 modifier = Modifier.clip(CircleShape).border(0.5.dp, theme.ruleHard, CircleShape).padding(horizontal = 7.dp, vertical = 2.dp),
             )
-        } else {
+            if (iOwnIt && !m.isOwner) Text(
+                L("gardens.remove_member"), fontSize = 11.5.sp, fontWeight = FontWeight.Medium, color = legible(Color(0xFFB3382C), theme.isDark),
+                modifier = Modifier.heightIn(min = 44.dp).clip(RoundedCornerShape(6.dp)).clickable(onClick = onRemove).padding(start = 4.dp, top = 12.dp, bottom = 12.dp),
+            )
+        } else if (iOwnIt) {
             Text(
                 "+ " + L("gardens.share"), fontSize = 11.5.sp, fontWeight = FontWeight.Medium, color = accent,
                 modifier = Modifier.clip(CircleShape).border(0.5.dp, accent, CircleShape).clickable(onClick = onShare).padding(horizontal = 11.dp, vertical = 4.dp),

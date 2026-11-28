@@ -330,6 +330,9 @@
 "gardens.remove_self" = "Jezelf verwijderen…";
 "gardens.remove_self_confirm" = "Jezelf van deze notitie verwijderen";
 "gardens.remove_hint" = "Je kunt alleen jezelf verwijderen — nooit anderen.";
+"gardens.remove_member" = "Verwijderen";
+"gardens.remove_member_confirm" = "%@ van deze notitie verwijderen?";
+"gardens.owner_shares_hint" = "Deze notitie is van %@: alleen die persoon kan ze met iemand anders delen.";
 "gardens.in_garden_with" = "in de notities die je met %@ bijhoudt";
 "gardens.in_your_garden" = "in je eigen notities";
 

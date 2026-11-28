@@ -6,8 +6,16 @@ over here. `scripts/ios-delta.sh` lists what has landed on iOS since.
 
 | iOS app | repo | ported up to |
 |---|---|---|
-| Maurice | `maurice` (`app/`) | `2a703c9` |
+| Maurice | `maurice-ios` | `cb0d040` |
 | Carnet | `carnet` | `5bca94b` |
+
+Since 28 November 2026 the Apple app lives in `maurice-ios`, which starts from one snapshot
+(`53deece`). What iOS gained between the old repository's `2a703c9` and that snapshot was
+ported as it was asked for (the question pinned in the chat, the register of interventions,
+the sign-in fixes, the new-installation defaults…) but not counted commit by commit: a gap
+found there is a gap, not a choice. After the snapshot: `c96cd93` (My devices), `f072b24`
+(only a note's owner shares it, and takes someone out), `cb0d040` (conversation photos asked
+for with the member's session) are ported.
 
 ## How the pointer moves
 
@@ -115,5 +123,6 @@ here on purpose, or because the platform does.
 | `plusMenu` (Maurice `ChatView.swift`) | + → *Files*: any document of the device (the system document picker, a file dialog on the desktop), filed in the library and added to the context in one gesture, as *Add context*'s upload; + → *Paste Image*, only while the clipboard holds an image (pixels, or a copied image file on the desktop), joining the pending photos as a picked one does. Not ported: pasting an image straight into the field (⌘V / the field's *Paste*). |
 | `07d3935` (Maurice) | The ↗ of the rows that open an entry elsewhere — the held entry and a kept one in the *worth keeping* drawer — is a round mark (`OpenMark`, 32 dp, in ink); the whole row stays the button. |
 | iOS `DevicesView` (Maurice, 26 Nov 2026, branch `camera-purpose-string`, not yet on iOS main) | Settings → *My devices*: the member's sessions (`GET /api/me/sessions`), most recently used first — platform, app and version, model, last used (relative within a week on Android, a date on the desktop, which has no relative wording), *This device* — *Sign out* one (`DELETE /api/me/sessions/:id`, a 404 is no error) or all the others (`POST /api/me/sessions/close-others`), each confirmed. A device signed out returns to *Who's here?* with `picker.session_ended` in grey, not as an error. |
+| `f072b24`, `cb0d040` (maurice-ios) | A note's audience: only its owner sees the household to share it with and *Remove* beside each reader (`POST …/unshare`, confirmed); anyone else sees who reads it and `gardens.owner_shares_hint`. The household's pictures (`/api/images/…`) are asked for with the member's session — the app's Coil image loader adds it only for the household on screen's own origin (`HouseholdImages`), never for another address. |
 | iOS `ChatView` (Maurice, 21 Nov 2026, not yet committed on iOS: `pinQuestion`, `PinMarker`, `TurnTailSpacer`, `releasePinIfUnderFold`) | A question sent — every turn, a post to a room's people, one of the member's from another device — goes to the top of the thread with 8 dp of air, and the reply writes itself under it, then on under the fold: nothing moves. Room is kept after the end of the text so the question can sit there while the reply is short; it gives way point for point and is gone at the fold. Of a long question only its last third of a screen stays. The follow comes back only by the member's hand (finger, fling, wheel) taking the thread to the end of a text that has passed the fold, or by the round *↓* (36 dp, centred over the composer, `chat.scroll_to_end`), shown whenever the end is out of view; scrolling up stops it again; the end of a reply makes no jump for one who was not following. Opening a conversation lands on its end, following — except one that holds only the member's question. The thread is laid out from the top now (no more `reverseLayout`): a short one starts at the top, as on iOS (`chat/ThreadScroll.kt`, `chat/ChatThread.kt`). |
 | `0252ce8` (Maurice) | The register of interventions, a register and not an alarm: no dialog, no push. `GET /api/me/events?v=2` and `POST …/seen?v=2` — five kinds (a device by the admin's code or at the member's request, the household exported, the host reading the logs or the data), each with its reason or "No reason was given"; an unknown kind told as a device's. An orange dot (iOS's system orange, 7 dp, top right of the cog; 8 dp on Settings → *My data*) while a line is unread, counted when the app opens or comes back; *Interventions on your Maurice* under My data, its unread lines dotted for the visit, marks them read on opening. The admin, before a fresh device code for someone else's account: *Why this code?* — at their request (`member_request`), or going in oneself with a reason required (`admin_entry`); an admin's own account asks nothing; a `400 reason_required` asks for the reason again with the server's words. The My data row keeps its chevron when nothing is unread (iOS's trailing dot replaces it, even empty). |
