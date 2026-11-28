@@ -131,6 +131,16 @@ class GardensStore(private val api: ApiClient) {
         load()
     }
 
+    /**
+     * The owner takes someone out of a note's audience (`unshare`, 28 November
+     * 2026). Nobody else can: the server answers 403 `not_owner`, as it does to
+     * a [share] from anyone but the owner.
+     */
+    suspend fun unshare(note: GardenNote, memberId: String) {
+        quietly { api.send(HttpMethod.Post, "/api/v1/gardens/note/${note.ownerId}/${note.slug}/unshare", buildJsonObject { put("member_id", memberId) }) }
+        load()
+    }
+
     suspend fun leave(note: GardenNote) {
         quietly { api.send(HttpMethod.Post, "/api/v1/gardens/note/${note.ownerId}/${note.slug}/leave", buildJsonObject {}) }
         load()

@@ -10,7 +10,7 @@ set -euo pipefail
 here="$(cd "$(dirname "$0")/.." && pwd)"
 main="$(cd "$(git -C "$here" rev-parse --git-common-dir)/.." && pwd)"
 
-src="${MAURICE_IOS:-$(dirname "$main")/maurice/app}/Maurice/Resources"
+src="${MAURICE_IOS:-$(dirname "$main")/maurice-ios}/Maurice/Resources"
 dst="$here/maurice/shared/src/commonMain/composeResources/files/strings"
 mkdir -p "$dst"
 for dir in "$src"/*.lproj; do

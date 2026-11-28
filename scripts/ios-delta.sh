@@ -29,7 +29,7 @@ delta() { # name, repo dir, paths…
 
 which="${1:-all}"
 if [[ "$which" == all || "$which" == maurice ]]; then
-  delta maurice "$workspaces/maurice" app/Maurice app/Shared app/MauriceShareExtension
+  delta maurice "$workspaces/maurice-ios" Maurice Shared MauriceShareExtension MauriceNotificationService
 fi
 if [[ "$which" == all || "$which" == carnet ]]; then
   delta carnet "$workspaces/carnet" CarnetApp CarnetShareExtension Shared

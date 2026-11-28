@@ -72,6 +72,7 @@ fun MauriceApp(session: Session) {
     // The pulse on the activity line: a device preference, chosen in Settings.
     val pulse = remember(session) { eu.chezmaurice.core.settings.ThinkingPulsePreference(session.store) }
     eu.chezmaurice.maurice.onboarding.InvitationLinks.Handle(session)
+    HouseholdImageLoader(session)
     eu.chezmaurice.maurice.onboarding.HouseholdsRefresh(session)
     // A notification from another household: go there first, the home screen opens the conversation.
     val opening by OpenRequest.pending.collectAsState()

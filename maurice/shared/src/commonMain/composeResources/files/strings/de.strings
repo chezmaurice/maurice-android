@@ -330,6 +330,9 @@
 "gardens.remove_self" = "Dich entfernen…";
 "gardens.remove_self_confirm" = "Dich von dieser Notiz entfernen";
 "gardens.remove_hint" = "Du kannst nur dich selbst entfernen — nie andere.";
+"gardens.remove_member" = "Entfernen";
+"gardens.remove_member_confirm" = "%@ von dieser Notiz entfernen?";
+"gardens.owner_shares_hint" = "Diese Notiz gehört %@: Nur diese Person kann sie mit jemand anderem teilen.";
 "gardens.in_garden_with" = "in den Notizen, die du mit %@ führst";
 "gardens.in_your_garden" = "in deinen eigenen Notizen";
 

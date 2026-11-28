@@ -10,7 +10,7 @@ household, address or key, and nothing of the tools taken out of the product
 dashboards). `scripts/check-personal-data.py` runs before every push
 (`.githooks/pre-push`, installed with `--install`) and in CI; the private list
 of names it reads stays outside the repository. The iOS/macOS apps stay
-in SwiftUI (`../maurice/app`, `../carnet`); the server is `../maurice/server`.
+in SwiftUI (`../maurice-ios`, `../carnet`); the server is `../maurice-server`.
 
 **Desktop means Windows and Linux only.** The Mac has its SwiftUI app: no
 macOS build, package, signing or Cmd shortcut here. Running the desktop app on

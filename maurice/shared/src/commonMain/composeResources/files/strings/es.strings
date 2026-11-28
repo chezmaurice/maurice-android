@@ -330,6 +330,9 @@
 "gardens.remove_self" = "Quitarte…";
 "gardens.remove_self_confirm" = "Quitarte de esta nota";
 "gardens.remove_hint" = "Solo puedes quitarte a ti mismo — nunca a otros.";
+"gardens.remove_member" = "Quitar";
+"gardens.remove_member_confirm" = "¿Quitar a %@ de esta nota?";
+"gardens.owner_shares_hint" = "Esta nota es de %@: solo esa persona puede compartirla con alguien más.";
 "gardens.in_garden_with" = "en las notas que llevas con %@";
 "gardens.in_your_garden" = "en tus propias notas";
 

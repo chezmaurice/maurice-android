@@ -132,6 +132,7 @@ fun CarnetApp(session: Session) {
     // A member who leaves the device takes what was kept for them.
     remember(session) { session.onMemberGone = { h, m -> forgetMember("$h#$m") } }
     eu.chezmaurice.maurice.onboarding.InvitationLinks.Handle(session)
+    eu.chezmaurice.maurice.HouseholdImageLoader(session)
     eu.chezmaurice.maurice.onboarding.HouseholdsRefresh(session)
     val prefs by session.prefs.collectAsState()
     val strings by produceState<eu.chezmaurice.ui.Strings?>(null, prefs.locale) { value = loadCarnetStrings(prefs.locale) }
